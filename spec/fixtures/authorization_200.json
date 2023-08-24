@@ -1,0 +1,24 @@
+{
+  "data": {
+    "authorization_response": {
+      "id": "08f0e7f7-996b-4508-8a77-745096bb4aeb",
+      "report_group": "Default Report Group",
+      "customer_id": "",
+      "litle_txn_id": "84080277052330652",
+      "order_id": "",
+      "response": "000",
+      "response_time": "2023-08-23T20:42:52",
+      "post_date": "2023-08-23",
+      "message": "Approved",
+      "auth_code": "123457",
+      "approved_amount": "",
+      "network_transaction_id": "378375593987514",
+      "fraud_result": {
+        "avs_result": "00",
+        "card_validation_result": "",
+        "authentication_result": ""
+      },
+      "account_updater": null
+    }
+  }
+}

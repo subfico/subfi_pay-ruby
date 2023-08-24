@@ -1,0 +1,15 @@
+{
+  "data": {
+    "echeck_sale_response": {
+      "id": "AX54321678",
+      "report_group": "ABC Division",
+      "customer_id": "",
+      "litle_txn_id": "84568456",
+      "response": "000",
+      "response_time": "2016-09-01T10:24:31",
+      "message": "Approved",
+      "post_date": "",
+      "account_updater": null
+    }
+  }
+}
