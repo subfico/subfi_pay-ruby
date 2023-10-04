@@ -50,7 +50,7 @@ module Bckbn
 
     def response_handler(url, request)
       http = Net::HTTP.new(url.host, url.port)
-      # http.use_ssl = true
+      http.use_ssl = true
 
       response, body = begin
         r = http.request(request)
