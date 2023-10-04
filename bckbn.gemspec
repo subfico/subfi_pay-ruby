@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors = ["nikkypx"]
   spec.email = ["npalaniuk+github@gmail.com"]
 
-  spec.summary = "Ruby Bckbn client"
-  spec.description = "Ruby Bckbn client"
+  spec.summary = "Ruby client for the Bckbn API"
+  spec.description = "Ruby client for the Bckbn API"
   spec.homepage = "https://github.com/anedot/bckbn-ruby"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.7"
@@ -28,9 +28,6 @@ Gem::Specification.new do |spec|
   spec.bindir = "exe"
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
-
-  # Uncomment to register a new dependency of your gem
-  # spec.add_dependency "addressable", "~> 2.8"
 
   spec.add_development_dependency "faker"
   spec.add_development_dependency "pry"
