@@ -4,9 +4,18 @@ module Bckbn
   class Connection
     using Bckbn::CoreExt::StringExt
 
-    HttpBadRequest          = Class.new(StandardError)
-    HttpInternalServerError = Class.new(StandardError)
-    HttpServiceUnavailable  = Class.new(StandardError)
+    class BaseHttpError < StandardError
+      attr_reader :logs
+
+      def initialize(message, logs = [])
+        super(message)
+        @logs = logs
+      end
+    end
+
+    HttpBadRequest          = Class.new(BaseHttpError)
+    HttpInternalServerError = Class.new(BaseHttpError)
+    HttpServiceUnavailable  = Class.new(BaseHttpError)
 
     ERRORS = {
       Net::HTTPBadRequest => HttpBadRequest,
@@ -16,9 +25,12 @@ module Bckbn
 
     def initialize(config)
       @config = config.empty? ? Bckbn.config : Bckbn::Configuration.new(**config)
+      @logs = []
     end
 
     def post_to_api(path, body, klass)
+      log(:debug, "POST #{path}\n\nData: #{body.to_json}")
+
       headers = {
         "Content-Type" => "application/json",
         "Authorization" => "Bearer #{config.access_token}",
@@ -37,9 +49,15 @@ module Bckbn
         case response
         when Net::HTTPSuccess
           data = rbody.dig("data", klass.name.split("::").last.underscore)
-          klass.new(data)
+          log(:debug, "\nResponse: #{data.to_json}")
+          klass.new(**data, logs: @logs)
         else
-          raise ERRORS[response.class], rbody ? rbody["errors"] : nil
+          err_klass = ERRORS[response.class]
+          message = "Error: #{rbody ? rbody["errors"] : "Unknown"}"
+          log(:error, message)
+
+          err = err_klass.new(message, @logs)
+          raise err
         end
       end
     end
@@ -67,5 +85,18 @@ module Bckbn
         end
       end
     end
+
+    def log(level, message)
+      return if LOG_LEVEL_RANKING[config.log_level] > LOG_LEVEL_RANKING[level]
+
+      entry = "[#{level.to_s.upcase}] #{message}"
+      @logs << entry
+      entry
+    end
+
+    LOG_LEVEL_RANKING = {
+      debug: 1,
+      error: 2
+    }.freeze
   end
 end

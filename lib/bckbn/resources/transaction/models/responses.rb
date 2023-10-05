@@ -14,6 +14,7 @@ module Bckbn
       response
       response_time
       account_updater
+      logs
     ].freeze
 
     AUTHORIZATION_RESPONSE_MEMBERS = [

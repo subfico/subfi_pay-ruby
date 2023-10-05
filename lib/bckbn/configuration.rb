@@ -18,6 +18,7 @@ module Bckbn
 
     def initialize(**opts)
       opts[:api_version] ||= API_VERSION
+      opts[:log_level] ||= :error
       super(**opts)
     end
   end

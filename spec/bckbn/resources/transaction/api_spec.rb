@@ -8,6 +8,7 @@ RSpec.describe Bckbn::Transaction do
   let(:source_ip_address) { Faker::Internet.ip_v4_address }
   let(:api_version) { "1.0.0" }
   let(:api_base) { "https://localhost:8080" }
+  let(:log_level) { :debug }
   let(:headers) do
     {
       "Content-Type" => "application/json",
@@ -55,6 +56,7 @@ RSpec.describe Bckbn::Transaction do
           Bckbn.api_base = api_base
           Bckbn.merchant_id = merchant_id
           Bckbn.source_ip_address = source_ip_address
+          Bckbn.log_level = log_level
 
           stub_request(:post, api_base + path)
             .with(headers: headers, body: body.to_json)
@@ -78,6 +80,7 @@ RSpec.describe Bckbn::Transaction do
           expect(res.message).to eq("Approved")
           expect(res.account_updater).to eq(nil)
           expect(res.type).to eq("authorization")
+          expect(res.logs).to_not be_empty
         end
       end
 
@@ -97,7 +100,8 @@ RSpec.describe Bckbn::Transaction do
             api_version: api_version,
             api_base: api_base,
             merchant_id: merchant_id,
-            source_ip_address: source_ip_address
+            source_ip_address: source_ip_address,
+            log_level: log_level
           }
         end
 
@@ -115,6 +119,7 @@ RSpec.describe Bckbn::Transaction do
           expect(res.message).to eq("Approved")
           expect(res.account_updater).to eq(nil)
           expect(res.type).to eq("authorization")
+          expect(res.logs).to_not be_empty
         end
       end
     end
@@ -126,6 +131,7 @@ RSpec.describe Bckbn::Transaction do
         Bckbn.api_base = api_base
         Bckbn.merchant_id = merchant_id
         Bckbn.source_ip_address = source_ip_address
+        Bckbn.log_level = log_level
 
         stub_request(:post, api_base + path)
           .with(headers: headers, body: body.to_json)
@@ -165,6 +171,7 @@ RSpec.describe Bckbn::Transaction do
           Bckbn.api_base = api_base
           Bckbn.merchant_id = merchant_id
           Bckbn.source_ip_address = source_ip_address
+          Bckbn.log_level = log_level
 
           stub_request(:post, api_base + path)
             .with(headers: headers, body: body.to_json)
@@ -188,6 +195,7 @@ RSpec.describe Bckbn::Transaction do
           expect(res.message).to eq("Approved")
           expect(res.account_updater).to eq(nil)
           expect(res.type).to eq("capture")
+          expect(res.logs).to_not be_empty
         end
       end
 
@@ -207,7 +215,8 @@ RSpec.describe Bckbn::Transaction do
             api_version: api_version,
             api_base: api_base,
             merchant_id: merchant_id,
-            source_ip_address: source_ip_address
+            source_ip_address: source_ip_address,
+            log_level: log_level
           }
         end
 
@@ -225,6 +234,7 @@ RSpec.describe Bckbn::Transaction do
           expect(res.message).to eq("Approved")
           expect(res.account_updater).to eq(nil)
           expect(res.type).to eq("capture")
+          expect(res.logs).to_not be_empty
         end
       end
     end
@@ -249,6 +259,7 @@ RSpec.describe Bckbn::Transaction do
           Bckbn.api_base = api_base
           Bckbn.merchant_id = merchant_id
           Bckbn.source_ip_address = source_ip_address
+          Bckbn.log_level = log_level
 
           stub_request(:post, api_base + path)
             .with(headers: headers, body: body.to_json)
@@ -269,6 +280,7 @@ RSpec.describe Bckbn::Transaction do
           expect(res.response_time).to eq "2017-04-01T10:24:31"
           expect(res.message).to eq "Approved"
           expect(res.type).to eq("credit")
+          expect(res.logs).to_not be_empty
         end
       end
 
@@ -288,7 +300,8 @@ RSpec.describe Bckbn::Transaction do
             api_version: api_version,
             api_base: api_base,
             merchant_id: merchant_id,
-            source_ip_address: source_ip_address
+            source_ip_address: source_ip_address,
+            log_level: log_level
           }
         end
 
@@ -303,6 +316,7 @@ RSpec.describe Bckbn::Transaction do
           expect(res.response_time).to eq "2017-04-01T10:24:31"
           expect(res.message).to eq "Approved"
           expect(res.type).to eq "credit"
+          expect(res.logs).to_not be_empty
         end
       end
     end
@@ -345,6 +359,7 @@ RSpec.describe Bckbn::Transaction do
           Bckbn.api_base = api_base
           Bckbn.merchant_id = merchant_id
           Bckbn.source_ip_address = source_ip_address
+          Bckbn.log_level = log_level
 
           stub_request(:post, api_base + path)
             .with(headers: headers, body: body.to_json)
@@ -408,6 +423,7 @@ RSpec.describe Bckbn::Transaction do
           Bckbn.api_base = api_base
           Bckbn.merchant_id = merchant_id
           Bckbn.source_ip_address = source_ip_address
+          Bckbn.log_level = log_level
 
           stub_request(:post, api_base + path)
             .with(headers: headers, body: body.to_json)
@@ -491,6 +507,7 @@ RSpec.describe Bckbn::Transaction do
           Bckbn.api_base = api_base
           Bckbn.merchant_id = merchant_id
           Bckbn.source_ip_address = source_ip_address
+          Bckbn.log_level = log_level
 
           stub_request(:post, api_base + path)
             .with(headers: headers, body: body.to_json)
@@ -674,6 +691,7 @@ RSpec.describe Bckbn::Transaction do
           Bckbn.api_base = api_base
           Bckbn.merchant_id = merchant_id
           Bckbn.source_ip_address = source_ip_address
+          Bckbn.log_level = log_level
 
           stub_request(:post, api_base + path)
             .with(headers: headers, body: body.to_json)
@@ -739,6 +757,13 @@ RSpec.describe Bckbn::Transaction do
 
     context "when 400" do
       before do
+        Bckbn.access_token = access_token
+        Bckbn.api_version = api_version
+        Bckbn.api_base = api_base
+        Bckbn.merchant_id = merchant_id
+        Bckbn.source_ip_address = source_ip_address
+        Bckbn.log_level = :error
+
         stub_request(:post, api_base + path)
           .to_return(
             body: fixture("echeck_sale_400.json"),
@@ -753,6 +778,13 @@ RSpec.describe Bckbn::Transaction do
           Bckbn::Connection::HttpBadRequest,
           /["Key: 'EcheckSaleRequest.BillToAddress.Zip' Error:Field validation for 'Zip' failed on the 'max' tag"]/
         )
+      end
+
+      it "has logs" do
+        Bckbn::Transaction.echeck_sale(body)
+      rescue StandardError => e
+        expect(e.message).to_not be_empty
+        expect(e.logs).to_not be_empty
       end
     end
   end
@@ -775,6 +807,7 @@ RSpec.describe Bckbn::Transaction do
           Bckbn.api_base = api_base
           Bckbn.merchant_id = merchant_id
           Bckbn.source_ip_address = source_ip_address
+          Bckbn.log_level = log_level
 
           stub_request(:post, api_base + path)
             .with(headers: headers, body: body.to_json)
