@@ -7,7 +7,7 @@ RSpec.describe Bckbn::Transaction do
   let(:merchant_id) { Faker::Lorem.word }
   let(:source_ip_address) { Faker::Internet.ip_v4_address }
   let(:api_version) { "1.0.0" }
-  let(:api_base) { "http://localhost:8080" }
+  let(:api_base) { "https://localhost:8080" }
   let(:headers) do
     {
       "Content-Type" => "application/json",
