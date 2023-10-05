@@ -1,5 +1,3 @@
-## [Unreleased]
+## 0.2.0
 
-## [0.1.0] - 2023-08-18
-
-- Initial release
+* Add support for `debug` and `error` log levels
