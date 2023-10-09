@@ -9,6 +9,9 @@ gem install bckbn
 ```
 
 ## Configuration
+Local configuration will override global configuration where
+they conflict. Some config can only be set locally, like an 
+`idempotency_key`.
 
 ### Global
 
@@ -26,7 +29,7 @@ Bckbn::Transaction.capture({
 })
 ```
 
-### Per Request
+### Local
 
 ```ruby
 require "bckbn"
@@ -34,6 +37,7 @@ require "bckbn"
 api_base = "..."
 access_token = "..."
 merchant_id = "..."
+idempotency_key = "..."
 
 Bckbn::Transaction.capture(
   { 
@@ -42,12 +46,18 @@ Bckbn::Transaction.capture(
     report_group: "ABC Division"
   }, 
   {
-    api_base:,
-    access_token:,
-    merchant_id:
+    api_base: api_base,
+    access_token: access_token,
+    merchant_id: merchant_id,
+    idempotency_key: idempotency_key
   }
 )
 ```
+
+### Idempotency
+An idempotency key can be added to allow retries without creating duplicate transactions.
+Successful POST requests will return a cached response. New requests can be issued 
+by changing the request body or the idempotency key.
 
 ## Documentation
 
