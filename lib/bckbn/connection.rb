@@ -23,8 +23,11 @@ module Bckbn
       Net::HTTPServiceUnavailable => HttpServiceUnavailable
     }.freeze
 
-    def initialize(config)
-      @config = config.empty? ? Bckbn.config : Bckbn::Configuration.new(**config)
+    def initialize(per_req_config)
+      global_config = Bckbn.config.to_h
+      config = global_config.merge(per_req_config)
+
+      @config = Bckbn::Configuration.new(**config)
       @logs = []
     end
 
