@@ -34,18 +34,11 @@ module Bckbn
     def post_to_api(path, body, klass)
       log(:debug, "POST #{path}\n\nData: #{body.to_json}")
 
-      headers = {
-        "Content-Type" => "application/json",
-        "Authorization" => "Bearer #{config.access_token}",
-        "X-Api-Version" => config.api_version,
-        "X-Merchant-Id" => config.merchant_id,
-        "X-Source-Ip-Address" => config.source_ip_address
-      }
-
       url = URI.parse(config.api_base + path)
       request = Net::HTTP::Post.new(url.path)
-      headers.reject! { |_, v| v.nil? || v == "" }
-      headers.each { |k, v| request[k] = v }
+      bckbn_headers = headers(config)
+      bckbn_headers.reject! { |_, v| v.nil? || v == "" }
+      bckbn_headers.each { |k, v| request[k] = v }
       request.body = body.to_json
 
       response_handler(url, request) do |response, rbody|
@@ -87,6 +80,17 @@ module Bckbn
           ro.fraud_result = ::Bckbn::Transaction::FraudResult.new(**resp_obj.fraud_result)
         end
       end
+    end
+
+    def headers(config)
+      {
+        "Content-Type" => "application/json",
+        "Authorization" => "Bearer #{config.access_token}",
+        "X-Api-Version" => config.api_version,
+        "X-Merchant-Id" => config.merchant_id,
+        "X-Source-Ip-Address" => config.source_ip_address,
+        "X-Idempotency-Key" => config.idempotency_key
+      }
     end
 
     def log(level, message)

@@ -9,6 +9,7 @@ module Bckbn
     log_level
     merchant_id
     source_ip_address
+    idempotency_key
   ].freeze
 
   Configuration = Struct.new(*CONFIG_OPTIONS, keyword_init: true) do

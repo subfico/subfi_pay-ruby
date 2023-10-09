@@ -6,6 +6,7 @@ RSpec.describe Bckbn::Transaction do
   let(:access_token) { Faker::Lorem.word }
   let(:merchant_id) { Faker::Lorem.word }
   let(:source_ip_address) { Faker::Internet.ip_v4_address }
+  let(:idempotency_key) { Faker::Internet.hash }
   let(:api_version) { "1.0.0" }
   let(:api_base) { "https://localhost:8080" }
   let(:log_level) { :debug }
@@ -84,10 +85,17 @@ RSpec.describe Bckbn::Transaction do
         end
       end
 
-      context "with per request config" do
+      context "with per request config and idempotency_key" do
+        let(:ik_headers) do
+          headers.merge("X-Idempotency-Key" => idempotency_key)
+        end
+
         before do
+          Bckbn.api_version = api_version
+          Bckbn.api_base = api_base
+
           stub_request(:post, api_base + path)
-            .with(headers: headers, body: body.to_json)
+            .with(headers: ik_headers, body: body.to_json)
             .to_return(
               body: fixture("authorization_200.json"),
               status: 200
@@ -97,11 +105,10 @@ RSpec.describe Bckbn::Transaction do
         let(:config) do
           {
             access_token: access_token,
-            api_version: api_version,
-            api_base: api_base,
             merchant_id: merchant_id,
             source_ip_address: source_ip_address,
-            log_level: log_level
+            log_level: log_level,
+            idempotency_key: idempotency_key
           }
         end
 
