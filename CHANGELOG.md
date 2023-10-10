@@ -6,3 +6,7 @@
 
 - Update local config to override global config where both present
 - Add idempotency key header
+
+## 1.0.1
+
+- Allow http scheme
