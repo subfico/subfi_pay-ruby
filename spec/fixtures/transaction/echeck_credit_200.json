@@ -1,0 +1,12 @@
+{
+  "data": {
+    "id": "AX54321678",
+    "report_group": "RG27",
+    "customer_id": "",
+    "litle_txn_id": "84568456",
+    "response": "000",
+    "response_time": "2017-04-01T10:24:31",
+    "message": "Approved",
+    "account_updater": null
+  }
+}

@@ -3,14 +3,14 @@
 module Bckbn
   module Transaction
     ENDPOINTS = {
-      authorization: "/transactions/authorization",
-      capture: "/transactions/capture",
-      credit: "/transactions/credit",
-      sale: "/transactions/sale",
-      void: "/transactions/void",
-      echeck_credit: "/transactions/echeck_credit",
-      echeck_sale: "/transactions/echeck_sale",
-      echeck_void: "/transactions/echeck_void"
+      authorization: "/transaction/authorization",
+      capture: "/transaction/capture",
+      credit: "/transaction/credit",
+      sale: "/transaction/sale",
+      void: "/transaction/void",
+      echeck_credit: "/transaction/echeck_credit",
+      echeck_sale: "/transaction/echeck_sale",
+      echeck_void: "/transaction/echeck_void"
     }.freeze
     private_constant :ENDPOINTS
 

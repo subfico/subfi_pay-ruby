@@ -44,7 +44,7 @@ module Bckbn
       response_handler(url, request) do |response, rbody|
         case response
         when Net::HTTPSuccess
-          data = rbody.dig("data", klass.name.split("::").last.underscore)
+          data = rbody.fetch("data")
           log(:debug, "\nResponse: #{data.to_json}")
           klass.new(**data, logs: @logs)
         else
