@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    bckbn (1.1.0)
+    bckbn (2.0.0)
 
 GEM
   remote: https://rubygems.org/
