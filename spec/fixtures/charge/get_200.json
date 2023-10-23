@@ -1,0 +1,12 @@
+{
+  "data": {
+    "id": "c13f9941-0663-49d0-a4c3-b0b2015248bf",
+    "amount": 500000000,
+    "direction": "Outbound",
+    "posting": "Posted",
+    "posting_code": "OK",
+    "posting_type": "Individual",
+    "status": "Completed",
+    "transaction_type": "Pull"
+  }
+}
