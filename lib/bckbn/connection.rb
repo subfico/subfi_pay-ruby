@@ -58,6 +58,32 @@ module Bckbn
       end
     end
 
+    def get_from_api(path, klass)
+      log(:debug, "GET #{path}\n")
+
+      url = URI.parse(config.api_base + path)
+      request = Net::HTTP::Get.new(url.path)
+      bckbn_headers = headers(config)
+      bckbn_headers.reject! { |_, v| v.nil? || v == "" }
+      bckbn_headers.each { |k, v| request[k] = v }
+
+      response_handler(url, request) do |response, rbody|
+        case response
+        when Net::HTTPSuccess
+          data = rbody.fetch("data")
+          log(:debug, "\nResponse: #{data.to_json}")
+          klass.new(**data, logs: @logs)
+        else
+          err_klass = ERRORS[response.class]
+          message = "Error: #{rbody ? rbody["errors"] : "Unknown"}"
+          log(:error, message)
+
+          err = err_klass.new(message, @logs)
+          raise err
+        end
+      end
+    end
+
     private
 
     attr_reader :config

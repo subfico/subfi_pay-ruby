@@ -4,6 +4,7 @@ require "json"
 require "forwardable"
 require "logger"
 require "net/http"
+require "addressable"
 require "bckbn/version"
 require "bckbn/configuration"
 require "bckbn/core_ext"
@@ -14,6 +15,11 @@ require "bckbn/resources/transaction/models/echeck"
 require "bckbn/resources/transaction/models/billing_address"
 require "bckbn/resources/transaction/models/requests"
 require "bckbn/resources/transaction/models/responses"
+require "bckbn/resources/transaction/models/payment"
+
+require "bckbn/resources/ach/api"
+require "bckbn/resources/ach/models/requests"
+require "bckbn/resources/ach/models/responses"
 
 module Bckbn
   @config = Bckbn::Configuration.setup

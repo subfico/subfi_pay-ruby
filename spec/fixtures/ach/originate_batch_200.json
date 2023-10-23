@@ -1,0 +1,20 @@
+{
+  "data": {
+    "id": "93af7b91-b415-4933-b716-b0a1015eb5c6",
+    "reference_id": "CB29376RP3GT6",
+    "status": "Processing",
+    "account_number": "2654377916",
+    "payment_count": 2,
+    "debit_total": 0,
+    "credit_total": 58333,
+    "import_count": 0,
+    "product_id": "bf695308-0f6c-40f3-ab53-afc700e18cb8",
+    "partner_id": "01a0e2da-173b-4620-a146-afc700e18573",
+    "created_at": "2023-10-20T17:16:53.7726387-04:00",
+    "last_modified_at": "2023-10-20T17:16:53.788318-04:00",
+    "payment_identifiers": [
+      "82709fcf-5853-43b2-933a-b0a1015eb5c6",
+      "a836ccdf-1340-4d6b-998f-b0a1015eb5ca"
+    ]
+  }
+}
