@@ -1,0 +1,30 @@
+{
+  "data": {
+    "charges": [
+      {
+        "id": "c13f9941-0663-49d0-a4c3-b0b2015248bf",
+        "amount": 500000000,
+        "direction": "Outbound",
+        "posting": "Posted",
+        "posting_code": "OK",
+        "posting_type": "Individual",
+        "status": "Completed",
+        "transaction_type": "Pull"
+      },
+      {
+        "id": "065ea466-194e-44fd-b432-b0b2015248c2",
+        "amount": 500000000,
+        "direction": "Outbound",
+        "posting": "Posted",
+        "posting_code": "OK",
+        "posting_type": "Individual",
+        "status": "Completed",
+        "transaction_type": "Pull"
+      }
+    ],
+    "page_number": 1,
+    "page_size": 4,
+    "has_previous_page": false,
+    "has_next_page": false
+  }
+}

@@ -76,3 +76,66 @@ Bckbn.merchant_id = "101"
   "order_id": "5234234",
   "order_source": "ecommerce"
 }.freeze
+
+@charge = {
+  amount: 500_000_000,
+  description: "JulyFees",
+  source: {
+    type: "bank",
+    bank: {
+      routing_number: "021200339",
+      account_number: "6546543213",
+      account_type: "Checking",
+      name: "Glenn Quagmire"
+    }
+  }
+}
+
+@payout = {
+  amount: 2500,
+  description: "JulyFees",
+  destination: {
+    type: "bank",
+    bank: {
+      routing_number: "021200339",
+      account_number: "6546543213",
+      account_type: "Checking",
+      name: "Glenn Quagmire"
+    }
+  }
+}
+
+# @originate_batch_body = {
+#   "payments": [{
+#     "account_number": "2654377916",
+#     "receiver": {
+#       "routing_number": "021200339",
+#       "account_number": "6546543213",
+#       "account_type": "Checking",
+#       "name": "Glenn Quagmire",
+#       "identification": "XYZ123"
+#     },
+#     "sec_code": "PPD",
+#     "description": "JulyFees",
+#     "transaction_type": "Push",
+#     "amount": 25_000,
+#     "purpose": "sample payment",
+#     "service_type": "Standard"
+#   },
+#   {
+#     "account_number": "2654377916",
+#     "receiver": {
+#       "routing_number": "021200339",
+#       "account_number": "6546543213",
+#       "account_type": "Checking",
+#       "name": "Pam Anderson",
+#       "identification": "ABCDEFG"
+#     },
+#     "sec_code": "PPD",
+#     "description": "JulyFees",
+#     "transaction_type": "Push",
+#     "amount": 33_333,
+#     "purpose": "sample payment",
+#     "service_type": "Standard"
+#   }]
+# }

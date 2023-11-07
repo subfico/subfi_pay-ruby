@@ -17,9 +17,18 @@ require "bckbn/resources/transaction/models/requests"
 require "bckbn/resources/transaction/models/responses"
 require "bckbn/resources/transaction/models/payment"
 
+# TODO: probably dead
 require "bckbn/resources/ach/api"
 require "bckbn/resources/ach/models/requests"
 require "bckbn/resources/ach/models/responses"
+
+require "bckbn/resources/charge/api"
+require "bckbn/resources/charge/models/requests"
+require "bckbn/resources/charge/models/responses"
+
+# require "bckbn/resources/payout/api"
+# require "bckbn/resources/payout/models/requests"
+# require "bckbn/resources/payout/models/responses"
 
 module Bckbn
   @config = Bckbn::Configuration.setup

@@ -51,7 +51,6 @@ module Bckbn
           err_klass = ERRORS[response.class]
           message = "Error: #{rbody ? rbody["errors"] : "Unknown"}"
           log(:error, message)
-
           err = err_klass.new(message, @logs)
           raise err
         end
