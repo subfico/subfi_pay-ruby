@@ -1,3 +1,7 @@
+## 0.2.1
+
+- Add first iteration of charge resource
+
 ## 0.2.0 
 
 - Add support for `debug` and `error` log levels
