@@ -39,7 +39,7 @@ RSpec.describe Bckbn::Transaction do
         },
         "card": {
           "type": "MC",
-          "number": "{{1234567890123456}}",
+          "number": "1234567890123456",
           "exp_date": "1223",
           "card_validation_num": "123"
         },
@@ -331,35 +331,36 @@ RSpec.describe Bckbn::Transaction do
 
   describe "::sale" do
     let(:path) { "/transaction/sale" }
-    let(:body) do
-      {
-        "id": "12345",
-        "report_group": "ABC Division",
-        "amount": 5000,
-        "bill_to_address": {
-          "name": "John Doe",
-          "address_line_1": "123 Main St",
-          "city": "Boston",
-          "state": "MA",
-          "country": "US",
-          "zip": "12345",
-          "email": "jsmith@someaddress.com",
-          "phone": "555-123-4567"
-        },
-        "card": {
-          "type": "MC",
-          "number": "{{1234567890123456}}",
-          "exp_date": "1223",
-          "card_validation_num": "123"
-        },
-        "order_id": "5234234",
-        "order_source": "ecommerce",
-        "partial": false
-      }
-    end
 
     context "when 200" do
       context "with global config" do
+        let(:body) do
+          {
+            "id": "12345",
+            "report_group": "ABC Division",
+            "amount": 5000,
+            "bill_to_address": {
+              "name": "John Doe",
+              "address_line_1": "123 Main St",
+              "city": "Boston",
+              "state": "MA",
+              "country": "US",
+              "zip": "12345",
+              "email": "jsmith@someaddress.com",
+              "phone": "555-123-4567"
+            },
+            "card": {
+              "type": "MC",
+              "number": "1234567890123456",
+              "exp_date": "1223",
+              "card_validation_num": "123"
+            },
+            "order_id": "5234234",
+            "order_source": "ecommerce",
+            "partial": false
+          }
+        end
+
         before do
           Bckbn.access_token = access_token
           Bckbn.api_version = api_version
@@ -378,6 +379,70 @@ RSpec.describe Bckbn::Transaction do
 
         it "returns response object" do
           res = Bckbn::Transaction.sale(body)
+
+          expect(res).to be_a(Bckbn::Transaction::SaleResponse)
+          expect(res.id).to eq("08f0e7f7-996b-4508-8a77-745096bb4aeb")
+          expect(res.report_group).to eq("Default Report Group")
+          expect(res.customer_id).to eq("")
+          expect(res.litle_txn_id).to eq("83992306262569970")
+          expect(res.response).to eq("000")
+          expect(res.response_time).to eq("2023-08-22T21:00:08")
+          expect(res.post_date).to eq("2023-08-22")
+          expect(res.message).to eq("Approved")
+          expect(res.account_updater).to eq(nil)
+          expect(res.type).to eq("sale")
+        end
+      end
+
+      context "with per request config" do
+        let(:body) do
+          {
+            "id": "12345",
+            "report_group": "ABC Division",
+            "amount": 5000,
+            "bill_to_address": {
+              "name": "John Doe",
+              "address_line_1": "123 Main St",
+              "city": "Boston",
+              "state": "MA",
+              "country": "US",
+              "zip": "12345",
+              "email": "jsmith@someaddress.com",
+              "phone": "555-123-4567"
+            },
+            "card": {
+              "type": "MC",
+              "number": "1234567890123456",
+              "exp_date": "1223",
+              "card_validation_num": "123"
+            },
+            "order_id": "5234234",
+            "order_source": "ecommerce",
+            "partial": false
+          }
+        end
+
+        let(:config) do
+          {
+            access_token: access_token,
+            api_version: api_version,
+            api_base: api_base,
+            merchant_id: merchant_id,
+            source_ip_address: source_ip_address
+          }
+        end
+
+        before do
+          stub_request(:post, api_base + path)
+            .with(headers: headers, body: body.to_json)
+            .to_return(
+              body: fixture("transaction/sale_200.json"),
+              status: 200
+            )
+        end
+
+        it "returns response object" do
+          res = Bckbn::Transaction.sale(body, config)
 
           expect(res).to be_a(Bckbn::Transaction::SaleResponse)
           expect(res.id).to eq("08f0e7f7-996b-4508-8a77-745096bb4aeb")
@@ -414,7 +479,7 @@ RSpec.describe Bckbn::Transaction do
             },
             "card": {
               "type": "MC",
-              "number": "{{1234567890123456}}",
+              "number": "1234567890123456",
               "exp_date": "1223",
               "card_validation_num": "123"
             },
@@ -457,8 +522,42 @@ RSpec.describe Bckbn::Transaction do
         end
       end
 
-      context "with per request config" do
+      context "with no address" do
+        let(:body) do
+          {
+            "id": "12345",
+            "report_group": "ABC Division",
+            "amount": 5000,
+            "bill_to_address": {
+              "name": "John Doe",
+              "address_line_1": nil,
+              "city": nil,
+              "state": nil,
+              "country": nil,
+              "zip": nil,
+              "email": nil,
+              "phone": nil
+            },
+            "card": {
+              "type": "MC",
+              "number": "1234567890123456",
+              "exp_date": "1223",
+              "card_validation_num": "123"
+            },
+            "order_id": "5234234",
+            "order_source": "ecommerce",
+            "partial": false
+          }
+        end
+
         before do
+          Bckbn.access_token = access_token
+          Bckbn.api_version = api_version
+          Bckbn.api_base = api_base
+          Bckbn.merchant_id = merchant_id
+          Bckbn.source_ip_address = source_ip_address
+          Bckbn.log_level = log_level
+
           stub_request(:post, api_base + path)
             .with(headers: headers, body: body.to_json)
             .to_return(
@@ -467,18 +566,8 @@ RSpec.describe Bckbn::Transaction do
             )
         end
 
-        let(:config) do
-          {
-            access_token: access_token,
-            api_version: api_version,
-            api_base: api_base,
-            merchant_id: merchant_id,
-            source_ip_address: source_ip_address
-          }
-        end
-
         it "returns response object" do
-          res = Bckbn::Transaction.sale(body, config)
+          res = Bckbn::Transaction.sale(body)
 
           expect(res).to be_a(Bckbn::Transaction::SaleResponse)
           expect(res.id).to eq("08f0e7f7-996b-4508-8a77-745096bb4aeb")

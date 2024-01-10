@@ -14,52 +14,46 @@ module Bckbn
     }.freeze
     private_constant :ENDPOINTS
 
-    def self.authorization(body, config = {})
-      body = AuthorizationRequest.new(body)
-      @conn = Bckbn::Connection.new(config)
-      @conn.post_to_api(ENDPOINTS.fetch(__method__), body.to_h, AuthorizationResponse)
-    end
+    class << self
+      def authorization(body, config = {})
+        process_transaction(__method__, body, config, AuthorizationRequest, AuthorizationResponse)
+      end
 
-    def self.capture(body, config = {})
-      body = CaptureRequest.new(body)
-      @conn = Bckbn::Connection.new(config)
-      @conn.post_to_api(ENDPOINTS.fetch(__method__), body.to_h, CaptureResponse)
-    end
+      def capture(body, config = {})
+        process_transaction(__method__, body, config, CaptureRequest, CaptureResponse)
+      end
 
-    def self.credit(body, config = {})
-      body = CreditRequest.new(body)
-      @conn = Bckbn::Connection.new(config)
-      @conn.post_to_api(ENDPOINTS.fetch(__method__), body.to_h, CreditResponse)
-    end
+      def credit(body, config = {})
+        process_transaction(__method__, body, config, CreditRequest, CreditResponse)
+      end
 
-    def self.sale(body, config = {})
-      body = SaleRequest.new(body)
-      @conn = Bckbn::Connection.new(config)
-      @conn.post_to_api(ENDPOINTS.fetch(__method__), body.to_h, SaleResponse)
-    end
+      def sale(body, config = {})
+        process_transaction(__method__, body, config, SaleRequest, SaleResponse)
+      end
 
-    def self.void(body, config = {})
-      body = VoidRequest.new(body)
-      @conn = Bckbn::Connection.new(config)
-      @conn.post_to_api(ENDPOINTS.fetch(__method__), body.to_h, VoidResponse)
-    end
+      def void(body, config = {})
+        process_transaction(__method__, body, config, VoidRequest, VoidResponse)
+      end
 
-    def self.echeck_credit(body, config = {})
-      body = EcheckCreditRequest.new(body)
-      @conn = Bckbn::Connection.new(config)
-      @conn.post_to_api(ENDPOINTS.fetch(__method__), body.to_h, EcheckCreditResponse)
-    end
+      def echeck_credit(body, config = {})
+        process_transaction(__method__, body, config, EcheckCreditRequest, EcheckCreditResponse)
+      end
 
-    def self.echeck_sale(body, config = {})
-      body = EcheckSaleRequest.new(body)
-      @conn = Bckbn::Connection.new(config)
-      @conn.post_to_api(ENDPOINTS.fetch(__method__), body.to_h, EcheckSaleResponse)
-    end
+      def echeck_sale(body, config = {})
+        process_transaction(__method__, body, config, EcheckSaleRequest, EcheckSaleResponse)
+      end
 
-    def self.echeck_void(body, config = {})
-      body = EcheckVoidRequest.new(body)
-      @conn = Bckbn::Connection.new(config)
-      @conn.post_to_api(ENDPOINTS.fetch(__method__), body.to_h, EcheckVoidResponse)
+      def echeck_void(body, config = {})
+        process_transaction(__method__, body, config, EcheckVoidRequest, EcheckVoidResponse)
+      end
+
+      private
+
+      def process_transaction(method, body, config, request_klass, response_klass)
+        request = request_klass.new(body)
+        conn = Bckbn::Connection.new(config)
+        conn.post_to_api(ENDPOINTS.fetch(method), request.to_h, response_klass)
+      end
     end
   end
 end
