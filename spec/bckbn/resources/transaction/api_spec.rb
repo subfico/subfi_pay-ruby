@@ -157,6 +157,27 @@ RSpec.describe Bckbn::Transaction do
         )
       end
     end
+
+    context "when 504" do
+      before do
+        Bckbn.access_token = access_token
+        Bckbn.api_version = api_version
+        Bckbn.api_base = api_base
+        Bckbn.merchant_id = merchant_id
+        Bckbn.source_ip_address = source_ip_address
+        Bckbn.log_level = log_level
+
+        stub_request(:post, api_base + path)
+          .with(headers: headers, body: body.to_json)
+          .to_return(body: "{}", status: 504)
+      end
+
+      it "returns error object" do
+        expect do
+          Bckbn::Transaction.authorization(body)
+        end.to raise_error(Bckbn::Connection::HttpGatewayTimeout)
+      end
+    end
   end
 
   describe "::capture" do

@@ -16,11 +16,13 @@ module Bckbn
     HttpBadRequest          = Class.new(BaseHttpError)
     HttpInternalServerError = Class.new(BaseHttpError)
     HttpServiceUnavailable  = Class.new(BaseHttpError)
+    HttpGatewayTimeout      = Class.new(BaseHttpError)
 
     ERRORS = {
-      Net::HTTPBadRequest => HttpBadRequest,
-      Net::HTTPInternalServerError => HttpInternalServerError,
-      Net::HTTPServiceUnavailable => HttpServiceUnavailable
+      Net::HTTPBadRequest => HttpBadRequest, # 400
+      Net::HTTPInternalServerError => HttpInternalServerError, # 500
+      Net::HTTPServiceUnavailable => HttpServiceUnavailable, # 503
+      Net::HTTPGatewayTimeout => HttpGatewayTimeout # 504
     }.freeze
 
     def initialize(per_req_config)
@@ -48,7 +50,7 @@ module Bckbn
           log(:debug, "\nResponse: #{data.to_json}")
           klass.new(**data, logs: @logs)
         else
-          err_klass = ERRORS[response.class]
+          err_klass = ERRORS.fetch(response.class)
           message = "Error: #{rbody ? rbody["errors"] : "Unknown"}"
           log(:error, message)
           err = err_klass.new(message, @logs)
@@ -73,7 +75,7 @@ module Bckbn
           log(:debug, "\nResponse: #{data.to_json}")
           klass.new(**data, logs: @logs)
         else
-          err_klass = ERRORS[response.class]
+          err_klass = ERRORS.fetch(response.class)
           message = "Error: #{rbody ? rbody["errors"] : "Unknown"}"
           log(:error, message)
 
@@ -105,6 +107,8 @@ module Bckbn
           ro.fraud_result = ::Bckbn::Transaction::FraudResult.new(**resp_obj.fraud_result)
         end
       end
+    rescue StandardError => e
+      raise e
     end
 
     def headers(config)
