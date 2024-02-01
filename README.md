@@ -20,7 +20,7 @@ require "bckbn"
 
 Bckbn.api_base = "..."
 Bckbn.access_token = "..."
-Bckbn.merchant_id = "..."
+Bckbn.worldpay_merchant_id = "..."
 
 Bckbn::Transaction.capture({ 
   litle_txn_id: "13254123434",
@@ -36,7 +36,7 @@ require "bckbn"
 
 api_base = "..."
 access_token = "..."
-merchant_id = "..."
+worldpay_merchant_id = "..."
 idempotency_key = "..."
 
 Bckbn::Transaction.capture(
@@ -48,7 +48,7 @@ Bckbn::Transaction.capture(
   {
     api_base: api_base,
     access_token: access_token,
-    merchant_id: merchant_id,
+    worldpay_merchant_id: worldpay_merchant_id,
     idempotency_key: idempotency_key
   }
 )

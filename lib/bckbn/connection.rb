@@ -116,7 +116,7 @@ module Bckbn
         "Content-Type" => "application/json",
         "Authorization" => "Bearer #{config.access_token}",
         "X-Api-Version" => config.api_version,
-        "X-Merchant-Id" => config.merchant_id,
+        "X-Worldpay-Merchant-Id" => config.worldpay_merchant_id,
         "X-Source-Ip-Address" => config.source_ip_address,
         "X-Idempotency-Key" => config.idempotency_key
       }

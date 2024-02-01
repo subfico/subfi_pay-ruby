@@ -7,7 +7,7 @@ module Bckbn
     api_version
     api_base
     log_level
-    merchant_id
+    worldpay_merchant_id
     source_ip_address
     idempotency_key
   ].freeze

@@ -33,7 +33,7 @@ module Bckbn
     def_delegators :@config, :api_version, :api_version=
     def_delegators :@config, :api_base, :api_base=
     def_delegators :@config, :log_level, :log_level=
-    def_delegators :@config, :merchant_id, :merchant_id=
+    def_delegators :@config, :worldpay_merchant_id, :worldpay_merchant_id=
     def_delegators :@config, :source_ip_address, :source_ip_address=
   end
 end

@@ -4,7 +4,7 @@ require "spec_helper"
 
 RSpec.describe Bckbn::Charge do
   let(:access_token) { Faker::Lorem.word }
-  let(:merchant_id) { Faker::Lorem.word }
+  let(:worldpay_merchant_id) { Faker::Lorem.word }
   let(:source_ip_address) { Faker::Internet.ip_v4_address }
   let(:idempotency_key) { Faker::Internet.hash }
   let(:api_version) { "1.0.0" }
@@ -15,7 +15,7 @@ RSpec.describe Bckbn::Charge do
       "Content-Type" => "application/json",
       "Authorization" => "Bearer #{access_token}",
       "X-Api-Version" => api_version,
-      "X-Merchant-Id" => merchant_id,
+      "X-Worldpay-Merchant-Id" => worldpay_merchant_id,
       "X-Source-Ip-Address" => source_ip_address
     }
   end
@@ -41,7 +41,7 @@ RSpec.describe Bckbn::Charge do
           Bckbn.access_token = access_token
           Bckbn.api_version = api_version
           Bckbn.api_base = api_base
-          Bckbn.merchant_id = merchant_id
+          Bckbn.worldpay_merchant_id = worldpay_merchant_id
           Bckbn.source_ip_address = source_ip_address
           Bckbn.log_level = log_level
 
@@ -80,7 +80,7 @@ RSpec.describe Bckbn::Charge do
           Bckbn.access_token = access_token
           Bckbn.api_version = api_version
           Bckbn.api_base = api_base
-          Bckbn.merchant_id = merchant_id
+          Bckbn.worldpay_merchant_id = worldpay_merchant_id
           Bckbn.source_ip_address = source_ip_address
           Bckbn.log_level = log_level
 
@@ -118,7 +118,7 @@ RSpec.describe Bckbn::Charge do
           Bckbn.access_token = access_token
           Bckbn.api_version = api_version
           Bckbn.api_base = api_base
-          Bckbn.merchant_id = merchant_id
+          Bckbn.worldpay_merchant_id = worldpay_merchant_id
           Bckbn.source_ip_address = source_ip_address
           Bckbn.log_level = log_level
 
@@ -172,7 +172,7 @@ end
 #         let(:config) do
 #           {
 #             access_token: access_token,
-#             merchant_id: merchant_id,
+#             worldpay_merchant_id: worldpay_merchant_id,
 #             source_ip_address: source_ip_address,
 #             log_level: log_level,
 #             idempotency_key: idempotency_key
@@ -211,7 +211,7 @@ end
 #           Bckbn.access_token = access_token
 #           Bckbn.api_version = api_version
 #           Bckbn.api_base = api_base
-#           Bckbn.merchant_id = merchant_id
+#           Bckbn.worldpay_merchant_id = worldpay_merchant_id
 #           Bckbn.source_ip_address = source_ip_address
 #           Bckbn.log_level = log_level
 
@@ -263,7 +263,7 @@ end
 #         let(:config) do
 #           {
 #             access_token: access_token,
-#             merchant_id: merchant_id,
+#             worldpay_merchant_id: worldpay_merchant_id,
 #             source_ip_address: source_ip_address,
 #             log_level: log_level,
 #             idempotency_key: idempotency_key
@@ -302,7 +302,7 @@ end
 #           Bckbn.access_token = access_token
 #           Bckbn.api_version = api_version
 #           Bckbn.api_base = api_base
-#           Bckbn.merchant_id = merchant_id
+#           Bckbn.worldpay_merchant_id = worldpay_merchant_id
 #           Bckbn.source_ip_address = source_ip_address
 #           Bckbn.log_level = log_level
 
@@ -354,7 +354,7 @@ end
 #         let(:config) do
 #           {
 #             access_token: access_token,
-#             merchant_id: merchant_id,
+#             worldpay_merchant_id: worldpay_merchant_id,
 #             source_ip_address: source_ip_address,
 #             log_level: log_level,
 #             idempotency_key: idempotency_key
