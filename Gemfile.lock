@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    bckbn (3.0.0)
+    bckbn (3.0.1)
       addressable (~> 2.8.5)
 
 GEM
