@@ -21,7 +21,7 @@ RSpec.describe Bckbn::Transaction do
   end
 
   describe "::authorization" do
-    let(:path) { "/transaction/authorization" }
+    let(:path) { "/transactions/authorization" }
     let(:body) do
       {
         "id": "12345",
@@ -62,7 +62,7 @@ RSpec.describe Bckbn::Transaction do
           stub_request(:post, api_base + path)
             .with(headers: headers, body: body.to_json)
             .to_return(
-              body: fixture("transaction/authorization_200.json"),
+              body: fixture("transactions/authorization_200.json"),
               status: 200
             )
         end
@@ -97,7 +97,7 @@ RSpec.describe Bckbn::Transaction do
           stub_request(:post, api_base + path)
             .with(headers: ik_headers, body: body.to_json)
             .to_return(
-              body: fixture("transaction/authorization_200.json"),
+              body: fixture("transactions/authorization_200.json"),
               status: 200
             )
         end
@@ -143,7 +143,7 @@ RSpec.describe Bckbn::Transaction do
         stub_request(:post, api_base + path)
           .with(headers: headers, body: body.to_json)
           .to_return(
-            body: fixture("transaction/authorization_400.json"),
+            body: fixture("transactions/authorization_400.json"),
             status: 400
           )
       end
@@ -181,7 +181,7 @@ RSpec.describe Bckbn::Transaction do
   end
 
   describe "::capture" do
-    let(:path) { "/transaction/capture" }
+    let(:path) { "/transactions/capture" }
     let(:body) do
       {
         id: "12345",
@@ -204,7 +204,7 @@ RSpec.describe Bckbn::Transaction do
           stub_request(:post, api_base + path)
             .with(headers: headers, body: body.to_json)
             .to_return(
-              body: fixture("transaction/capture_200.json"),
+              body: fixture("transactions/capture_200.json"),
               status: 200
             )
         end
@@ -232,7 +232,7 @@ RSpec.describe Bckbn::Transaction do
           stub_request(:post, api_base + path)
             .with(headers: headers, body: body.to_json)
             .to_return(
-              body: fixture("transaction/capture_200.json"),
+              body: fixture("transactions/capture_200.json"),
               status: 200
             )
         end
@@ -269,7 +269,7 @@ RSpec.describe Bckbn::Transaction do
   end
 
   describe "::credit" do
-    let(:path) { "/transaction/credit" }
+    let(:path) { "/transactions/credit" }
     let(:body) do
       {
         "id": "12345",
@@ -292,7 +292,7 @@ RSpec.describe Bckbn::Transaction do
           stub_request(:post, api_base + path)
             .with(headers: headers, body: body.to_json)
             .to_return(
-              body: fixture("transaction/credit_200.json"),
+              body: fixture("transactions/credit_200.json"),
               status: 200
             )
         end
@@ -317,7 +317,7 @@ RSpec.describe Bckbn::Transaction do
           stub_request(:post, api_base + path)
             .with(headers: headers, body: body.to_json)
             .to_return(
-              body: fixture("transaction/credit_200.json"),
+              body: fixture("transactions/credit_200.json"),
               status: 200
             )
         end
@@ -351,7 +351,7 @@ RSpec.describe Bckbn::Transaction do
   end
 
   describe "::sale" do
-    let(:path) { "/transaction/sale" }
+    let(:path) { "/transactions/sale" }
 
     context "when 200" do
       context "with global config" do
@@ -393,7 +393,7 @@ RSpec.describe Bckbn::Transaction do
           stub_request(:post, api_base + path)
             .with(headers: headers, body: body.to_json)
             .to_return(
-              body: fixture("transaction/sale_200.json"),
+              body: fixture("transactions/sale_200.json"),
               status: 200
             )
         end
@@ -457,7 +457,7 @@ RSpec.describe Bckbn::Transaction do
           stub_request(:post, api_base + path)
             .with(headers: headers, body: body.to_json)
             .to_return(
-              body: fixture("transaction/sale_200.json"),
+              body: fixture("transactions/sale_200.json"),
               status: 200
             )
         end
@@ -521,7 +521,7 @@ RSpec.describe Bckbn::Transaction do
           stub_request(:post, api_base + path)
             .with(headers: headers, body: body.to_json)
             .to_return(
-              body: fixture("transaction/sale_200.json"),
+              body: fixture("transactions/sale_200.json"),
               status: 200
             )
         end
@@ -582,7 +582,7 @@ RSpec.describe Bckbn::Transaction do
           stub_request(:post, api_base + path)
             .with(headers: headers, body: body.to_json)
             .to_return(
-              body: fixture("transaction/sale_200.json"),
+              body: fixture("transactions/sale_200.json"),
               status: 200
             )
         end
@@ -607,7 +607,7 @@ RSpec.describe Bckbn::Transaction do
   end
 
   describe "::void" do
-    let(:path) { "/transaction/void" }
+    let(:path) { "/transactions/void" }
     let(:body) do
       {
         id: "12345",
@@ -629,7 +629,7 @@ RSpec.describe Bckbn::Transaction do
           stub_request(:post, api_base + path)
             .with(headers: headers, body: body.to_json)
             .to_return(
-              body: fixture("transaction/void_200.json"),
+              body: fixture("transactions/void_200.json"),
               status: 200
             )
         end
@@ -654,7 +654,7 @@ RSpec.describe Bckbn::Transaction do
           stub_request(:post, api_base + path)
             .with(headers: headers, body: body.to_json)
             .to_return(
-              body: fixture("transaction/void_200.json"),
+              body: fixture("transactions/void_200.json"),
               status: 200
             )
         end
@@ -687,7 +687,7 @@ RSpec.describe Bckbn::Transaction do
   end
 
   describe "::echeck_credit" do
-    let(:path) { "/transaction/echeck_credit" }
+    let(:path) { "/transactions/echeck_credit" }
     let(:body) do
       {
         id: "12345",
@@ -703,7 +703,7 @@ RSpec.describe Bckbn::Transaction do
           stub_request(:post, api_base + path)
             .with(headers: headers, body: body.to_json)
             .to_return(
-              body: fixture("transaction/echeck_credit_200.json"),
+              body: fixture("transactions/echeck_credit_200.json"),
               status: 200
             )
         end
@@ -739,7 +739,7 @@ RSpec.describe Bckbn::Transaction do
           stub_request(:post, api_base + path)
             .with(headers: headers, body: body.to_json)
             .to_return(
-              body: fixture("transaction/echeck_credit_200.json"),
+              body: fixture("transactions/echeck_credit_200.json"),
               status: 200
             )
         end
@@ -773,7 +773,7 @@ RSpec.describe Bckbn::Transaction do
   end
 
   describe "::echeck_sale" do
-    let(:path) { "/transaction/echeck_sale" }
+    let(:path) { "/transactions/echeck_sale" }
     let(:body) do
       {
         "id": "12345",
@@ -813,7 +813,7 @@ RSpec.describe Bckbn::Transaction do
           stub_request(:post, api_base + path)
             .with(headers: headers, body: body.to_json)
             .to_return(
-              body: fixture("transaction/echeck_sale_200.json"),
+              body: fixture("transactions/echeck_sale_200.json"),
               status: 200
             )
         end
@@ -839,7 +839,7 @@ RSpec.describe Bckbn::Transaction do
           stub_request(:post, api_base + path)
             .with(headers: headers, body: body.to_json)
             .to_return(
-              body: fixture("transaction/echeck_sale_200.json"),
+              body: fixture("transactions/echeck_sale_200.json"),
               status: 200
             )
         end
@@ -883,7 +883,7 @@ RSpec.describe Bckbn::Transaction do
 
         stub_request(:post, api_base + path)
           .to_return(
-            body: fixture("transaction/echeck_sale_400.json"),
+            body: fixture("transactions/echeck_sale_400.json"),
             status: 400
           )
       end
@@ -907,7 +907,7 @@ RSpec.describe Bckbn::Transaction do
   end
 
   describe "::echeck_void" do
-    let(:path) { "/transaction/echeck_void" }
+    let(:path) { "/transactions/echeck_void" }
     let(:body) do
       {
         id: "12345",
@@ -929,7 +929,7 @@ RSpec.describe Bckbn::Transaction do
           stub_request(:post, api_base + path)
             .with(headers: headers, body: body.to_json)
             .to_return(
-              body: fixture("transaction/echeck_void_200.json"),
+              body: fixture("transactions/echeck_void_200.json"),
               status: 200
             )
         end
@@ -954,7 +954,7 @@ RSpec.describe Bckbn::Transaction do
           stub_request(:post, api_base + path)
             .with(headers: headers, body: body.to_json)
             .to_return(
-              body: fixture("transaction/echeck_void_200.json"),
+              body: fixture("transactions/echeck_void_200.json"),
               status: 200
             )
         end
