@@ -1,0 +1,40 @@
+{
+  "data": [
+    {
+      "id": "97b3f0e1-24ce-46e1-a4b8-d0a95258a4d6",
+      "amount": 53407,
+      "payment_method": {
+        "id": "5c9d1514-53e1-4e9c-a082-d513ec2af012",
+        "billing_address": {
+          "address_line1": "79543 Tama Extension",
+          "address_line2": null,
+          "city": "Erinhaven",
+          "country": "US",
+          "email": "diana@fadel.test",
+          "first_name": "Clifford",
+          "last_name": "Koss",
+          "phone": "420 104 3812",
+          "postal_code": "659893040",
+          "state": "TX"
+        },
+        "card_profile": {
+          "avs_check": "00",
+          "avs_check_message": null,
+          "brand": "visa",
+          "cvc_check": "M",
+          "cvc_check_message": null,
+          "exp_month": 1,
+          "exp_year": 2028,
+          "funding": null,
+          "last4": "9012",
+          "three_d_secure_supported": null,
+          "token": "4123456789012"},
+          "created_at": "2024-07-02T19:47:23Z",
+          "metadata": null,
+          "partner_id": "4698c102800079245d72",
+          "updated_at": "2024-07-02T19:47:23Z"
+      },
+      "state": "processing"
+    }
+  ]
+}
