@@ -1,0 +1,9 @@
+{
+    "id": "e9fd6ecc-e4e3-47ee-9e20-f84d42517064",
+    "amount": 641576,
+    "charge_id": "f4ff8147-b712-435a-aba3-74deceeecbaa",
+    "description": null,
+    "failure_reason": null,
+    "state": "processing",
+    "sub_merchant_id": "1e1f7f74-658e-4959-9631-a037ceae9202"
+}
