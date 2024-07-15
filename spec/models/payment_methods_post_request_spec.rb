@@ -22,8 +22,7 @@ describe BckbnPay::PaymentMethodsPostRequest do
 
   describe 'test an instance of PaymentMethodsPostRequest' do
     it 'should create an instance of PaymentMethodsPostRequest' do
-      # uncomment below to test the instance creation
-      # expect(instance).to be_instance_of(BckbnPay::PaymentMethodsPostRequest)
+      expect(instance).to be_instance_of(BckbnPay::PaymentMethodsPostRequest)
     end
   end
 
@@ -32,5 +31,4 @@ describe BckbnPay::PaymentMethodsPostRequest do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end
   end
-
 end

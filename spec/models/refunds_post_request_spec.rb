@@ -22,15 +22,15 @@ describe BckbnPay::RefundsPostRequest do
 
   describe 'test an instance of RefundsPostRequest' do
     it 'should create an instance of RefundsPostRequest' do
-      # uncomment below to test the instance creation
-      # expect(instance).to be_instance_of(BckbnPay::RefundsPostRequest)
+      expect(instance).to be_instance_of(BckbnPay::RefundsPostRequest)
     end
   end
 
-  describe 'test attribute "refund"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+  let(:fields) { %i[refund] }
+
+  it 'should work' do
+    fields.each do |field|
+      expect(instance).to respond_to(field)
     end
   end
-
 end
