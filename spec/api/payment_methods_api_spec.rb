@@ -56,9 +56,24 @@ describe 'PaymentMethodsApi' do
   # @param id
   # @param [Hash] opts the optional parameters
   # @return [PaymentMethod]
-  xdescribe 'payment_methods_id_get test' do
+  describe 'payment_methods_id_get test' do
+    let(:id) { SecureRandom.uuid }
+
+    before do
+      stub_request(:get, [config.host, path].join + "/#{id}")
+      .with(headers: request_headers)
+      .to_return(
+        body: fixture("payment_methods/get_200.json"),
+        headers: response_headers,
+        status: 200
+      )
+    end
+
     it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+      res = api_instance.payment_methods_id_get("0.1.0", "application/json", id)
+
+      expect(res).to be_a(BckbnPay::PaymentMethod)
+      expect(a_request(:get, [config.host, path].join + "/#{id}").with(headers: request_headers)).to have_been_made.once
     end
   end
 
