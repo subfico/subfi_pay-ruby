@@ -22,45 +22,15 @@ describe BckbnPay::Charge do
 
   describe 'test an instance of Charge' do
     it 'should create an instance of Charge' do
-      # uncomment below to test the instance creation
-      # expect(instance).to be_instance_of(BckbnPay::Charge)
+      expect(instance).to be_instance_of(BckbnPay::Charge)
     end
   end
 
-  describe 'test attribute "id"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+  let(:fields) { %i[id amount description payment_method state created_at] }
+
+  it "should work" do
+    fields.each do |field|
+      expect(instance).to respond_to(field)
     end
   end
-
-  describe 'test attribute "amount"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "description"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "payment_method"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "state"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "created_at"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
 end

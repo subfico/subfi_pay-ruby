@@ -22,39 +22,15 @@ describe BckbnPay::SubMerchant do
 
   describe 'test an instance of SubMerchant' do
     it 'should create an instance of SubMerchant' do
-      # uncomment below to test the instance creation
-      # expect(instance).to be_instance_of(BckbnPay::SubMerchant)
+      expect(instance).to be_instance_of(BckbnPay::SubMerchant)
     end
   end
 
-  describe 'test attribute "id"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+  let(:fields) { %i[id name worldpay_merchant_id created_at updated_at] }
+
+  it "should work" do
+    fields.each do |field|
+      expect(instance).to respond_to(field)
     end
   end
-
-  describe 'test attribute "name"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "worldpay_merchant_id"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "created_at"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "updated_at"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
 end

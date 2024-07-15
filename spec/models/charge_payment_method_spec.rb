@@ -22,51 +22,15 @@ describe BckbnPay::ChargePaymentMethod do
 
   describe 'test an instance of ChargePaymentMethod' do
     it 'should create an instance of ChargePaymentMethod' do
-      # uncomment below to test the instance creation
-      # expect(instance).to be_instance_of(BckbnPay::ChargePaymentMethod)
+      expect(instance).to be_instance_of(BckbnPay::ChargePaymentMethod)
     end
   end
 
-  describe 'test attribute "id"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+  let(:fields) { %i[id billing_address card_profile created_at metadata partner_id updated_at] }
+
+  it 'should work' do
+    fields.each do |field|
+      expect(instance).to respond_to(field)
     end
   end
-
-  describe 'test attribute "billing_address"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "card_profile"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "created_at"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "metadata"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "partner_id"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "updated_at"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
 end

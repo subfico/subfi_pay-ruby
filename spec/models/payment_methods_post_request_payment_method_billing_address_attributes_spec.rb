@@ -22,21 +22,15 @@ describe BckbnPay::PaymentMethodsPostRequestPaymentMethodBillingAddressAttribute
 
   describe 'test an instance of PaymentMethodsPostRequestPaymentMethodBillingAddressAttributes' do
     it 'should create an instance of PaymentMethodsPostRequestPaymentMethodBillingAddressAttributes' do
-      # uncomment below to test the instance creation
-      # expect(instance).to be_instance_of(BckbnPay::PaymentMethodsPostRequestPaymentMethodBillingAddressAttributes)
+      expect(instance).to be_instance_of(BckbnPay::PaymentMethodsPostRequestPaymentMethodBillingAddressAttributes)
     end
   end
 
-  describe 'test attribute "country"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+  let(:fields) { %i[country postal_code] }
+
+  it 'should work' do
+    fields.each do |field|
+      expect(instance).to respond_to(field)
     end
   end
-
-  describe 'test attribute "postal_code"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
 end

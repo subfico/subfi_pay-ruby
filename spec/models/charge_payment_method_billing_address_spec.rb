@@ -22,69 +22,15 @@ describe BckbnPay::ChargePaymentMethodBillingAddress do
 
   describe 'test an instance of ChargePaymentMethodBillingAddress' do
     it 'should create an instance of ChargePaymentMethodBillingAddress' do
-      # uncomment below to test the instance creation
-      # expect(instance).to be_instance_of(BckbnPay::ChargePaymentMethodBillingAddress)
+      expect(instance).to be_instance_of(BckbnPay::ChargePaymentMethodBillingAddress)
     end
   end
 
-  describe 'test attribute "address_line1"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+  let(:fields) { %i[address_line1 address_line2 city country email first_name last_name phone postal_code state] }
+
+  it 'should work' do
+    fields.each do |field|
+      expect(instance).to respond_to(field)
     end
   end
-
-  describe 'test attribute "address_line2"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "city"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "country"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "email"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "first_name"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "last_name"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "phone"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "postal_code"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "state"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
 end
