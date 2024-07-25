@@ -9,7 +9,7 @@ All URIs are relative to *https://pay.bckbn.com*
 
 ## balance_transactions_get
 
-> <BalanceTransactionsGet200Response> balance_transactions_get(x_api_version, content_type)
+> <BalanceTransactionsGet200Response> balance_transactions_get(authorization, x_api_version, content_type)
 
 List all balance transactions
 
@@ -25,12 +25,13 @@ BckbnPay.configure do |config|
 end
 
 api_instance = BckbnPay::BalanceTransactionsApi.new
+authorization = 'Bearer TOKEN' # String | 
 x_api_version = 'x_api_version_example' # String | 
 content_type = 'application/json' # String | 
 
 begin
   # List all balance transactions
-  result = api_instance.balance_transactions_get(x_api_version, content_type)
+  result = api_instance.balance_transactions_get(authorization, x_api_version, content_type)
   p result
 rescue BckbnPay::ApiError => e
   puts "Error when calling BalanceTransactionsApi->balance_transactions_get: #{e}"
@@ -41,12 +42,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<BalanceTransactionsGet200Response>, Integer, Hash)> balance_transactions_get_with_http_info(x_api_version, content_type)
+> <Array(<BalanceTransactionsGet200Response>, Integer, Hash)> balance_transactions_get_with_http_info(authorization, x_api_version, content_type)
 
 ```ruby
 begin
   # List all balance transactions
-  data, status_code, headers = api_instance.balance_transactions_get_with_http_info(x_api_version, content_type)
+  data, status_code, headers = api_instance.balance_transactions_get_with_http_info(authorization, x_api_version, content_type)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <BalanceTransactionsGet200Response>
@@ -59,6 +60,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **authorization** | **String** |  |  |
 | **x_api_version** | **String** |  |  |
 | **content_type** | **String** |  |  |
 

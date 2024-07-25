@@ -25,12 +25,4 @@ describe BckbnPay::ChargesPostRequest do
       expect(instance).to be_instance_of(BckbnPay::ChargesPostRequest)
     end
   end
-
-  let(:fields) { %i[amount currency description payment_method_id] }
-
-  it "should work" do
-    fields.each do |field|
-      expect(instance).to respond_to(field)
-    end
-  end
 end

@@ -66,12 +66,13 @@ BckbnPay.configure do |config|
 end
 
 api_instance = BckbnPay::BalanceTransactionsApi.new
+authorization = 'Bearer TOKEN' # String | 
 x_api_version = 'x_api_version_example' # String | 
 content_type = 'application/json' # String | 
 
 begin
   #List all balance transactions
-  result = api_instance.balance_transactions_get(x_api_version, content_type)
+  result = api_instance.balance_transactions_get(authorization, x_api_version, content_type)
   p result
 rescue BckbnPay::ApiError => e
   puts "Exception when calling BalanceTransactionsApi->balance_transactions_get: #{e}"
@@ -106,6 +107,7 @@ Class | Method | HTTP request | Description
  - [BckbnPay::ChargePaymentMethodCardProfile](docs/ChargePaymentMethodCardProfile.md)
  - [BckbnPay::ChargesGet200Response](docs/ChargesGet200Response.md)
  - [BckbnPay::ChargesPostRequest](docs/ChargesPostRequest.md)
+ - [BckbnPay::ChargesPostRequestCharge](docs/ChargesPostRequestCharge.md)
  - [BckbnPay::PaymentMethod](docs/PaymentMethod.md)
  - [BckbnPay::PaymentMethodsPostRequest](docs/PaymentMethodsPostRequest.md)
  - [BckbnPay::PaymentMethodsPostRequestPaymentMethod](docs/PaymentMethodsPostRequestPaymentMethod.md)

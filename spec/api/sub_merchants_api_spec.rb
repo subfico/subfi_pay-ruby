@@ -70,7 +70,7 @@ describe 'SubMerchantsApi' do
     end
 
     it 'should work' do
-      res = api_instance.sub_merchants_id_get("0.1.0", "application/json", id)
+      res = api_instance.sub_merchants_id_get(config.access_token, "0.1.0", "application/json", id)
 
       expect(res).to be_a(BckbnPay::SubMerchant)
       expect(a_request(:get, [config.host, path].join + "/#{id}").with(headers: request_headers)).to have_been_made.once
@@ -105,7 +105,7 @@ describe 'SubMerchantsApi' do
     end
 
     it 'should work' do
-      res = api_instance.sub_merchants_post("0.1.0", "application/json", body)
+      res = api_instance.sub_merchants_post(config.access_token, "0.1.0", "application/json", body)
 
       expect(res).to be_a(BckbnPay::SubMerchant)
       expect(a_request(:post, [config.host, path].join).with(headers: request_headers, body: body.to_json)).to have_been_made.once

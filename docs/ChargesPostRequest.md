@@ -4,11 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **amount** | **Integer** |  | [optional] |
-| **currency** | **String** |  | [optional] |
-| **description** | **String** |  | [optional] |
-| **payment_method_id** | **String** |  | [optional] |
-| **sub_merchant_id** | **String** |  | [optional] |
+| **charge** | [**ChargesPostRequestCharge**](ChargesPostRequestCharge.md) |  | [optional] |
 
 ## Example
 
@@ -16,11 +12,7 @@
 require 'bckbn_pay'
 
 instance = BckbnPay::ChargesPostRequest.new(
-  amount: null,
-  currency: null,
-  description: null,
-  payment_method_id: null,
-  sub_merchant_id: null
+  charge: null
 )
 ```
 

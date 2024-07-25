@@ -17,6 +17,7 @@ docs/ChargePaymentMethodCardProfile.md
 docs/ChargesApi.md
 docs/ChargesGet200Response.md
 docs/ChargesPostRequest.md
+docs/ChargesPostRequestCharge.md
 docs/PaymentMethod.md
 docs/PaymentMethodsApi.md
 docs/PaymentMethodsPostRequest.md
@@ -47,6 +48,7 @@ lib/bckbn_pay/models/charge_payment_method_billing_address.rb
 lib/bckbn_pay/models/charge_payment_method_card_profile.rb
 lib/bckbn_pay/models/charges_get200_response.rb
 lib/bckbn_pay/models/charges_post_request.rb
+lib/bckbn_pay/models/charges_post_request_charge.rb
 lib/bckbn_pay/models/payment_method.rb
 lib/bckbn_pay/models/payment_methods_post_request.rb
 lib/bckbn_pay/models/payment_methods_post_request_payment_method.rb

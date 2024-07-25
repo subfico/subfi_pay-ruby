@@ -10,7 +10,7 @@ All URIs are relative to *https://pay.bckbn.com*
 
 ## sub_merchants_id_get
 
-> <SubMerchant> sub_merchants_id_get(x_api_version, content_type, id)
+> <SubMerchant> sub_merchants_id_get(authorization, x_api_version, content_type, id)
 
 Retrieve a sub-merchant
 
@@ -26,13 +26,14 @@ BckbnPay.configure do |config|
 end
 
 api_instance = BckbnPay::SubMerchantsApi.new
+authorization = 'Bearer TOKEN' # String | 
 x_api_version = 'x_api_version_example' # String | 
 content_type = 'application/json' # String | 
 id = 'id_example' # String | 
 
 begin
   # Retrieve a sub-merchant
-  result = api_instance.sub_merchants_id_get(x_api_version, content_type, id)
+  result = api_instance.sub_merchants_id_get(authorization, x_api_version, content_type, id)
   p result
 rescue BckbnPay::ApiError => e
   puts "Error when calling SubMerchantsApi->sub_merchants_id_get: #{e}"
@@ -43,12 +44,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<SubMerchant>, Integer, Hash)> sub_merchants_id_get_with_http_info(x_api_version, content_type, id)
+> <Array(<SubMerchant>, Integer, Hash)> sub_merchants_id_get_with_http_info(authorization, x_api_version, content_type, id)
 
 ```ruby
 begin
   # Retrieve a sub-merchant
-  data, status_code, headers = api_instance.sub_merchants_id_get_with_http_info(x_api_version, content_type, id)
+  data, status_code, headers = api_instance.sub_merchants_id_get_with_http_info(authorization, x_api_version, content_type, id)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <SubMerchant>
@@ -61,6 +62,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **authorization** | **String** |  |  |
 | **x_api_version** | **String** |  |  |
 | **content_type** | **String** |  |  |
 | **id** | **String** |  |  |
@@ -81,7 +83,7 @@ end
 
 ## sub_merchants_post
 
-> <SubMerchant> sub_merchants_post(x_api_version, content_type, sub_merchants_post_request)
+> <SubMerchant> sub_merchants_post(authorization, x_api_version, content_type, sub_merchants_post_request)
 
 Create a sub-merchant
 
@@ -97,13 +99,14 @@ BckbnPay.configure do |config|
 end
 
 api_instance = BckbnPay::SubMerchantsApi.new
+authorization = 'Bearer TOKEN' # String | 
 x_api_version = 'x_api_version_example' # String | 
 content_type = 'application/json' # String | 
 sub_merchants_post_request = BckbnPay::SubMerchantsPostRequest.new # SubMerchantsPostRequest | 
 
 begin
   # Create a sub-merchant
-  result = api_instance.sub_merchants_post(x_api_version, content_type, sub_merchants_post_request)
+  result = api_instance.sub_merchants_post(authorization, x_api_version, content_type, sub_merchants_post_request)
   p result
 rescue BckbnPay::ApiError => e
   puts "Error when calling SubMerchantsApi->sub_merchants_post: #{e}"
@@ -114,12 +117,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<SubMerchant>, Integer, Hash)> sub_merchants_post_with_http_info(x_api_version, content_type, sub_merchants_post_request)
+> <Array(<SubMerchant>, Integer, Hash)> sub_merchants_post_with_http_info(authorization, x_api_version, content_type, sub_merchants_post_request)
 
 ```ruby
 begin
   # Create a sub-merchant
-  data, status_code, headers = api_instance.sub_merchants_post_with_http_info(x_api_version, content_type, sub_merchants_post_request)
+  data, status_code, headers = api_instance.sub_merchants_post_with_http_info(authorization, x_api_version, content_type, sub_merchants_post_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <SubMerchant>
@@ -132,6 +135,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **authorization** | **String** |  |  |
 | **x_api_version** | **String** |  |  |
 | **content_type** | **String** |  |  |
 | **sub_merchants_post_request** | [**SubMerchantsPostRequest**](SubMerchantsPostRequest.md) |  |  |

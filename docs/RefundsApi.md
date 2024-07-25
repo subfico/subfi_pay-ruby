@@ -9,7 +9,7 @@ All URIs are relative to *https://pay.bckbn.com*
 
 ## refunds_post
 
-> <Refund> refunds_post(x_api_version, content_type, refunds_post_request)
+> <Refund> refunds_post(authorization, x_api_version, content_type, refunds_post_request)
 
 Create a refund
 
@@ -25,13 +25,14 @@ BckbnPay.configure do |config|
 end
 
 api_instance = BckbnPay::RefundsApi.new
+authorization = 'Bearer TOKEN' # String | 
 x_api_version = 'x_api_version_example' # String | 
 content_type = 'application/json' # String | 
 refunds_post_request = BckbnPay::RefundsPostRequest.new # RefundsPostRequest | 
 
 begin
   # Create a refund
-  result = api_instance.refunds_post(x_api_version, content_type, refunds_post_request)
+  result = api_instance.refunds_post(authorization, x_api_version, content_type, refunds_post_request)
   p result
 rescue BckbnPay::ApiError => e
   puts "Error when calling RefundsApi->refunds_post: #{e}"
@@ -42,12 +43,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Refund>, Integer, Hash)> refunds_post_with_http_info(x_api_version, content_type, refunds_post_request)
+> <Array(<Refund>, Integer, Hash)> refunds_post_with_http_info(authorization, x_api_version, content_type, refunds_post_request)
 
 ```ruby
 begin
   # Create a refund
-  data, status_code, headers = api_instance.refunds_post_with_http_info(x_api_version, content_type, refunds_post_request)
+  data, status_code, headers = api_instance.refunds_post_with_http_info(authorization, x_api_version, content_type, refunds_post_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Refund>
@@ -60,6 +61,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **authorization** | **String** |  |  |
 | **x_api_version** | **String** |  |  |
 | **content_type** | **String** |  |  |
 | **refunds_post_request** | [**RefundsPostRequest**](RefundsPostRequest.md) |  |  |

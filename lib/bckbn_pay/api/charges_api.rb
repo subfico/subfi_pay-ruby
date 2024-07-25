@@ -20,23 +20,29 @@ module BckbnPay
       @api_client = api_client
     end
     # List all charges
+    # @param authorization [String] 
     # @param x_api_version [String] 
     # @param content_type [String] 
     # @param [Hash] opts the optional parameters
     # @return [ChargesGet200Response]
-    def charges_get(x_api_version, content_type, opts = {})
-      data, _status_code, _headers = charges_get_with_http_info(x_api_version, content_type, opts)
+    def charges_get(authorization, x_api_version, content_type, opts = {})
+      data, _status_code, _headers = charges_get_with_http_info(authorization, x_api_version, content_type, opts)
       data
     end
 
     # List all charges
+    # @param authorization [String] 
     # @param x_api_version [String] 
     # @param content_type [String] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(ChargesGet200Response, Integer, Hash)>] ChargesGet200Response data, response status code and response headers
-    def charges_get_with_http_info(x_api_version, content_type, opts = {})
+    def charges_get_with_http_info(authorization, x_api_version, content_type, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ChargesApi.charges_get ...'
+      end
+      # verify the required parameter 'authorization' is set
+      if @api_client.config.client_side_validation && authorization.nil?
+        fail ArgumentError, "Missing the required parameter 'authorization' when calling ChargesApi.charges_get"
       end
       # verify the required parameter 'x_api_version' is set
       if @api_client.config.client_side_validation && x_api_version.nil?
@@ -56,6 +62,7 @@ module BckbnPay
       header_params = opts[:header_params] || {}
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params[:'Authorization'] = authorization
       header_params[:'X-Api-Version'] = x_api_version
       header_params[:'Content-Type'] = content_type
 
@@ -89,25 +96,31 @@ module BckbnPay
     end
 
     # Retrieve a charge
+    # @param authorization [String] 
     # @param x_api_version [String] 
     # @param content_type [String] 
     # @param id [String] 
     # @param [Hash] opts the optional parameters
     # @return [Charge]
-    def charges_id_get(x_api_version, content_type, id, opts = {})
-      data, _status_code, _headers = charges_id_get_with_http_info(x_api_version, content_type, id, opts)
+    def charges_id_get(authorization, x_api_version, content_type, id, opts = {})
+      data, _status_code, _headers = charges_id_get_with_http_info(authorization, x_api_version, content_type, id, opts)
       data
     end
 
     # Retrieve a charge
+    # @param authorization [String] 
     # @param x_api_version [String] 
     # @param content_type [String] 
     # @param id [String] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(Charge, Integer, Hash)>] Charge data, response status code and response headers
-    def charges_id_get_with_http_info(x_api_version, content_type, id, opts = {})
+    def charges_id_get_with_http_info(authorization, x_api_version, content_type, id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ChargesApi.charges_id_get ...'
+      end
+      # verify the required parameter 'authorization' is set
+      if @api_client.config.client_side_validation && authorization.nil?
+        fail ArgumentError, "Missing the required parameter 'authorization' when calling ChargesApi.charges_id_get"
       end
       # verify the required parameter 'x_api_version' is set
       if @api_client.config.client_side_validation && x_api_version.nil?
@@ -131,6 +144,7 @@ module BckbnPay
       header_params = opts[:header_params] || {}
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params[:'Authorization'] = authorization
       header_params[:'X-Api-Version'] = x_api_version
       header_params[:'Content-Type'] = content_type
 
@@ -164,25 +178,31 @@ module BckbnPay
     end
 
     # Create a charge
+    # @param authorization [String] 
     # @param x_api_version [String] 
     # @param content_type [String] 
     # @param charges_post_request [ChargesPostRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Charge]
-    def charges_post(x_api_version, content_type, charges_post_request, opts = {})
-      data, _status_code, _headers = charges_post_with_http_info(x_api_version, content_type, charges_post_request, opts)
+    def charges_post(authorization, x_api_version, content_type, charges_post_request, opts = {})
+      data, _status_code, _headers = charges_post_with_http_info(authorization, x_api_version, content_type, charges_post_request, opts)
       data
     end
 
     # Create a charge
+    # @param authorization [String] 
     # @param x_api_version [String] 
     # @param content_type [String] 
     # @param charges_post_request [ChargesPostRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(Charge, Integer, Hash)>] Charge data, response status code and response headers
-    def charges_post_with_http_info(x_api_version, content_type, charges_post_request, opts = {})
+    def charges_post_with_http_info(authorization, x_api_version, content_type, charges_post_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ChargesApi.charges_post ...'
+      end
+      # verify the required parameter 'authorization' is set
+      if @api_client.config.client_side_validation && authorization.nil?
+        fail ArgumentError, "Missing the required parameter 'authorization' when calling ChargesApi.charges_post"
       end
       # verify the required parameter 'x_api_version' is set
       if @api_client.config.client_side_validation && x_api_version.nil?
@@ -211,6 +231,7 @@ module BckbnPay
       if !content_type.nil?
           header_params['Content-Type'] = content_type
       end
+      header_params[:'Authorization'] = authorization
       header_params[:'X-Api-Version'] = x_api_version
       header_params[:'Content-Type'] = content_type
 
