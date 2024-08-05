@@ -9,7 +9,7 @@ All URIs are relative to *https://pay.bckbn.com*
 
 ## balance_transactions_get
 
-> <BalanceTransactionsGet200Response> balance_transactions_get(authorization, x_api_version, content_type, opts)
+> <BalanceTransactionsGet200Response> balance_transactions_get(authorization, x_api_version, opts)
 
 List all balance transactions
 
@@ -27,7 +27,6 @@ end
 api_instance = BckbnPay::BalanceTransactionsApi.new
 authorization = 'Bearer TOKEN' # String | 
 x_api_version = 'x_api_version_example' # String | 
-content_type = 'application/json' # String | 
 opts = {
   page: 56, # Integer | The page of results to retrieve.
   per_page: 56, # Integer | Number of results per page.
@@ -36,7 +35,7 @@ opts = {
 
 begin
   # List all balance transactions
-  result = api_instance.balance_transactions_get(authorization, x_api_version, content_type, opts)
+  result = api_instance.balance_transactions_get(authorization, x_api_version, opts)
   p result
 rescue BckbnPay::ApiError => e
   puts "Error when calling BalanceTransactionsApi->balance_transactions_get: #{e}"
@@ -47,12 +46,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<BalanceTransactionsGet200Response>, Integer, Hash)> balance_transactions_get_with_http_info(authorization, x_api_version, content_type, opts)
+> <Array(<BalanceTransactionsGet200Response>, Integer, Hash)> balance_transactions_get_with_http_info(authorization, x_api_version, opts)
 
 ```ruby
 begin
   # List all balance transactions
-  data, status_code, headers = api_instance.balance_transactions_get_with_http_info(authorization, x_api_version, content_type, opts)
+  data, status_code, headers = api_instance.balance_transactions_get_with_http_info(authorization, x_api_version, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <BalanceTransactionsGet200Response>
@@ -67,7 +66,6 @@ end
 | ---- | ---- | ----------- | ----- |
 | **authorization** | **String** |  |  |
 | **x_api_version** | **String** |  |  |
-| **content_type** | **String** |  |  |
 | **page** | **Integer** | The page of results to retrieve. | [optional] |
 | **per_page** | **Integer** | Number of results per page. | [optional] |
 | **sub_merchant_id** | **String** | Filter results by sub-merchant ID. | [optional] |

@@ -17,8 +17,6 @@ module BckbnPay
   class ChargesPostRequestCharge
     attr_accessor :amount
 
-    attr_accessor :currency
-
     attr_accessor :description
 
     attr_accessor :payment_method_id
@@ -29,7 +27,6 @@ module BckbnPay
     def self.attribute_map
       {
         :'amount' => :'amount',
-        :'currency' => :'currency',
         :'description' => :'description',
         :'payment_method_id' => :'payment_method_id',
         :'sub_merchant_id' => :'sub_merchant_id'
@@ -45,7 +42,6 @@ module BckbnPay
     def self.openapi_types
       {
         :'amount' => :'Integer',
-        :'currency' => :'String',
         :'description' => :'String',
         :'payment_method_id' => :'String',
         :'sub_merchant_id' => :'String'
@@ -76,10 +72,8 @@ module BckbnPay
 
       if attributes.key?(:'amount')
         self.amount = attributes[:'amount']
-      end
-
-      if attributes.key?(:'currency')
-        self.currency = attributes[:'currency']
+      else
+        self.amount = nil
       end
 
       if attributes.key?(:'description')
@@ -88,6 +82,8 @@ module BckbnPay
 
       if attributes.key?(:'payment_method_id')
         self.payment_method_id = attributes[:'payment_method_id']
+      else
+        self.payment_method_id = nil
       end
 
       if attributes.key?(:'sub_merchant_id')
@@ -100,6 +96,14 @@ module BckbnPay
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @amount.nil?
+        invalid_properties.push('invalid value for "amount", amount cannot be nil.')
+      end
+
+      if @payment_method_id.nil?
+        invalid_properties.push('invalid value for "payment_method_id", payment_method_id cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -107,6 +111,8 @@ module BckbnPay
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @amount.nil?
+      return false if @payment_method_id.nil?
       true
     end
 
@@ -116,7 +122,6 @@ module BckbnPay
       return true if self.equal?(o)
       self.class == o.class &&
           amount == o.amount &&
-          currency == o.currency &&
           description == o.description &&
           payment_method_id == o.payment_method_id &&
           sub_merchant_id == o.sub_merchant_id
@@ -131,7 +136,7 @@ module BckbnPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [amount, currency, description, payment_method_id, sub_merchant_id].hash
+      [amount, description, payment_method_id, sub_merchant_id].hash
     end
 
     # Builds the object from hash

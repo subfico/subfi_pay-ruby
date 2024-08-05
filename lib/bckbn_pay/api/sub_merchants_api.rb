@@ -22,23 +22,21 @@ module BckbnPay
     # Retrieve a sub-merchant
     # @param authorization [String] 
     # @param x_api_version [String] 
-    # @param content_type [String] 
     # @param id [String] 
     # @param [Hash] opts the optional parameters
     # @return [SubMerchant]
-    def sub_merchants_id_get(authorization, x_api_version, content_type, id, opts = {})
-      data, _status_code, _headers = sub_merchants_id_get_with_http_info(authorization, x_api_version, content_type, id, opts)
+    def sub_merchants_id_get(authorization, x_api_version, id, opts = {})
+      data, _status_code, _headers = sub_merchants_id_get_with_http_info(authorization, x_api_version, id, opts)
       data
     end
 
     # Retrieve a sub-merchant
     # @param authorization [String] 
     # @param x_api_version [String] 
-    # @param content_type [String] 
     # @param id [String] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(SubMerchant, Integer, Hash)>] SubMerchant data, response status code and response headers
-    def sub_merchants_id_get_with_http_info(authorization, x_api_version, content_type, id, opts = {})
+    def sub_merchants_id_get_with_http_info(authorization, x_api_version, id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: SubMerchantsApi.sub_merchants_id_get ...'
       end
@@ -49,10 +47,6 @@ module BckbnPay
       # verify the required parameter 'x_api_version' is set
       if @api_client.config.client_side_validation && x_api_version.nil?
         fail ArgumentError, "Missing the required parameter 'x_api_version' when calling SubMerchantsApi.sub_merchants_id_get"
-      end
-      # verify the required parameter 'content_type' is set
-      if @api_client.config.client_side_validation && content_type.nil?
-        fail ArgumentError, "Missing the required parameter 'content_type' when calling SubMerchantsApi.sub_merchants_id_get"
       end
       # verify the required parameter 'id' is set
       if @api_client.config.client_side_validation && id.nil?
@@ -70,7 +64,6 @@ module BckbnPay
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       header_params[:'Authorization'] = authorization
       header_params[:'X-Api-Version'] = x_api_version
-      header_params[:'Content-Type'] = content_type
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -104,23 +97,21 @@ module BckbnPay
     # Create a sub-merchant
     # @param authorization [String] 
     # @param x_api_version [String] 
-    # @param content_type [String] 
     # @param sub_merchants_post_request [SubMerchantsPostRequest] 
     # @param [Hash] opts the optional parameters
     # @return [SubMerchant]
-    def sub_merchants_post(authorization, x_api_version, content_type, sub_merchants_post_request, opts = {})
-      data, _status_code, _headers = sub_merchants_post_with_http_info(authorization, x_api_version, content_type, sub_merchants_post_request, opts)
+    def sub_merchants_post(authorization, x_api_version, sub_merchants_post_request, opts = {})
+      data, _status_code, _headers = sub_merchants_post_with_http_info(authorization, x_api_version, sub_merchants_post_request, opts)
       data
     end
 
     # Create a sub-merchant
     # @param authorization [String] 
     # @param x_api_version [String] 
-    # @param content_type [String] 
     # @param sub_merchants_post_request [SubMerchantsPostRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(SubMerchant, Integer, Hash)>] SubMerchant data, response status code and response headers
-    def sub_merchants_post_with_http_info(authorization, x_api_version, content_type, sub_merchants_post_request, opts = {})
+    def sub_merchants_post_with_http_info(authorization, x_api_version, sub_merchants_post_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: SubMerchantsApi.sub_merchants_post ...'
       end
@@ -131,10 +122,6 @@ module BckbnPay
       # verify the required parameter 'x_api_version' is set
       if @api_client.config.client_side_validation && x_api_version.nil?
         fail ArgumentError, "Missing the required parameter 'x_api_version' when calling SubMerchantsApi.sub_merchants_post"
-      end
-      # verify the required parameter 'content_type' is set
-      if @api_client.config.client_side_validation && content_type.nil?
-        fail ArgumentError, "Missing the required parameter 'content_type' when calling SubMerchantsApi.sub_merchants_post"
       end
       # verify the required parameter 'sub_merchants_post_request' is set
       if @api_client.config.client_side_validation && sub_merchants_post_request.nil?
@@ -157,7 +144,6 @@ module BckbnPay
       end
       header_params[:'Authorization'] = authorization
       header_params[:'X-Api-Version'] = x_api_version
-      header_params[:'Content-Type'] = content_type
 
       # form parameters
       form_params = opts[:form_params] || {}

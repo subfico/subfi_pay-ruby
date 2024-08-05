@@ -61,5 +61,4 @@ lib/bckbn_pay/models/refunds_post_request_refund.rb
 lib/bckbn_pay/models/sub_merchant.rb
 lib/bckbn_pay/models/sub_merchants_post_request.rb
 lib/bckbn_pay/version.rb
-spec/models/meta_spec.rb
 spec/spec_helper.rb

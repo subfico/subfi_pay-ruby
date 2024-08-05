@@ -10,7 +10,7 @@ All URIs are relative to *https://pay.bckbn.com*
 
 ## payment_methods_id_get
 
-> <PaymentMethod> payment_methods_id_get(authorization, x_api_version, content_type, id)
+> <PaymentMethod> payment_methods_id_get(authorization, x_api_version, id)
 
 Retrieve a payment method
 
@@ -28,12 +28,11 @@ end
 api_instance = BckbnPay::PaymentMethodsApi.new
 authorization = 'Bearer TOKEN' # String | 
 x_api_version = 'x_api_version_example' # String | 
-content_type = 'application/json' # String | 
 id = 'id_example' # String | 
 
 begin
   # Retrieve a payment method
-  result = api_instance.payment_methods_id_get(authorization, x_api_version, content_type, id)
+  result = api_instance.payment_methods_id_get(authorization, x_api_version, id)
   p result
 rescue BckbnPay::ApiError => e
   puts "Error when calling PaymentMethodsApi->payment_methods_id_get: #{e}"
@@ -44,12 +43,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PaymentMethod>, Integer, Hash)> payment_methods_id_get_with_http_info(authorization, x_api_version, content_type, id)
+> <Array(<PaymentMethod>, Integer, Hash)> payment_methods_id_get_with_http_info(authorization, x_api_version, id)
 
 ```ruby
 begin
   # Retrieve a payment method
-  data, status_code, headers = api_instance.payment_methods_id_get_with_http_info(authorization, x_api_version, content_type, id)
+  data, status_code, headers = api_instance.payment_methods_id_get_with_http_info(authorization, x_api_version, id)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PaymentMethod>
@@ -64,7 +63,6 @@ end
 | ---- | ---- | ----------- | ----- |
 | **authorization** | **String** |  |  |
 | **x_api_version** | **String** |  |  |
-| **content_type** | **String** |  |  |
 | **id** | **String** |  |  |
 
 ### Return type
@@ -83,7 +81,7 @@ end
 
 ## payment_methods_post
 
-> <PaymentMethod> payment_methods_post(authorization, x_api_version, content_type, payment_methods_post_request)
+> <PaymentMethod> payment_methods_post(authorization, x_api_version, payment_methods_post_request)
 
 Create a payment method
 
@@ -101,12 +99,11 @@ end
 api_instance = BckbnPay::PaymentMethodsApi.new
 authorization = 'Bearer TOKEN' # String | 
 x_api_version = 'x_api_version_example' # String | 
-content_type = 'application/json' # String | 
 payment_methods_post_request = BckbnPay::PaymentMethodsPostRequest.new # PaymentMethodsPostRequest | 
 
 begin
   # Create a payment method
-  result = api_instance.payment_methods_post(authorization, x_api_version, content_type, payment_methods_post_request)
+  result = api_instance.payment_methods_post(authorization, x_api_version, payment_methods_post_request)
   p result
 rescue BckbnPay::ApiError => e
   puts "Error when calling PaymentMethodsApi->payment_methods_post: #{e}"
@@ -117,12 +114,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PaymentMethod>, Integer, Hash)> payment_methods_post_with_http_info(authorization, x_api_version, content_type, payment_methods_post_request)
+> <Array(<PaymentMethod>, Integer, Hash)> payment_methods_post_with_http_info(authorization, x_api_version, payment_methods_post_request)
 
 ```ruby
 begin
   # Create a payment method
-  data, status_code, headers = api_instance.payment_methods_post_with_http_info(authorization, x_api_version, content_type, payment_methods_post_request)
+  data, status_code, headers = api_instance.payment_methods_post_with_http_info(authorization, x_api_version, payment_methods_post_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PaymentMethod>
@@ -137,7 +134,6 @@ end
 | ---- | ---- | ----------- | ----- |
 | **authorization** | **String** |  |  |
 | **x_api_version** | **String** |  |  |
-| **content_type** | **String** |  |  |
 | **payment_methods_post_request** | [**PaymentMethodsPostRequest**](PaymentMethodsPostRequest.md) |  |  |
 
 ### Return type

@@ -22,23 +22,21 @@ module BckbnPay
     # Create a refund
     # @param authorization [String] 
     # @param x_api_version [String] 
-    # @param content_type [String] 
     # @param refunds_post_request [RefundsPostRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Refund]
-    def refunds_post(authorization, x_api_version, content_type, refunds_post_request, opts = {})
-      data, _status_code, _headers = refunds_post_with_http_info(authorization, x_api_version, content_type, refunds_post_request, opts)
+    def refunds_post(authorization, x_api_version, refunds_post_request, opts = {})
+      data, _status_code, _headers = refunds_post_with_http_info(authorization, x_api_version, refunds_post_request, opts)
       data
     end
 
     # Create a refund
     # @param authorization [String] 
     # @param x_api_version [String] 
-    # @param content_type [String] 
     # @param refunds_post_request [RefundsPostRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(Refund, Integer, Hash)>] Refund data, response status code and response headers
-    def refunds_post_with_http_info(authorization, x_api_version, content_type, refunds_post_request, opts = {})
+    def refunds_post_with_http_info(authorization, x_api_version, refunds_post_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RefundsApi.refunds_post ...'
       end
@@ -49,10 +47,6 @@ module BckbnPay
       # verify the required parameter 'x_api_version' is set
       if @api_client.config.client_side_validation && x_api_version.nil?
         fail ArgumentError, "Missing the required parameter 'x_api_version' when calling RefundsApi.refunds_post"
-      end
-      # verify the required parameter 'content_type' is set
-      if @api_client.config.client_side_validation && content_type.nil?
-        fail ArgumentError, "Missing the required parameter 'content_type' when calling RefundsApi.refunds_post"
       end
       # verify the required parameter 'refunds_post_request' is set
       if @api_client.config.client_side_validation && refunds_post_request.nil?
@@ -75,7 +69,6 @@ module BckbnPay
       end
       header_params[:'Authorization'] = authorization
       header_params[:'X-Api-Version'] = x_api_version
-      header_params[:'Content-Type'] = content_type
 
       # form parameters
       form_params = opts[:form_params] || {}

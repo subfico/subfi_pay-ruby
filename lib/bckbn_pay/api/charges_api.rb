@@ -22,27 +22,25 @@ module BckbnPay
     # List all charges
     # @param authorization [String] 
     # @param x_api_version [String] 
-    # @param content_type [String] 
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page The page of results to retrieve.
     # @option opts [Integer] :per_page Number of results per page.
     # @option opts [String] :sub_merchant_id Filter results by sub-merchant ID.
     # @return [ChargesGet200Response]
-    def charges_get(authorization, x_api_version, content_type, opts = {})
-      data, _status_code, _headers = charges_get_with_http_info(authorization, x_api_version, content_type, opts)
+    def charges_get(authorization, x_api_version, opts = {})
+      data, _status_code, _headers = charges_get_with_http_info(authorization, x_api_version, opts)
       data
     end
 
     # List all charges
     # @param authorization [String] 
     # @param x_api_version [String] 
-    # @param content_type [String] 
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page The page of results to retrieve.
     # @option opts [Integer] :per_page Number of results per page.
     # @option opts [String] :sub_merchant_id Filter results by sub-merchant ID.
     # @return [Array<(ChargesGet200Response, Integer, Hash)>] ChargesGet200Response data, response status code and response headers
-    def charges_get_with_http_info(authorization, x_api_version, content_type, opts = {})
+    def charges_get_with_http_info(authorization, x_api_version, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ChargesApi.charges_get ...'
       end
@@ -53,10 +51,6 @@ module BckbnPay
       # verify the required parameter 'x_api_version' is set
       if @api_client.config.client_side_validation && x_api_version.nil?
         fail ArgumentError, "Missing the required parameter 'x_api_version' when calling ChargesApi.charges_get"
-      end
-      # verify the required parameter 'content_type' is set
-      if @api_client.config.client_side_validation && content_type.nil?
-        fail ArgumentError, "Missing the required parameter 'content_type' when calling ChargesApi.charges_get"
       end
       # resource path
       local_var_path = '/charges'
@@ -73,7 +67,6 @@ module BckbnPay
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       header_params[:'Authorization'] = authorization
       header_params[:'X-Api-Version'] = x_api_version
-      header_params[:'Content-Type'] = content_type
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -107,23 +100,21 @@ module BckbnPay
     # Retrieve a charge
     # @param authorization [String] 
     # @param x_api_version [String] 
-    # @param content_type [String] 
     # @param id [String] 
     # @param [Hash] opts the optional parameters
     # @return [Charge]
-    def charges_id_get(authorization, x_api_version, content_type, id, opts = {})
-      data, _status_code, _headers = charges_id_get_with_http_info(authorization, x_api_version, content_type, id, opts)
+    def charges_id_get(authorization, x_api_version, id, opts = {})
+      data, _status_code, _headers = charges_id_get_with_http_info(authorization, x_api_version, id, opts)
       data
     end
 
     # Retrieve a charge
     # @param authorization [String] 
     # @param x_api_version [String] 
-    # @param content_type [String] 
     # @param id [String] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(Charge, Integer, Hash)>] Charge data, response status code and response headers
-    def charges_id_get_with_http_info(authorization, x_api_version, content_type, id, opts = {})
+    def charges_id_get_with_http_info(authorization, x_api_version, id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ChargesApi.charges_id_get ...'
       end
@@ -134,10 +125,6 @@ module BckbnPay
       # verify the required parameter 'x_api_version' is set
       if @api_client.config.client_side_validation && x_api_version.nil?
         fail ArgumentError, "Missing the required parameter 'x_api_version' when calling ChargesApi.charges_id_get"
-      end
-      # verify the required parameter 'content_type' is set
-      if @api_client.config.client_side_validation && content_type.nil?
-        fail ArgumentError, "Missing the required parameter 'content_type' when calling ChargesApi.charges_id_get"
       end
       # verify the required parameter 'id' is set
       if @api_client.config.client_side_validation && id.nil?
@@ -155,7 +142,6 @@ module BckbnPay
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       header_params[:'Authorization'] = authorization
       header_params[:'X-Api-Version'] = x_api_version
-      header_params[:'Content-Type'] = content_type
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -189,23 +175,21 @@ module BckbnPay
     # Create a charge
     # @param authorization [String] 
     # @param x_api_version [String] 
-    # @param content_type [String] 
     # @param charges_post_request [ChargesPostRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Charge]
-    def charges_post(authorization, x_api_version, content_type, charges_post_request, opts = {})
-      data, _status_code, _headers = charges_post_with_http_info(authorization, x_api_version, content_type, charges_post_request, opts)
+    def charges_post(authorization, x_api_version, charges_post_request, opts = {})
+      data, _status_code, _headers = charges_post_with_http_info(authorization, x_api_version, charges_post_request, opts)
       data
     end
 
     # Create a charge
     # @param authorization [String] 
     # @param x_api_version [String] 
-    # @param content_type [String] 
     # @param charges_post_request [ChargesPostRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(Charge, Integer, Hash)>] Charge data, response status code and response headers
-    def charges_post_with_http_info(authorization, x_api_version, content_type, charges_post_request, opts = {})
+    def charges_post_with_http_info(authorization, x_api_version, charges_post_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ChargesApi.charges_post ...'
       end
@@ -216,10 +200,6 @@ module BckbnPay
       # verify the required parameter 'x_api_version' is set
       if @api_client.config.client_side_validation && x_api_version.nil?
         fail ArgumentError, "Missing the required parameter 'x_api_version' when calling ChargesApi.charges_post"
-      end
-      # verify the required parameter 'content_type' is set
-      if @api_client.config.client_side_validation && content_type.nil?
-        fail ArgumentError, "Missing the required parameter 'content_type' when calling ChargesApi.charges_post"
       end
       # verify the required parameter 'charges_post_request' is set
       if @api_client.config.client_side_validation && charges_post_request.nil?
@@ -242,7 +222,6 @@ module BckbnPay
       end
       header_params[:'Authorization'] = authorization
       header_params[:'X-Api-Version'] = x_api_version
-      header_params[:'Content-Type'] = content_type
 
       # form parameters
       form_params = opts[:form_params] || {}

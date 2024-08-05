@@ -71,7 +71,7 @@ describe 'PaymentMethodsApi' do
     end
 
     it 'should work' do
-      res = api_instance.payment_methods_id_get(config.access_token, api_version, "application/json", id)
+      res = api_instance.payment_methods_id_get(config.access_token, api_version, id)
 
       expect(res).to be_a(BckbnPay::PaymentMethod)
       expect(a_request(:get, [config.host, path].join + "/#{id}").with(headers: request_headers)).to have_been_made.once
@@ -115,7 +115,7 @@ describe 'PaymentMethodsApi' do
     end
 
     it 'should work' do
-      res = api_instance.payment_methods_post(config.access_token, api_version, "application/json", body)
+      res = api_instance.payment_methods_post(config.access_token, api_version, body)
 
       expect(res).to be_a(BckbnPay::PaymentMethod)
       expect(a_request(:post, [config.host, path].join).with(body: body.to_json, headers: request_headers)).to have_been_made.once
