@@ -14,16 +14,28 @@ require 'date'
 require 'time'
 
 module BckbnPay
-  class BalanceTransactionsGet200Response
-    attr_accessor :data
+  class Meta
+    attr_accessor :current_page
 
-    attr_accessor :meta
+    attr_accessor :next_page
+
+    attr_accessor :prev_page
+
+    attr_accessor :first_page
+
+    attr_accessor :last_page
+
+    attr_accessor :total_pages
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'data' => :'data',
-        :'meta' => :'meta'
+        :'current_page' => :'current_page',
+        :'next_page' => :'next_page',
+        :'prev_page' => :'prev_page',
+        :'first_page' => :'first_page',
+        :'last_page' => :'last_page',
+        :'total_pages' => :'total_pages'
       }
     end
 
@@ -35,14 +47,20 @@ module BckbnPay
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'data' => :'Array<BalanceTransaction>',
-        :'meta' => :'Meta'
+        :'current_page' => :'Integer',
+        :'next_page' => :'Integer',
+        :'prev_page' => :'Integer',
+        :'first_page' => :'Boolean',
+        :'last_page' => :'Boolean',
+        :'total_pages' => :'Integer'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'next_page',
+        :'prev_page',
       ])
     end
 
@@ -50,25 +68,39 @@ module BckbnPay
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `BckbnPay::BalanceTransactionsGet200Response` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `BckbnPay::Meta` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `BckbnPay::BalanceTransactionsGet200Response`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `BckbnPay::Meta`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'data')
-        if (value = attributes[:'data']).is_a?(Array)
-          self.data = value
-        end
+      if attributes.key?(:'current_page')
+        self.current_page = attributes[:'current_page']
       end
 
-      if attributes.key?(:'meta')
-        self.meta = attributes[:'meta']
+      if attributes.key?(:'next_page')
+        self.next_page = attributes[:'next_page']
+      end
+
+      if attributes.key?(:'prev_page')
+        self.prev_page = attributes[:'prev_page']
+      end
+
+      if attributes.key?(:'first_page')
+        self.first_page = attributes[:'first_page']
+      end
+
+      if attributes.key?(:'last_page')
+        self.last_page = attributes[:'last_page']
+      end
+
+      if attributes.key?(:'total_pages')
+        self.total_pages = attributes[:'total_pages']
       end
     end
 
@@ -92,8 +124,12 @@ module BckbnPay
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          data == o.data &&
-          meta == o.meta
+          current_page == o.current_page &&
+          next_page == o.next_page &&
+          prev_page == o.prev_page &&
+          first_page == o.first_page &&
+          last_page == o.last_page &&
+          total_pages == o.total_pages
     end
 
     # @see the `==` method
@@ -105,7 +141,7 @@ module BckbnPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [data, meta].hash
+      [current_page, next_page, prev_page, first_page, last_page, total_pages].hash
     end
 
     # Builds the object from hash

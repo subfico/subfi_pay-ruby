@@ -17,10 +17,13 @@ module BckbnPay
   class ChargesGet200Response
     attr_accessor :data
 
+    attr_accessor :meta
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'data' => :'data'
+        :'data' => :'data',
+        :'meta' => :'meta'
       }
     end
 
@@ -32,7 +35,8 @@ module BckbnPay
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'data' => :'Array<Charge>'
+        :'data' => :'Array<Charge>',
+        :'meta' => :'Meta'
       }
     end
 
@@ -62,6 +66,10 @@ module BckbnPay
           self.data = value
         end
       end
+
+      if attributes.key?(:'meta')
+        self.meta = attributes[:'meta']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -84,7 +92,8 @@ module BckbnPay
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          data == o.data
+          data == o.data &&
+          meta == o.meta
     end
 
     # @see the `==` method
@@ -96,7 +105,7 @@ module BckbnPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [data].hash
+      [data, meta].hash
     end
 
     # Builds the object from hash

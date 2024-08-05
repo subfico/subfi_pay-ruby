@@ -11,7 +11,7 @@ All URIs are relative to *https://pay.bckbn.com*
 
 ## charges_get
 
-> <ChargesGet200Response> charges_get(authorization, x_api_version, content_type)
+> <ChargesGet200Response> charges_get(authorization, x_api_version, content_type, opts)
 
 List all charges
 
@@ -30,10 +30,15 @@ api_instance = BckbnPay::ChargesApi.new
 authorization = 'Bearer TOKEN' # String | 
 x_api_version = 'x_api_version_example' # String | 
 content_type = 'application/json' # String | 
+opts = {
+  page: 56, # Integer | The page of results to retrieve.
+  per_page: 56, # Integer | Number of results per page.
+  sub_merchant_id: 'sub_merchant_id_example' # String | Filter results by sub-merchant ID.
+}
 
 begin
   # List all charges
-  result = api_instance.charges_get(authorization, x_api_version, content_type)
+  result = api_instance.charges_get(authorization, x_api_version, content_type, opts)
   p result
 rescue BckbnPay::ApiError => e
   puts "Error when calling ChargesApi->charges_get: #{e}"
@@ -44,12 +49,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ChargesGet200Response>, Integer, Hash)> charges_get_with_http_info(authorization, x_api_version, content_type)
+> <Array(<ChargesGet200Response>, Integer, Hash)> charges_get_with_http_info(authorization, x_api_version, content_type, opts)
 
 ```ruby
 begin
   # List all charges
-  data, status_code, headers = api_instance.charges_get_with_http_info(authorization, x_api_version, content_type)
+  data, status_code, headers = api_instance.charges_get_with_http_info(authorization, x_api_version, content_type, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ChargesGet200Response>
@@ -65,6 +70,9 @@ end
 | **authorization** | **String** |  |  |
 | **x_api_version** | **String** |  |  |
 | **content_type** | **String** |  |  |
+| **page** | **Integer** | The page of results to retrieve. | [optional] |
+| **per_page** | **Integer** | Number of results per page. | [optional] |
+| **sub_merchant_id** | **String** | Filter results by sub-merchant ID. | [optional] |
 
 ### Return type
 

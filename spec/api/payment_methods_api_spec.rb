@@ -25,6 +25,7 @@ describe 'PaymentMethodsApi' do
       c.scheme = "http"
     end
   end
+  let(:api_version) { "0.1.0" }
   let(:path) { "/payment_methods" }
   let(:request_headers) do
     {
@@ -33,7 +34,7 @@ describe 'PaymentMethodsApi' do
       "Content-Type"  => "application/json",
       "Expect" => '',
       'User-Agent' => 'OpenAPI-Generator/0.1.0/ruby',
-      'X-Api-Version' => '0.1.0'
+      'X-Api-Version' => api_version
     }
   end
   let(:response_headers) do
@@ -70,7 +71,7 @@ describe 'PaymentMethodsApi' do
     end
 
     it 'should work' do
-      res = api_instance.payment_methods_id_get(config.access_token, "0.1.0", "application/json", id)
+      res = api_instance.payment_methods_id_get(config.access_token, api_version, "application/json", id)
 
       expect(res).to be_a(BckbnPay::PaymentMethod)
       expect(a_request(:get, [config.host, path].join + "/#{id}").with(headers: request_headers)).to have_been_made.once
@@ -114,7 +115,7 @@ describe 'PaymentMethodsApi' do
     end
 
     it 'should work' do
-      res = api_instance.payment_methods_post(config.access_token, "0.1.0", "application/json", body)
+      res = api_instance.payment_methods_post(config.access_token, api_version, "application/json", body)
 
       expect(res).to be_a(BckbnPay::PaymentMethod)
       expect(a_request(:post, [config.host, path].join).with(body: body.to_json, headers: request_headers)).to have_been_made.once

@@ -69,10 +69,15 @@ api_instance = BckbnPay::BalanceTransactionsApi.new
 authorization = 'Bearer TOKEN' # String | 
 x_api_version = 'x_api_version_example' # String | 
 content_type = 'application/json' # String | 
+opts = {
+  page: 56, # Integer | The page of results to retrieve.
+  per_page: 56, # Integer | Number of results per page.
+  sub_merchant_id: 'sub_merchant_id_example' # String | Filter results by sub-merchant ID.
+}
 
 begin
   #List all balance transactions
-  result = api_instance.balance_transactions_get(authorization, x_api_version, content_type)
+  result = api_instance.balance_transactions_get(authorization, x_api_version, content_type, opts)
   p result
 rescue BckbnPay::ApiError => e
   puts "Exception when calling BalanceTransactionsApi->balance_transactions_get: #{e}"
@@ -108,6 +113,7 @@ Class | Method | HTTP request | Description
  - [BckbnPay::ChargesGet200Response](docs/ChargesGet200Response.md)
  - [BckbnPay::ChargesPostRequest](docs/ChargesPostRequest.md)
  - [BckbnPay::ChargesPostRequestCharge](docs/ChargesPostRequestCharge.md)
+ - [BckbnPay::Meta](docs/Meta.md)
  - [BckbnPay::PaymentMethod](docs/PaymentMethod.md)
  - [BckbnPay::PaymentMethodsPostRequest](docs/PaymentMethodsPostRequest.md)
  - [BckbnPay::PaymentMethodsPostRequestPaymentMethod](docs/PaymentMethodsPostRequestPaymentMethod.md)

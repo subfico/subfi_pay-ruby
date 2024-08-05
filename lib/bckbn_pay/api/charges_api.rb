@@ -24,6 +24,9 @@ module BckbnPay
     # @param x_api_version [String] 
     # @param content_type [String] 
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page The page of results to retrieve.
+    # @option opts [Integer] :per_page Number of results per page.
+    # @option opts [String] :sub_merchant_id Filter results by sub-merchant ID.
     # @return [ChargesGet200Response]
     def charges_get(authorization, x_api_version, content_type, opts = {})
       data, _status_code, _headers = charges_get_with_http_info(authorization, x_api_version, content_type, opts)
@@ -35,6 +38,9 @@ module BckbnPay
     # @param x_api_version [String] 
     # @param content_type [String] 
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page The page of results to retrieve.
+    # @option opts [Integer] :per_page Number of results per page.
+    # @option opts [String] :sub_merchant_id Filter results by sub-merchant ID.
     # @return [Array<(ChargesGet200Response, Integer, Hash)>] ChargesGet200Response data, response status code and response headers
     def charges_get_with_http_info(authorization, x_api_version, content_type, opts = {})
       if @api_client.config.debugging
@@ -57,6 +63,9 @@ module BckbnPay
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'sub_merchant_id'] = opts[:'sub_merchant_id'] if !opts[:'sub_merchant_id'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

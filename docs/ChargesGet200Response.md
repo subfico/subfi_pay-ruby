@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **data** | [**Array&lt;Charge&gt;**](Charge.md) |  | [optional] |
+| **meta** | [**Meta**](Meta.md) |  | [optional] |
 
 ## Example
 
@@ -12,7 +13,8 @@
 require 'bckbn_pay'
 
 instance = BckbnPay::ChargesGet200Response.new(
-  data: null
+  data: null,
+  meta: null
 )
 ```
 
