@@ -66,7 +66,6 @@ BckbnPay.configure do |config|
 end
 
 api_instance = BckbnPay::BalanceTransactionsApi.new
-authorization = 'Bearer TOKEN' # String | 
 x_api_version = 'x_api_version_example' # String | 
 opts = {
   page: 56, # Integer | The page of results to retrieve.
@@ -76,7 +75,7 @@ opts = {
 
 begin
   #List all balance transactions
-  result = api_instance.balance_transactions_get(authorization, x_api_version, opts)
+  result = api_instance.balance_transactions_get(x_api_version, opts)
   p result
 rescue BckbnPay::ApiError => e
   puts "Exception when calling BalanceTransactionsApi->balance_transactions_get: #{e}"

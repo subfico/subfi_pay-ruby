@@ -18,13 +18,7 @@ require 'json'
 # Please update as you see appropriate
 describe 'PaymentMethodsApi' do
   let(:api_instance) { BckbnPay::PaymentMethodsApi.new }
-  let(:config) do
-    api_instance.api_client.config.tap do |c|
-      c.access_token = Faker::Lorem.word
-      c.host = "localhost:3000"
-      c.scheme = "http"
-    end
-  end
+  let(:config) { BckbnPay::Configuration.default }
   let(:api_version) { "0.1.0" }
   let(:path) { "/payment_methods" }
   let(:request_headers) do
@@ -42,6 +36,14 @@ describe 'PaymentMethodsApi' do
       'Accept'        =>  'application/json',
       "Content-Type"  => "application/json"
     }
+  end
+
+  before do
+    BckbnPay.configure do |c|
+      c.access_token = Faker::Lorem.word
+      c.host = "localhost:3000"
+      c.scheme = "http"
+    end
   end
 
   describe 'test an instance of PaymentMethodsApi' do
@@ -71,7 +73,7 @@ describe 'PaymentMethodsApi' do
     end
 
     it 'should work' do
-      res = api_instance.payment_methods_id_get(config.access_token, api_version, id)
+      res = api_instance.payment_methods_id_get(api_version, id)
 
       expect(res).to be_a(BckbnPay::PaymentMethod)
       expect(a_request(:get, [config.host, path].join + "/#{id}").with(headers: request_headers)).to have_been_made.once
@@ -115,7 +117,7 @@ describe 'PaymentMethodsApi' do
     end
 
     it 'should work' do
-      res = api_instance.payment_methods_post(config.access_token, api_version, body)
+      res = api_instance.payment_methods_post(api_version, body)
 
       expect(res).to be_a(BckbnPay::PaymentMethod)
       expect(a_request(:post, [config.host, path].join).with(body: body.to_json, headers: request_headers)).to have_been_made.once

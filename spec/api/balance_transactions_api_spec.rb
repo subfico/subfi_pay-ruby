@@ -52,7 +52,7 @@ describe 'BalanceTransactionsApi' do
     end
 
     it 'should work' do
-      res = api_instance.balance_transactions_get(config.access_token, "0.1.0")
+      res = api_instance.balance_transactions_get("0.1.0")
 
       expect(res.data).to be_a(Array)
       expect(res.data.first).to be_a(BckbnPay::BalanceTransaction)

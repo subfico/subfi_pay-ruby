@@ -20,33 +20,27 @@ module BckbnPay
       @api_client = api_client
     end
     # List all balance transactions
-    # @param authorization [String] 
     # @param x_api_version [String] 
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page The page of results to retrieve.
     # @option opts [Integer] :per_page Number of results per page.
     # @option opts [String] :sub_merchant_id Filter results by sub-merchant ID.
     # @return [BalanceTransactionsGet200Response]
-    def balance_transactions_get(authorization, x_api_version, opts = {})
-      data, _status_code, _headers = balance_transactions_get_with_http_info(authorization, x_api_version, opts)
+    def balance_transactions_get(x_api_version, opts = {})
+      data, _status_code, _headers = balance_transactions_get_with_http_info(x_api_version, opts)
       data
     end
 
     # List all balance transactions
-    # @param authorization [String] 
     # @param x_api_version [String] 
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page The page of results to retrieve.
     # @option opts [Integer] :per_page Number of results per page.
     # @option opts [String] :sub_merchant_id Filter results by sub-merchant ID.
     # @return [Array<(BalanceTransactionsGet200Response, Integer, Hash)>] BalanceTransactionsGet200Response data, response status code and response headers
-    def balance_transactions_get_with_http_info(authorization, x_api_version, opts = {})
+    def balance_transactions_get_with_http_info(x_api_version, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: BalanceTransactionsApi.balance_transactions_get ...'
-      end
-      # verify the required parameter 'authorization' is set
-      if @api_client.config.client_side_validation && authorization.nil?
-        fail ArgumentError, "Missing the required parameter 'authorization' when calling BalanceTransactionsApi.balance_transactions_get"
       end
       # verify the required parameter 'x_api_version' is set
       if @api_client.config.client_side_validation && x_api_version.nil?
@@ -65,7 +59,6 @@ module BckbnPay
       header_params = opts[:header_params] || {}
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      header_params[:'Authorization'] = authorization
       header_params[:'X-Api-Version'] = x_api_version
 
       # form parameters

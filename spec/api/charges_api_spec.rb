@@ -52,7 +52,7 @@ describe 'ChargesApi' do
     end
 
     it 'should work' do
-      res = api_instance.charges_get(config.access_token, "0.1.0")
+      res = api_instance.charges_get("0.1.0")
 
       expect(res.data).to be_a(Array)
       expect(res.data.first).to be_a(BckbnPay::Charge)
@@ -80,7 +80,7 @@ describe 'ChargesApi' do
     end
 
     it 'should work' do
-      res = api_instance.charges_id_get(config.access_token, "0.1.0", charge_id)
+      res = api_instance.charges_id_get("0.1.0", charge_id)
 
       expect(res).to be_a(BckbnPay::Charge)
     end
@@ -114,7 +114,7 @@ describe 'ChargesApi' do
     end
 
     it 'should work' do
-      res = api_instance.charges_post(config.access_token, "0.1.0", body)
+      res = api_instance.charges_post("0.1.0", body)
 
       expect(res).to be_a(BckbnPay::Charge)
     end

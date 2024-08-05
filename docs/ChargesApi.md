@@ -11,7 +11,7 @@ All URIs are relative to *https://pay.bckbn.com*
 
 ## charges_get
 
-> <ChargesGet200Response> charges_get(authorization, x_api_version, opts)
+> <ChargesGet200Response> charges_get(x_api_version, opts)
 
 List all charges
 
@@ -27,7 +27,6 @@ BckbnPay.configure do |config|
 end
 
 api_instance = BckbnPay::ChargesApi.new
-authorization = 'Bearer TOKEN' # String | 
 x_api_version = 'x_api_version_example' # String | 
 opts = {
   page: 56, # Integer | The page of results to retrieve.
@@ -37,7 +36,7 @@ opts = {
 
 begin
   # List all charges
-  result = api_instance.charges_get(authorization, x_api_version, opts)
+  result = api_instance.charges_get(x_api_version, opts)
   p result
 rescue BckbnPay::ApiError => e
   puts "Error when calling ChargesApi->charges_get: #{e}"
@@ -48,12 +47,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ChargesGet200Response>, Integer, Hash)> charges_get_with_http_info(authorization, x_api_version, opts)
+> <Array(<ChargesGet200Response>, Integer, Hash)> charges_get_with_http_info(x_api_version, opts)
 
 ```ruby
 begin
   # List all charges
-  data, status_code, headers = api_instance.charges_get_with_http_info(authorization, x_api_version, opts)
+  data, status_code, headers = api_instance.charges_get_with_http_info(x_api_version, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ChargesGet200Response>
@@ -66,7 +65,6 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **authorization** | **String** |  |  |
 | **x_api_version** | **String** |  |  |
 | **page** | **Integer** | The page of results to retrieve. | [optional] |
 | **per_page** | **Integer** | Number of results per page. | [optional] |
@@ -88,7 +86,7 @@ end
 
 ## charges_id_get
 
-> <Charge> charges_id_get(authorization, x_api_version, id)
+> <Charge> charges_id_get(x_api_version, id)
 
 Retrieve a charge
 
@@ -104,13 +102,12 @@ BckbnPay.configure do |config|
 end
 
 api_instance = BckbnPay::ChargesApi.new
-authorization = 'Bearer TOKEN' # String | 
 x_api_version = 'x_api_version_example' # String | 
 id = 'id_example' # String | 
 
 begin
   # Retrieve a charge
-  result = api_instance.charges_id_get(authorization, x_api_version, id)
+  result = api_instance.charges_id_get(x_api_version, id)
   p result
 rescue BckbnPay::ApiError => e
   puts "Error when calling ChargesApi->charges_id_get: #{e}"
@@ -121,12 +118,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Charge>, Integer, Hash)> charges_id_get_with_http_info(authorization, x_api_version, id)
+> <Array(<Charge>, Integer, Hash)> charges_id_get_with_http_info(x_api_version, id)
 
 ```ruby
 begin
   # Retrieve a charge
-  data, status_code, headers = api_instance.charges_id_get_with_http_info(authorization, x_api_version, id)
+  data, status_code, headers = api_instance.charges_id_get_with_http_info(x_api_version, id)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Charge>
@@ -139,7 +136,6 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **authorization** | **String** |  |  |
 | **x_api_version** | **String** |  |  |
 | **id** | **String** |  |  |
 
@@ -159,7 +155,7 @@ end
 
 ## charges_post
 
-> <Charge> charges_post(authorization, x_api_version, charges_post_request)
+> <Charge> charges_post(x_api_version, charges_post_request)
 
 Create a charge
 
@@ -175,13 +171,12 @@ BckbnPay.configure do |config|
 end
 
 api_instance = BckbnPay::ChargesApi.new
-authorization = 'Bearer TOKEN' # String | 
 x_api_version = 'x_api_version_example' # String | 
 charges_post_request = BckbnPay::ChargesPostRequest.new # ChargesPostRequest | 
 
 begin
   # Create a charge
-  result = api_instance.charges_post(authorization, x_api_version, charges_post_request)
+  result = api_instance.charges_post(x_api_version, charges_post_request)
   p result
 rescue BckbnPay::ApiError => e
   puts "Error when calling ChargesApi->charges_post: #{e}"
@@ -192,12 +187,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Charge>, Integer, Hash)> charges_post_with_http_info(authorization, x_api_version, charges_post_request)
+> <Array(<Charge>, Integer, Hash)> charges_post_with_http_info(x_api_version, charges_post_request)
 
 ```ruby
 begin
   # Create a charge
-  data, status_code, headers = api_instance.charges_post_with_http_info(authorization, x_api_version, charges_post_request)
+  data, status_code, headers = api_instance.charges_post_with_http_info(x_api_version, charges_post_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Charge>
@@ -210,7 +205,6 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **authorization** | **String** |  |  |
 | **x_api_version** | **String** |  |  |
 | **charges_post_request** | [**ChargesPostRequest**](ChargesPostRequest.md) |  |  |
 

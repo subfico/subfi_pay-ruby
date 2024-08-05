@@ -20,29 +20,23 @@ module BckbnPay
       @api_client = api_client
     end
     # Create a refund
-    # @param authorization [String] 
     # @param x_api_version [String] 
     # @param refunds_post_request [RefundsPostRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Refund]
-    def refunds_post(authorization, x_api_version, refunds_post_request, opts = {})
-      data, _status_code, _headers = refunds_post_with_http_info(authorization, x_api_version, refunds_post_request, opts)
+    def refunds_post(x_api_version, refunds_post_request, opts = {})
+      data, _status_code, _headers = refunds_post_with_http_info(x_api_version, refunds_post_request, opts)
       data
     end
 
     # Create a refund
-    # @param authorization [String] 
     # @param x_api_version [String] 
     # @param refunds_post_request [RefundsPostRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(Refund, Integer, Hash)>] Refund data, response status code and response headers
-    def refunds_post_with_http_info(authorization, x_api_version, refunds_post_request, opts = {})
+    def refunds_post_with_http_info(x_api_version, refunds_post_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RefundsApi.refunds_post ...'
-      end
-      # verify the required parameter 'authorization' is set
-      if @api_client.config.client_side_validation && authorization.nil?
-        fail ArgumentError, "Missing the required parameter 'authorization' when calling RefundsApi.refunds_post"
       end
       # verify the required parameter 'x_api_version' is set
       if @api_client.config.client_side_validation && x_api_version.nil?
@@ -67,7 +61,6 @@ module BckbnPay
       if !content_type.nil?
           header_params['Content-Type'] = content_type
       end
-      header_params[:'Authorization'] = authorization
       header_params[:'X-Api-Version'] = x_api_version
 
       # form parameters

@@ -20,29 +20,23 @@ module BckbnPay
       @api_client = api_client
     end
     # Retrieve a payment method
-    # @param authorization [String] 
-    # @param x_api_version [String] 
-    # @param id [String] 
+    # @param x_api_version [String]
+    # @param id [String]
     # @param [Hash] opts the optional parameters
     # @return [PaymentMethod]
-    def payment_methods_id_get(authorization, x_api_version, id, opts = {})
-      data, _status_code, _headers = payment_methods_id_get_with_http_info(authorization, x_api_version, id, opts)
+    def payment_methods_id_get(x_api_version, id, opts = {})
+      data, _status_code, _headers = payment_methods_id_get_with_http_info(x_api_version, id, opts)
       data
     end
 
     # Retrieve a payment method
-    # @param authorization [String] 
-    # @param x_api_version [String] 
-    # @param id [String] 
+    # @param x_api_version [String]
+    # @param id [String]
     # @param [Hash] opts the optional parameters
     # @return [Array<(PaymentMethod, Integer, Hash)>] PaymentMethod data, response status code and response headers
-    def payment_methods_id_get_with_http_info(authorization, x_api_version, id, opts = {})
+    def payment_methods_id_get_with_http_info(x_api_version, id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PaymentMethodsApi.payment_methods_id_get ...'
-      end
-      # verify the required parameter 'authorization' is set
-      if @api_client.config.client_side_validation && authorization.nil?
-        fail ArgumentError, "Missing the required parameter 'authorization' when calling PaymentMethodsApi.payment_methods_id_get"
       end
       # verify the required parameter 'x_api_version' is set
       if @api_client.config.client_side_validation && x_api_version.nil?
@@ -62,7 +56,6 @@ module BckbnPay
       header_params = opts[:header_params] || {}
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      header_params[:'Authorization'] = authorization
       header_params[:'X-Api-Version'] = x_api_version
 
       # form parameters
@@ -95,29 +88,23 @@ module BckbnPay
     end
 
     # Create a payment method
-    # @param authorization [String] 
-    # @param x_api_version [String] 
-    # @param payment_methods_post_request [PaymentMethodsPostRequest] 
+    # @param x_api_version [String]
+    # @param payment_methods_post_request [PaymentMethodsPostRequest]
     # @param [Hash] opts the optional parameters
     # @return [PaymentMethod]
-    def payment_methods_post(authorization, x_api_version, payment_methods_post_request, opts = {})
-      data, _status_code, _headers = payment_methods_post_with_http_info(authorization, x_api_version, payment_methods_post_request, opts)
+    def payment_methods_post(x_api_version, payment_methods_post_request, opts = {})
+      data, _status_code, _headers = payment_methods_post_with_http_info(x_api_version, payment_methods_post_request, opts)
       data
     end
 
     # Create a payment method
-    # @param authorization [String] 
-    # @param x_api_version [String] 
-    # @param payment_methods_post_request [PaymentMethodsPostRequest] 
+    # @param x_api_version [String]
+    # @param payment_methods_post_request [PaymentMethodsPostRequest]
     # @param [Hash] opts the optional parameters
     # @return [Array<(PaymentMethod, Integer, Hash)>] PaymentMethod data, response status code and response headers
-    def payment_methods_post_with_http_info(authorization, x_api_version, payment_methods_post_request, opts = {})
+    def payment_methods_post_with_http_info(x_api_version, payment_methods_post_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PaymentMethodsApi.payment_methods_post ...'
-      end
-      # verify the required parameter 'authorization' is set
-      if @api_client.config.client_side_validation && authorization.nil?
-        fail ArgumentError, "Missing the required parameter 'authorization' when calling PaymentMethodsApi.payment_methods_post"
       end
       # verify the required parameter 'x_api_version' is set
       if @api_client.config.client_side_validation && x_api_version.nil?
@@ -142,7 +129,6 @@ module BckbnPay
       if !content_type.nil?
           header_params['Content-Type'] = content_type
       end
-      header_params[:'Authorization'] = authorization
       header_params[:'X-Api-Version'] = x_api_version
 
       # form parameters
