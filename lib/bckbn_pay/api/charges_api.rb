@@ -94,6 +94,7 @@ module BckbnPay
     # @param x_api_version [String] 
     # @param id [String] 
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :sub_merchant_id Filter results by sub-merchant ID.
     # @return [Charge]
     def charges_id_get(x_api_version, id, opts = {})
       data, _status_code, _headers = charges_id_get_with_http_info(x_api_version, id, opts)
@@ -104,6 +105,7 @@ module BckbnPay
     # @param x_api_version [String] 
     # @param id [String] 
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :sub_merchant_id Filter results by sub-merchant ID.
     # @return [Array<(Charge, Integer, Hash)>] Charge data, response status code and response headers
     def charges_id_get_with_http_info(x_api_version, id, opts = {})
       if @api_client.config.debugging
@@ -122,6 +124,7 @@ module BckbnPay
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'sub_merchant_id'] = opts[:'sub_merchant_id'] if !opts[:'sub_merchant_id'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -162,6 +165,7 @@ module BckbnPay
     # @param x_api_version [String] 
     # @param charges_post_request [ChargesPostRequest] 
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :x_idempotency_key 
     # @return [Charge]
     def charges_post(x_api_version, charges_post_request, opts = {})
       data, _status_code, _headers = charges_post_with_http_info(x_api_version, charges_post_request, opts)
@@ -172,6 +176,7 @@ module BckbnPay
     # @param x_api_version [String] 
     # @param charges_post_request [ChargesPostRequest] 
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :x_idempotency_key 
     # @return [Array<(Charge, Integer, Hash)>] Charge data, response status code and response headers
     def charges_post_with_http_info(x_api_version, charges_post_request, opts = {})
       if @api_client.config.debugging
@@ -201,6 +206,7 @@ module BckbnPay
           header_params['Content-Type'] = content_type
       end
       header_params[:'X-Api-Version'] = x_api_version
+      header_params[:'X-Idempotency-Key'] = opts[:'x_idempotency_key'] if !opts[:'x_idempotency_key'].nil?
 
       # form parameters
       form_params = opts[:form_params] || {}

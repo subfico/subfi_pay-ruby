@@ -86,7 +86,7 @@ end
 
 ## charges_id_get
 
-> <Charge> charges_id_get(x_api_version, id)
+> <Charge> charges_id_get(x_api_version, id, opts)
 
 Retrieve a charge
 
@@ -104,10 +104,13 @@ end
 api_instance = BckbnPay::ChargesApi.new
 x_api_version = 'x_api_version_example' # String | 
 id = 'id_example' # String | 
+opts = {
+  sub_merchant_id: 'sub_merchant_id_example' # String | Filter results by sub-merchant ID.
+}
 
 begin
   # Retrieve a charge
-  result = api_instance.charges_id_get(x_api_version, id)
+  result = api_instance.charges_id_get(x_api_version, id, opts)
   p result
 rescue BckbnPay::ApiError => e
   puts "Error when calling ChargesApi->charges_id_get: #{e}"
@@ -118,12 +121,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Charge>, Integer, Hash)> charges_id_get_with_http_info(x_api_version, id)
+> <Array(<Charge>, Integer, Hash)> charges_id_get_with_http_info(x_api_version, id, opts)
 
 ```ruby
 begin
   # Retrieve a charge
-  data, status_code, headers = api_instance.charges_id_get_with_http_info(x_api_version, id)
+  data, status_code, headers = api_instance.charges_id_get_with_http_info(x_api_version, id, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Charge>
@@ -138,6 +141,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **x_api_version** | **String** |  |  |
 | **id** | **String** |  |  |
+| **sub_merchant_id** | **String** | Filter results by sub-merchant ID. | [optional] |
 
 ### Return type
 
@@ -155,7 +159,7 @@ end
 
 ## charges_post
 
-> <Charge> charges_post(x_api_version, charges_post_request)
+> <Charge> charges_post(x_api_version, charges_post_request, opts)
 
 Create a charge
 
@@ -173,10 +177,13 @@ end
 api_instance = BckbnPay::ChargesApi.new
 x_api_version = 'x_api_version_example' # String | 
 charges_post_request = BckbnPay::ChargesPostRequest.new # ChargesPostRequest | 
+opts = {
+  x_idempotency_key: 'x_idempotency_key_example' # String | 
+}
 
 begin
   # Create a charge
-  result = api_instance.charges_post(x_api_version, charges_post_request)
+  result = api_instance.charges_post(x_api_version, charges_post_request, opts)
   p result
 rescue BckbnPay::ApiError => e
   puts "Error when calling ChargesApi->charges_post: #{e}"
@@ -187,12 +194,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Charge>, Integer, Hash)> charges_post_with_http_info(x_api_version, charges_post_request)
+> <Array(<Charge>, Integer, Hash)> charges_post_with_http_info(x_api_version, charges_post_request, opts)
 
 ```ruby
 begin
   # Create a charge
-  data, status_code, headers = api_instance.charges_post_with_http_info(x_api_version, charges_post_request)
+  data, status_code, headers = api_instance.charges_post_with_http_info(x_api_version, charges_post_request, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Charge>
@@ -207,6 +214,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **x_api_version** | **String** |  |  |
 | **charges_post_request** | [**ChargesPostRequest**](ChargesPostRequest.md) |  |  |
+| **x_idempotency_key** | **String** |  | [optional] |
 
 ### Return type
 

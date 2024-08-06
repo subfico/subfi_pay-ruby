@@ -79,7 +79,7 @@ end
 
 ## payment_methods_post
 
-> <PaymentMethod> payment_methods_post(x_api_version, payment_methods_post_request)
+> <PaymentMethod> payment_methods_post(x_api_version, payment_methods_post_request, opts)
 
 Create a payment method
 
@@ -97,10 +97,13 @@ end
 api_instance = BckbnPay::PaymentMethodsApi.new
 x_api_version = 'x_api_version_example' # String | 
 payment_methods_post_request = BckbnPay::PaymentMethodsPostRequest.new # PaymentMethodsPostRequest | 
+opts = {
+  x_idempotency_key: 'x_idempotency_key_example' # String | 
+}
 
 begin
   # Create a payment method
-  result = api_instance.payment_methods_post(x_api_version, payment_methods_post_request)
+  result = api_instance.payment_methods_post(x_api_version, payment_methods_post_request, opts)
   p result
 rescue BckbnPay::ApiError => e
   puts "Error when calling PaymentMethodsApi->payment_methods_post: #{e}"
@@ -111,12 +114,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PaymentMethod>, Integer, Hash)> payment_methods_post_with_http_info(x_api_version, payment_methods_post_request)
+> <Array(<PaymentMethod>, Integer, Hash)> payment_methods_post_with_http_info(x_api_version, payment_methods_post_request, opts)
 
 ```ruby
 begin
   # Create a payment method
-  data, status_code, headers = api_instance.payment_methods_post_with_http_info(x_api_version, payment_methods_post_request)
+  data, status_code, headers = api_instance.payment_methods_post_with_http_info(x_api_version, payment_methods_post_request, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PaymentMethod>
@@ -131,6 +134,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **x_api_version** | **String** |  |  |
 | **payment_methods_post_request** | [**PaymentMethodsPostRequest**](PaymentMethodsPostRequest.md) |  |  |
+| **x_idempotency_key** | **String** |  | [optional] |
 
 ### Return type
 

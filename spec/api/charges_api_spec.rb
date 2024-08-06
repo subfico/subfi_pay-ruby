@@ -41,21 +41,43 @@ describe 'ChargesApi' do
   # @param [Hash] opts the optional parameters
   # @return [Array<Charge>]
   describe 'charges_get test' do
-    before do
-      stub_request(:get, [config.host, path].join)
-        .with(headers: request_headers)
-        .to_return(
-          body: fixture("charges/list_200.json"),
-          headers: response_headers,
-          status: 200
-        )
+    context "without query params" do
+      before do
+        stub_request(:get, [config.host, path].join)
+          .with(headers: request_headers)
+          .to_return(
+            body: fixture("charges/list_200.json"),
+            headers: response_headers,
+            status: 200
+          )
+      end
+
+      it 'should work' do
+        res = api_instance.charges_get("0.1.0")
+
+        expect(res.data).to be_a(Array)
+        expect(res.data.first).to be_a(BckbnPay::Charge)
+      end
     end
 
-    it 'should work' do
-      res = api_instance.charges_get("0.1.0")
+    context "with pagination" do
+      before do
+        stub_request(:get, [config.host, path, "?page=1&per_page=2"].join)
+          .with(headers: request_headers)
+          .to_return(
+            body: fixture("charges/list_200.json"),
+            headers: response_headers,
+            status: 200
+          )
+      end
 
-      expect(res.data).to be_a(Array)
-      expect(res.data.first).to be_a(BckbnPay::Charge)
+      it do
+        res = api_instance.charges_get("0.1.0", page: 1, per_page: 2)
+
+        expect(res.data).to be_a(Array)
+        expect(res.data.first).to be_a(BckbnPay::Charge)
+        expect(a_request(:get, [config.host, path, "?page=1&per_page=2"].join).with(headers: request_headers)).to have_been_made.once
+      end
     end
   end
 

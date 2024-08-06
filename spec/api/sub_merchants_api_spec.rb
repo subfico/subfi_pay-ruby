@@ -89,7 +89,7 @@ describe 'SubMerchantsApi' do
       {
         sub_merchant: {
           name: 'Test Sub Merchant',
-          merchant_id: Faker::Number.number(digits: 10),
+          worldpay_merchant_id: Faker::Number.number(digits: 10),
         }
       }
     end

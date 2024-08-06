@@ -23,6 +23,7 @@ module BckbnPay
     # @param x_api_version [String] 
     # @param refunds_post_request [RefundsPostRequest] 
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :x_idempotency_key 
     # @return [Refund]
     def refunds_post(x_api_version, refunds_post_request, opts = {})
       data, _status_code, _headers = refunds_post_with_http_info(x_api_version, refunds_post_request, opts)
@@ -33,6 +34,7 @@ module BckbnPay
     # @param x_api_version [String] 
     # @param refunds_post_request [RefundsPostRequest] 
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :x_idempotency_key 
     # @return [Array<(Refund, Integer, Hash)>] Refund data, response status code and response headers
     def refunds_post_with_http_info(x_api_version, refunds_post_request, opts = {})
       if @api_client.config.debugging
@@ -62,6 +64,7 @@ module BckbnPay
           header_params['Content-Type'] = content_type
       end
       header_params[:'X-Api-Version'] = x_api_version
+      header_params[:'X-Idempotency-Key'] = opts[:'x_idempotency_key'] if !opts[:'x_idempotency_key'].nil?
 
       # form parameters
       form_params = opts[:form_params] || {}
