@@ -23,6 +23,7 @@ module BckbnPay
     # @param x_api_version [String] 
     # @param id [String] 
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :x_idempotency_key 
     # @return [SubMerchant]
     def sub_merchants_id_get(x_api_version, id, opts = {})
       data, _status_code, _headers = sub_merchants_id_get_with_http_info(x_api_version, id, opts)
@@ -33,6 +34,7 @@ module BckbnPay
     # @param x_api_version [String] 
     # @param id [String] 
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :x_idempotency_key 
     # @return [Array<(SubMerchant, Integer, Hash)>] SubMerchant data, response status code and response headers
     def sub_merchants_id_get_with_http_info(x_api_version, id, opts = {})
       if @api_client.config.debugging
@@ -57,6 +59,7 @@ module BckbnPay
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       header_params[:'X-Api-Version'] = x_api_version
+      header_params[:'X-Idempotency-Key'] = opts[:'x_idempotency_key'] if !opts[:'x_idempotency_key'].nil?
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -91,6 +94,7 @@ module BckbnPay
     # @param x_api_version [String] 
     # @param sub_merchants_post_request [SubMerchantsPostRequest] 
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :x_idempotency_key 
     # @return [SubMerchant]
     def sub_merchants_post(x_api_version, sub_merchants_post_request, opts = {})
       data, _status_code, _headers = sub_merchants_post_with_http_info(x_api_version, sub_merchants_post_request, opts)
@@ -101,6 +105,7 @@ module BckbnPay
     # @param x_api_version [String] 
     # @param sub_merchants_post_request [SubMerchantsPostRequest] 
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :x_idempotency_key 
     # @return [Array<(SubMerchant, Integer, Hash)>] SubMerchant data, response status code and response headers
     def sub_merchants_post_with_http_info(x_api_version, sub_merchants_post_request, opts = {})
       if @api_client.config.debugging
@@ -130,6 +135,7 @@ module BckbnPay
           header_params['Content-Type'] = content_type
       end
       header_params[:'X-Api-Version'] = x_api_version
+      header_params[:'X-Idempotency-Key'] = opts[:'x_idempotency_key'] if !opts[:'x_idempotency_key'].nil?
 
       # form parameters
       form_params = opts[:form_params] || {}

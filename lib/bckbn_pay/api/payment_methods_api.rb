@@ -20,8 +20,8 @@ module BckbnPay
       @api_client = api_client
     end
     # Retrieve a payment method
-    # @param x_api_version [String]
-    # @param id [String]
+    # @param x_api_version [String] 
+    # @param id [String] 
     # @param [Hash] opts the optional parameters
     # @return [PaymentMethod]
     def payment_methods_id_get(x_api_version, id, opts = {})
@@ -30,8 +30,8 @@ module BckbnPay
     end
 
     # Retrieve a payment method
-    # @param x_api_version [String]
-    # @param id [String]
+    # @param x_api_version [String] 
+    # @param id [String] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(PaymentMethod, Integer, Hash)>] PaymentMethod data, response status code and response headers
     def payment_methods_id_get_with_http_info(x_api_version, id, opts = {})
@@ -88,9 +88,10 @@ module BckbnPay
     end
 
     # Create a payment method
-    # @param x_api_version [String]
-    # @param payment_methods_post_request [PaymentMethodsPostRequest]
+    # @param x_api_version [String] 
+    # @param payment_methods_post_request [PaymentMethodsPostRequest] 
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :x_idempotency_key 
     # @return [PaymentMethod]
     def payment_methods_post(x_api_version, payment_methods_post_request, opts = {})
       data, _status_code, _headers = payment_methods_post_with_http_info(x_api_version, payment_methods_post_request, opts)
@@ -98,9 +99,10 @@ module BckbnPay
     end
 
     # Create a payment method
-    # @param x_api_version [String]
-    # @param payment_methods_post_request [PaymentMethodsPostRequest]
+    # @param x_api_version [String] 
+    # @param payment_methods_post_request [PaymentMethodsPostRequest] 
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :x_idempotency_key 
     # @return [Array<(PaymentMethod, Integer, Hash)>] PaymentMethod data, response status code and response headers
     def payment_methods_post_with_http_info(x_api_version, payment_methods_post_request, opts = {})
       if @api_client.config.debugging
@@ -130,6 +132,7 @@ module BckbnPay
           header_params['Content-Type'] = content_type
       end
       header_params[:'X-Api-Version'] = x_api_version
+      header_params[:'X-Idempotency-Key'] = opts[:'x_idempotency_key'] if !opts[:'x_idempotency_key'].nil?
 
       # form parameters
       form_params = opts[:form_params] || {}
