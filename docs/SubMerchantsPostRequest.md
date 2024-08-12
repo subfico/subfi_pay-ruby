@@ -4,8 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **name** | **String** |  | [optional] |
-| **worldpay_merchant_id** | **String** |  | [optional] |
+| **sub_merchant** | [**SubMerchantsPostRequestSubMerchant**](SubMerchantsPostRequestSubMerchant.md) |  | [optional] |
 
 ## Example
 
@@ -13,8 +12,7 @@
 require 'bckbn_pay'
 
 instance = BckbnPay::SubMerchantsPostRequest.new(
-  name: null,
-  worldpay_merchant_id: null
+  sub_merchant: null
 )
 ```
 

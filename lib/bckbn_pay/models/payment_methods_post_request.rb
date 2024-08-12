@@ -39,7 +39,6 @@ module BckbnPay
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'payment_method'
       ])
     end
 

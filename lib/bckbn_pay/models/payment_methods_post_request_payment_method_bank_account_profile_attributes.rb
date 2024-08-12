@@ -14,22 +14,28 @@ require 'date'
 require 'time'
 
 module BckbnPay
-  class PaymentMethodsPostRequestPaymentMethod
-    attr_accessor :type
+  class PaymentMethodsPostRequestPaymentMethodBankAccountProfileAttributes
+    attr_accessor :account_holder_name
 
-    attr_accessor :billing_address_attributes
+    attr_accessor :bank_name
 
-    attr_accessor :card_profile_attributes
+    attr_accessor :account_holder_type
 
-    attr_accessor :bank_account_profile_attributes
+    attr_accessor :account_type
+
+    attr_accessor :encrypted_account_number
+
+    attr_accessor :routing_number
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'type' => :'type',
-        :'billing_address_attributes' => :'billing_address_attributes',
-        :'card_profile_attributes' => :'card_profile_attributes',
-        :'bank_account_profile_attributes' => :'bank_account_profile_attributes'
+        :'account_holder_name' => :'account_holder_name',
+        :'bank_name' => :'bank_name',
+        :'account_holder_type' => :'account_holder_type',
+        :'account_type' => :'account_type',
+        :'encrypted_account_number' => :'encrypted_account_number',
+        :'routing_number' => :'routing_number'
       }
     end
 
@@ -41,10 +47,12 @@ module BckbnPay
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'type' => :'String',
-        :'billing_address_attributes' => :'PaymentMethodsPostRequestPaymentMethodBillingAddressAttributes',
-        :'card_profile_attributes' => :'PaymentMethodsPostRequestPaymentMethodCardProfileAttributes',
-        :'bank_account_profile_attributes' => :'PaymentMethodsPostRequestPaymentMethodBankAccountProfileAttributes'
+        :'account_holder_name' => :'String',
+        :'bank_name' => :'String',
+        :'account_holder_type' => :'String',
+        :'account_type' => :'String',
+        :'encrypted_account_number' => :'String',
+        :'routing_number' => :'String'
       }
     end
 
@@ -58,33 +66,51 @@ module BckbnPay
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `BckbnPay::PaymentMethodsPostRequestPaymentMethod` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `BckbnPay::PaymentMethodsPostRequestPaymentMethodBankAccountProfileAttributes` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `BckbnPay::PaymentMethodsPostRequestPaymentMethod`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `BckbnPay::PaymentMethodsPostRequestPaymentMethodBankAccountProfileAttributes`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'type')
-        self.type = attributes[:'type']
+      if attributes.key?(:'account_holder_name')
+        self.account_holder_name = attributes[:'account_holder_name']
       else
-        self.type = nil
+        self.account_holder_name = nil
       end
 
-      if attributes.key?(:'billing_address_attributes')
-        self.billing_address_attributes = attributes[:'billing_address_attributes']
+      if attributes.key?(:'bank_name')
+        self.bank_name = attributes[:'bank_name']
+      else
+        self.bank_name = nil
       end
 
-      if attributes.key?(:'card_profile_attributes')
-        self.card_profile_attributes = attributes[:'card_profile_attributes']
+      if attributes.key?(:'account_holder_type')
+        self.account_holder_type = attributes[:'account_holder_type']
+      else
+        self.account_holder_type = nil
       end
 
-      if attributes.key?(:'bank_account_profile_attributes')
-        self.bank_account_profile_attributes = attributes[:'bank_account_profile_attributes']
+      if attributes.key?(:'account_type')
+        self.account_type = attributes[:'account_type']
+      else
+        self.account_type = nil
+      end
+
+      if attributes.key?(:'encrypted_account_number')
+        self.encrypted_account_number = attributes[:'encrypted_account_number']
+      else
+        self.encrypted_account_number = nil
+      end
+
+      if attributes.key?(:'routing_number')
+        self.routing_number = attributes[:'routing_number']
+      else
+        self.routing_number = nil
       end
     end
 
@@ -93,8 +119,28 @@ module BckbnPay
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @type.nil?
-        invalid_properties.push('invalid value for "type", type cannot be nil.')
+      if @account_holder_name.nil?
+        invalid_properties.push('invalid value for "account_holder_name", account_holder_name cannot be nil.')
+      end
+
+      if @bank_name.nil?
+        invalid_properties.push('invalid value for "bank_name", bank_name cannot be nil.')
+      end
+
+      if @account_holder_type.nil?
+        invalid_properties.push('invalid value for "account_holder_type", account_holder_type cannot be nil.')
+      end
+
+      if @account_type.nil?
+        invalid_properties.push('invalid value for "account_type", account_type cannot be nil.')
+      end
+
+      if @encrypted_account_number.nil?
+        invalid_properties.push('invalid value for "encrypted_account_number", encrypted_account_number cannot be nil.')
+      end
+
+      if @routing_number.nil?
+        invalid_properties.push('invalid value for "routing_number", routing_number cannot be nil.')
       end
 
       invalid_properties
@@ -104,7 +150,12 @@ module BckbnPay
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @type.nil?
+      return false if @account_holder_name.nil?
+      return false if @bank_name.nil?
+      return false if @account_holder_type.nil?
+      return false if @account_type.nil?
+      return false if @encrypted_account_number.nil?
+      return false if @routing_number.nil?
       true
     end
 
@@ -113,10 +164,12 @@ module BckbnPay
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          type == o.type &&
-          billing_address_attributes == o.billing_address_attributes &&
-          card_profile_attributes == o.card_profile_attributes &&
-          bank_account_profile_attributes == o.bank_account_profile_attributes
+          account_holder_name == o.account_holder_name &&
+          bank_name == o.bank_name &&
+          account_holder_type == o.account_holder_type &&
+          account_type == o.account_type &&
+          encrypted_account_number == o.encrypted_account_number &&
+          routing_number == o.routing_number
     end
 
     # @see the `==` method
@@ -128,7 +181,7 @@ module BckbnPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [type, billing_address_attributes, card_profile_attributes, bank_account_profile_attributes].hash
+      [account_holder_name, bank_name, account_holder_type, account_type, encrypted_account_number, routing_number].hash
     end
 
     # Builds the object from hash

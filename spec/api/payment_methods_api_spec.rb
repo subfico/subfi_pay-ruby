@@ -19,12 +19,13 @@ require 'json'
 describe 'PaymentMethodsApi' do
   let(:api_instance) { BckbnPay::PaymentMethodsApi.new }
   let(:config) { BckbnPay::Configuration.default }
+  let(:access_token) { Faker::Lorem.word }
   let(:api_version) { "0.1.0" }
   let(:path) { "/payment_methods" }
   let(:request_headers) do
     {
       'Accept'        =>  'application/json',
-      "Authorization" => "Bearer #{config.access_token}",
+      "Authorization" => "Bearer #{access_token}",
       "Content-Type"  => "application/json",
       "Expect" => '',
       'User-Agent' => 'OpenAPI-Generator/0.1.0/ruby',
@@ -40,7 +41,7 @@ describe 'PaymentMethodsApi' do
 
   before do
     BckbnPay.configure do |c|
-      c.access_token = Faker::Lorem.word
+      c.access_token = access_token
       c.host = "localhost:3000"
       c.scheme = "http"
     end

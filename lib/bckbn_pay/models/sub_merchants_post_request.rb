@@ -15,15 +15,12 @@ require 'time'
 
 module BckbnPay
   class SubMerchantsPostRequest
-    attr_accessor :name
-
-    attr_accessor :worldpay_merchant_id
+    attr_accessor :sub_merchant
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name',
-        :'worldpay_merchant_id' => :'worldpay_merchant_id'
+        :'sub_merchant' => :'sub_merchant'
       }
     end
 
@@ -35,8 +32,7 @@ module BckbnPay
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'name' => :'String',
-        :'worldpay_merchant_id' => :'String'
+        :'sub_merchant' => :'SubMerchantsPostRequestSubMerchant'
       }
     end
 
@@ -61,12 +57,8 @@ module BckbnPay
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'worldpay_merchant_id')
-        self.worldpay_merchant_id = attributes[:'worldpay_merchant_id']
+      if attributes.key?(:'sub_merchant')
+        self.sub_merchant = attributes[:'sub_merchant']
       end
     end
 
@@ -90,8 +82,7 @@ module BckbnPay
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name &&
-          worldpay_merchant_id == o.worldpay_merchant_id
+          sub_merchant == o.sub_merchant
     end
 
     # @see the `==` method
@@ -103,7 +94,7 @@ module BckbnPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, worldpay_merchant_id].hash
+      [sub_merchant].hash
     end
 
     # Builds the object from hash

@@ -14,22 +14,16 @@ require 'date'
 require 'time'
 
 module BckbnPay
-  class PaymentMethodsPostRequestPaymentMethod
-    attr_accessor :type
+  class SubMerchantsPostRequestSubMerchant
+    attr_accessor :name
 
-    attr_accessor :billing_address_attributes
-
-    attr_accessor :card_profile_attributes
-
-    attr_accessor :bank_account_profile_attributes
+    attr_accessor :worldpay_merchant_id
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'type' => :'type',
-        :'billing_address_attributes' => :'billing_address_attributes',
-        :'card_profile_attributes' => :'card_profile_attributes',
-        :'bank_account_profile_attributes' => :'bank_account_profile_attributes'
+        :'name' => :'name',
+        :'worldpay_merchant_id' => :'worldpay_merchant_id'
       }
     end
 
@@ -41,10 +35,8 @@ module BckbnPay
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'type' => :'String',
-        :'billing_address_attributes' => :'PaymentMethodsPostRequestPaymentMethodBillingAddressAttributes',
-        :'card_profile_attributes' => :'PaymentMethodsPostRequestPaymentMethodCardProfileAttributes',
-        :'bank_account_profile_attributes' => :'PaymentMethodsPostRequestPaymentMethodBankAccountProfileAttributes'
+        :'name' => :'String',
+        :'worldpay_merchant_id' => :'String'
       }
     end
 
@@ -58,33 +50,23 @@ module BckbnPay
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `BckbnPay::PaymentMethodsPostRequestPaymentMethod` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `BckbnPay::SubMerchantsPostRequestSubMerchant` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `BckbnPay::PaymentMethodsPostRequestPaymentMethod`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `BckbnPay::SubMerchantsPostRequestSubMerchant`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'type')
-        self.type = attributes[:'type']
-      else
-        self.type = nil
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       end
 
-      if attributes.key?(:'billing_address_attributes')
-        self.billing_address_attributes = attributes[:'billing_address_attributes']
-      end
-
-      if attributes.key?(:'card_profile_attributes')
-        self.card_profile_attributes = attributes[:'card_profile_attributes']
-      end
-
-      if attributes.key?(:'bank_account_profile_attributes')
-        self.bank_account_profile_attributes = attributes[:'bank_account_profile_attributes']
+      if attributes.key?(:'worldpay_merchant_id')
+        self.worldpay_merchant_id = attributes[:'worldpay_merchant_id']
       end
     end
 
@@ -93,10 +75,6 @@ module BckbnPay
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @type.nil?
-        invalid_properties.push('invalid value for "type", type cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -104,7 +82,6 @@ module BckbnPay
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @type.nil?
       true
     end
 
@@ -113,10 +90,8 @@ module BckbnPay
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          type == o.type &&
-          billing_address_attributes == o.billing_address_attributes &&
-          card_profile_attributes == o.card_profile_attributes &&
-          bank_account_profile_attributes == o.bank_account_profile_attributes
+          name == o.name &&
+          worldpay_merchant_id == o.worldpay_merchant_id
     end
 
     # @see the `==` method
@@ -128,7 +103,7 @@ module BckbnPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [type, billing_address_attributes, card_profile_attributes, bank_account_profile_attributes].hash
+      [name, worldpay_merchant_id].hash
     end
 
     # Builds the object from hash

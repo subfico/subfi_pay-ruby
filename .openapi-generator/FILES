@@ -23,7 +23,9 @@ docs/PaymentMethod.md
 docs/PaymentMethodsApi.md
 docs/PaymentMethodsPostRequest.md
 docs/PaymentMethodsPostRequestPaymentMethod.md
+docs/PaymentMethodsPostRequestPaymentMethodBankAccountProfileAttributes.md
 docs/PaymentMethodsPostRequestPaymentMethodBillingAddressAttributes.md
+docs/PaymentMethodsPostRequestPaymentMethodCardProfileAttributes.md
 docs/Refund.md
 docs/RefundsApi.md
 docs/RefundsPostRequest.md
@@ -31,6 +33,7 @@ docs/RefundsPostRequestRefund.md
 docs/SubMerchant.md
 docs/SubMerchantsApi.md
 docs/SubMerchantsPostRequest.md
+docs/SubMerchantsPostRequestSubMerchant.md
 git_push.sh
 lib/bckbn_pay.rb
 lib/bckbn_pay/api/balance_transactions_api.rb
@@ -54,11 +57,17 @@ lib/bckbn_pay/models/meta.rb
 lib/bckbn_pay/models/payment_method.rb
 lib/bckbn_pay/models/payment_methods_post_request.rb
 lib/bckbn_pay/models/payment_methods_post_request_payment_method.rb
+lib/bckbn_pay/models/payment_methods_post_request_payment_method_bank_account_profile_attributes.rb
 lib/bckbn_pay/models/payment_methods_post_request_payment_method_billing_address_attributes.rb
+lib/bckbn_pay/models/payment_methods_post_request_payment_method_card_profile_attributes.rb
 lib/bckbn_pay/models/refund.rb
 lib/bckbn_pay/models/refunds_post_request.rb
 lib/bckbn_pay/models/refunds_post_request_refund.rb
 lib/bckbn_pay/models/sub_merchant.rb
 lib/bckbn_pay/models/sub_merchants_post_request.rb
+lib/bckbn_pay/models/sub_merchants_post_request_sub_merchant.rb
 lib/bckbn_pay/version.rb
+spec/models/payment_methods_post_request_payment_method_bank_account_profile_attributes_spec.rb
+spec/models/payment_methods_post_request_payment_method_card_profile_attributes_spec.rb
+spec/models/sub_merchants_post_request_sub_merchant_spec.rb
 spec/spec_helper.rb

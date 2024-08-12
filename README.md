@@ -115,12 +115,15 @@ Class | Method | HTTP request | Description
  - [BckbnPay::PaymentMethod](docs/PaymentMethod.md)
  - [BckbnPay::PaymentMethodsPostRequest](docs/PaymentMethodsPostRequest.md)
  - [BckbnPay::PaymentMethodsPostRequestPaymentMethod](docs/PaymentMethodsPostRequestPaymentMethod.md)
+ - [BckbnPay::PaymentMethodsPostRequestPaymentMethodBankAccountProfileAttributes](docs/PaymentMethodsPostRequestPaymentMethodBankAccountProfileAttributes.md)
  - [BckbnPay::PaymentMethodsPostRequestPaymentMethodBillingAddressAttributes](docs/PaymentMethodsPostRequestPaymentMethodBillingAddressAttributes.md)
+ - [BckbnPay::PaymentMethodsPostRequestPaymentMethodCardProfileAttributes](docs/PaymentMethodsPostRequestPaymentMethodCardProfileAttributes.md)
  - [BckbnPay::Refund](docs/Refund.md)
  - [BckbnPay::RefundsPostRequest](docs/RefundsPostRequest.md)
  - [BckbnPay::RefundsPostRequestRefund](docs/RefundsPostRequestRefund.md)
  - [BckbnPay::SubMerchant](docs/SubMerchant.md)
  - [BckbnPay::SubMerchantsPostRequest](docs/SubMerchantsPostRequest.md)
+ - [BckbnPay::SubMerchantsPostRequestSubMerchant](docs/SubMerchantsPostRequestSubMerchant.md)
 
 
 ## Documentation for Authorization
