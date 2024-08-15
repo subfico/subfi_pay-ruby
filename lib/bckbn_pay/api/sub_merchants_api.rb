@@ -19,102 +19,34 @@ module BckbnPay
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Retrieve a sub-merchant
+    # Create a sub_merchant
     # @param x_api_version [String] 
-    # @param id [String] 
+    # @param sub_merchant_attributes [SubMerchantAttributes] 
     # @param [Hash] opts the optional parameters
-    # @return [SubMerchant]
-    def sub_merchants_id_get(x_api_version, id, opts = {})
-      data, _status_code, _headers = sub_merchants_id_get_with_http_info(x_api_version, id, opts)
+    # @option opts [String] :x_idempotency_key 
+    # @return [SubMerchantResponse]
+    def create_sub_merchant(x_api_version, sub_merchant_attributes, opts = {})
+      data, _status_code, _headers = create_sub_merchant_with_http_info(x_api_version, sub_merchant_attributes, opts)
       data
     end
 
-    # Retrieve a sub-merchant
+    # Create a sub_merchant
     # @param x_api_version [String] 
-    # @param id [String] 
+    # @param sub_merchant_attributes [SubMerchantAttributes] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(SubMerchant, Integer, Hash)>] SubMerchant data, response status code and response headers
-    def sub_merchants_id_get_with_http_info(x_api_version, id, opts = {})
+    # @option opts [String] :x_idempotency_key 
+    # @return [Array<(SubMerchantResponse, Integer, Hash)>] SubMerchantResponse data, response status code and response headers
+    def create_sub_merchant_with_http_info(x_api_version, sub_merchant_attributes, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SubMerchantsApi.sub_merchants_id_get ...'
+        @api_client.config.logger.debug 'Calling API: SubMerchantsApi.create_sub_merchant ...'
       end
       # verify the required parameter 'x_api_version' is set
       if @api_client.config.client_side_validation && x_api_version.nil?
-        fail ArgumentError, "Missing the required parameter 'x_api_version' when calling SubMerchantsApi.sub_merchants_id_get"
+        fail ArgumentError, "Missing the required parameter 'x_api_version' when calling SubMerchantsApi.create_sub_merchant"
       end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling SubMerchantsApi.sub_merchants_id_get"
-      end
-      # resource path
-      local_var_path = '/sub_merchants/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      header_params[:'X-Api-Version'] = x_api_version
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'SubMerchant'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['bearerAuth']
-
-      new_options = opts.merge(
-        :operation => :"SubMerchantsApi.sub_merchants_id_get",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SubMerchantsApi#sub_merchants_id_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Create a sub-merchant
-    # @param x_api_version [String] 
-    # @param sub_merchants_post_request [SubMerchantsPostRequest] 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :x_idempotency_key 
-    # @return [SubMerchant]
-    def sub_merchants_post(x_api_version, sub_merchants_post_request, opts = {})
-      data, _status_code, _headers = sub_merchants_post_with_http_info(x_api_version, sub_merchants_post_request, opts)
-      data
-    end
-
-    # Create a sub-merchant
-    # @param x_api_version [String] 
-    # @param sub_merchants_post_request [SubMerchantsPostRequest] 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :x_idempotency_key 
-    # @return [Array<(SubMerchant, Integer, Hash)>] SubMerchant data, response status code and response headers
-    def sub_merchants_post_with_http_info(x_api_version, sub_merchants_post_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SubMerchantsApi.sub_merchants_post ...'
-      end
-      # verify the required parameter 'x_api_version' is set
-      if @api_client.config.client_side_validation && x_api_version.nil?
-        fail ArgumentError, "Missing the required parameter 'x_api_version' when calling SubMerchantsApi.sub_merchants_post"
-      end
-      # verify the required parameter 'sub_merchants_post_request' is set
-      if @api_client.config.client_side_validation && sub_merchants_post_request.nil?
-        fail ArgumentError, "Missing the required parameter 'sub_merchants_post_request' when calling SubMerchantsApi.sub_merchants_post"
+      # verify the required parameter 'sub_merchant_attributes' is set
+      if @api_client.config.client_side_validation && sub_merchant_attributes.nil?
+        fail ArgumentError, "Missing the required parameter 'sub_merchant_attributes' when calling SubMerchantsApi.create_sub_merchant"
       end
       # resource path
       local_var_path = '/sub_merchants'
@@ -138,16 +70,16 @@ module BckbnPay
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(sub_merchants_post_request)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(sub_merchant_attributes)
 
       # return_type
-      return_type = opts[:debug_return_type] || 'SubMerchant'
+      return_type = opts[:debug_return_type] || 'SubMerchantResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['bearerAuth']
 
       new_options = opts.merge(
-        :operation => :"SubMerchantsApi.sub_merchants_post",
+        :operation => :"SubMerchantsApi.create_sub_merchant",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -158,7 +90,75 @@ module BckbnPay
 
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SubMerchantsApi#sub_merchants_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: SubMerchantsApi#create_sub_merchant\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a sub_merchant
+    # @param x_api_version [String] 
+    # @param id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [SubMerchantResponse]
+    def get_sub_merchant(x_api_version, id, opts = {})
+      data, _status_code, _headers = get_sub_merchant_with_http_info(x_api_version, id, opts)
+      data
+    end
+
+    # Retrieve a sub_merchant
+    # @param x_api_version [String] 
+    # @param id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SubMerchantResponse, Integer, Hash)>] SubMerchantResponse data, response status code and response headers
+    def get_sub_merchant_with_http_info(x_api_version, id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SubMerchantsApi.get_sub_merchant ...'
+      end
+      # verify the required parameter 'x_api_version' is set
+      if @api_client.config.client_side_validation && x_api_version.nil?
+        fail ArgumentError, "Missing the required parameter 'x_api_version' when calling SubMerchantsApi.get_sub_merchant"
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling SubMerchantsApi.get_sub_merchant"
+      end
+      # resource path
+      local_var_path = '/sub_merchants/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params[:'X-Api-Version'] = x_api_version
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SubMerchantResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['bearerAuth']
+
+      new_options = opts.merge(
+        :operation => :"SubMerchantsApi.get_sub_merchant",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SubMerchantsApi#get_sub_merchant\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

@@ -70,15 +70,15 @@ x_api_version = 'x_api_version_example' # String |
 opts = {
   page: 56, # Integer | The page of results to retrieve.
   per_page: 56, # Integer | Number of results per page.
-  sub_merchant_id: 'sub_merchant_id_example' # String | Filter results by sub-merchant ID.
+  sub_merchant_id: 'sub_merchant_id_example' # String | Filter results by sub_merchant ID.
 }
 
 begin
   #List all balance transactions
-  result = api_instance.balance_transactions_get(x_api_version, opts)
+  result = api_instance.list_balance_transactions(x_api_version, opts)
   p result
 rescue BckbnPay::ApiError => e
-  puts "Exception when calling BalanceTransactionsApi->balance_transactions_get: #{e}"
+  puts "Exception when calling BalanceTransactionsApi->list_balance_transactions: #{e}"
 end
 
 ```
@@ -89,40 +89,36 @@ All URIs are relative to *https://pay.bckbn.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*BckbnPay::BalanceTransactionsApi* | [**balance_transactions_get**](docs/BalanceTransactionsApi.md#balance_transactions_get) | **GET** /balance_transactions | List all balance transactions
-*BckbnPay::ChargesApi* | [**charges_get**](docs/ChargesApi.md#charges_get) | **GET** /charges | List all charges
-*BckbnPay::ChargesApi* | [**charges_id_capture_put**](docs/ChargesApi.md#charges_id_capture_put) | **PUT** /charges/{id}/capture | Capture a charge
-*BckbnPay::ChargesApi* | [**charges_id_get**](docs/ChargesApi.md#charges_id_get) | **GET** /charges/{id} | Retrieve a charge
-*BckbnPay::ChargesApi* | [**charges_post**](docs/ChargesApi.md#charges_post) | **POST** /charges | Create a charge
-*BckbnPay::PaymentMethodsApi* | [**payment_methods_id_get**](docs/PaymentMethodsApi.md#payment_methods_id_get) | **GET** /payment_methods/{id} | Retrieve a payment method
-*BckbnPay::PaymentMethodsApi* | [**payment_methods_post**](docs/PaymentMethodsApi.md#payment_methods_post) | **POST** /payment_methods | Create a payment method
-*BckbnPay::RefundsApi* | [**refunds_post**](docs/RefundsApi.md#refunds_post) | **POST** /refunds | Create a refund
-*BckbnPay::SubMerchantsApi* | [**sub_merchants_id_get**](docs/SubMerchantsApi.md#sub_merchants_id_get) | **GET** /sub_merchants/{id} | Retrieve a sub-merchant
-*BckbnPay::SubMerchantsApi* | [**sub_merchants_post**](docs/SubMerchantsApi.md#sub_merchants_post) | **POST** /sub_merchants | Create a sub-merchant
+*BckbnPay::BalanceTransactionsApi* | [**list_balance_transactions**](docs/BalanceTransactionsApi.md#list_balance_transactions) | **GET** /balance_transactions | List all balance transactions
+*BckbnPay::ChargesApi* | [**capture_charge**](docs/ChargesApi.md#capture_charge) | **PUT** /charges/{id}/capture | Capture a charge
+*BckbnPay::ChargesApi* | [**create_charge**](docs/ChargesApi.md#create_charge) | **POST** /charges | Create a charge
+*BckbnPay::ChargesApi* | [**get_charge**](docs/ChargesApi.md#get_charge) | **GET** /charges/{id} | Retrieve a charge
+*BckbnPay::ChargesApi* | [**list_charges**](docs/ChargesApi.md#list_charges) | **GET** /charges | List all charges
+*BckbnPay::PaymentMethodsApi* | [**create_payment_method**](docs/PaymentMethodsApi.md#create_payment_method) | **POST** /payment_methods | Create a payment method
+*BckbnPay::PaymentMethodsApi* | [**get_payment_method**](docs/PaymentMethodsApi.md#get_payment_method) | **GET** /payment_methods/{id} | Retrieve a payment method
+*BckbnPay::RefundsApi* | [**create_refund**](docs/RefundsApi.md#create_refund) | **POST** /refunds | Create a refund
+*BckbnPay::SubMerchantsApi* | [**create_sub_merchant**](docs/SubMerchantsApi.md#create_sub_merchant) | **POST** /sub_merchants | Create a sub_merchant
+*BckbnPay::SubMerchantsApi* | [**get_sub_merchant**](docs/SubMerchantsApi.md#get_sub_merchant) | **GET** /sub_merchants/{id} | Retrieve a sub_merchant
 
 
 ## Documentation for Models
 
- - [BckbnPay::BalanceTransaction](docs/BalanceTransaction.md)
- - [BckbnPay::BalanceTransactionsGet200Response](docs/BalanceTransactionsGet200Response.md)
+ - [BckbnPay::BalanceTransactionAttributes](docs/BalanceTransactionAttributes.md)
+ - [BckbnPay::BalanceTransactionResponse](docs/BalanceTransactionResponse.md)
  - [BckbnPay::BankAccountProfile](docs/BankAccountProfile.md)
  - [BckbnPay::BillingAddress](docs/BillingAddress.md)
  - [BckbnPay::CardProfile](docs/CardProfile.md)
- - [BckbnPay::Charge](docs/Charge.md)
- - [BckbnPay::ChargePaymentMethod](docs/ChargePaymentMethod.md)
- - [BckbnPay::ChargesGet200Response](docs/ChargesGet200Response.md)
- - [BckbnPay::ChargesPostRequest](docs/ChargesPostRequest.md)
- - [BckbnPay::ChargesPostRequestCharge](docs/ChargesPostRequestCharge.md)
+ - [BckbnPay::ChargeAttributes](docs/ChargeAttributes.md)
+ - [BckbnPay::ChargeResponse](docs/ChargeResponse.md)
+ - [BckbnPay::ListBalanceTransactionsResponse](docs/ListBalanceTransactionsResponse.md)
+ - [BckbnPay::ListChargesResponse](docs/ListChargesResponse.md)
  - [BckbnPay::Meta](docs/Meta.md)
- - [BckbnPay::PaymentMethod](docs/PaymentMethod.md)
- - [BckbnPay::PaymentMethodsPostRequest](docs/PaymentMethodsPostRequest.md)
- - [BckbnPay::PaymentMethodsPostRequestPaymentMethod](docs/PaymentMethodsPostRequestPaymentMethod.md)
- - [BckbnPay::Refund](docs/Refund.md)
- - [BckbnPay::RefundsPostRequest](docs/RefundsPostRequest.md)
- - [BckbnPay::RefundsPostRequestRefund](docs/RefundsPostRequestRefund.md)
- - [BckbnPay::SubMerchant](docs/SubMerchant.md)
- - [BckbnPay::SubMerchantsPostRequest](docs/SubMerchantsPostRequest.md)
- - [BckbnPay::SubMerchantsPostRequestSubMerchant](docs/SubMerchantsPostRequestSubMerchant.md)
+ - [BckbnPay::PaymentMethodAttributes](docs/PaymentMethodAttributes.md)
+ - [BckbnPay::PaymentMethodResponse](docs/PaymentMethodResponse.md)
+ - [BckbnPay::RefundAttributes](docs/RefundAttributes.md)
+ - [BckbnPay::RefundResponse](docs/RefundResponse.md)
+ - [BckbnPay::SubMerchantAttributes](docs/SubMerchantAttributes.md)
+ - [BckbnPay::SubMerchantResponse](docs/SubMerchantResponse.md)
 
 
 ## Documentation for Authorization

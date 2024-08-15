@@ -21,32 +21,32 @@ module BckbnPay
     end
     # Create a refund
     # @param x_api_version [String] 
-    # @param refunds_post_request [RefundsPostRequest] 
+    # @param refund_attributes [RefundAttributes] 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :x_idempotency_key 
-    # @return [Refund]
-    def refunds_post(x_api_version, refunds_post_request, opts = {})
-      data, _status_code, _headers = refunds_post_with_http_info(x_api_version, refunds_post_request, opts)
+    # @return [RefundResponse]
+    def create_refund(x_api_version, refund_attributes, opts = {})
+      data, _status_code, _headers = create_refund_with_http_info(x_api_version, refund_attributes, opts)
       data
     end
 
     # Create a refund
     # @param x_api_version [String] 
-    # @param refunds_post_request [RefundsPostRequest] 
+    # @param refund_attributes [RefundAttributes] 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :x_idempotency_key 
-    # @return [Array<(Refund, Integer, Hash)>] Refund data, response status code and response headers
-    def refunds_post_with_http_info(x_api_version, refunds_post_request, opts = {})
+    # @return [Array<(RefundResponse, Integer, Hash)>] RefundResponse data, response status code and response headers
+    def create_refund_with_http_info(x_api_version, refund_attributes, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: RefundsApi.refunds_post ...'
+        @api_client.config.logger.debug 'Calling API: RefundsApi.create_refund ...'
       end
       # verify the required parameter 'x_api_version' is set
       if @api_client.config.client_side_validation && x_api_version.nil?
-        fail ArgumentError, "Missing the required parameter 'x_api_version' when calling RefundsApi.refunds_post"
+        fail ArgumentError, "Missing the required parameter 'x_api_version' when calling RefundsApi.create_refund"
       end
-      # verify the required parameter 'refunds_post_request' is set
-      if @api_client.config.client_side_validation && refunds_post_request.nil?
-        fail ArgumentError, "Missing the required parameter 'refunds_post_request' when calling RefundsApi.refunds_post"
+      # verify the required parameter 'refund_attributes' is set
+      if @api_client.config.client_side_validation && refund_attributes.nil?
+        fail ArgumentError, "Missing the required parameter 'refund_attributes' when calling RefundsApi.create_refund"
       end
       # resource path
       local_var_path = '/refunds'
@@ -70,16 +70,16 @@ module BckbnPay
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(refunds_post_request)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(refund_attributes)
 
       # return_type
-      return_type = opts[:debug_return_type] || 'Refund'
+      return_type = opts[:debug_return_type] || 'RefundResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['bearerAuth']
 
       new_options = opts.merge(
-        :operation => :"RefundsApi.refunds_post",
+        :operation => :"RefundsApi.create_refund",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -90,7 +90,7 @@ module BckbnPay
 
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: RefundsApi#refunds_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: RefundsApi#create_refund\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

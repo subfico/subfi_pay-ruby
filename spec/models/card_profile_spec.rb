@@ -22,32 +22,7 @@ describe BckbnPay::CardProfile do
 
   describe 'test an instance of CardProfile' do
     it 'should create an instance of CardProfile' do
-      # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(BckbnPay::CardProfile)
-    end
-  end
-
-  describe 'test attribute "encrypted_card_number"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "exp_month"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "exp_year"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "cvc"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+      expect(instance).to be_instance_of(BckbnPay::CardProfile)
     end
   end
 
@@ -76,6 +51,18 @@ describe BckbnPay::CardProfile do
   end
 
   describe 'test attribute "cvc_check_message"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  describe 'test attribute "exp_month"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  describe 'test attribute "exp_year"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

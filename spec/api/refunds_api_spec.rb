@@ -77,9 +77,9 @@ describe 'RefundsApi' do
     end
 
     it 'should work' do
-      res = api_instance.refunds_post("0.1.0", body)
+      res = api_instance.create_refund("0.1.0", body)
 
-      expect(res).to be_a(BckbnPay::Refund)
+      expect(res).to be_a(BckbnPay::RefundResponse)
       expect(a_request(:post, [config.host, path].join).with(headers: request_headers, body: body.to_json)).to have_been_made.once
     end
   end

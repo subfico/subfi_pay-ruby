@@ -26,6 +26,7 @@ describe 'SubMerchantsApi' do
     end
   end
   let(:path) { "/sub_merchants" }
+  let(:url) { [config.host, path].join }
   let(:request_headers) do
     {
       'Accept'        =>  'application/json',
@@ -60,7 +61,7 @@ describe 'SubMerchantsApi' do
     let(:id) { SecureRandom.uuid }
 
     before do
-      stub_request(:get, [config.host, path].join + "/#{id}")
+      stub_request(:get, url + "/#{id}")
       .with(headers: request_headers)
       .to_return(
         body: fixture("sub_merchants/get_200.json"),
@@ -70,10 +71,10 @@ describe 'SubMerchantsApi' do
     end
 
     it 'should work' do
-      res = api_instance.sub_merchants_id_get("0.1.0", id)
+      res = api_instance.get_sub_merchant("0.1.0", id)
 
-      expect(res).to be_a(BckbnPay::SubMerchant)
-      expect(a_request(:get, [config.host, path].join + "/#{id}").with(headers: request_headers)).to have_been_made.once
+      expect(res).to be_a(BckbnPay::SubMerchantResponse)
+      expect(a_request(:get, url + "/#{id}").with(headers: request_headers)).to have_been_made.once
     end
   end
 
@@ -95,7 +96,7 @@ describe 'SubMerchantsApi' do
     end
 
     before do
-      stub_request(:post, [config.host, path].join)
+      stub_request(:post, url)
       .with(headers: request_headers, body: body.to_json)
       .to_return(
         body: fixture("sub_merchants/create_201.json"),
@@ -105,16 +106,11 @@ describe 'SubMerchantsApi' do
     end
 
     it 'should work' do
-      req_sub_merchant = BckbnPay::SubMerchantsPostRequestSubMerchant.new(body[:sub_merchant])
-      res = api_instance.sub_merchants_post(
-        "0.1.0",
-        BckbnPay::SubMerchantsPostRequest.new(
-          sub_merchant: req_sub_merchant
-        )
-      )
+      sub_merchant = BckbnPay::SubMerchantAttributes.new(body[:sub_merchant])
+      res = api_instance.create_sub_merchant("0.1.0", { sub_merchant: sub_merchant.to_hash })
 
-      expect(res).to be_a(BckbnPay::SubMerchant)
-      expect(a_request(:post, [config.host, path].join).with(headers: request_headers, body: body.to_json)).to have_been_made.once
+      expect(res).to be_a(BckbnPay::SubMerchantResponse)
+      expect(a_request(:post, url).with(headers: request_headers, body: body.to_json)).to have_been_made.once
     end
   end
 end

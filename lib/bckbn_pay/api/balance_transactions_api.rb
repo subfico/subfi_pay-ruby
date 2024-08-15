@@ -24,10 +24,10 @@ module BckbnPay
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page The page of results to retrieve.
     # @option opts [Integer] :per_page Number of results per page.
-    # @option opts [String] :sub_merchant_id Filter results by sub-merchant ID.
-    # @return [BalanceTransactionsGet200Response]
-    def balance_transactions_get(x_api_version, opts = {})
-      data, _status_code, _headers = balance_transactions_get_with_http_info(x_api_version, opts)
+    # @option opts [String] :sub_merchant_id Filter results by sub_merchant ID.
+    # @return [ListBalanceTransactionsResponse]
+    def list_balance_transactions(x_api_version, opts = {})
+      data, _status_code, _headers = list_balance_transactions_with_http_info(x_api_version, opts)
       data
     end
 
@@ -36,15 +36,15 @@ module BckbnPay
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page The page of results to retrieve.
     # @option opts [Integer] :per_page Number of results per page.
-    # @option opts [String] :sub_merchant_id Filter results by sub-merchant ID.
-    # @return [Array<(BalanceTransactionsGet200Response, Integer, Hash)>] BalanceTransactionsGet200Response data, response status code and response headers
-    def balance_transactions_get_with_http_info(x_api_version, opts = {})
+    # @option opts [String] :sub_merchant_id Filter results by sub_merchant ID.
+    # @return [Array<(ListBalanceTransactionsResponse, Integer, Hash)>] ListBalanceTransactionsResponse data, response status code and response headers
+    def list_balance_transactions_with_http_info(x_api_version, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: BalanceTransactionsApi.balance_transactions_get ...'
+        @api_client.config.logger.debug 'Calling API: BalanceTransactionsApi.list_balance_transactions ...'
       end
       # verify the required parameter 'x_api_version' is set
       if @api_client.config.client_side_validation && x_api_version.nil?
-        fail ArgumentError, "Missing the required parameter 'x_api_version' when calling BalanceTransactionsApi.balance_transactions_get"
+        fail ArgumentError, "Missing the required parameter 'x_api_version' when calling BalanceTransactionsApi.list_balance_transactions"
       end
       # resource path
       local_var_path = '/balance_transactions'
@@ -68,13 +68,13 @@ module BckbnPay
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'BalanceTransactionsGet200Response'
+      return_type = opts[:debug_return_type] || 'ListBalanceTransactionsResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['bearerAuth']
 
       new_options = opts.merge(
-        :operation => :"BalanceTransactionsApi.balance_transactions_get",
+        :operation => :"BalanceTransactionsApi.list_balance_transactions",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -85,7 +85,7 @@ module BckbnPay
 
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: BalanceTransactionsApi#balance_transactions_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: BalanceTransactionsApi#list_balance_transactions\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

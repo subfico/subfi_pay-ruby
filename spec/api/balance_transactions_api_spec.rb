@@ -41,7 +41,7 @@ describe 'BalanceTransactionsApi' do
   # @param content_type
   # @param [Hash] opts the optional parameters
   # @return [BalanceTransactionsGet200Response]
-  describe 'balance_transactions_get test' do
+  describe "#list_balance_transactions" do
     context "without query params" do
       before do
         stub_request(:get, url)
@@ -53,11 +53,11 @@ describe 'BalanceTransactionsApi' do
         )
       end
 
-      it 'should work' do
-        res = api_instance.balance_transactions_get("0.1.0")
+      it "should work" do
+        res = api_instance.list_balance_transactions("0.1.0")
 
         expect(res.data).to be_a(Array)
-        expect(res.data.first).to be_a(BckbnPay::BalanceTransaction)
+        expect(res.data.first).to be_a(BckbnPay::BalanceTransactionResponse)
         expect(a_request(:get, url).with(headers: request_headers)).to have_been_made.once
       end
     end
@@ -74,10 +74,10 @@ describe 'BalanceTransactionsApi' do
       end
 
       it do
-        res = api_instance.balance_transactions_get("0.1.0", page: 1, per_page: 2)
+        res = api_instance.list_balance_transactions("0.1.0", page: 1, per_page: 2)
 
         expect(res.data).to be_a(Array)
-        expect(res.data.first).to be_a(BckbnPay::BalanceTransaction)
+        expect(res.data.first).to be_a(BckbnPay::BalanceTransactionResponse)
         expect(a_request(:get, [url, "?page=1&per_page=2"].join).with(headers: request_headers)).to have_been_made.once
       end
     end

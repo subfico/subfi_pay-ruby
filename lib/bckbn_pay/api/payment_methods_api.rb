@@ -19,102 +19,34 @@ module BckbnPay
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Retrieve a payment method
-    # @param x_api_version [String] 
-    # @param id [String] 
-    # @param [Hash] opts the optional parameters
-    # @return [PaymentMethod]
-    def payment_methods_id_get(x_api_version, id, opts = {})
-      data, _status_code, _headers = payment_methods_id_get_with_http_info(x_api_version, id, opts)
-      data
-    end
-
-    # Retrieve a payment method
-    # @param x_api_version [String] 
-    # @param id [String] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(PaymentMethod, Integer, Hash)>] PaymentMethod data, response status code and response headers
-    def payment_methods_id_get_with_http_info(x_api_version, id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: PaymentMethodsApi.payment_methods_id_get ...'
-      end
-      # verify the required parameter 'x_api_version' is set
-      if @api_client.config.client_side_validation && x_api_version.nil?
-        fail ArgumentError, "Missing the required parameter 'x_api_version' when calling PaymentMethodsApi.payment_methods_id_get"
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling PaymentMethodsApi.payment_methods_id_get"
-      end
-      # resource path
-      local_var_path = '/payment_methods/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      header_params[:'X-Api-Version'] = x_api_version
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'PaymentMethod'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['bearerAuth']
-
-      new_options = opts.merge(
-        :operation => :"PaymentMethodsApi.payment_methods_id_get",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: PaymentMethodsApi#payment_methods_id_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Create a payment method
     # @param x_api_version [String] 
-    # @param payment_methods_post_request [PaymentMethodsPostRequest] 
+    # @param payment_method_attributes [PaymentMethodAttributes] 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :x_idempotency_key 
-    # @return [PaymentMethod]
-    def payment_methods_post(x_api_version, payment_methods_post_request, opts = {})
-      data, _status_code, _headers = payment_methods_post_with_http_info(x_api_version, payment_methods_post_request, opts)
+    # @return [PaymentMethodResponse]
+    def create_payment_method(x_api_version, payment_method_attributes, opts = {})
+      data, _status_code, _headers = create_payment_method_with_http_info(x_api_version, payment_method_attributes, opts)
       data
     end
 
     # Create a payment method
     # @param x_api_version [String] 
-    # @param payment_methods_post_request [PaymentMethodsPostRequest] 
+    # @param payment_method_attributes [PaymentMethodAttributes] 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :x_idempotency_key 
-    # @return [Array<(PaymentMethod, Integer, Hash)>] PaymentMethod data, response status code and response headers
-    def payment_methods_post_with_http_info(x_api_version, payment_methods_post_request, opts = {})
+    # @return [Array<(PaymentMethodResponse, Integer, Hash)>] PaymentMethodResponse data, response status code and response headers
+    def create_payment_method_with_http_info(x_api_version, payment_method_attributes, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: PaymentMethodsApi.payment_methods_post ...'
+        @api_client.config.logger.debug 'Calling API: PaymentMethodsApi.create_payment_method ...'
       end
       # verify the required parameter 'x_api_version' is set
       if @api_client.config.client_side_validation && x_api_version.nil?
-        fail ArgumentError, "Missing the required parameter 'x_api_version' when calling PaymentMethodsApi.payment_methods_post"
+        fail ArgumentError, "Missing the required parameter 'x_api_version' when calling PaymentMethodsApi.create_payment_method"
       end
-      # verify the required parameter 'payment_methods_post_request' is set
-      if @api_client.config.client_side_validation && payment_methods_post_request.nil?
-        fail ArgumentError, "Missing the required parameter 'payment_methods_post_request' when calling PaymentMethodsApi.payment_methods_post"
+      # verify the required parameter 'payment_method_attributes' is set
+      if @api_client.config.client_side_validation && payment_method_attributes.nil?
+        fail ArgumentError, "Missing the required parameter 'payment_method_attributes' when calling PaymentMethodsApi.create_payment_method"
       end
       # resource path
       local_var_path = '/payment_methods'
@@ -138,16 +70,16 @@ module BckbnPay
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(payment_methods_post_request)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(payment_method_attributes)
 
       # return_type
-      return_type = opts[:debug_return_type] || 'PaymentMethod'
+      return_type = opts[:debug_return_type] || 'PaymentMethodResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['bearerAuth']
 
       new_options = opts.merge(
-        :operation => :"PaymentMethodsApi.payment_methods_post",
+        :operation => :"PaymentMethodsApi.create_payment_method",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -158,7 +90,75 @@ module BckbnPay
 
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: PaymentMethodsApi#payment_methods_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: PaymentMethodsApi#create_payment_method\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a payment method
+    # @param x_api_version [String] 
+    # @param id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [PaymentMethodResponse]
+    def get_payment_method(x_api_version, id, opts = {})
+      data, _status_code, _headers = get_payment_method_with_http_info(x_api_version, id, opts)
+      data
+    end
+
+    # Retrieve a payment method
+    # @param x_api_version [String] 
+    # @param id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(PaymentMethodResponse, Integer, Hash)>] PaymentMethodResponse data, response status code and response headers
+    def get_payment_method_with_http_info(x_api_version, id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: PaymentMethodsApi.get_payment_method ...'
+      end
+      # verify the required parameter 'x_api_version' is set
+      if @api_client.config.client_side_validation && x_api_version.nil?
+        fail ArgumentError, "Missing the required parameter 'x_api_version' when calling PaymentMethodsApi.get_payment_method"
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling PaymentMethodsApi.get_payment_method"
+      end
+      # resource path
+      local_var_path = '/payment_methods/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params[:'X-Api-Version'] = x_api_version
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'PaymentMethodResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['bearerAuth']
+
+      new_options = opts.merge(
+        :operation => :"PaymentMethodsApi.get_payment_method",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PaymentMethodsApi#get_payment_method\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

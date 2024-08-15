@@ -4,12 +4,12 @@ All URIs are relative to *https://pay.bckbn.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**refunds_post**](RefundsApi.md#refunds_post) | **POST** /refunds | Create a refund |
+| [**create_refund**](RefundsApi.md#create_refund) | **POST** /refunds | Create a refund |
 
 
-## refunds_post
+## create_refund
 
-> <Refund> refunds_post(x_api_version, refunds_post_request, opts)
+> <RefundResponse> create_refund(x_api_version, refund_attributes, opts)
 
 Create a refund
 
@@ -26,35 +26,35 @@ end
 
 api_instance = BckbnPay::RefundsApi.new
 x_api_version = 'x_api_version_example' # String | 
-refunds_post_request = BckbnPay::RefundsPostRequest.new # RefundsPostRequest | 
+refund_attributes = BckbnPay::RefundAttributes.new({charge_id: 'charge_id_example'}) # RefundAttributes | 
 opts = {
   x_idempotency_key: 'x_idempotency_key_example' # String | 
 }
 
 begin
   # Create a refund
-  result = api_instance.refunds_post(x_api_version, refunds_post_request, opts)
+  result = api_instance.create_refund(x_api_version, refund_attributes, opts)
   p result
 rescue BckbnPay::ApiError => e
-  puts "Error when calling RefundsApi->refunds_post: #{e}"
+  puts "Error when calling RefundsApi->create_refund: #{e}"
 end
 ```
 
-#### Using the refunds_post_with_http_info variant
+#### Using the create_refund_with_http_info variant
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Refund>, Integer, Hash)> refunds_post_with_http_info(x_api_version, refunds_post_request, opts)
+> <Array(<RefundResponse>, Integer, Hash)> create_refund_with_http_info(x_api_version, refund_attributes, opts)
 
 ```ruby
 begin
   # Create a refund
-  data, status_code, headers = api_instance.refunds_post_with_http_info(x_api_version, refunds_post_request, opts)
+  data, status_code, headers = api_instance.create_refund_with_http_info(x_api_version, refund_attributes, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <Refund>
+  p data # => <RefundResponse>
 rescue BckbnPay::ApiError => e
-  puts "Error when calling RefundsApi->refunds_post_with_http_info: #{e}"
+  puts "Error when calling RefundsApi->create_refund_with_http_info: #{e}"
 end
 ```
 
@@ -63,12 +63,12 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **x_api_version** | **String** |  |  |
-| **refunds_post_request** | [**RefundsPostRequest**](RefundsPostRequest.md) |  |  |
+| **refund_attributes** | [**RefundAttributes**](RefundAttributes.md) |  |  |
 | **x_idempotency_key** | **String** |  | [optional] |
 
 ### Return type
 
-[**Refund**](Refund.md)
+[**RefundResponse**](RefundResponse.md)
 
 ### Authorization
 

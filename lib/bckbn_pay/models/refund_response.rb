@@ -14,43 +14,31 @@ require 'date'
 require 'time'
 
 module BckbnPay
-  class CardProfile
-    attr_accessor :avs_check
+  class RefundResponse
+    attr_accessor :amount
 
-    attr_accessor :avs_check_message
+    attr_accessor :charge_id
 
-    attr_accessor :brand
+    attr_accessor :id
 
-    attr_accessor :cvc_check
+    attr_accessor :failure_reason
 
-    attr_accessor :cvc_check_message
+    attr_accessor :state
 
-    attr_accessor :exp_month
+    attr_accessor :created_at
 
-    attr_accessor :exp_year
-
-    attr_accessor :funding
-
-    attr_accessor :last4
-
-    attr_accessor :three_d_secure_supported
-
-    attr_accessor :token
+    attr_accessor :sub_merchant_id
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'avs_check' => :'avs_check',
-        :'avs_check_message' => :'avs_check_message',
-        :'brand' => :'brand',
-        :'cvc_check' => :'cvc_check',
-        :'cvc_check_message' => :'cvc_check_message',
-        :'exp_month' => :'exp_month',
-        :'exp_year' => :'exp_year',
-        :'funding' => :'funding',
-        :'last4' => :'last4',
-        :'three_d_secure_supported' => :'three_d_secure_supported',
-        :'token' => :'token'
+        :'amount' => :'amount',
+        :'charge_id' => :'charge_id',
+        :'id' => :'id',
+        :'failure_reason' => :'failure_reason',
+        :'state' => :'state',
+        :'created_at' => :'created_at',
+        :'sub_merchant_id' => :'sub_merchant_id'
       }
     end
 
@@ -62,87 +50,74 @@ module BckbnPay
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'avs_check' => :'String',
-        :'avs_check_message' => :'String',
-        :'brand' => :'String',
-        :'cvc_check' => :'String',
-        :'cvc_check_message' => :'String',
-        :'exp_month' => :'Integer',
-        :'exp_year' => :'Integer',
-        :'funding' => :'String',
-        :'last4' => :'String',
-        :'three_d_secure_supported' => :'Boolean',
-        :'token' => :'String'
+        :'amount' => :'Integer',
+        :'charge_id' => :'String',
+        :'id' => :'String',
+        :'failure_reason' => :'String',
+        :'state' => :'String',
+        :'created_at' => :'Time',
+        :'sub_merchant_id' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'avs_check_message',
-        :'cvc_check_message',
-        :'funding',
-        :'three_d_secure_supported',
+        :'failure_reason',
+        :'sub_merchant_id'
       ])
+    end
+
+    # List of class defined in allOf (OpenAPI v3)
+    def self.openapi_all_of
+      [
+      :'RefundAttributes'
+      ]
     end
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `BckbnPay::CardProfile` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `BckbnPay::RefundResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `BckbnPay::CardProfile`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `BckbnPay::RefundResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'avs_check')
-        self.avs_check = attributes[:'avs_check']
+      if attributes.key?(:'amount')
+        self.amount = attributes[:'amount']
       end
 
-      if attributes.key?(:'avs_check_message')
-        self.avs_check_message = attributes[:'avs_check_message']
+      if attributes.key?(:'charge_id')
+        self.charge_id = attributes[:'charge_id']
+      else
+        self.charge_id = nil
       end
 
-      if attributes.key?(:'brand')
-        self.brand = attributes[:'brand']
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'cvc_check')
-        self.cvc_check = attributes[:'cvc_check']
+      if attributes.key?(:'failure_reason')
+        self.failure_reason = attributes[:'failure_reason']
       end
 
-      if attributes.key?(:'cvc_check_message')
-        self.cvc_check_message = attributes[:'cvc_check_message']
+      if attributes.key?(:'state')
+        self.state = attributes[:'state']
       end
 
-      if attributes.key?(:'exp_month')
-        self.exp_month = attributes[:'exp_month']
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
       end
 
-      if attributes.key?(:'exp_year')
-        self.exp_year = attributes[:'exp_year']
-      end
-
-      if attributes.key?(:'funding')
-        self.funding = attributes[:'funding']
-      end
-
-      if attributes.key?(:'last4')
-        self.last4 = attributes[:'last4']
-      end
-
-      if attributes.key?(:'three_d_secure_supported')
-        self.three_d_secure_supported = attributes[:'three_d_secure_supported']
-      end
-
-      if attributes.key?(:'token')
-        self.token = attributes[:'token']
+      if attributes.key?(:'sub_merchant_id')
+        self.sub_merchant_id = attributes[:'sub_merchant_id']
       end
     end
 
@@ -151,6 +126,10 @@ module BckbnPay
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @charge_id.nil?
+        invalid_properties.push('invalid value for "charge_id", charge_id cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -158,6 +137,7 @@ module BckbnPay
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @charge_id.nil?
       true
     end
 
@@ -166,17 +146,13 @@ module BckbnPay
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          avs_check == o.avs_check &&
-          avs_check_message == o.avs_check_message &&
-          brand == o.brand &&
-          cvc_check == o.cvc_check &&
-          cvc_check_message == o.cvc_check_message &&
-          exp_month == o.exp_month &&
-          exp_year == o.exp_year &&
-          funding == o.funding &&
-          last4 == o.last4 &&
-          three_d_secure_supported == o.three_d_secure_supported &&
-          token == o.token
+          amount == o.amount &&
+          charge_id == o.charge_id &&
+          id == o.id &&
+          failure_reason == o.failure_reason &&
+          state == o.state &&
+          created_at == o.created_at &&
+          sub_merchant_id == o.sub_merchant_id
     end
 
     # @see the `==` method
@@ -188,7 +164,7 @@ module BckbnPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [avs_check, avs_check_message, brand, cvc_check, cvc_check_message, exp_month, exp_year, funding, last4, three_d_secure_supported, token].hash
+      [amount, charge_id, id, failure_reason, state, created_at, sub_merchant_id].hash
     end
 
     # Builds the object from hash

@@ -4,90 +4,15 @@ All URIs are relative to *https://pay.bckbn.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**charges_get**](ChargesApi.md#charges_get) | **GET** /charges | List all charges |
-| [**charges_id_capture_put**](ChargesApi.md#charges_id_capture_put) | **PUT** /charges/{id}/capture | Capture a charge |
-| [**charges_id_get**](ChargesApi.md#charges_id_get) | **GET** /charges/{id} | Retrieve a charge |
-| [**charges_post**](ChargesApi.md#charges_post) | **POST** /charges | Create a charge |
+| [**capture_charge**](ChargesApi.md#capture_charge) | **PUT** /charges/{id}/capture | Capture a charge |
+| [**create_charge**](ChargesApi.md#create_charge) | **POST** /charges | Create a charge |
+| [**get_charge**](ChargesApi.md#get_charge) | **GET** /charges/{id} | Retrieve a charge |
+| [**list_charges**](ChargesApi.md#list_charges) | **GET** /charges | List all charges |
 
 
-## charges_get
+## capture_charge
 
-> <ChargesGet200Response> charges_get(x_api_version, opts)
-
-List all charges
-
-### Examples
-
-```ruby
-require 'time'
-require 'bckbn_pay'
-# setup authorization
-BckbnPay.configure do |config|
-  # Configure Bearer authorization (access_token): bearerAuth
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = BckbnPay::ChargesApi.new
-x_api_version = 'x_api_version_example' # String | 
-opts = {
-  page: 56, # Integer | The page of results to retrieve.
-  per_page: 56, # Integer | Number of results per page.
-  sub_merchant_id: 'sub_merchant_id_example' # String | Filter results by sub-merchant ID.
-}
-
-begin
-  # List all charges
-  result = api_instance.charges_get(x_api_version, opts)
-  p result
-rescue BckbnPay::ApiError => e
-  puts "Error when calling ChargesApi->charges_get: #{e}"
-end
-```
-
-#### Using the charges_get_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<ChargesGet200Response>, Integer, Hash)> charges_get_with_http_info(x_api_version, opts)
-
-```ruby
-begin
-  # List all charges
-  data, status_code, headers = api_instance.charges_get_with_http_info(x_api_version, opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <ChargesGet200Response>
-rescue BckbnPay::ApiError => e
-  puts "Error when calling ChargesApi->charges_get_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **x_api_version** | **String** |  |  |
-| **page** | **Integer** | The page of results to retrieve. | [optional] |
-| **per_page** | **Integer** | Number of results per page. | [optional] |
-| **sub_merchant_id** | **String** | Filter results by sub-merchant ID. | [optional] |
-
-### Return type
-
-[**ChargesGet200Response**](ChargesGet200Response.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## charges_id_capture_put
-
-> <Charge> charges_id_capture_put(x_api_version, id)
+> <ChargeResponse> capture_charge(x_api_version, id)
 
 Capture a charge
 
@@ -108,28 +33,28 @@ id = 'id_example' # String |
 
 begin
   # Capture a charge
-  result = api_instance.charges_id_capture_put(x_api_version, id)
+  result = api_instance.capture_charge(x_api_version, id)
   p result
 rescue BckbnPay::ApiError => e
-  puts "Error when calling ChargesApi->charges_id_capture_put: #{e}"
+  puts "Error when calling ChargesApi->capture_charge: #{e}"
 end
 ```
 
-#### Using the charges_id_capture_put_with_http_info variant
+#### Using the capture_charge_with_http_info variant
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Charge>, Integer, Hash)> charges_id_capture_put_with_http_info(x_api_version, id)
+> <Array(<ChargeResponse>, Integer, Hash)> capture_charge_with_http_info(x_api_version, id)
 
 ```ruby
 begin
   # Capture a charge
-  data, status_code, headers = api_instance.charges_id_capture_put_with_http_info(x_api_version, id)
+  data, status_code, headers = api_instance.capture_charge_with_http_info(x_api_version, id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <Charge>
+  p data # => <ChargeResponse>
 rescue BckbnPay::ApiError => e
-  puts "Error when calling ChargesApi->charges_id_capture_put_with_http_info: #{e}"
+  puts "Error when calling ChargesApi->capture_charge_with_http_info: #{e}"
 end
 ```
 
@@ -142,7 +67,7 @@ end
 
 ### Return type
 
-[**Charge**](Charge.md)
+[**ChargeResponse**](ChargeResponse.md)
 
 ### Authorization
 
@@ -154,9 +79,82 @@ end
 - **Accept**: application/json
 
 
-## charges_id_get
+## create_charge
 
-> <Charge> charges_id_get(x_api_version, id, opts)
+> <ChargeResponse> create_charge(x_api_version, charge_attributes, opts)
+
+Create a charge
+
+### Examples
+
+```ruby
+require 'time'
+require 'bckbn_pay'
+# setup authorization
+BckbnPay.configure do |config|
+  # Configure Bearer authorization (access_token): bearerAuth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = BckbnPay::ChargesApi.new
+x_api_version = 'x_api_version_example' # String | 
+charge_attributes = BckbnPay::ChargeAttributes.new({amount: 37, payment_method_id: 'payment_method_id_example'}) # ChargeAttributes | 
+opts = {
+  x_idempotency_key: 'x_idempotency_key_example' # String | 
+}
+
+begin
+  # Create a charge
+  result = api_instance.create_charge(x_api_version, charge_attributes, opts)
+  p result
+rescue BckbnPay::ApiError => e
+  puts "Error when calling ChargesApi->create_charge: #{e}"
+end
+```
+
+#### Using the create_charge_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ChargeResponse>, Integer, Hash)> create_charge_with_http_info(x_api_version, charge_attributes, opts)
+
+```ruby
+begin
+  # Create a charge
+  data, status_code, headers = api_instance.create_charge_with_http_info(x_api_version, charge_attributes, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ChargeResponse>
+rescue BckbnPay::ApiError => e
+  puts "Error when calling ChargesApi->create_charge_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **x_api_version** | **String** |  |  |
+| **charge_attributes** | [**ChargeAttributes**](ChargeAttributes.md) |  |  |
+| **x_idempotency_key** | **String** |  | [optional] |
+
+### Return type
+
+[**ChargeResponse**](ChargeResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## get_charge
+
+> <ChargeResponse> get_charge(x_api_version, id, opts)
 
 Retrieve a charge
 
@@ -175,33 +173,33 @@ api_instance = BckbnPay::ChargesApi.new
 x_api_version = 'x_api_version_example' # String | 
 id = 'id_example' # String | 
 opts = {
-  sub_merchant_id: 'sub_merchant_id_example' # String | Filter results by sub-merchant ID.
+  sub_merchant_id: 'sub_merchant_id_example' # String | Filter results by sub_merchant ID.
 }
 
 begin
   # Retrieve a charge
-  result = api_instance.charges_id_get(x_api_version, id, opts)
+  result = api_instance.get_charge(x_api_version, id, opts)
   p result
 rescue BckbnPay::ApiError => e
-  puts "Error when calling ChargesApi->charges_id_get: #{e}"
+  puts "Error when calling ChargesApi->get_charge: #{e}"
 end
 ```
 
-#### Using the charges_id_get_with_http_info variant
+#### Using the get_charge_with_http_info variant
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Charge>, Integer, Hash)> charges_id_get_with_http_info(x_api_version, id, opts)
+> <Array(<ChargeResponse>, Integer, Hash)> get_charge_with_http_info(x_api_version, id, opts)
 
 ```ruby
 begin
   # Retrieve a charge
-  data, status_code, headers = api_instance.charges_id_get_with_http_info(x_api_version, id, opts)
+  data, status_code, headers = api_instance.get_charge_with_http_info(x_api_version, id, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <Charge>
+  p data # => <ChargeResponse>
 rescue BckbnPay::ApiError => e
-  puts "Error when calling ChargesApi->charges_id_get_with_http_info: #{e}"
+  puts "Error when calling ChargesApi->get_charge_with_http_info: #{e}"
 end
 ```
 
@@ -211,11 +209,11 @@ end
 | ---- | ---- | ----------- | ----- |
 | **x_api_version** | **String** |  |  |
 | **id** | **String** |  |  |
-| **sub_merchant_id** | **String** | Filter results by sub-merchant ID. | [optional] |
+| **sub_merchant_id** | **String** | Filter results by sub_merchant ID. | [optional] |
 
 ### Return type
 
-[**Charge**](Charge.md)
+[**ChargeResponse**](ChargeResponse.md)
 
 ### Authorization
 
@@ -227,11 +225,11 @@ end
 - **Accept**: application/json
 
 
-## charges_post
+## list_charges
 
-> <Charge> charges_post(x_api_version, charges_post_request, opts)
+> <ListChargesResponse> list_charges(x_api_version, opts)
 
-Create a charge
+List all charges
 
 ### Examples
 
@@ -246,35 +244,36 @@ end
 
 api_instance = BckbnPay::ChargesApi.new
 x_api_version = 'x_api_version_example' # String | 
-charges_post_request = BckbnPay::ChargesPostRequest.new # ChargesPostRequest | 
 opts = {
-  x_idempotency_key: 'x_idempotency_key_example' # String | 
+  page: 56, # Integer | The page of results to retrieve.
+  per_page: 56, # Integer | Number of results per page.
+  sub_merchant_id: 'sub_merchant_id_example' # String | Filter results by sub_merchant ID.
 }
 
 begin
-  # Create a charge
-  result = api_instance.charges_post(x_api_version, charges_post_request, opts)
+  # List all charges
+  result = api_instance.list_charges(x_api_version, opts)
   p result
 rescue BckbnPay::ApiError => e
-  puts "Error when calling ChargesApi->charges_post: #{e}"
+  puts "Error when calling ChargesApi->list_charges: #{e}"
 end
 ```
 
-#### Using the charges_post_with_http_info variant
+#### Using the list_charges_with_http_info variant
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Charge>, Integer, Hash)> charges_post_with_http_info(x_api_version, charges_post_request, opts)
+> <Array(<ListChargesResponse>, Integer, Hash)> list_charges_with_http_info(x_api_version, opts)
 
 ```ruby
 begin
-  # Create a charge
-  data, status_code, headers = api_instance.charges_post_with_http_info(x_api_version, charges_post_request, opts)
+  # List all charges
+  data, status_code, headers = api_instance.list_charges_with_http_info(x_api_version, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <Charge>
+  p data # => <ListChargesResponse>
 rescue BckbnPay::ApiError => e
-  puts "Error when calling ChargesApi->charges_post_with_http_info: #{e}"
+  puts "Error when calling ChargesApi->list_charges_with_http_info: #{e}"
 end
 ```
 
@@ -283,12 +282,13 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **x_api_version** | **String** |  |  |
-| **charges_post_request** | [**ChargesPostRequest**](ChargesPostRequest.md) |  |  |
-| **x_idempotency_key** | **String** |  | [optional] |
+| **page** | **Integer** | The page of results to retrieve. | [optional] |
+| **per_page** | **Integer** | Number of results per page. | [optional] |
+| **sub_merchant_id** | **String** | Filter results by sub_merchant ID. | [optional] |
 
 ### Return type
 
-[**Charge**](Charge.md)
+[**ListChargesResponse**](ListChargesResponse.md)
 
 ### Authorization
 
@@ -296,6 +296,6 @@ end
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 

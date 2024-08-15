@@ -4,12 +4,12 @@ All URIs are relative to *https://pay.bckbn.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**balance_transactions_get**](BalanceTransactionsApi.md#balance_transactions_get) | **GET** /balance_transactions | List all balance transactions |
+| [**list_balance_transactions**](BalanceTransactionsApi.md#list_balance_transactions) | **GET** /balance_transactions | List all balance transactions |
 
 
-## balance_transactions_get
+## list_balance_transactions
 
-> <BalanceTransactionsGet200Response> balance_transactions_get(x_api_version, opts)
+> <ListBalanceTransactionsResponse> list_balance_transactions(x_api_version, opts)
 
 List all balance transactions
 
@@ -29,33 +29,33 @@ x_api_version = 'x_api_version_example' # String |
 opts = {
   page: 56, # Integer | The page of results to retrieve.
   per_page: 56, # Integer | Number of results per page.
-  sub_merchant_id: 'sub_merchant_id_example' # String | Filter results by sub-merchant ID.
+  sub_merchant_id: 'sub_merchant_id_example' # String | Filter results by sub_merchant ID.
 }
 
 begin
   # List all balance transactions
-  result = api_instance.balance_transactions_get(x_api_version, opts)
+  result = api_instance.list_balance_transactions(x_api_version, opts)
   p result
 rescue BckbnPay::ApiError => e
-  puts "Error when calling BalanceTransactionsApi->balance_transactions_get: #{e}"
+  puts "Error when calling BalanceTransactionsApi->list_balance_transactions: #{e}"
 end
 ```
 
-#### Using the balance_transactions_get_with_http_info variant
+#### Using the list_balance_transactions_with_http_info variant
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<BalanceTransactionsGet200Response>, Integer, Hash)> balance_transactions_get_with_http_info(x_api_version, opts)
+> <Array(<ListBalanceTransactionsResponse>, Integer, Hash)> list_balance_transactions_with_http_info(x_api_version, opts)
 
 ```ruby
 begin
   # List all balance transactions
-  data, status_code, headers = api_instance.balance_transactions_get_with_http_info(x_api_version, opts)
+  data, status_code, headers = api_instance.list_balance_transactions_with_http_info(x_api_version, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <BalanceTransactionsGet200Response>
+  p data # => <ListBalanceTransactionsResponse>
 rescue BckbnPay::ApiError => e
-  puts "Error when calling BalanceTransactionsApi->balance_transactions_get_with_http_info: #{e}"
+  puts "Error when calling BalanceTransactionsApi->list_balance_transactions_with_http_info: #{e}"
 end
 ```
 
@@ -66,11 +66,11 @@ end
 | **x_api_version** | **String** |  |  |
 | **page** | **Integer** | The page of results to retrieve. | [optional] |
 | **per_page** | **Integer** | Number of results per page. | [optional] |
-| **sub_merchant_id** | **String** | Filter results by sub-merchant ID. | [optional] |
+| **sub_merchant_id** | **String** | Filter results by sub_merchant ID. | [optional] |
 
 ### Return type
 
-[**BalanceTransactionsGet200Response**](BalanceTransactionsGet200Response.md)
+[**ListBalanceTransactionsResponse**](ListBalanceTransactionsResponse.md)
 
 ### Authorization
 

@@ -14,43 +14,31 @@ require 'date'
 require 'time'
 
 module BckbnPay
-  class CardProfile
-    attr_accessor :avs_check
+  class BalanceTransactionAttributes
+    attr_accessor :amount
 
-    attr_accessor :avs_check_message
+    attr_accessor :charge_id
 
-    attr_accessor :brand
+    attr_accessor :fee
 
-    attr_accessor :cvc_check
+    attr_accessor :net
 
-    attr_accessor :cvc_check_message
+    attr_accessor :refund_id
 
-    attr_accessor :exp_month
+    attr_accessor :state
 
-    attr_accessor :exp_year
-
-    attr_accessor :funding
-
-    attr_accessor :last4
-
-    attr_accessor :three_d_secure_supported
-
-    attr_accessor :token
+    attr_accessor :type
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'avs_check' => :'avs_check',
-        :'avs_check_message' => :'avs_check_message',
-        :'brand' => :'brand',
-        :'cvc_check' => :'cvc_check',
-        :'cvc_check_message' => :'cvc_check_message',
-        :'exp_month' => :'exp_month',
-        :'exp_year' => :'exp_year',
-        :'funding' => :'funding',
-        :'last4' => :'last4',
-        :'three_d_secure_supported' => :'three_d_secure_supported',
-        :'token' => :'token'
+        :'amount' => :'amount',
+        :'charge_id' => :'charge_id',
+        :'fee' => :'fee',
+        :'net' => :'net',
+        :'refund_id' => :'refund_id',
+        :'state' => :'state',
+        :'type' => :'type'
       }
     end
 
@@ -62,27 +50,19 @@ module BckbnPay
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'avs_check' => :'String',
-        :'avs_check_message' => :'String',
-        :'brand' => :'String',
-        :'cvc_check' => :'String',
-        :'cvc_check_message' => :'String',
-        :'exp_month' => :'Integer',
-        :'exp_year' => :'Integer',
-        :'funding' => :'String',
-        :'last4' => :'String',
-        :'three_d_secure_supported' => :'Boolean',
-        :'token' => :'String'
+        :'amount' => :'Integer',
+        :'charge_id' => :'String',
+        :'fee' => :'Integer',
+        :'net' => :'Integer',
+        :'refund_id' => :'String',
+        :'state' => :'String',
+        :'type' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'avs_check_message',
-        :'cvc_check_message',
-        :'funding',
-        :'three_d_secure_supported',
       ])
     end
 
@@ -90,59 +70,43 @@ module BckbnPay
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `BckbnPay::CardProfile` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `BckbnPay::BalanceTransactionAttributes` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `BckbnPay::CardProfile`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `BckbnPay::BalanceTransactionAttributes`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'avs_check')
-        self.avs_check = attributes[:'avs_check']
+      if attributes.key?(:'amount')
+        self.amount = attributes[:'amount']
       end
 
-      if attributes.key?(:'avs_check_message')
-        self.avs_check_message = attributes[:'avs_check_message']
+      if attributes.key?(:'charge_id')
+        self.charge_id = attributes[:'charge_id']
       end
 
-      if attributes.key?(:'brand')
-        self.brand = attributes[:'brand']
+      if attributes.key?(:'fee')
+        self.fee = attributes[:'fee']
       end
 
-      if attributes.key?(:'cvc_check')
-        self.cvc_check = attributes[:'cvc_check']
+      if attributes.key?(:'net')
+        self.net = attributes[:'net']
       end
 
-      if attributes.key?(:'cvc_check_message')
-        self.cvc_check_message = attributes[:'cvc_check_message']
+      if attributes.key?(:'refund_id')
+        self.refund_id = attributes[:'refund_id']
       end
 
-      if attributes.key?(:'exp_month')
-        self.exp_month = attributes[:'exp_month']
+      if attributes.key?(:'state')
+        self.state = attributes[:'state']
       end
 
-      if attributes.key?(:'exp_year')
-        self.exp_year = attributes[:'exp_year']
-      end
-
-      if attributes.key?(:'funding')
-        self.funding = attributes[:'funding']
-      end
-
-      if attributes.key?(:'last4')
-        self.last4 = attributes[:'last4']
-      end
-
-      if attributes.key?(:'three_d_secure_supported')
-        self.three_d_secure_supported = attributes[:'three_d_secure_supported']
-      end
-
-      if attributes.key?(:'token')
-        self.token = attributes[:'token']
+      if attributes.key?(:'type')
+        self.type = attributes[:'type']
       end
     end
 
@@ -166,17 +130,13 @@ module BckbnPay
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          avs_check == o.avs_check &&
-          avs_check_message == o.avs_check_message &&
-          brand == o.brand &&
-          cvc_check == o.cvc_check &&
-          cvc_check_message == o.cvc_check_message &&
-          exp_month == o.exp_month &&
-          exp_year == o.exp_year &&
-          funding == o.funding &&
-          last4 == o.last4 &&
-          three_d_secure_supported == o.three_d_secure_supported &&
-          token == o.token
+          amount == o.amount &&
+          charge_id == o.charge_id &&
+          fee == o.fee &&
+          net == o.net &&
+          refund_id == o.refund_id &&
+          state == o.state &&
+          type == o.type
     end
 
     # @see the `==` method
@@ -188,7 +148,7 @@ module BckbnPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [avs_check, avs_check_message, brand, cvc_check, cvc_check_message, exp_month, exp_year, funding, last4, three_d_secure_supported, token].hash
+      [amount, charge_id, fee, net, refund_id, state, type].hash
     end
 
     # Builds the object from hash

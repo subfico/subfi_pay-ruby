@@ -34,13 +34,13 @@ describe 'ChargesApi' do
     end
   end
 
-  # unit tests for charges_get
+  # unit tests for list_charges
   # List all charges
   # @param x_api_version
   # @param content_type
   # @param [Hash] opts the optional parameters
   # @return [Array<Charge>]
-  describe 'charges_get test' do
+  describe "#list_charges" do
     context "without query params" do
       before do
         stub_request(:get, [config.host, path].join)
@@ -53,10 +53,10 @@ describe 'ChargesApi' do
       end
 
       it 'should work' do
-        res = api_instance.charges_get("0.1.0")
+        res = api_instance.list_charges("0.1.0")
 
         expect(res.data).to be_a(Array)
-        expect(res.data.first).to be_a(BckbnPay::Charge)
+        expect(res.data.first).to be_a(BckbnPay::ChargeResponse)
       end
     end
 
@@ -72,10 +72,10 @@ describe 'ChargesApi' do
       end
 
       it do
-        res = api_instance.charges_get("0.1.0", page: 1, per_page: 2)
+        res = api_instance.list_charges("0.1.0", page: 1, per_page: 2)
 
         expect(res.data).to be_a(Array)
-        expect(res.data.first).to be_a(BckbnPay::Charge)
+        expect(res.data.first).to be_a(BckbnPay::ChargeResponse)
         expect(a_request(:get, [config.host, path, "?page=1&per_page=2"].join).with(headers: request_headers)).to have_been_made.once
       end
     end
@@ -88,7 +88,7 @@ describe 'ChargesApi' do
   # @param id
   # @param [Hash] opts the optional parameters
   # @return [Charge]
-  describe "#charges_id_get" do
+  describe "#get_charge" do
     let(:charge_id) { "97b3f0e1-24ce-46e1-a4b8-d0a95258a4d6" }
 
     before do
@@ -102,9 +102,9 @@ describe 'ChargesApi' do
     end
 
     it 'should work' do
-      res = api_instance.charges_id_get("0.1.0", charge_id)
+      res = api_instance.get_charge("0.1.0", charge_id)
 
-      expect(res).to be_a(BckbnPay::Charge)
+      expect(res).to be_a(BckbnPay::ChargeResponse)
     end
   end
 
@@ -115,7 +115,7 @@ describe 'ChargesApi' do
   # @param charges_post_request
   # @param [Hash] opts the optional parameters
   # @return [Charge]
-  describe "#charges_post" do
+  describe "#create_charge" do
     let(:payment_method_id) { SecureRandom.uuid }
     let(:body) do
       {
@@ -139,13 +139,10 @@ describe 'ChargesApi' do
     end
 
     it 'should work' do
-      req_charge = BckbnPay::ChargesPostRequestCharge.new(body[:charge])
-      res = api_instance.charges_post(
-        "0.1.0",
-        BckbnPay::ChargesPostRequest.new(charge: req_charge)
-      )
+      charge = BckbnPay::ChargeAttributes.new(body[:charge])
+      res = api_instance.create_charge("0.1.0", { charge: charge.to_hash })
 
-      expect(res).to be_a(BckbnPay::Charge)
+      expect(res).to be_a(BckbnPay::ChargeResponse)
     end
   end
 end
