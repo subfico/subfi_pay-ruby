@@ -26,34 +26,13 @@ describe BckbnPay::SubMerchantResponse do
     end
   end
 
-  describe 'test attribute "name"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+  let(:attributes) { %w[name worldpay_merchant_id id created_at updated_at] }
+
+  describe 'test attributes' do
+    it 'should respond to all attributes' do
+      attributes.each do |attribute|
+        expect(instance).to respond_to(attribute)
+      end
     end
   end
-
-  describe 'test attribute "worldpay_merchant_id"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "id"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "created_at"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "updated_at"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
 end

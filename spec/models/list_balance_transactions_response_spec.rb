@@ -26,16 +26,13 @@ describe BckbnPay::ListBalanceTransactionsResponse do
     end
   end
 
-  describe 'test attribute "data"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+  let(:attributes) { %w[data meta] }
+
+  describe 'test attributes' do
+    it 'should respond to all attributes' do
+      attributes.each do |attribute|
+        expect(instance).to respond_to(attribute)
+      end
     end
   end
-
-  describe 'test attribute "meta"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
 end

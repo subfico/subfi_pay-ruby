@@ -26,40 +26,13 @@ describe BckbnPay::Meta do
     end
   end
 
-  describe 'test attribute "current_page"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+  let(:attributes) { %w[current_page next_page prev_page first_page last_page total_pages] }
+
+  describe 'test attributes' do
+    it 'should respond to all attributes' do
+      attributes.each do |attribute|
+        expect(instance).to respond_to(attribute)
+      end
     end
   end
-
-  describe 'test attribute "next_page"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "prev_page"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "first_page"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "last_page"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "total_pages"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
 end
