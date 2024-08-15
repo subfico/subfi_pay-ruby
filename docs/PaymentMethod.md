@@ -8,6 +8,7 @@
 | **created_at** | **Time** |  | [optional] |
 | **metadata** | **Object** |  | [optional] |
 | **partner_id** | **String** |  | [optional] |
+| **sub_merchant_id** | **String** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |
 
 ## Example
@@ -20,6 +21,7 @@ instance = BckbnPay::PaymentMethod.new(
   created_at: null,
   metadata: null,
   partner_id: null,
+  sub_merchant_id: null,
   updated_at: null
 )
 ```

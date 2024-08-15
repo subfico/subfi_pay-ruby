@@ -28,7 +28,7 @@ describe BckbnPay::PaymentMethodsPostRequest do
 
   describe 'test attribute "payment_method"' do
     it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+      expect(instance.respond_to?(:payment_method)).to eq(true)
     end
   end
 end

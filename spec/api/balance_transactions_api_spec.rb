@@ -11,6 +11,7 @@ describe 'BalanceTransactionsApi' do
     end
   end
   let(:path) { '/balance_transactions' }
+  let(:url) { [config.host, path].join }
   let(:request_headers) do
     {
       'Accept'        =>  'application/json',
@@ -43,7 +44,7 @@ describe 'BalanceTransactionsApi' do
   describe 'balance_transactions_get test' do
     context "without query params" do
       before do
-        stub_request(:get, [config.host, path].join)
+        stub_request(:get, url)
         .with(headers: request_headers)
         .to_return(
           body: fixture("balance_transactions/list_200.json"),
@@ -57,13 +58,13 @@ describe 'BalanceTransactionsApi' do
 
         expect(res.data).to be_a(Array)
         expect(res.data.first).to be_a(BckbnPay::BalanceTransaction)
-        expect(a_request(:get, [config.host, path].join).with(headers: request_headers)).to have_been_made.once
+        expect(a_request(:get, url).with(headers: request_headers)).to have_been_made.once
       end
     end
 
     context "with pagination" do
       before do
-        stub_request(:get, [config.host, path, "?page=1&per_page=2"].join)
+        stub_request(:get, [url, "?page=1&per_page=2"].join)
         .with(headers: request_headers)
         .to_return(
           body: fixture("balance_transactions/list_200.json"),
@@ -77,7 +78,7 @@ describe 'BalanceTransactionsApi' do
 
         expect(res.data).to be_a(Array)
         expect(res.data.first).to be_a(BckbnPay::BalanceTransaction)
-        expect(a_request(:get, [config.host, path, "?page=1&per_page=2"].join).with(headers: request_headers)).to have_been_made.once
+        expect(a_request(:get, [url, "?page=1&per_page=2"].join).with(headers: request_headers)).to have_been_made.once
       end
     end
   end

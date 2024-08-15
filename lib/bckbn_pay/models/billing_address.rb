@@ -14,34 +14,40 @@ require 'date'
 require 'time'
 
 module BckbnPay
-  class Refund
-    attr_accessor :id
+  class BillingAddress
+    attr_accessor :first_name
 
-    attr_accessor :amount
+    attr_accessor :last_name
 
-    attr_accessor :charge_id
+    attr_accessor :email
 
-    attr_accessor :description
+    attr_accessor :phone
 
-    attr_accessor :failure_reason
+    attr_accessor :address_line1
+
+    attr_accessor :address_line2
+
+    attr_accessor :city
 
     attr_accessor :state
 
-    attr_accessor :created_at
+    attr_accessor :country
 
-    attr_accessor :sub_merchant_id
+    attr_accessor :postal_code
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'amount' => :'amount',
-        :'charge_id' => :'charge_id',
-        :'description' => :'description',
-        :'failure_reason' => :'failure_reason',
+        :'first_name' => :'first_name',
+        :'last_name' => :'last_name',
+        :'email' => :'email',
+        :'phone' => :'phone',
+        :'address_line1' => :'address_line1',
+        :'address_line2' => :'address_line2',
+        :'city' => :'city',
         :'state' => :'state',
-        :'created_at' => :'created_at',
-        :'sub_merchant_id' => :'sub_merchant_id'
+        :'country' => :'country',
+        :'postal_code' => :'postal_code'
       }
     end
 
@@ -53,23 +59,23 @@ module BckbnPay
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'String',
-        :'amount' => :'Integer',
-        :'charge_id' => :'String',
-        :'description' => :'String',
-        :'failure_reason' => :'String',
+        :'first_name' => :'String',
+        :'last_name' => :'String',
+        :'email' => :'String',
+        :'phone' => :'String',
+        :'address_line1' => :'String',
+        :'address_line2' => :'String',
+        :'city' => :'String',
         :'state' => :'String',
-        :'created_at' => :'Time',
-        :'sub_merchant_id' => :'String'
+        :'country' => :'String',
+        :'postal_code' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'description',
-        :'failure_reason',
-        :'sub_merchant_id'
+        :'address_line2',
       ])
     end
 
@@ -77,47 +83,55 @@ module BckbnPay
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `BckbnPay::Refund` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `BckbnPay::BillingAddress` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `BckbnPay::Refund`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `BckbnPay::BillingAddress`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.key?(:'first_name')
+        self.first_name = attributes[:'first_name']
       end
 
-      if attributes.key?(:'amount')
-        self.amount = attributes[:'amount']
+      if attributes.key?(:'last_name')
+        self.last_name = attributes[:'last_name']
       end
 
-      if attributes.key?(:'charge_id')
-        self.charge_id = attributes[:'charge_id']
+      if attributes.key?(:'email')
+        self.email = attributes[:'email']
       end
 
-      if attributes.key?(:'description')
-        self.description = attributes[:'description']
+      if attributes.key?(:'phone')
+        self.phone = attributes[:'phone']
       end
 
-      if attributes.key?(:'failure_reason')
-        self.failure_reason = attributes[:'failure_reason']
+      if attributes.key?(:'address_line1')
+        self.address_line1 = attributes[:'address_line1']
+      end
+
+      if attributes.key?(:'address_line2')
+        self.address_line2 = attributes[:'address_line2']
+      end
+
+      if attributes.key?(:'city')
+        self.city = attributes[:'city']
       end
 
       if attributes.key?(:'state')
         self.state = attributes[:'state']
       end
 
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
+      if attributes.key?(:'country')
+        self.country = attributes[:'country']
       end
 
-      if attributes.key?(:'sub_merchant_id')
-        self.sub_merchant_id = attributes[:'sub_merchant_id']
+      if attributes.key?(:'postal_code')
+        self.postal_code = attributes[:'postal_code']
       end
     end
 
@@ -141,14 +155,16 @@ module BckbnPay
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          amount == o.amount &&
-          charge_id == o.charge_id &&
-          description == o.description &&
-          failure_reason == o.failure_reason &&
+          first_name == o.first_name &&
+          last_name == o.last_name &&
+          email == o.email &&
+          phone == o.phone &&
+          address_line1 == o.address_line1 &&
+          address_line2 == o.address_line2 &&
+          city == o.city &&
           state == o.state &&
-          created_at == o.created_at &&
-          sub_merchant_id == o.sub_merchant_id
+          country == o.country &&
+          postal_code == o.postal_code
     end
 
     # @see the `==` method
@@ -160,7 +176,7 @@ module BckbnPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, amount, charge_id, description, failure_reason, state, created_at, sub_merchant_id].hash
+      [first_name, last_name, email, phone, address_line1, address_line2, city, state, country, postal_code].hash
     end
 
     # Builds the object from hash

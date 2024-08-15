@@ -42,9 +42,9 @@ module BckbnPay
     def self.openapi_types
       {
         :'type' => :'String',
-        :'billing_address_attributes' => :'PaymentMethodsPostRequestPaymentMethodBillingAddressAttributes',
-        :'card_profile_attributes' => :'PaymentMethodsPostRequestPaymentMethodCardProfileAttributes',
-        :'bank_account_profile_attributes' => :'PaymentMethodsPostRequestPaymentMethodBankAccountProfileAttributes'
+        :'billing_address_attributes' => :'BillingAddress',
+        :'card_profile_attributes' => :'CardProfile',
+        :'bank_account_profile_attributes' => :'BankAccountProfile'
       }
     end
 

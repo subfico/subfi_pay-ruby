@@ -25,4 +25,10 @@ describe BckbnPay::ChargesPostRequest do
       expect(instance).to be_instance_of(BckbnPay::ChargesPostRequest)
     end
   end
+
+  describe 'test attribute "charge"' do
+    it 'should work' do
+      expect(instance.respond_to?(:charge)).to eq(true)
+    end
+  end
 end

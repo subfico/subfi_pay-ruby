@@ -23,13 +23,20 @@ module BckbnPay
 
     attr_accessor :sub_merchant_id
 
+    # Determines whether the charge should be captured immediately
+    attr_accessor :immediate_capture
+
+    attr_accessor :billing_address_attributes
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'amount' => :'amount',
         :'description' => :'description',
         :'payment_method_id' => :'payment_method_id',
-        :'sub_merchant_id' => :'sub_merchant_id'
+        :'sub_merchant_id' => :'sub_merchant_id',
+        :'immediate_capture' => :'immediate_capture',
+        :'billing_address_attributes' => :'billing_address_attributes'
       }
     end
 
@@ -44,14 +51,17 @@ module BckbnPay
         :'amount' => :'Integer',
         :'description' => :'String',
         :'payment_method_id' => :'String',
-        :'sub_merchant_id' => :'String'
+        :'sub_merchant_id' => :'String',
+        :'immediate_capture' => :'Boolean',
+        :'billing_address_attributes' => :'BillingAddress'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'sub_merchant_id'
+        :'description',
+        :'sub_merchant_id',
       ])
     end
 
@@ -89,6 +99,14 @@ module BckbnPay
       if attributes.key?(:'sub_merchant_id')
         self.sub_merchant_id = attributes[:'sub_merchant_id']
       end
+
+      if attributes.key?(:'immediate_capture')
+        self.immediate_capture = attributes[:'immediate_capture']
+      end
+
+      if attributes.key?(:'billing_address_attributes')
+        self.billing_address_attributes = attributes[:'billing_address_attributes']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -124,7 +142,9 @@ module BckbnPay
           amount == o.amount &&
           description == o.description &&
           payment_method_id == o.payment_method_id &&
-          sub_merchant_id == o.sub_merchant_id
+          sub_merchant_id == o.sub_merchant_id &&
+          immediate_capture == o.immediate_capture &&
+          billing_address_attributes == o.billing_address_attributes
     end
 
     # @see the `==` method
@@ -136,7 +156,7 @@ module BckbnPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [amount, description, payment_method_id, sub_merchant_id].hash
+      [amount, description, payment_method_id, sub_merchant_id, immediate_capture, billing_address_attributes].hash
     end
 
     # Builds the object from hash

@@ -27,6 +27,8 @@ module BckbnPay
 
     attr_accessor :partner_id
 
+    attr_accessor :sub_merchant_id
+
     attr_accessor :updated_at
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -38,6 +40,7 @@ module BckbnPay
         :'created_at' => :'created_at',
         :'metadata' => :'metadata',
         :'partner_id' => :'partner_id',
+        :'sub_merchant_id' => :'sub_merchant_id',
         :'updated_at' => :'updated_at'
       }
     end
@@ -51,11 +54,12 @@ module BckbnPay
     def self.openapi_types
       {
         :'id' => :'String',
-        :'billing_address' => :'ChargePaymentMethodBillingAddress',
-        :'card_profile' => :'ChargePaymentMethodCardProfile',
+        :'billing_address' => :'BillingAddress',
+        :'card_profile' => :'CardProfile',
         :'created_at' => :'Time',
         :'metadata' => :'Object',
         :'partner_id' => :'String',
+        :'sub_merchant_id' => :'String',
         :'updated_at' => :'Time'
       }
     end
@@ -63,6 +67,8 @@ module BckbnPay
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'metadata',
+        :'sub_merchant_id',
       ])
     end
 
@@ -105,6 +111,10 @@ module BckbnPay
         self.partner_id = attributes[:'partner_id']
       end
 
+      if attributes.key?(:'sub_merchant_id')
+        self.sub_merchant_id = attributes[:'sub_merchant_id']
+      end
+
       if attributes.key?(:'updated_at')
         self.updated_at = attributes[:'updated_at']
       end
@@ -136,6 +146,7 @@ module BckbnPay
           created_at == o.created_at &&
           metadata == o.metadata &&
           partner_id == o.partner_id &&
+          sub_merchant_id == o.sub_merchant_id &&
           updated_at == o.updated_at
     end
 
@@ -148,7 +159,7 @@ module BckbnPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, billing_address, card_profile, created_at, metadata, partner_id, updated_at].hash
+      [id, billing_address, card_profile, created_at, metadata, partner_id, sub_merchant_id, updated_at].hash
     end
 
     # Builds the object from hash

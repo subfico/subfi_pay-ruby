@@ -22,39 +22,37 @@ describe BckbnPay::ChargesPostRequestCharge do
 
   describe 'test an instance of ChargesPostRequestCharge' do
     it 'should create an instance of ChargesPostRequestCharge' do
-      # uncomment below to test the instance creation
-      #expect(instance).to be_instance_of(BckbnPay::ChargesPostRequestCharge)
+      expect(instance).to be_instance_of(BckbnPay::ChargesPostRequestCharge)
     end
   end
 
   describe 'test attribute "amount"' do
     it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "currency"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+      expect(instance.respond_to?(:amount)).to eq(true)
     end
   end
 
   describe 'test attribute "description"' do
     it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+      expect(instance.respond_to?(:description)).to eq(true)
     end
   end
 
   describe 'test attribute "payment_method_id"' do
     it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+      expect(instance.respond_to?(:payment_method_id)).to eq(true)
     end
   end
 
   describe 'test attribute "sub_merchant_id"' do
     it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+      expect(instance.respond_to?(:sub_merchant_id)).to eq(true)
     end
   end
 
+  describe 'test attribute "immediate_capture"' do
+    it 'should work' do
+      expect(instance.respond_to?(:immediate_capture)).to eq(true)
+    end
+  end
 end

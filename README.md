@@ -91,6 +91,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *BckbnPay::BalanceTransactionsApi* | [**balance_transactions_get**](docs/BalanceTransactionsApi.md#balance_transactions_get) | **GET** /balance_transactions | List all balance transactions
 *BckbnPay::ChargesApi* | [**charges_get**](docs/ChargesApi.md#charges_get) | **GET** /charges | List all charges
+*BckbnPay::ChargesApi* | [**charges_id_capture_put**](docs/ChargesApi.md#charges_id_capture_put) | **PUT** /charges/{id}/capture | Capture a charge
 *BckbnPay::ChargesApi* | [**charges_id_get**](docs/ChargesApi.md#charges_id_get) | **GET** /charges/{id} | Retrieve a charge
 *BckbnPay::ChargesApi* | [**charges_post**](docs/ChargesApi.md#charges_post) | **POST** /charges | Create a charge
 *BckbnPay::PaymentMethodsApi* | [**payment_methods_id_get**](docs/PaymentMethodsApi.md#payment_methods_id_get) | **GET** /payment_methods/{id} | Retrieve a payment method
@@ -104,10 +105,11 @@ Class | Method | HTTP request | Description
 
  - [BckbnPay::BalanceTransaction](docs/BalanceTransaction.md)
  - [BckbnPay::BalanceTransactionsGet200Response](docs/BalanceTransactionsGet200Response.md)
+ - [BckbnPay::BankAccountProfile](docs/BankAccountProfile.md)
+ - [BckbnPay::BillingAddress](docs/BillingAddress.md)
+ - [BckbnPay::CardProfile](docs/CardProfile.md)
  - [BckbnPay::Charge](docs/Charge.md)
  - [BckbnPay::ChargePaymentMethod](docs/ChargePaymentMethod.md)
- - [BckbnPay::ChargePaymentMethodBillingAddress](docs/ChargePaymentMethodBillingAddress.md)
- - [BckbnPay::ChargePaymentMethodCardProfile](docs/ChargePaymentMethodCardProfile.md)
  - [BckbnPay::ChargesGet200Response](docs/ChargesGet200Response.md)
  - [BckbnPay::ChargesPostRequest](docs/ChargesPostRequest.md)
  - [BckbnPay::ChargesPostRequestCharge](docs/ChargesPostRequestCharge.md)
@@ -115,9 +117,6 @@ Class | Method | HTTP request | Description
  - [BckbnPay::PaymentMethod](docs/PaymentMethod.md)
  - [BckbnPay::PaymentMethodsPostRequest](docs/PaymentMethodsPostRequest.md)
  - [BckbnPay::PaymentMethodsPostRequestPaymentMethod](docs/PaymentMethodsPostRequestPaymentMethod.md)
- - [BckbnPay::PaymentMethodsPostRequestPaymentMethodBankAccountProfileAttributes](docs/PaymentMethodsPostRequestPaymentMethodBankAccountProfileAttributes.md)
- - [BckbnPay::PaymentMethodsPostRequestPaymentMethodBillingAddressAttributes](docs/PaymentMethodsPostRequestPaymentMethodBillingAddressAttributes.md)
- - [BckbnPay::PaymentMethodsPostRequestPaymentMethodCardProfileAttributes](docs/PaymentMethodsPostRequestPaymentMethodCardProfileAttributes.md)
  - [BckbnPay::Refund](docs/Refund.md)
  - [BckbnPay::RefundsPostRequest](docs/RefundsPostRequest.md)
  - [BckbnPay::RefundsPostRequestRefund](docs/RefundsPostRequestRefund.md)

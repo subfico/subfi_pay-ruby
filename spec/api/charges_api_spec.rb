@@ -119,9 +119,12 @@ describe 'ChargesApi' do
     let(:payment_method_id) { SecureRandom.uuid }
     let(:body) do
       {
-        amount: 25_000,
-        payment_method_id:,
-        description: "July Fees"
+        charge: {
+          amount: 25_000,
+          description: "July Fees",
+          payment_method_id:,
+          immediate_capture: true
+        }
       }
     end
 
@@ -136,7 +139,11 @@ describe 'ChargesApi' do
     end
 
     it 'should work' do
-      res = api_instance.charges_post("0.1.0", body)
+      req_charge = BckbnPay::ChargesPostRequestCharge.new(body[:charge])
+      res = api_instance.charges_post(
+        "0.1.0",
+        BckbnPay::ChargesPostRequest.new(charge: req_charge)
+      )
 
       expect(res).to be_a(BckbnPay::Charge)
     end

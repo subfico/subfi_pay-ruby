@@ -14,34 +14,28 @@ require 'date'
 require 'time'
 
 module BckbnPay
-  class Refund
-    attr_accessor :id
+  class BankAccountProfile
+    attr_accessor :account_holder_name
 
-    attr_accessor :amount
+    attr_accessor :bank_name
 
-    attr_accessor :charge_id
+    attr_accessor :account_holder_type
 
-    attr_accessor :description
+    attr_accessor :account_type
 
-    attr_accessor :failure_reason
+    attr_accessor :encrypted_account_number
 
-    attr_accessor :state
-
-    attr_accessor :created_at
-
-    attr_accessor :sub_merchant_id
+    attr_accessor :routing_number
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'amount' => :'amount',
-        :'charge_id' => :'charge_id',
-        :'description' => :'description',
-        :'failure_reason' => :'failure_reason',
-        :'state' => :'state',
-        :'created_at' => :'created_at',
-        :'sub_merchant_id' => :'sub_merchant_id'
+        :'account_holder_name' => :'account_holder_name',
+        :'bank_name' => :'bank_name',
+        :'account_holder_type' => :'account_holder_type',
+        :'account_type' => :'account_type',
+        :'encrypted_account_number' => :'encrypted_account_number',
+        :'routing_number' => :'routing_number'
       }
     end
 
@@ -53,23 +47,18 @@ module BckbnPay
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'String',
-        :'amount' => :'Integer',
-        :'charge_id' => :'String',
-        :'description' => :'String',
-        :'failure_reason' => :'String',
-        :'state' => :'String',
-        :'created_at' => :'Time',
-        :'sub_merchant_id' => :'String'
+        :'account_holder_name' => :'String',
+        :'bank_name' => :'String',
+        :'account_holder_type' => :'String',
+        :'account_type' => :'String',
+        :'encrypted_account_number' => :'String',
+        :'routing_number' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'description',
-        :'failure_reason',
-        :'sub_merchant_id'
       ])
     end
 
@@ -77,47 +66,39 @@ module BckbnPay
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `BckbnPay::Refund` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `BckbnPay::BankAccountProfile` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `BckbnPay::Refund`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `BckbnPay::BankAccountProfile`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.key?(:'account_holder_name')
+        self.account_holder_name = attributes[:'account_holder_name']
       end
 
-      if attributes.key?(:'amount')
-        self.amount = attributes[:'amount']
+      if attributes.key?(:'bank_name')
+        self.bank_name = attributes[:'bank_name']
       end
 
-      if attributes.key?(:'charge_id')
-        self.charge_id = attributes[:'charge_id']
+      if attributes.key?(:'account_holder_type')
+        self.account_holder_type = attributes[:'account_holder_type']
       end
 
-      if attributes.key?(:'description')
-        self.description = attributes[:'description']
+      if attributes.key?(:'account_type')
+        self.account_type = attributes[:'account_type']
       end
 
-      if attributes.key?(:'failure_reason')
-        self.failure_reason = attributes[:'failure_reason']
+      if attributes.key?(:'encrypted_account_number')
+        self.encrypted_account_number = attributes[:'encrypted_account_number']
       end
 
-      if attributes.key?(:'state')
-        self.state = attributes[:'state']
-      end
-
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
-      end
-
-      if attributes.key?(:'sub_merchant_id')
-        self.sub_merchant_id = attributes[:'sub_merchant_id']
+      if attributes.key?(:'routing_number')
+        self.routing_number = attributes[:'routing_number']
       end
     end
 
@@ -141,14 +122,12 @@ module BckbnPay
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          amount == o.amount &&
-          charge_id == o.charge_id &&
-          description == o.description &&
-          failure_reason == o.failure_reason &&
-          state == o.state &&
-          created_at == o.created_at &&
-          sub_merchant_id == o.sub_merchant_id
+          account_holder_name == o.account_holder_name &&
+          bank_name == o.bank_name &&
+          account_holder_type == o.account_holder_type &&
+          account_type == o.account_type &&
+          encrypted_account_number == o.encrypted_account_number &&
+          routing_number == o.routing_number
     end
 
     # @see the `==` method
@@ -160,7 +139,7 @@ module BckbnPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, amount, charge_id, description, failure_reason, state, created_at, sub_merchant_id].hash
+      [account_holder_name, bank_name, account_holder_type, account_type, encrypted_account_number, routing_number].hash
     end
 
     # Builds the object from hash

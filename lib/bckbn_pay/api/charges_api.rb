@@ -90,6 +90,74 @@ module BckbnPay
       return data, status_code, headers
     end
 
+    # Capture a charge
+    # @param x_api_version [String] 
+    # @param id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Charge]
+    def charges_id_capture_put(x_api_version, id, opts = {})
+      data, _status_code, _headers = charges_id_capture_put_with_http_info(x_api_version, id, opts)
+      data
+    end
+
+    # Capture a charge
+    # @param x_api_version [String] 
+    # @param id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Charge, Integer, Hash)>] Charge data, response status code and response headers
+    def charges_id_capture_put_with_http_info(x_api_version, id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ChargesApi.charges_id_capture_put ...'
+      end
+      # verify the required parameter 'x_api_version' is set
+      if @api_client.config.client_side_validation && x_api_version.nil?
+        fail ArgumentError, "Missing the required parameter 'x_api_version' when calling ChargesApi.charges_id_capture_put"
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling ChargesApi.charges_id_capture_put"
+      end
+      # resource path
+      local_var_path = '/charges/{id}/capture'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params[:'X-Api-Version'] = x_api_version
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Charge'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['bearerAuth']
+
+      new_options = opts.merge(
+        :operation => :"ChargesApi.charges_id_capture_put",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ChargesApi#charges_id_capture_put\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve a charge
     # @param x_api_version [String] 
     # @param id [String] 

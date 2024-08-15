@@ -105,11 +105,16 @@ describe 'SubMerchantsApi' do
     end
 
     it 'should work' do
-      res = api_instance.sub_merchants_post("0.1.0", body)
+      req_sub_merchant = BckbnPay::SubMerchantsPostRequestSubMerchant.new(body[:sub_merchant])
+      res = api_instance.sub_merchants_post(
+        "0.1.0",
+        BckbnPay::SubMerchantsPostRequest.new(
+          sub_merchant: req_sub_merchant
+        )
+      )
 
       expect(res).to be_a(BckbnPay::SubMerchant)
       expect(a_request(:post, [config.host, path].join).with(headers: request_headers, body: body.to_json)).to have_been_made.once
     end
   end
-
 end

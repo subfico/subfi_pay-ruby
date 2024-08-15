@@ -19,13 +19,21 @@ module BckbnPay
 
     attr_accessor :amount
 
+    attr_accessor :captured_at
+
     attr_accessor :description
 
-    attr_accessor :sub_merchant_id
+    attr_accessor :failure_reason
+
+    attr_accessor :merchant_id
 
     attr_accessor :payment_method
 
+    attr_accessor :processor_id
+
     attr_accessor :state
+
+    attr_accessor :sub_merchant_id
 
     attr_accessor :created_at
 
@@ -34,10 +42,14 @@ module BckbnPay
       {
         :'id' => :'id',
         :'amount' => :'amount',
+        :'captured_at' => :'captured_at',
         :'description' => :'description',
-        :'sub_merchant_id' => :'sub_merchant_id',
+        :'failure_reason' => :'failure_reason',
+        :'merchant_id' => :'merchant_id',
         :'payment_method' => :'payment_method',
+        :'processor_id' => :'processor_id',
         :'state' => :'state',
+        :'sub_merchant_id' => :'sub_merchant_id',
         :'created_at' => :'created_at'
       }
     end
@@ -52,10 +64,14 @@ module BckbnPay
       {
         :'id' => :'String',
         :'amount' => :'Integer',
+        :'captured_at' => :'Time',
         :'description' => :'String',
-        :'sub_merchant_id' => :'String',
+        :'failure_reason' => :'String',
+        :'merchant_id' => :'String',
         :'payment_method' => :'ChargePaymentMethod',
+        :'processor_id' => :'String',
         :'state' => :'String',
+        :'sub_merchant_id' => :'String',
         :'created_at' => :'Time'
       }
     end
@@ -63,6 +79,10 @@ module BckbnPay
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'captured_at',
+        :'description',
+        :'failure_reason',
+        :'processor_id',
         :'sub_merchant_id',
       ])
     end
@@ -90,20 +110,36 @@ module BckbnPay
         self.amount = attributes[:'amount']
       end
 
+      if attributes.key?(:'captured_at')
+        self.captured_at = attributes[:'captured_at']
+      end
+
       if attributes.key?(:'description')
         self.description = attributes[:'description']
       end
 
-      if attributes.key?(:'sub_merchant_id')
-        self.sub_merchant_id = attributes[:'sub_merchant_id']
+      if attributes.key?(:'failure_reason')
+        self.failure_reason = attributes[:'failure_reason']
+      end
+
+      if attributes.key?(:'merchant_id')
+        self.merchant_id = attributes[:'merchant_id']
       end
 
       if attributes.key?(:'payment_method')
         self.payment_method = attributes[:'payment_method']
       end
 
+      if attributes.key?(:'processor_id')
+        self.processor_id = attributes[:'processor_id']
+      end
+
       if attributes.key?(:'state')
         self.state = attributes[:'state']
+      end
+
+      if attributes.key?(:'sub_merchant_id')
+        self.sub_merchant_id = attributes[:'sub_merchant_id']
       end
 
       if attributes.key?(:'created_at')
@@ -133,10 +169,14 @@ module BckbnPay
       self.class == o.class &&
           id == o.id &&
           amount == o.amount &&
+          captured_at == o.captured_at &&
           description == o.description &&
-          sub_merchant_id == o.sub_merchant_id &&
+          failure_reason == o.failure_reason &&
+          merchant_id == o.merchant_id &&
           payment_method == o.payment_method &&
+          processor_id == o.processor_id &&
           state == o.state &&
+          sub_merchant_id == o.sub_merchant_id &&
           created_at == o.created_at
     end
 
@@ -149,7 +189,7 @@ module BckbnPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, amount, description, sub_merchant_id, payment_method, state, created_at].hash
+      [id, amount, captured_at, description, failure_reason, merchant_id, payment_method, processor_id, state, sub_merchant_id, created_at].hash
     end
 
     # Builds the object from hash

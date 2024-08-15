@@ -79,6 +79,10 @@ module BckbnPay
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'avs_check_message',
+        :'cvc_check_message',
+        :'funding',
+        :'three_d_secure_supported',
       ])
     end
 

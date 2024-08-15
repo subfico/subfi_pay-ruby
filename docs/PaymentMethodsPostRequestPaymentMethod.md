@@ -5,9 +5,9 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **type** | **String** |  |  |
-| **billing_address_attributes** | [**PaymentMethodsPostRequestPaymentMethodBillingAddressAttributes**](PaymentMethodsPostRequestPaymentMethodBillingAddressAttributes.md) |  | [optional] |
-| **card_profile_attributes** | [**PaymentMethodsPostRequestPaymentMethodCardProfileAttributes**](PaymentMethodsPostRequestPaymentMethodCardProfileAttributes.md) |  | [optional] |
-| **bank_account_profile_attributes** | [**PaymentMethodsPostRequestPaymentMethodBankAccountProfileAttributes**](PaymentMethodsPostRequestPaymentMethodBankAccountProfileAttributes.md) |  | [optional] |
+| **billing_address_attributes** | [**BillingAddress**](BillingAddress.md) |  | [optional] |
+| **card_profile_attributes** | [**CardProfile**](CardProfile.md) |  | [optional] |
+| **bank_account_profile_attributes** | [**BankAccountProfile**](BankAccountProfile.md) |  | [optional] |
 
 ## Example
 
