@@ -17,6 +17,8 @@ module BckbnPay
   class PaymentMethodResponse
     attr_accessor :type
 
+    attr_accessor :sub_merchant_id
+
     attr_accessor :billing_address_attributes
 
     attr_accessor :card_profile_attributes
@@ -25,6 +27,8 @@ module BckbnPay
 
     attr_accessor :id
 
+    attr_accessor :partner_id
+
     attr_accessor :created_at
 
     attr_accessor :updated_at
@@ -32,23 +36,19 @@ module BckbnPay
     # Additional metadata key-value pairs
     attr_accessor :metadata
 
-    attr_accessor :partner_id
-
-    attr_accessor :sub_merchant_id
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'type' => :'type',
+        :'sub_merchant_id' => :'sub_merchant_id',
         :'billing_address_attributes' => :'billing_address_attributes',
         :'card_profile_attributes' => :'card_profile_attributes',
         :'bank_account_profile_attributes' => :'bank_account_profile_attributes',
         :'id' => :'id',
+        :'partner_id' => :'partner_id',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at',
-        :'metadata' => :'metadata',
-        :'partner_id' => :'partner_id',
-        :'sub_merchant_id' => :'sub_merchant_id'
+        :'metadata' => :'metadata'
       }
     end
 
@@ -61,22 +61,22 @@ module BckbnPay
     def self.openapi_types
       {
         :'type' => :'String',
+        :'sub_merchant_id' => :'String',
         :'billing_address_attributes' => :'BillingAddress',
         :'card_profile_attributes' => :'CardProfile',
         :'bank_account_profile_attributes' => :'BankAccountProfile',
         :'id' => :'String',
+        :'partner_id' => :'String',
         :'created_at' => :'Time',
         :'updated_at' => :'Time',
-        :'metadata' => :'Hash<String, String>',
-        :'partner_id' => :'String',
-        :'sub_merchant_id' => :'String'
+        :'metadata' => :'Hash<String, String>'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'sub_merchant_id'
+        :'sub_merchant_id',
       ])
     end
 
@@ -108,6 +108,10 @@ module BckbnPay
         self.type = nil
       end
 
+      if attributes.key?(:'sub_merchant_id')
+        self.sub_merchant_id = attributes[:'sub_merchant_id']
+      end
+
       if attributes.key?(:'billing_address_attributes')
         self.billing_address_attributes = attributes[:'billing_address_attributes']
       end
@@ -124,6 +128,10 @@ module BckbnPay
         self.id = attributes[:'id']
       end
 
+      if attributes.key?(:'partner_id')
+        self.partner_id = attributes[:'partner_id']
+      end
+
       if attributes.key?(:'created_at')
         self.created_at = attributes[:'created_at']
       end
@@ -136,14 +144,6 @@ module BckbnPay
         if (value = attributes[:'metadata']).is_a?(Hash)
           self.metadata = value
         end
-      end
-
-      if attributes.key?(:'partner_id')
-        self.partner_id = attributes[:'partner_id']
-      end
-
-      if attributes.key?(:'sub_merchant_id')
-        self.sub_merchant_id = attributes[:'sub_merchant_id']
       end
     end
 
@@ -173,15 +173,15 @@ module BckbnPay
       return true if self.equal?(o)
       self.class == o.class &&
           type == o.type &&
+          sub_merchant_id == o.sub_merchant_id &&
           billing_address_attributes == o.billing_address_attributes &&
           card_profile_attributes == o.card_profile_attributes &&
           bank_account_profile_attributes == o.bank_account_profile_attributes &&
           id == o.id &&
+          partner_id == o.partner_id &&
           created_at == o.created_at &&
           updated_at == o.updated_at &&
-          metadata == o.metadata &&
-          partner_id == o.partner_id &&
-          sub_merchant_id == o.sub_merchant_id
+          metadata == o.metadata
     end
 
     # @see the `==` method
@@ -193,7 +193,7 @@ module BckbnPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [type, billing_address_attributes, card_profile_attributes, bank_account_profile_attributes, id, created_at, updated_at, metadata, partner_id, sub_merchant_id].hash
+      [type, sub_merchant_id, billing_address_attributes, card_profile_attributes, bank_account_profile_attributes, id, partner_id, created_at, updated_at, metadata].hash
     end
 
     # Builds the object from hash
