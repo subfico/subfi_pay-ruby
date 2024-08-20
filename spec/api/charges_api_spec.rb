@@ -145,4 +145,56 @@ describe 'ChargesApi' do
       expect(res).to be_a(BckbnPay::ChargeResponse)
     end
   end
+
+  # unit tests for capture_charge
+  # Capture a charge
+  # @param x_api_version
+  # @return [Charge]
+  describe "#capture_charge" do
+    let(:id) { SecureRandom.uuid }
+    let(:path) { "/charges/#{id}/capture" }
+
+    before do
+      stub_request(:put, [config.host, path].join)
+        .with(headers: request_headers)
+        .to_return(
+          # re-using the same create response since it is the same object.
+          body: fixture("charges/create_201.json"),
+          headers: response_headers,
+          status: 202
+        )
+    end
+
+    it 'should work' do
+      res = api_instance.capture_charge("0.1.0", id)
+
+      expect(res).to be_a(BckbnPay::ChargeResponse)
+    end
+  end
+
+  # unit tests for charges_cancel
+  # Create a charge
+  # @param x_api_version
+  # @return [Charge]
+  describe "#cancel_charge" do
+    let(:id) { SecureRandom.uuid }
+    let(:path) { "/charges/#{id}/cancel" }
+
+    before do
+      stub_request(:put, [config.host, path].join)
+        .with(headers: request_headers)
+        .to_return(
+          # re-using the same create response since it is the same object.
+          body: fixture("charges/create_201.json"),
+          headers: response_headers,
+          status: 202
+        )
+    end
+
+    it 'should work' do
+      res = api_instance.cancel_charge("0.1.0", id)
+
+      expect(res).to be_a(BckbnPay::ChargeResponse)
+    end
+  end
 end

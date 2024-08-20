@@ -90,6 +90,7 @@ All URIs are relative to *https://pay.bckbn.com*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *BckbnPay::BalanceTransactionsApi* | [**list_balance_transactions**](docs/BalanceTransactionsApi.md#list_balance_transactions) | **GET** /balance_transactions | List all balance transactions
+*BckbnPay::ChargesApi* | [**cancel_charge**](docs/ChargesApi.md#cancel_charge) | **PUT** /charges/{id}/cancel | Cancel a charge
 *BckbnPay::ChargesApi* | [**capture_charge**](docs/ChargesApi.md#capture_charge) | **PUT** /charges/{id}/capture | Capture a charge
 *BckbnPay::ChargesApi* | [**create_charge**](docs/ChargesApi.md#create_charge) | **POST** /charges | Create a charge
 *BckbnPay::ChargesApi* | [**get_charge**](docs/ChargesApi.md#get_charge) | **GET** /charges/{id} | Retrieve a charge

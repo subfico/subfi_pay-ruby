@@ -4,10 +4,80 @@ All URIs are relative to *https://pay.bckbn.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
+| [**cancel_charge**](ChargesApi.md#cancel_charge) | **PUT** /charges/{id}/cancel | Cancel a charge |
 | [**capture_charge**](ChargesApi.md#capture_charge) | **PUT** /charges/{id}/capture | Capture a charge |
 | [**create_charge**](ChargesApi.md#create_charge) | **POST** /charges | Create a charge |
 | [**get_charge**](ChargesApi.md#get_charge) | **GET** /charges/{id} | Retrieve a charge |
 | [**list_charges**](ChargesApi.md#list_charges) | **GET** /charges | List all charges |
+
+
+## cancel_charge
+
+> <ChargeResponse> cancel_charge(x_api_version, id)
+
+Cancel a charge
+
+### Examples
+
+```ruby
+require 'time'
+require 'bckbn_pay'
+# setup authorization
+BckbnPay.configure do |config|
+  # Configure Bearer authorization (access_token): bearerAuth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = BckbnPay::ChargesApi.new
+x_api_version = 'x_api_version_example' # String | 
+id = 'id_example' # String | 
+
+begin
+  # Cancel a charge
+  result = api_instance.cancel_charge(x_api_version, id)
+  p result
+rescue BckbnPay::ApiError => e
+  puts "Error when calling ChargesApi->cancel_charge: #{e}"
+end
+```
+
+#### Using the cancel_charge_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ChargeResponse>, Integer, Hash)> cancel_charge_with_http_info(x_api_version, id)
+
+```ruby
+begin
+  # Cancel a charge
+  data, status_code, headers = api_instance.cancel_charge_with_http_info(x_api_version, id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ChargeResponse>
+rescue BckbnPay::ApiError => e
+  puts "Error when calling ChargesApi->cancel_charge_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **x_api_version** | **String** |  |  |
+| **id** | **String** |  |  |
+
+### Return type
+
+[**ChargeResponse**](ChargeResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
 ## capture_charge
