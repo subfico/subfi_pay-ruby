@@ -19,6 +19,74 @@ module BckbnPay
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
+    # Cancel a charge
+    # @param x_api_version [String] 
+    # @param id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [ChargeResponse]
+    def cancel_charge(x_api_version, id, opts = {})
+      data, _status_code, _headers = cancel_charge_with_http_info(x_api_version, id, opts)
+      data
+    end
+
+    # Cancel a charge
+    # @param x_api_version [String] 
+    # @param id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ChargeResponse, Integer, Hash)>] ChargeResponse data, response status code and response headers
+    def cancel_charge_with_http_info(x_api_version, id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ChargesApi.cancel_charge ...'
+      end
+      # verify the required parameter 'x_api_version' is set
+      if @api_client.config.client_side_validation && x_api_version.nil?
+        fail ArgumentError, "Missing the required parameter 'x_api_version' when calling ChargesApi.cancel_charge"
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling ChargesApi.cancel_charge"
+      end
+      # resource path
+      local_var_path = '/charges/{id}/cancel'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params[:'X-Api-Version'] = x_api_version
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ChargeResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['bearerAuth']
+
+      new_options = opts.merge(
+        :operation => :"ChargesApi.cancel_charge",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ChargesApi#cancel_charge\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Capture a charge
     # @param x_api_version [String] 
     # @param id [String] 
