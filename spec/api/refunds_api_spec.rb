@@ -83,4 +83,74 @@ describe 'RefundsApi' do
       expect(a_request(:post, [config.host, path].join).with(headers: request_headers, body: body.to_json)).to have_been_made.once
     end
   end
+
+  # unit tests for cancel_refund
+  # Cancel a refund
+  # @param x_api_version
+  # @return [Refund]
+  describe "cancel_refund" do
+    let(:id) { SecureRandom.uuid }
+    let(:path) { "/refunds/#{id}/cancel" }
+
+    before do
+      stub_request(:put, [config.host, path].join)
+        .with(headers: request_headers)
+        .to_return(
+          # re-using the same create response since it is the same object.
+          body: fixture("refunds/create_201.json"),
+          headers: response_headers,
+          status: 202
+        )
+    end
+
+    it 'should work' do
+      res = api_instance.cancel_refund("0.1.0", id)
+
+      expect(res).to be_a(BckbnPay::RefundResponse)
+    end
+  end
+
+  describe "list refunds" do
+    let(:charge_id) { SecureRandom.uuid }
+    let(:path) { "/refunds?charge_id=#{charge_id}" }
+
+    before do
+      stub_request(:get, [config.host, path].join)
+        .with(headers: request_headers)
+        .to_return(
+          body: fixture("refunds/list_200.json"),
+          headers: response_headers,
+          status: 200
+        )
+    end
+
+    it 'should work' do
+      res = api_instance.list_refunds("0.1.0", charge_id)
+
+      expect(res).to be_a(BckbnPay::ListRefundsResponse)
+    end
+
+  end
+
+  describe "get refund" do
+    let(:id) { SecureRandom.uuid }
+    let(:path) { "/refunds/#{id}" }
+
+    before do
+      stub_request(:get, [config.host, path].join)
+      .with(headers: request_headers)
+      .to_return(
+          # re-using the same create response since it is the same object.
+        body: fixture("refunds/create_201.json"),
+        headers: response_headers,
+        status: 200
+      )
+    end
+
+    it 'should work' do
+      res = api_instance.get_refund("0.1.0", id)
+
+      expect(res).to be_a(BckbnPay::RefundResponse)
+    end
+  end
 end

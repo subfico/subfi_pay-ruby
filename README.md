@@ -97,7 +97,10 @@ Class | Method | HTTP request | Description
 *BckbnPay::ChargesApi* | [**list_charges**](docs/ChargesApi.md#list_charges) | **GET** /charges | List all charges
 *BckbnPay::PaymentMethodsApi* | [**create_payment_method**](docs/PaymentMethodsApi.md#create_payment_method) | **POST** /payment_methods | Create a payment method
 *BckbnPay::PaymentMethodsApi* | [**get_payment_method**](docs/PaymentMethodsApi.md#get_payment_method) | **GET** /payment_methods/{id} | Retrieve a payment method
+*BckbnPay::RefundsApi* | [**cancel_refund**](docs/RefundsApi.md#cancel_refund) | **PUT** /refunds/{id}/cancel | Cancel a refund
 *BckbnPay::RefundsApi* | [**create_refund**](docs/RefundsApi.md#create_refund) | **POST** /refunds | Create a refund
+*BckbnPay::RefundsApi* | [**get_refund**](docs/RefundsApi.md#get_refund) | **GET** /refunds/{id} | Get a refund by ID
+*BckbnPay::RefundsApi* | [**list_refunds**](docs/RefundsApi.md#list_refunds) | **GET** /refunds | List refunds for a Charge
 *BckbnPay::SubMerchantsApi* | [**create_sub_merchant**](docs/SubMerchantsApi.md#create_sub_merchant) | **POST** /sub_merchants | Create a sub_merchant
 *BckbnPay::SubMerchantsApi* | [**get_sub_merchant**](docs/SubMerchantsApi.md#get_sub_merchant) | **GET** /sub_merchants/{id} | Retrieve a sub_merchant
 
@@ -113,6 +116,7 @@ Class | Method | HTTP request | Description
  - [BckbnPay::ChargeResponse](docs/ChargeResponse.md)
  - [BckbnPay::ListBalanceTransactionsResponse](docs/ListBalanceTransactionsResponse.md)
  - [BckbnPay::ListChargesResponse](docs/ListChargesResponse.md)
+ - [BckbnPay::ListRefundsResponse](docs/ListRefundsResponse.md)
  - [BckbnPay::Meta](docs/Meta.md)
  - [BckbnPay::PaymentMethodAttributes](docs/PaymentMethodAttributes.md)
  - [BckbnPay::PaymentMethodResponse](docs/PaymentMethodResponse.md)
