@@ -57,5 +57,4 @@ lib/bckbn_pay/models/refund_response.rb
 lib/bckbn_pay/models/sub_merchant_attributes.rb
 lib/bckbn_pay/models/sub_merchant_response.rb
 lib/bckbn_pay/version.rb
-spec/models/list_refunds_response_spec.rb
 spec/spec_helper.rb
