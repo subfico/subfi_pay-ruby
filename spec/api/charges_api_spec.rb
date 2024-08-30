@@ -17,8 +17,8 @@ describe 'ChargesApi' do
       "Authorization" => "Bearer #{config.access_token}",
       "Content-Type"  => "application/json",
       "Expect" => '',
-      'User-Agent' => 'OpenAPI-Generator/0.1.0/ruby',
-      'X-Api-Version' => '0.1.0'
+      'User-Agent' => 'OpenAPI-Generator/0.3.0/ruby',
+      'X-Api-Version' => '0.3.0'
     }
   end
   let(:response_headers) do
@@ -53,10 +53,15 @@ describe 'ChargesApi' do
       end
 
       it 'should work' do
-        res = api_instance.list_charges("0.1.0")
+        res = api_instance.list_charges("0.3.0")
 
         expect(res.data).to be_a(Array)
         expect(res.data.first).to be_a(BckbnPay::ChargeResponse)
+        expect(a_request(:get, [config.host, path].join).with(headers: request_headers)).to have_been_made.once
+
+        expect(res.data.first.amount).to be_truthy
+        expect(res.data.first.payment_method.card_profile).to be_truthy
+        expect(res.data.first.payment_method.billing_address).to be_truthy
       end
     end
 
@@ -72,11 +77,15 @@ describe 'ChargesApi' do
       end
 
       it do
-        res = api_instance.list_charges("0.1.0", page: 1, per_page: 2)
+        res = api_instance.list_charges("0.3.0", page: 1, per_page: 2)
 
         expect(res.data).to be_a(Array)
         expect(res.data.first).to be_a(BckbnPay::ChargeResponse)
         expect(a_request(:get, [config.host, path, "?page=1&per_page=2"].join).with(headers: request_headers)).to have_been_made.once
+
+        expect(res.data.first.amount).to be_truthy
+        expect(res.data.first.payment_method.card_profile).to be_truthy
+        expect(res.data.first.payment_method.billing_address).to be_truthy
       end
     end
   end
@@ -102,7 +111,7 @@ describe 'ChargesApi' do
     end
 
     it 'should work' do
-      res = api_instance.get_charge("0.1.0", charge_id)
+      res = api_instance.get_charge("0.3.0", charge_id)
 
       expect(res).to be_a(BckbnPay::ChargeResponse)
     end
@@ -140,7 +149,7 @@ describe 'ChargesApi' do
 
     it 'should work' do
       charge = BckbnPay::ChargeAttributes.new(body[:charge])
-      res = api_instance.create_charge("0.1.0", { charge: charge.to_hash })
+      res = api_instance.create_charge("0.3.0", { charge: charge.to_hash })
 
       expect(res).to be_a(BckbnPay::ChargeResponse)
     end
@@ -166,7 +175,7 @@ describe 'ChargesApi' do
     end
 
     it 'should work' do
-      res = api_instance.capture_charge("0.1.0", id)
+      res = api_instance.capture_charge("0.3.0", id)
 
       expect(res).to be_a(BckbnPay::ChargeResponse)
     end
@@ -192,7 +201,7 @@ describe 'ChargesApi' do
     end
 
     it 'should work' do
-      res = api_instance.cancel_charge("0.1.0", id)
+      res = api_instance.cancel_charge("0.3.0", id)
 
       expect(res).to be_a(BckbnPay::ChargeResponse)
     end

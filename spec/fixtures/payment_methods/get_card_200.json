@@ -1,0 +1,33 @@
+{
+    "billing_address": {
+        "address_line1": "18851 Herzog Street",
+        "address_line2": "Suite 482",
+        "city": "Hackettberg",
+        "country": "US",
+        "email": "patsy@jakubowski.test",
+        "first_name": "Heide",
+        "last_name": "Zulauf",
+        "phone": "(750) 401 6367",
+        "postal_code": "78704",
+        "state": "ID"
+    },
+    "card_profile": {
+        "avs_check": "00",
+        "avs_check_message": "5-Digit zip and address match",
+        "brand": "visa",
+        "cvc_check": "M",
+        "cvc_check_message": "Match",
+        "exp_month": 1,
+        "exp_year": 2027,
+        "funding": null,
+        "last4": "4242",
+        "three_d_secure_supported": null,
+        "token": "4242424320224242"
+    },
+    "created_at": "2024-08-23T20:48:48Z",
+    "id": "088d33f1-21be-4bc1-8d87-9fa3572ac333",
+    "metadata": null,
+    "partner_id": null,
+    "sub_merchant_id": null,
+    "updated_at": "2024-08-23T20:48:48Z"
+}

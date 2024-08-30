@@ -15,6 +15,14 @@ require 'time'
 
 module BckbnPay
   class BalanceTransactionResponse
+    attr_accessor :id
+
+    attr_accessor :created_at
+
+    attr_accessor :updated_at
+
+    attr_accessor :sub_merchant_id
+
     attr_accessor :amount
 
     attr_accessor :charge_id
@@ -29,28 +37,20 @@ module BckbnPay
 
     attr_accessor :type
 
-    attr_accessor :id
-
-    attr_accessor :created_at
-
-    attr_accessor :updated_at
-
-    attr_accessor :sub_merchant_id
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'id' => :'id',
+        :'created_at' => :'created_at',
+        :'updated_at' => :'updated_at',
+        :'sub_merchant_id' => :'sub_merchant_id',
         :'amount' => :'amount',
         :'charge_id' => :'charge_id',
         :'fee' => :'fee',
         :'net' => :'net',
         :'refund_id' => :'refund_id',
         :'state' => :'state',
-        :'type' => :'type',
-        :'id' => :'id',
-        :'created_at' => :'created_at',
-        :'updated_at' => :'updated_at',
-        :'sub_merchant_id' => :'sub_merchant_id'
+        :'type' => :'type'
       }
     end
 
@@ -62,32 +62,25 @@ module BckbnPay
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'id' => :'String',
+        :'created_at' => :'Time',
+        :'updated_at' => :'Time',
+        :'sub_merchant_id' => :'String',
         :'amount' => :'Integer',
         :'charge_id' => :'String',
         :'fee' => :'Integer',
         :'net' => :'Integer',
         :'refund_id' => :'String',
         :'state' => :'String',
-        :'type' => :'String',
-        :'id' => :'String',
-        :'created_at' => :'Time',
-        :'updated_at' => :'Time',
-        :'sub_merchant_id' => :'String'
+        :'type' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'sub_merchant_id'
+        :'sub_merchant_id',
       ])
-    end
-
-    # List of class defined in allOf (OpenAPI v3)
-    def self.openapi_all_of
-      [
-      :'BalanceTransactionAttributes'
-      ]
     end
 
     # Initializes the object
@@ -104,6 +97,22 @@ module BckbnPay
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
+      end
+
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
+      end
+
+      if attributes.key?(:'updated_at')
+        self.updated_at = attributes[:'updated_at']
+      end
+
+      if attributes.key?(:'sub_merchant_id')
+        self.sub_merchant_id = attributes[:'sub_merchant_id']
+      end
 
       if attributes.key?(:'amount')
         self.amount = attributes[:'amount']
@@ -132,22 +141,6 @@ module BckbnPay
       if attributes.key?(:'type')
         self.type = attributes[:'type']
       end
-
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
-      end
-
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
-      end
-
-      if attributes.key?(:'updated_at')
-        self.updated_at = attributes[:'updated_at']
-      end
-
-      if attributes.key?(:'sub_merchant_id')
-        self.sub_merchant_id = attributes[:'sub_merchant_id']
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -170,17 +163,17 @@ module BckbnPay
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          id == o.id &&
+          created_at == o.created_at &&
+          updated_at == o.updated_at &&
+          sub_merchant_id == o.sub_merchant_id &&
           amount == o.amount &&
           charge_id == o.charge_id &&
           fee == o.fee &&
           net == o.net &&
           refund_id == o.refund_id &&
           state == o.state &&
-          type == o.type &&
-          id == o.id &&
-          created_at == o.created_at &&
-          updated_at == o.updated_at &&
-          sub_merchant_id == o.sub_merchant_id
+          type == o.type
     end
 
     # @see the `==` method
@@ -192,7 +185,7 @@ module BckbnPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [amount, charge_id, fee, net, refund_id, state, type, id, created_at, updated_at, sub_merchant_id].hash
+      [id, created_at, updated_at, sub_merchant_id, amount, charge_id, fee, net, refund_id, state, type].hash
     end
 
     # Builds the object from hash

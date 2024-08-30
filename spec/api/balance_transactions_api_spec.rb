@@ -18,8 +18,8 @@ describe 'BalanceTransactionsApi' do
       "Authorization" => "Bearer #{config.access_token}",
       "Content-Type"  => "application/json",
       "Expect" => '',
-      'User-Agent' => 'OpenAPI-Generator/0.1.0/ruby',
-      'X-Api-Version' => '0.1.0'
+      'User-Agent' => 'OpenAPI-Generator/0.3.0/ruby',
+      'X-Api-Version' => '0.3.0'
     }
   end
   let(:response_headers) do
@@ -54,7 +54,7 @@ describe 'BalanceTransactionsApi' do
       end
 
       it "should work" do
-        res = api_instance.list_balance_transactions("0.1.0")
+        res = api_instance.list_balance_transactions("0.3.0")
 
         expect(res.data).to be_a(Array)
         expect(res.data.first).to be_a(BckbnPay::BalanceTransactionResponse)
@@ -74,7 +74,7 @@ describe 'BalanceTransactionsApi' do
       end
 
       it do
-        res = api_instance.list_balance_transactions("0.1.0", page: 1, per_page: 2)
+        res = api_instance.list_balance_transactions("0.3.0", page: 1, per_page: 2)
 
         expect(res.data).to be_a(Array)
         expect(res.data.first).to be_a(BckbnPay::BalanceTransactionResponse)

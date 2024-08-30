@@ -15,24 +15,24 @@ require 'time'
 
 module BckbnPay
   class SubMerchantResponse
-    attr_accessor :name
-
-    attr_accessor :worldpay_merchant_id
-
     attr_accessor :id
 
     attr_accessor :created_at
 
     attr_accessor :updated_at
 
+    attr_accessor :name
+
+    attr_accessor :worldpay_merchant_id
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name',
-        :'worldpay_merchant_id' => :'worldpay_merchant_id',
         :'id' => :'id',
         :'created_at' => :'created_at',
-        :'updated_at' => :'updated_at'
+        :'updated_at' => :'updated_at',
+        :'name' => :'name',
+        :'worldpay_merchant_id' => :'worldpay_merchant_id'
       }
     end
 
@@ -44,11 +44,11 @@ module BckbnPay
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'name' => :'String',
-        :'worldpay_merchant_id' => :'String',
         :'id' => :'String',
         :'created_at' => :'Time',
-        :'updated_at' => :'Time'
+        :'updated_at' => :'Time',
+        :'name' => :'String',
+        :'worldpay_merchant_id' => :'String'
       }
     end
 
@@ -56,13 +56,6 @@ module BckbnPay
     def self.openapi_nullable
       Set.new([
       ])
-    end
-
-    # List of class defined in allOf (OpenAPI v3)
-    def self.openapi_all_of
-      [
-      :'SubMerchantAttributes'
-      ]
     end
 
     # Initializes the object
@@ -80,18 +73,6 @@ module BckbnPay
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      else
-        self.name = nil
-      end
-
-      if attributes.key?(:'worldpay_merchant_id')
-        self.worldpay_merchant_id = attributes[:'worldpay_merchant_id']
-      else
-        self.worldpay_merchant_id = nil
-      end
-
       if attributes.key?(:'id')
         self.id = attributes[:'id']
       end
@@ -103,6 +84,14 @@ module BckbnPay
       if attributes.key?(:'updated_at')
         self.updated_at = attributes[:'updated_at']
       end
+
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
+      end
+
+      if attributes.key?(:'worldpay_merchant_id')
+        self.worldpay_merchant_id = attributes[:'worldpay_merchant_id']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -110,14 +99,6 @@ module BckbnPay
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @name.nil?
-        invalid_properties.push('invalid value for "name", name cannot be nil.')
-      end
-
-      if @worldpay_merchant_id.nil?
-        invalid_properties.push('invalid value for "worldpay_merchant_id", worldpay_merchant_id cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -125,8 +106,6 @@ module BckbnPay
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @name.nil?
-      return false if @worldpay_merchant_id.nil?
       true
     end
 
@@ -135,11 +114,11 @@ module BckbnPay
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name &&
-          worldpay_merchant_id == o.worldpay_merchant_id &&
           id == o.id &&
           created_at == o.created_at &&
-          updated_at == o.updated_at
+          updated_at == o.updated_at &&
+          name == o.name &&
+          worldpay_merchant_id == o.worldpay_merchant_id
     end
 
     # @see the `==` method
@@ -151,7 +130,7 @@ module BckbnPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, worldpay_merchant_id, id, created_at, updated_at].hash
+      [id, created_at, updated_at, name, worldpay_merchant_id].hash
     end
 
     # Builds the object from hash
