@@ -15,17 +15,6 @@ require 'time'
 
 module BckbnPay
   class ChargeResponse
-    attr_accessor :amount
-
-    attr_accessor :description
-
-    attr_accessor :payment_method_id
-
-    attr_accessor :sub_merchant_id
-
-    # Determines whether the charge should be captured immediately
-    attr_accessor :immediate_capture
-
     attr_accessor :id
 
     attr_accessor :captured_at
@@ -42,14 +31,20 @@ module BckbnPay
 
     attr_accessor :created_at
 
+    attr_accessor :amount
+
+    attr_accessor :description
+
+    # Determines whether the charge should be captured immediately
+    attr_accessor :immediate_capture
+
+    attr_accessor :payment_method_id
+
+    attr_accessor :sub_merchant_id
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'amount' => :'amount',
-        :'description' => :'description',
-        :'payment_method_id' => :'payment_method_id',
-        :'sub_merchant_id' => :'sub_merchant_id',
-        :'immediate_capture' => :'immediate_capture',
         :'id' => :'id',
         :'captured_at' => :'captured_at',
         :'failure_reason' => :'failure_reason',
@@ -57,7 +52,12 @@ module BckbnPay
         :'payment_method' => :'payment_method',
         :'processor_id' => :'processor_id',
         :'state' => :'state',
-        :'created_at' => :'created_at'
+        :'created_at' => :'created_at',
+        :'amount' => :'amount',
+        :'description' => :'description',
+        :'immediate_capture' => :'immediate_capture',
+        :'payment_method_id' => :'payment_method_id',
+        :'sub_merchant_id' => :'sub_merchant_id'
       }
     end
 
@@ -69,11 +69,6 @@ module BckbnPay
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'amount' => :'Integer',
-        :'description' => :'String',
-        :'payment_method_id' => :'String',
-        :'sub_merchant_id' => :'String',
-        :'immediate_capture' => :'Boolean',
         :'id' => :'String',
         :'captured_at' => :'Time',
         :'failure_reason' => :'String',
@@ -81,26 +76,24 @@ module BckbnPay
         :'payment_method' => :'PaymentMethodResponse',
         :'processor_id' => :'String',
         :'state' => :'String',
-        :'created_at' => :'Time'
+        :'created_at' => :'Time',
+        :'amount' => :'Integer',
+        :'description' => :'String',
+        :'immediate_capture' => :'Boolean',
+        :'payment_method_id' => :'String',
+        :'sub_merchant_id' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'description',
-        :'sub_merchant_id',
         :'captured_at',
         :'failure_reason',
         :'processor_id',
+        :'description',
+        :'sub_merchant_id'
       ])
-    end
-
-    # List of class defined in allOf (OpenAPI v3)
-    def self.openapi_all_of
-      [
-      :'ChargeAttributes'
-      ]
     end
 
     # Initializes the object
@@ -117,30 +110,6 @@ module BckbnPay
         end
         h[k.to_sym] = v
       }
-
-      if attributes.key?(:'amount')
-        self.amount = attributes[:'amount']
-      else
-        self.amount = nil
-      end
-
-      if attributes.key?(:'description')
-        self.description = attributes[:'description']
-      end
-
-      if attributes.key?(:'payment_method_id')
-        self.payment_method_id = attributes[:'payment_method_id']
-      else
-        self.payment_method_id = nil
-      end
-
-      if attributes.key?(:'sub_merchant_id')
-        self.sub_merchant_id = attributes[:'sub_merchant_id']
-      end
-
-      if attributes.key?(:'immediate_capture')
-        self.immediate_capture = attributes[:'immediate_capture']
-      end
 
       if attributes.key?(:'id')
         self.id = attributes[:'id']
@@ -173,6 +142,26 @@ module BckbnPay
       if attributes.key?(:'created_at')
         self.created_at = attributes[:'created_at']
       end
+
+      if attributes.key?(:'amount')
+        self.amount = attributes[:'amount']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
+      end
+
+      if attributes.key?(:'immediate_capture')
+        self.immediate_capture = attributes[:'immediate_capture']
+      end
+
+      if attributes.key?(:'payment_method_id')
+        self.payment_method_id = attributes[:'payment_method_id']
+      end
+
+      if attributes.key?(:'sub_merchant_id')
+        self.sub_merchant_id = attributes[:'sub_merchant_id']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -180,14 +169,6 @@ module BckbnPay
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @amount.nil?
-        invalid_properties.push('invalid value for "amount", amount cannot be nil.')
-      end
-
-      if @payment_method_id.nil?
-        invalid_properties.push('invalid value for "payment_method_id", payment_method_id cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -195,8 +176,6 @@ module BckbnPay
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @amount.nil?
-      return false if @payment_method_id.nil?
       true
     end
 
@@ -205,11 +184,6 @@ module BckbnPay
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          amount == o.amount &&
-          description == o.description &&
-          payment_method_id == o.payment_method_id &&
-          sub_merchant_id == o.sub_merchant_id &&
-          immediate_capture == o.immediate_capture &&
           id == o.id &&
           captured_at == o.captured_at &&
           failure_reason == o.failure_reason &&
@@ -217,7 +191,12 @@ module BckbnPay
           payment_method == o.payment_method &&
           processor_id == o.processor_id &&
           state == o.state &&
-          created_at == o.created_at
+          created_at == o.created_at &&
+          amount == o.amount &&
+          description == o.description &&
+          immediate_capture == o.immediate_capture &&
+          payment_method_id == o.payment_method_id &&
+          sub_merchant_id == o.sub_merchant_id
     end
 
     # @see the `==` method
@@ -229,7 +208,7 @@ module BckbnPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [amount, description, payment_method_id, sub_merchant_id, immediate_capture, id, captured_at, failure_reason, merchant_id, payment_method, processor_id, state, created_at].hash
+      [id, captured_at, failure_reason, merchant_id, payment_method, processor_id, state, created_at, amount, description, immediate_capture, payment_method_id, sub_merchant_id].hash
     end
 
     # Builds the object from hash

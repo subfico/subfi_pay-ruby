@@ -15,10 +15,6 @@ require 'time'
 
 module BckbnPay
   class RefundResponse
-    attr_accessor :amount
-
-    attr_accessor :charge_id
-
     attr_accessor :id
 
     attr_accessor :failure_reason
@@ -29,16 +25,20 @@ module BckbnPay
 
     attr_accessor :sub_merchant_id
 
+    attr_accessor :amount
+
+    attr_accessor :charge_id
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'amount' => :'amount',
-        :'charge_id' => :'charge_id',
         :'id' => :'id',
         :'failure_reason' => :'failure_reason',
         :'state' => :'state',
         :'created_at' => :'created_at',
-        :'sub_merchant_id' => :'sub_merchant_id'
+        :'sub_merchant_id' => :'sub_merchant_id',
+        :'amount' => :'amount',
+        :'charge_id' => :'charge_id'
       }
     end
 
@@ -50,13 +50,13 @@ module BckbnPay
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'amount' => :'Integer',
-        :'charge_id' => :'String',
         :'id' => :'String',
         :'failure_reason' => :'String',
         :'state' => :'String',
         :'created_at' => :'Time',
-        :'sub_merchant_id' => :'String'
+        :'sub_merchant_id' => :'String',
+        :'amount' => :'Integer',
+        :'charge_id' => :'String'
       }
     end
 
@@ -64,15 +64,8 @@ module BckbnPay
     def self.openapi_nullable
       Set.new([
         :'failure_reason',
-        :'sub_merchant_id'
+        :'sub_merchant_id',
       ])
-    end
-
-    # List of class defined in allOf (OpenAPI v3)
-    def self.openapi_all_of
-      [
-      :'RefundAttributes'
-      ]
     end
 
     # Initializes the object
@@ -89,16 +82,6 @@ module BckbnPay
         end
         h[k.to_sym] = v
       }
-
-      if attributes.key?(:'amount')
-        self.amount = attributes[:'amount']
-      end
-
-      if attributes.key?(:'charge_id')
-        self.charge_id = attributes[:'charge_id']
-      else
-        self.charge_id = nil
-      end
 
       if attributes.key?(:'id')
         self.id = attributes[:'id']
@@ -119,6 +102,14 @@ module BckbnPay
       if attributes.key?(:'sub_merchant_id')
         self.sub_merchant_id = attributes[:'sub_merchant_id']
       end
+
+      if attributes.key?(:'amount')
+        self.amount = attributes[:'amount']
+      end
+
+      if attributes.key?(:'charge_id')
+        self.charge_id = attributes[:'charge_id']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -126,10 +117,6 @@ module BckbnPay
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @charge_id.nil?
-        invalid_properties.push('invalid value for "charge_id", charge_id cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -137,7 +124,6 @@ module BckbnPay
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @charge_id.nil?
       true
     end
 
@@ -146,13 +132,13 @@ module BckbnPay
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          amount == o.amount &&
-          charge_id == o.charge_id &&
           id == o.id &&
           failure_reason == o.failure_reason &&
           state == o.state &&
           created_at == o.created_at &&
-          sub_merchant_id == o.sub_merchant_id
+          sub_merchant_id == o.sub_merchant_id &&
+          amount == o.amount &&
+          charge_id == o.charge_id
     end
 
     # @see the `==` method
@@ -164,7 +150,7 @@ module BckbnPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [amount, charge_id, id, failure_reason, state, created_at, sub_merchant_id].hash
+      [id, failure_reason, state, created_at, sub_merchant_id, amount, charge_id].hash
     end
 
     # Builds the object from hash

@@ -1,0 +1,29 @@
+{
+    "bank_account_profile": {
+        "account_holder_name": "John Doe",
+        "account_holder_type": "personal",
+        "account_type": "checking",
+        "bank_name": "Chase",
+        "last4": "7764",
+        "routing_number": "091408734",
+        "token": "358207764"
+    },
+    "billing_address": {
+        "address_line1": "18851 Herzog Street",
+        "address_line2": "Suite 482",
+        "city": "Hackettberg",
+        "country": "US",
+        "email": "patsy@jakubowski.test",
+        "first_name": "Heide",
+        "last_name": "Zulauf",
+        "phone": "(750) 401 6367",
+        "postal_code": "78704",
+        "state": "ID"
+    },
+    "created_at": "2024-08-26T18:18:00Z",
+    "id": "ff313d17-76c6-4dce-8909-f0b5fe269a3e",
+    "metadata": null,
+    "partner_id": null,
+    "sub_merchant_id": null,
+    "updated_at": "2024-08-26T18:18:00Z"
+}
