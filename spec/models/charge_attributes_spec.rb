@@ -28,6 +28,13 @@ describe BckbnPay::ChargeAttributes do
 
   let(:attributes) { %w[amount description payment_method_id sub_merchant_id immediate_capture] }
 
+  describe "encoding" do
+    it "should be UTF-8" do
+      instance.description = "foobar"
+      expect(instance.description.encoding.to_s).to eq("UTF-8")
+    end
+  end
+
   describe 'test attributes' do
     it 'should respond to all attributes' do
       attributes.each do |attribute|
