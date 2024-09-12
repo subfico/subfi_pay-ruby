@@ -1,0 +1,26 @@
+env:
+  CI: true
+  RAILS_ENV: test
+
+name: RSpec Suite
+on:
+  push:
+
+jobs:
+  rspec-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+
+      - name: Bundle config & install
+        run: bundle install
+
+      - name: Rspec suite
+        run: bundle exec rspec --format progress
+
