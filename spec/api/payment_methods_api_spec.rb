@@ -136,7 +136,7 @@ describe "PaymentMethodsApi" do
         stub_request(:post, url)
           .with(headers: request_headers, body: body.to_json)
           .to_return(
-            body: fixture("payment_methods/create_201.json"),
+            body: fixture("payment_methods/create_card_201.json"),
             headers: response_headers,
             status: 201
           )
@@ -176,7 +176,7 @@ describe "PaymentMethodsApi" do
         stub_request(:post, url)
           .with(headers: request_headers, body: body.to_json)
           .to_return(
-            body: fixture("payment_methods/create_201.json"),
+            body: fixture("payment_methods/create_card_201.json"),
             headers: response_headers,
             status: 201
           )
