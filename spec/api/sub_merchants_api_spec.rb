@@ -32,8 +32,6 @@ describe 'SubMerchantsApi' do
       'Accept'        =>  'application/json',
       "Authorization" => "Bearer #{config.access_token}",
       "Content-Type"  => "application/json",
-      "Expect" => '',
-      'User-Agent' => 'OpenAPI-Generator/0.3.0/ruby',
       'X-Api-Version' => '0.3.0'
     }
   end

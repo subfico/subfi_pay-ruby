@@ -68,7 +68,7 @@ module BckbnPay
       return_type = opts[:debug_return_type] || 'ChargeResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['bearerAuth']
+      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth', 'bearerAuth']
 
       new_options = opts.merge(
         :operation => :"ChargesApi.cancel_charge",
@@ -136,7 +136,7 @@ module BckbnPay
       return_type = opts[:debug_return_type] || 'ChargeResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['bearerAuth']
+      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth', 'bearerAuth']
 
       new_options = opts.merge(
         :operation => :"ChargesApi.capture_charge",
@@ -212,7 +212,7 @@ module BckbnPay
       return_type = opts[:debug_return_type] || 'ChargeResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['bearerAuth']
+      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth', 'bearerAuth']
 
       new_options = opts.merge(
         :operation => :"ChargesApi.create_charge",
@@ -283,7 +283,7 @@ module BckbnPay
       return_type = opts[:debug_return_type] || 'ChargeResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['bearerAuth']
+      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth', 'bearerAuth']
 
       new_options = opts.merge(
         :operation => :"ChargesApi.get_charge",
@@ -354,7 +354,7 @@ module BckbnPay
       return_type = opts[:debug_return_type] || 'ListChargesResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['bearerAuth']
+      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth', 'bearerAuth']
 
       new_options = opts.merge(
         :operation => :"ChargesApi.list_charges",

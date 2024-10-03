@@ -71,7 +71,7 @@ module BckbnPay
       return_type = opts[:debug_return_type] || 'ListBalanceTransactionsResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['bearerAuth']
+      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth', 'bearerAuth']
 
       new_options = opts.merge(
         :operation => :"BalanceTransactionsApi.list_balance_transactions",

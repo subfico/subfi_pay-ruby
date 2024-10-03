@@ -29,8 +29,6 @@ describe "PaymentMethodsApi" do
       "Accept"        =>  "application/json",
       "Authorization" => "Bearer #{access_token}",
       "Content-Type"  => "application/json",
-      "Expect" => "",
-      "User-Agent" => "OpenAPI-Generator/0.3.0/ruby",
       "X-Api-Version" => api_version
     }
   end

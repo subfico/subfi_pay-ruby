@@ -252,6 +252,13 @@ module BckbnPay
             key: 'Authorization',
             value: "Bearer #{access_token_with_refresh}"
           },
+        'ApiKeyAuth' =>
+          {
+            type: 'api_key',
+            in: 'header',
+            key: 'X-API-KEY',
+            value: api_key_with_prefix('ApiKeyAuth')
+          },
       }
     end
 
