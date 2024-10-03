@@ -158,7 +158,7 @@ module BckbnPay
 
     def initialize
       @scheme = 'https'
-      @host = 'pay.bckbn.com'
+      @host = 'pay-sandbox.bckbn.com'
       @base_path = ''
       @server_index = nil
       @server_operation_index = {}
@@ -244,14 +244,6 @@ module BckbnPay
     # Returns Auth Settings hash for api client.
     def auth_settings
       {
-        'bearerAuth' =>
-          {
-            type: 'bearer',
-            in: 'header',
-            format: 'access_token',
-            key: 'Authorization',
-            value: "Bearer #{access_token_with_refresh}"
-          },
         'ApiKeyAuth' =>
           {
             type: 'api_key',
@@ -266,7 +258,7 @@ module BckbnPay
     def server_settings
       [
         {
-          url: "https://pay.bckbn.com",
+          url: "https://pay-sandbox.bckbn.com",
           description: "No description provided",
         }
       ]

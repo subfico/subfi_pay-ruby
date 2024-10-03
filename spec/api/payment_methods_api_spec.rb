@@ -18,18 +18,24 @@ require "json"
 # Please update as you see appropriate
 describe "PaymentMethodsApi" do
   let(:api_instance) { BckbnPay::PaymentMethodsApi.new }
-  let(:config) { BckbnPay::Configuration.default }
+  let(:api_key) { Faker::Alphanumeric.alphanumeric(number: 32) }
+  let(:api_version) { "0.1.0" }
+  let(:config) do
+    api_instance.api_client.config.tap do |c|
+      c.api_key['ApiKeyAuth'] = api_key
+      c.host = "localhost:3000"
+      c.scheme = "http"
+    end
+  end
   let(:access_token) { Faker::Lorem.word }
-  let(:api_version) { "0.3.0" }
   let(:path) { "/payment_methods" }
   let(:url) { [config.host, path].join }
-
   let(:request_headers) do
     {
-      "Accept"        =>  "application/json",
-      "Authorization" => "Bearer #{access_token}",
+      'Accept'        =>  'application/json',
       "Content-Type"  => "application/json",
-      "X-Api-Version" => api_version
+      'X-Api-Version' => api_version,
+      'X-Api-Key' => api_key
     }
   end
   let(:response_headers) do

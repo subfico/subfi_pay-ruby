@@ -18,9 +18,11 @@ require 'json'
 # Please update as you see appropriate
 describe 'SubMerchantsApi' do
   let(:api_instance) { BckbnPay::SubMerchantsApi.new }
-  let(:config) do
+  let(:api_key) { Faker::Alphanumeric.alphanumeric(number: 32) }
+  let(:api_version) { "0.1.0" }
+  let!(:config) do
     api_instance.api_client.config.tap do |c|
-      c.access_token = Faker::Lorem.word
+      c.api_key['ApiKeyAuth'] = api_key
       c.host = "localhost:3000"
       c.scheme = "http"
     end
@@ -30,9 +32,9 @@ describe 'SubMerchantsApi' do
   let(:request_headers) do
     {
       'Accept'        =>  'application/json',
-      "Authorization" => "Bearer #{config.access_token}",
       "Content-Type"  => "application/json",
-      'X-Api-Version' => '0.3.0'
+      'X-Api-Version' => api_version,
+      'X-Api-Key' => api_key
     }
   end
   let(:response_headers) do
@@ -69,7 +71,7 @@ describe 'SubMerchantsApi' do
     end
 
     it 'should work' do
-      res = api_instance.get_sub_merchant("0.3.0", id)
+      res = api_instance.get_sub_merchant("0.1.0", id)
 
       expect(res).to be_a(BckbnPay::SubMerchantResponse)
       expect(a_request(:get, url + "/#{id}").with(headers: request_headers)).to have_been_made.once
@@ -105,7 +107,7 @@ describe 'SubMerchantsApi' do
 
     it 'should work' do
       sub_merchant = BckbnPay::SubMerchantAttributes.new(body[:sub_merchant])
-      res = api_instance.create_sub_merchant("0.3.0", { sub_merchant: sub_merchant.to_hash })
+      res = api_instance.create_sub_merchant("0.1.0", { sub_merchant: sub_merchant.to_hash })
 
       expect(res).to be_a(BckbnPay::SubMerchantResponse)
       expect(a_request(:post, url).with(headers: request_headers, body: body.to_json)).to have_been_made.once

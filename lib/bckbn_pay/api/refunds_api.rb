@@ -68,7 +68,7 @@ module BckbnPay
       return_type = opts[:debug_return_type] || 'RefundResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth', 'bearerAuth']
+      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
 
       new_options = opts.merge(
         :operation => :"RefundsApi.cancel_refund",
@@ -144,7 +144,7 @@ module BckbnPay
       return_type = opts[:debug_return_type] || 'RefundResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth', 'bearerAuth']
+      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
 
       new_options = opts.merge(
         :operation => :"RefundsApi.create_refund",
@@ -215,7 +215,7 @@ module BckbnPay
       return_type = opts[:debug_return_type] || 'RefundResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth', 'bearerAuth']
+      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
 
       new_options = opts.merge(
         :operation => :"RefundsApi.get_refund",
@@ -284,7 +284,7 @@ module BckbnPay
       return_type = opts[:debug_return_type] || 'ListRefundsResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth', 'bearerAuth']
+      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
 
       new_options = opts.merge(
         :operation => :"RefundsApi.list_refunds",

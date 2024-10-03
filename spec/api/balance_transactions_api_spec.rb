@@ -3,9 +3,11 @@ require 'json'
 
 describe 'BalanceTransactionsApi' do
   let(:api_instance) { BckbnPay::BalanceTransactionsApi.new }
+  let(:api_key) { Faker::Alphanumeric.alphanumeric(number: 32) }
+  let(:api_version) { "0.1.0" }
   let(:config) do
     api_instance.api_client.config.tap do |c|
-      c.access_token = Faker::Lorem.word
+      c.api_key['ApiKeyAuth'] = api_key
       c.host = Faker::Internet.domain_name
       c.scheme = 'http'
     end
@@ -15,10 +17,9 @@ describe 'BalanceTransactionsApi' do
   let(:request_headers) do
     {
       'Accept'        =>  'application/json',
-      "Authorization" => "Bearer #{config.access_token}",
       "Content-Type"  => "application/json",
-      "Expect" => '',
-      'X-Api-Version' => '0.1.0'
+      'X-Api-Version' => api_version,
+      'X-Api-Key' => api_key
     }
   end
   let(:response_headers) do
@@ -53,7 +54,7 @@ describe 'BalanceTransactionsApi' do
       end
 
       it "should work" do
-        res = api_instance.list_balance_transactions("0.1.0")
+        res = api_instance.list_balance_transactions(api_version)
 
         expect(res.data).to be_a(Array)
         expect(res.data.first).to be_a(BckbnPay::BalanceTransactionResponse)
@@ -73,7 +74,7 @@ describe 'BalanceTransactionsApi' do
       end
 
       it do
-        res = api_instance.list_balance_transactions("0.1.0", page: 1, per_page: 2)
+        res = api_instance.list_balance_transactions(api_version, page: 1, per_page: 2)
 
         expect(res.data).to be_a(Array)
         expect(res.data.first).to be_a(BckbnPay::BalanceTransactionResponse)

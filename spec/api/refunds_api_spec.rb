@@ -18,9 +18,11 @@ require 'json'
 # Please update as you see appropriate
 describe 'RefundsApi' do
   let(:api_instance) { BckbnPay::RefundsApi.new }
+  let(:api_key) { Faker::Alphanumeric.alphanumeric(number: 32) }
+  let(:api_version) { "0.1.0" }
   let(:config) do
     api_instance.api_client.config.tap do |c|
-      c.access_token = Faker::Lorem.word
+      c.api_key['ApiKeyAuth'] = api_key
       c.host = "localhost:3000"
       c.scheme = "http"
     end
@@ -29,9 +31,9 @@ describe 'RefundsApi' do
   let(:request_headers) do
     {
       'Accept'        =>  'application/json',
-      "Authorization" => "Bearer #{config.access_token}",
       "Content-Type"  => "application/json",
-      'X-Api-Version' => '0.3.0'
+      'X-Api-Version' => api_version,
+      'X-Api-Key' => api_key
     }
   end
   let(:response_headers) do
@@ -75,7 +77,7 @@ describe 'RefundsApi' do
     end
 
     it 'should work' do
-      res = api_instance.create_refund("0.3.0", body)
+      res = api_instance.create_refund(api_version, body)
 
       expect(res).to be_a(BckbnPay::RefundResponse)
       expect(a_request(:post, [config.host, path].join).with(headers: request_headers, body: body.to_json)).to have_been_made.once
@@ -102,7 +104,7 @@ describe 'RefundsApi' do
     end
 
     it 'should work' do
-      res = api_instance.cancel_refund("0.3.0", id)
+      res = api_instance.cancel_refund(api_version, id)
 
       expect(res).to be_a(BckbnPay::RefundResponse)
     end
@@ -123,7 +125,7 @@ describe 'RefundsApi' do
     end
 
     it 'should work' do
-      res = api_instance.list_refunds("0.3.0", charge_id)
+      res = api_instance.list_refunds(api_version, charge_id)
 
       expect(res).to be_a(BckbnPay::ListRefundsResponse)
     end
@@ -146,7 +148,7 @@ describe 'RefundsApi' do
     end
 
     it 'should work' do
-      res = api_instance.get_refund("0.3.0", id)
+      res = api_instance.get_refund(api_version, id)
 
       expect(res).to be_a(BckbnPay::RefundResponse)
     end

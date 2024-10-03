@@ -1,6 +1,6 @@
 # BckbnPay::ChargesApi
 
-All URIs are relative to *https://pay.bckbn.com*
+All URIs are relative to *https://pay-sandbox.bckbn.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
@@ -28,9 +28,6 @@ BckbnPay.configure do |config|
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
-
-  # Configure Bearer authorization (access_token): bearerAuth
-  config.access_token = 'YOUR_BEARER_TOKEN'
 end
 
 api_instance = BckbnPay::ChargesApi.new
@@ -77,7 +74,7 @@ end
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -102,9 +99,6 @@ BckbnPay.configure do |config|
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
-
-  # Configure Bearer authorization (access_token): bearerAuth
-  config.access_token = 'YOUR_BEARER_TOKEN'
 end
 
 api_instance = BckbnPay::ChargesApi.new
@@ -151,7 +145,7 @@ end
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -176,9 +170,6 @@ BckbnPay.configure do |config|
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
-
-  # Configure Bearer authorization (access_token): bearerAuth
-  config.access_token = 'YOUR_BEARER_TOKEN'
 end
 
 api_instance = BckbnPay::ChargesApi.new
@@ -229,7 +220,7 @@ end
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -254,9 +245,6 @@ BckbnPay.configure do |config|
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
-
-  # Configure Bearer authorization (access_token): bearerAuth
-  config.access_token = 'YOUR_BEARER_TOKEN'
 end
 
 api_instance = BckbnPay::ChargesApi.new
@@ -307,7 +295,7 @@ end
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -332,9 +320,6 @@ BckbnPay.configure do |config|
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
-
-  # Configure Bearer authorization (access_token): bearerAuth
-  config.access_token = 'YOUR_BEARER_TOKEN'
 end
 
 api_instance = BckbnPay::ChargesApi.new
@@ -387,7 +372,7 @@ end
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

@@ -76,7 +76,7 @@ module BckbnPay
       return_type = opts[:debug_return_type] || 'PaymentMethodResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth', 'bearerAuth']
+      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
 
       new_options = opts.merge(
         :operation => :"PaymentMethodsApi.create_payment_method",
@@ -144,7 +144,7 @@ module BckbnPay
       return_type = opts[:debug_return_type] || 'PaymentMethodResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth', 'bearerAuth']
+      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
 
       new_options = opts.merge(
         :operation => :"PaymentMethodsApi.get_payment_method",
