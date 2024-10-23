@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    bckbn_pay (0.4.1)
+    bckbn_pay (0.5.0)
       typhoeus (~> 1.0, >= 1.0.1)
 
 GEM
@@ -29,8 +29,8 @@ GEM
       concurrent-ruby (~> 1.0)
     jaro_winkler (1.5.6)
     method_source (1.1.0)
-    parallel (1.25.1)
-    parser (3.3.4.0)
+    parallel (1.26.3)
+    parser (3.3.5.0)
       ast (~> 2.4.1)
       racc
     pry (0.14.2)
@@ -42,7 +42,7 @@ GEM
     psych (5.1.2)
       stringio
     public_suffix (6.0.0)
-    racc (1.8.0)
+    racc (1.8.1)
     rainbow (3.1.1)
     rake (13.0.6)
     rexml (3.3.1)

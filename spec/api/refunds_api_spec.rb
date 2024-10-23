@@ -140,7 +140,7 @@ describe 'RefundsApi' do
       stub_request(:get, [config.host, path].join)
       .with(headers: request_headers)
       .to_return(
-          # re-using the same create response since it is the same object.
+        # re-using the same create response since it is the same object.
         body: fixture("refunds/create_201.json"),
         headers: response_headers,
         status: 200
