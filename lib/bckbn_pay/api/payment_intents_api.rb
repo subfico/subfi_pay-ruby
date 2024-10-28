@@ -263,7 +263,7 @@ module BckbnPay
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-          header_params['Content-Type'] = content_type
+        header_params['Content-Type'] = content_type
       end
       header_params[:'X-Api-Version'] = x_api_version
 
@@ -481,7 +481,7 @@ module BckbnPay
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-          header_params['Content-Type'] = content_type
+        header_params['Content-Type'] = content_type
       end
       header_params[:'X-Api-Version'] = x_api_version
 

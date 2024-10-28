@@ -265,8 +265,7 @@ module BckbnPay
     end
 
     def operation_server_settings
-      {
-      }
+      {}
     end
 
     # Returns URL based on server settings
@@ -302,7 +301,5 @@ module BckbnPay
 
       url
     end
-
-
   end
 end
