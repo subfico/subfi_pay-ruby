@@ -322,7 +322,5 @@ module BckbnPay
         value
       end
     end
-
   end
-
 end
