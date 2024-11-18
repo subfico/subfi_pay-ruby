@@ -1,0 +1,11 @@
+{
+  "id": "2fe1e043-a1c9-402b-84da-fecb9cfbccc7",
+  "created_at": "2024-11-18T12:31:03-05:00",
+  "enabled": true,
+  "event": "charge_succeeded",
+  "merchant_id": "383ef589-55d9-4b7b-ab8a-46222f0f1a92",
+  "metadata": null,
+  "sub_merchant_id": "d63b3f2f-b8e2-4153-b18f-517ed66a8de7",
+  "updated_at": "2024-11-18T12:31:03-05:00",
+  "url": "http://raynor-shanahan.test/fred"
+}

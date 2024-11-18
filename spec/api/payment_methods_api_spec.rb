@@ -108,6 +108,35 @@ describe "PaymentMethodsApi" do
     end
   end
 
+  # unit tests for list_payment_methods
+  # List all payment methods
+  # @param x_api_version
+  # @param customer_id
+  # @param [Hash] opts the optional parameters
+  # @return [ListPaymentMethodsResponse]
+  describe "#list_payment_methods" do
+    let(:customer_id) { SecureRandom.uuid }
+    let(:page) { 1 }
+    let(:per_page) { 10 }
+
+    before do
+      stub_request(:get, url)
+        .with(headers: request_headers, query: { customer_id: customer_id, page: page, per_page: per_page })
+        .to_return(
+          body: fixture("payment_methods/list_200.json"),
+          headers: response_headers,
+          status: 200
+        )
+    end
+
+    it "should work" do
+      res = api_instance.list_payment_methods(api_version, customer_id, { page: page, per_page: per_page })
+
+      expect(res).to be_a(BckbnPay::ListPaymentMethodsResponse)
+      expect(a_request(:get, url).with(query: { customer_id: customer_id, page: page, per_page: per_page }, headers: request_headers)).to have_been_made.once
+    end
+  end
+
   # unit tests for create_payment_method
   # Create a payment method
   # @param x_api_version

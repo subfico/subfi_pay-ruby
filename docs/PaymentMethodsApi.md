@@ -6,6 +6,7 @@ All URIs are relative to *https://pay-sandbox.bckbn.com*
 | ------ | ------------ | ----------- |
 | [**create_payment_method**](PaymentMethodsApi.md#create_payment_method) | **POST** /payment_methods | Create a payment method |
 | [**get_payment_method**](PaymentMethodsApi.md#get_payment_method) | **GET** /payment_methods/{id} | Retrieve a payment method |
+| [**list_payment_methods**](PaymentMethodsApi.md#list_payment_methods) | **GET** /payment_methods | List all payment methods |
 
 
 ## create_payment_method
@@ -143,6 +144,83 @@ end
 ### Return type
 
 [**PaymentMethodResponse**](PaymentMethodResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_payment_methods
+
+> <ListPaymentMethodsResponse> list_payment_methods(x_api_version, customer_id, opts)
+
+List all payment methods
+
+### Examples
+
+```ruby
+require 'time'
+require 'bckbn_pay'
+# setup authorization
+BckbnPay.configure do |config|
+  # Configure API key authorization: ApiKeyAuth
+  config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+end
+
+api_instance = BckbnPay::PaymentMethodsApi.new
+x_api_version = 'x_api_version_example' # String | 
+customer_id = 'customer_id_example' # String | The ID of the customer to filter payment methods by.
+opts = {
+  page: 56, # Integer | The page of results to retrieve.
+  per_page: 56 # Integer | Number of results per page.
+}
+
+begin
+  # List all payment methods
+  result = api_instance.list_payment_methods(x_api_version, customer_id, opts)
+  p result
+rescue BckbnPay::ApiError => e
+  puts "Error when calling PaymentMethodsApi->list_payment_methods: #{e}"
+end
+```
+
+#### Using the list_payment_methods_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ListPaymentMethodsResponse>, Integer, Hash)> list_payment_methods_with_http_info(x_api_version, customer_id, opts)
+
+```ruby
+begin
+  # List all payment methods
+  data, status_code, headers = api_instance.list_payment_methods_with_http_info(x_api_version, customer_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ListPaymentMethodsResponse>
+rescue BckbnPay::ApiError => e
+  puts "Error when calling PaymentMethodsApi->list_payment_methods_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **x_api_version** | **String** |  |  |
+| **customer_id** | **String** | The ID of the customer to filter payment methods by. |  |
+| **page** | **Integer** | The page of results to retrieve. | [optional] |
+| **per_page** | **Integer** | Number of results per page. | [optional] |
+
+### Return type
+
+[**ListPaymentMethodsResponse**](ListPaymentMethodsResponse.md)
 
 ### Authorization
 

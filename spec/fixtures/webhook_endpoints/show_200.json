@@ -1,0 +1,13 @@
+{
+  "id": "5eb28a90-3b47-416f-9395-73a282f3169b",
+  "created_at": "2024-11-18T12:31:03-05:00",
+  "enabled": true,
+  "event": "charge_failed",
+  "merchant_id": "7ce0e92b-753d-412a-b5de-db9b10e89980",
+  "metadata": {
+    "itaque": "rerum"
+  },
+  "sub_merchant_id": null,
+  "updated_at": "2024-11-18T12:31:03-05:00",
+  "url": "http://murray.example/darcel.gleason"
+}

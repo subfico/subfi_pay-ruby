@@ -162,5 +162,73 @@ module BckbnPay
       end
       return data, status_code, headers
     end
+
+    # List all sub-merchants
+    # @param x_api_version [String] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page The page of results to retrieve.
+    # @option opts [Integer] :per_page Number of results per page.
+    # @return [ListSubMerchantsResponse]
+    def list_sub_merchants(x_api_version, opts = {})
+      data, _status_code, _headers = list_sub_merchants_with_http_info(x_api_version, opts)
+      data
+    end
+
+    # List all sub-merchants
+    # @param x_api_version [String] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page The page of results to retrieve.
+    # @option opts [Integer] :per_page Number of results per page.
+    # @return [Array<(ListSubMerchantsResponse, Integer, Hash)>] ListSubMerchantsResponse data, response status code and response headers
+    def list_sub_merchants_with_http_info(x_api_version, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SubMerchantsApi.list_sub_merchants ...'
+      end
+      # verify the required parameter 'x_api_version' is set
+      if @api_client.config.client_side_validation && x_api_version.nil?
+        fail ArgumentError, "Missing the required parameter 'x_api_version' when calling SubMerchantsApi.list_sub_merchants"
+      end
+      # resource path
+      local_var_path = '/sub_merchants'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params[:'X-Api-Version'] = x_api_version
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ListSubMerchantsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
+
+      new_options = opts.merge(
+        :operation => :"SubMerchantsApi.list_sub_merchants",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SubMerchantsApi#list_sub_merchants\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
   end
 end
