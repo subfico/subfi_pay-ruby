@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "id": "d077d396-3559-4c02-b359-cd36dece9469",
+      "created_at": "2024-11-18T12:31:01-05:00",
+      "email": "elden@osinski.example",
+      "name": "Linwood Morar",
+      "phone": "919-594-5150",
+      "updated_at": "2024-11-18T12:31:01-05:00"
+    },
+    {
+      "id": "f6184f3b-d7c7-432e-8457-f3db3a4dfe7e",
+      "created_at": "2024-11-18T12:31:01-05:00",
+      "email": "shad_casper@hodkiewicz-walter.test",
+      "name": "Olen Abbott",
+      "phone": "613.617.7888",
+      "updated_at": "2024-11-18T12:31:01-05:00"
+    }
+  ],
+  "meta": {
+    "current_page": 1,
+    "next_page": null,
+    "prev_page": null,
+    "first_page?": true,
+    "last_page?": true,
+    "total_pages": 1
+  }
+}

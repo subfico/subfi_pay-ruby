@@ -1,0 +1,34 @@
+{
+  "data": [
+    {
+      "id": "a8aaf629-e3d1-42ca-b7aa-8ac03a112542",
+      "can_roll": true,
+      "created_at": "2024-11-18T12:31:01-05:00",
+      "expires_at": null,
+      "key": "pub_test_gMWcnkeQ6U1J9vwsXiektQ",
+      "last_used_at": null,
+      "live": false,
+      "type": "PublicAccessKey",
+      "updated_at": "2024-11-18T12:31:01-05:00"
+    },
+    {
+      "id": "9c0071f5-3e38-4283-a0a4-fe6655651da6",
+      "can_roll": true,
+      "created_at": "2024-11-18T12:31:01-05:00",
+      "expires_at": null,
+      "key": "priv_test_SS0oCswhm8vp_UqcadicxQ",
+      "last_used_at": null,
+      "live": false,
+      "type": "PrivateAccessKey",
+      "updated_at": "2024-11-18T12:31:01-05:00"
+    }
+  ],
+  "meta": {
+    "current_page": 1,
+    "next_page": null,
+    "prev_page": null,
+    "first_page?": true,
+    "last_page?": true,
+    "total_pages": 1
+  }
+}

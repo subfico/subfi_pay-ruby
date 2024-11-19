@@ -162,5 +162,80 @@ module BckbnPay
       end
       return data, status_code, headers
     end
+
+    # List all payment methods
+    # @param x_api_version [String] 
+    # @param customer_id [String] The ID of the customer to filter payment methods by.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page The page of results to retrieve.
+    # @option opts [Integer] :per_page Number of results per page.
+    # @return [ListPaymentMethodsResponse]
+    def list_payment_methods(x_api_version, customer_id, opts = {})
+      data, _status_code, _headers = list_payment_methods_with_http_info(x_api_version, customer_id, opts)
+      data
+    end
+
+    # List all payment methods
+    # @param x_api_version [String] 
+    # @param customer_id [String] The ID of the customer to filter payment methods by.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page The page of results to retrieve.
+    # @option opts [Integer] :per_page Number of results per page.
+    # @return [Array<(ListPaymentMethodsResponse, Integer, Hash)>] ListPaymentMethodsResponse data, response status code and response headers
+    def list_payment_methods_with_http_info(x_api_version, customer_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: PaymentMethodsApi.list_payment_methods ...'
+      end
+      # verify the required parameter 'x_api_version' is set
+      if @api_client.config.client_side_validation && x_api_version.nil?
+        fail ArgumentError, "Missing the required parameter 'x_api_version' when calling PaymentMethodsApi.list_payment_methods"
+      end
+      # verify the required parameter 'customer_id' is set
+      if @api_client.config.client_side_validation && customer_id.nil?
+        fail ArgumentError, "Missing the required parameter 'customer_id' when calling PaymentMethodsApi.list_payment_methods"
+      end
+      # resource path
+      local_var_path = '/payment_methods'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'customer_id'] = customer_id
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params[:'X-Api-Version'] = x_api_version
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ListPaymentMethodsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
+
+      new_options = opts.merge(
+        :operation => :"PaymentMethodsApi.list_payment_methods",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PaymentMethodsApi#list_payment_methods\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
   end
 end
