@@ -11,5 +11,5 @@ Generator version: 7.7.0
 =end
 
 module BckbnPay
-  VERSION = '0.5.1'
+  VERSION = '0.5.2'
 end

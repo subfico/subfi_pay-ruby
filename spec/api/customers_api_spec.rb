@@ -34,7 +34,7 @@ describe 'CustomersApi' do
       'X-Api-Version' => api_version,
       'X-Api-Key' => api_key,
       'Expect' => '',
-      'User-Agent' => 'OpenAPI-Generator/0.5.1/ruby'
+      'User-Agent' => 'OpenAPI-Generator/0.5.2/ruby'
     }
   end
   let(:response_headers) do
