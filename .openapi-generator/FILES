@@ -58,6 +58,10 @@ docs/RollAccessKeyRequestAccessKey.md
 docs/SubMerchantAttributes.md
 docs/SubMerchantResponse.md
 docs/SubMerchantsApi.md
+docs/SubscriptionCreateRequest.md
+docs/SubscriptionCreateRequestSubscription.md
+docs/SubscriptionResponse.md
+docs/SubscriptionsApi.md
 docs/WebhookEndpoint.md
 docs/WebhookEndpointsApi.md
 docs/WebhookRequest.md
@@ -74,6 +78,7 @@ lib/bckbn_pay/api/payment_intents_api.rb
 lib/bckbn_pay/api/payment_methods_api.rb
 lib/bckbn_pay/api/refunds_api.rb
 lib/bckbn_pay/api/sub_merchants_api.rb
+lib/bckbn_pay/api/subscriptions_api.rb
 lib/bckbn_pay/api/webhook_endpoints_api.rb
 lib/bckbn_pay/api/webhook_requests_api.rb
 lib/bckbn_pay/api_client.rb
@@ -120,6 +125,9 @@ lib/bckbn_pay/models/roll_access_key_request.rb
 lib/bckbn_pay/models/roll_access_key_request_access_key.rb
 lib/bckbn_pay/models/sub_merchant_attributes.rb
 lib/bckbn_pay/models/sub_merchant_response.rb
+lib/bckbn_pay/models/subscription_create_request.rb
+lib/bckbn_pay/models/subscription_create_request_subscription.rb
+lib/bckbn_pay/models/subscription_response.rb
 lib/bckbn_pay/models/webhook_endpoint.rb
 lib/bckbn_pay/models/webhook_request.rb
 lib/bckbn_pay/version.rb
