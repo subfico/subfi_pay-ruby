@@ -114,8 +114,6 @@ Class | Method | HTTP request | Description
 *BckbnPay::SubMerchantsApi* | [**create_sub_merchant**](docs/SubMerchantsApi.md#create_sub_merchant) | **POST** /sub_merchants | Create a sub_merchant
 *BckbnPay::SubMerchantsApi* | [**get_sub_merchant**](docs/SubMerchantsApi.md#get_sub_merchant) | **GET** /sub_merchants/{id} | Retrieve a sub_merchant
 *BckbnPay::SubMerchantsApi* | [**list_sub_merchants**](docs/SubMerchantsApi.md#list_sub_merchants) | **GET** /sub_merchants | List all sub-merchants
-*BckbnPay::SubscriptionsApi* | [**create_subscription**](docs/SubscriptionsApi.md#create_subscription) | **POST** /subscriptions | Create a new subscription
-*BckbnPay::SubscriptionsApi* | [**get_subscription**](docs/SubscriptionsApi.md#get_subscription) | **GET** /subscriptions/{id} | Retrieve a subscription by ID
 *BckbnPay::WebhookEndpointsApi* | [**create_webhook_endpoint**](docs/WebhookEndpointsApi.md#create_webhook_endpoint) | **POST** /webhook_endpoints | Create a webhook endpoint
 *BckbnPay::WebhookEndpointsApi* | [**delete_webhook_endpoint**](docs/WebhookEndpointsApi.md#delete_webhook_endpoint) | **DELETE** /webhook_endpoints/{id} | Delete a webhook endpoint by ID
 *BckbnPay::WebhookEndpointsApi* | [**get_webhook_endpoint**](docs/WebhookEndpointsApi.md#get_webhook_endpoint) | **GET** /webhook_endpoints/{id} | Retrieve a webhook endpoint by ID
@@ -167,9 +165,6 @@ Class | Method | HTTP request | Description
  - [BckbnPay::RollAccessKeyRequestAccessKey](docs/RollAccessKeyRequestAccessKey.md)
  - [BckbnPay::SubMerchantAttributes](docs/SubMerchantAttributes.md)
  - [BckbnPay::SubMerchantResponse](docs/SubMerchantResponse.md)
- - [BckbnPay::SubscriptionCreateRequest](docs/SubscriptionCreateRequest.md)
- - [BckbnPay::SubscriptionCreateRequestSubscription](docs/SubscriptionCreateRequestSubscription.md)
- - [BckbnPay::SubscriptionResponse](docs/SubscriptionResponse.md)
  - [BckbnPay::WebhookEndpoint](docs/WebhookEndpoint.md)
  - [BckbnPay::WebhookRequest](docs/WebhookRequest.md)
 
