@@ -1,7 +1,7 @@
 =begin
-#Bckbn Pay API
+#SubFi Pay API
 
-#API for Bckbn Pay services
+#API for SubFi Pay services
 
 The version of the OpenAPI document: 0.1.0
 
@@ -11,7 +11,7 @@ Generator version: 7.7.0
 =end
 
 # load the gem
-require 'bckbn_pay'
+require 'subfi_pay'
 require 'faker'
 require 'webmock/rspec'
 

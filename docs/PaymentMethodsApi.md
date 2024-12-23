@@ -1,6 +1,6 @@
-# BckbnPay::PaymentMethodsApi
+# SubFiPay::PaymentMethodsApi
 
-All URIs are relative to *https://pay-sandbox.bckbn.com*
+All URIs are relative to *https://pay-sandbox.subfi.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
@@ -11,7 +11,7 @@ All URIs are relative to *https://pay-sandbox.bckbn.com*
 
 ## create_payment_method
 
-> <PaymentMethodResponse> create_payment_method(x_api_version, payment_method_attributes, opts)
+> <PaymentMethodResponse> create_payment_method(x_api_version, x_account_id, payment_method_attributes, opts)
 
 Create a payment method
 
@@ -19,27 +19,28 @@ Create a payment method
 
 ```ruby
 require 'time'
-require 'bckbn_pay'
+require 'subfi_pay'
 # setup authorization
-BckbnPay.configure do |config|
+SubFiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = BckbnPay::PaymentMethodsApi.new
+api_instance = SubFiPay::PaymentMethodsApi.new
 x_api_version = 'x_api_version_example' # String | 
-payment_method_attributes = BckbnPay::PaymentMethodAttributes.new({type: 'type_example'}) # PaymentMethodAttributes | 
+x_account_id = 'x_account_id_example' # String | 
+payment_method_attributes = SubFiPay::PaymentMethodAttributes.new({type: 'type_example'}) # PaymentMethodAttributes | 
 opts = {
   x_idempotency_key: 'x_idempotency_key_example' # String | 
 }
 
 begin
   # Create a payment method
-  result = api_instance.create_payment_method(x_api_version, payment_method_attributes, opts)
+  result = api_instance.create_payment_method(x_api_version, x_account_id, payment_method_attributes, opts)
   p result
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling PaymentMethodsApi->create_payment_method: #{e}"
 end
 ```
@@ -48,16 +49,16 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PaymentMethodResponse>, Integer, Hash)> create_payment_method_with_http_info(x_api_version, payment_method_attributes, opts)
+> <Array(<PaymentMethodResponse>, Integer, Hash)> create_payment_method_with_http_info(x_api_version, x_account_id, payment_method_attributes, opts)
 
 ```ruby
 begin
   # Create a payment method
-  data, status_code, headers = api_instance.create_payment_method_with_http_info(x_api_version, payment_method_attributes, opts)
+  data, status_code, headers = api_instance.create_payment_method_with_http_info(x_api_version, x_account_id, payment_method_attributes, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PaymentMethodResponse>
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling PaymentMethodsApi->create_payment_method_with_http_info: #{e}"
 end
 ```
@@ -67,6 +68,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **x_api_version** | **String** |  |  |
+| **x_account_id** | **String** |  |  |
 | **payment_method_attributes** | [**PaymentMethodAttributes**](PaymentMethodAttributes.md) |  |  |
 | **x_idempotency_key** | **String** |  | [optional] |
 
@@ -86,7 +88,7 @@ end
 
 ## get_payment_method
 
-> <PaymentMethodResponse> get_payment_method(x_api_version, id)
+> <PaymentMethodResponse> get_payment_method(x_api_version, x_account_id, id)
 
 Retrieve a payment method
 
@@ -94,24 +96,25 @@ Retrieve a payment method
 
 ```ruby
 require 'time'
-require 'bckbn_pay'
+require 'subfi_pay'
 # setup authorization
-BckbnPay.configure do |config|
+SubFiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = BckbnPay::PaymentMethodsApi.new
+api_instance = SubFiPay::PaymentMethodsApi.new
 x_api_version = 'x_api_version_example' # String | 
+x_account_id = 'x_account_id_example' # String | 
 id = 'id_example' # String | 
 
 begin
   # Retrieve a payment method
-  result = api_instance.get_payment_method(x_api_version, id)
+  result = api_instance.get_payment_method(x_api_version, x_account_id, id)
   p result
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling PaymentMethodsApi->get_payment_method: #{e}"
 end
 ```
@@ -120,16 +123,16 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PaymentMethodResponse>, Integer, Hash)> get_payment_method_with_http_info(x_api_version, id)
+> <Array(<PaymentMethodResponse>, Integer, Hash)> get_payment_method_with_http_info(x_api_version, x_account_id, id)
 
 ```ruby
 begin
   # Retrieve a payment method
-  data, status_code, headers = api_instance.get_payment_method_with_http_info(x_api_version, id)
+  data, status_code, headers = api_instance.get_payment_method_with_http_info(x_api_version, x_account_id, id)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PaymentMethodResponse>
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling PaymentMethodsApi->get_payment_method_with_http_info: #{e}"
 end
 ```
@@ -139,6 +142,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **x_api_version** | **String** |  |  |
+| **x_account_id** | **String** |  |  |
 | **id** | **String** |  |  |
 
 ### Return type
@@ -157,7 +161,7 @@ end
 
 ## list_payment_methods
 
-> <ListPaymentMethodsResponse> list_payment_methods(x_api_version, customer_id, opts)
+> <ListPaymentMethodsResponse> list_payment_methods(x_api_version, x_account_id, customer_id, opts)
 
 List all payment methods
 
@@ -165,17 +169,18 @@ List all payment methods
 
 ```ruby
 require 'time'
-require 'bckbn_pay'
+require 'subfi_pay'
 # setup authorization
-BckbnPay.configure do |config|
+SubFiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = BckbnPay::PaymentMethodsApi.new
+api_instance = SubFiPay::PaymentMethodsApi.new
 x_api_version = 'x_api_version_example' # String | 
+x_account_id = 'x_account_id_example' # String | 
 customer_id = 'customer_id_example' # String | The ID of the customer to filter payment methods by.
 opts = {
   page: 56, # Integer | The page of results to retrieve.
@@ -184,9 +189,9 @@ opts = {
 
 begin
   # List all payment methods
-  result = api_instance.list_payment_methods(x_api_version, customer_id, opts)
+  result = api_instance.list_payment_methods(x_api_version, x_account_id, customer_id, opts)
   p result
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling PaymentMethodsApi->list_payment_methods: #{e}"
 end
 ```
@@ -195,16 +200,16 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ListPaymentMethodsResponse>, Integer, Hash)> list_payment_methods_with_http_info(x_api_version, customer_id, opts)
+> <Array(<ListPaymentMethodsResponse>, Integer, Hash)> list_payment_methods_with_http_info(x_api_version, x_account_id, customer_id, opts)
 
 ```ruby
 begin
   # List all payment methods
-  data, status_code, headers = api_instance.list_payment_methods_with_http_info(x_api_version, customer_id, opts)
+  data, status_code, headers = api_instance.list_payment_methods_with_http_info(x_api_version, x_account_id, customer_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ListPaymentMethodsResponse>
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling PaymentMethodsApi->list_payment_methods_with_http_info: #{e}"
 end
 ```
@@ -214,6 +219,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **x_api_version** | **String** |  |  |
+| **x_account_id** | **String** |  |  |
 | **customer_id** | **String** | The ID of the customer to filter payment methods by. |  |
 | **page** | **Integer** | The page of results to retrieve. | [optional] |
 | **per_page** | **Integer** | Number of results per page. | [optional] |

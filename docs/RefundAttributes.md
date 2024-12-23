@@ -1,4 +1,4 @@
-# BckbnPay::RefundAttributes
+# SubFiPay::RefundAttributes
 
 ## Properties
 
@@ -10,9 +10,9 @@
 ## Example
 
 ```ruby
-require 'bckbn_pay'
+require 'subfi_pay'
 
-instance = BckbnPay::RefundAttributes.new(
+instance = SubFiPay::RefundAttributes.new(
   amount: null,
   charge_id: null
 )

@@ -1,6 +1,6 @@
-# BckbnPay::WebhookEndpointsApi
+# SubFiPay::WebhookEndpointsApi
 
-All URIs are relative to *https://pay-sandbox.bckbn.com*
+All URIs are relative to *https://pay-sandbox.subfi.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
@@ -21,24 +21,24 @@ Create a webhook endpoint
 
 ```ruby
 require 'time'
-require 'bckbn_pay'
+require 'subfi_pay'
 # setup authorization
-BckbnPay.configure do |config|
+SubFiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = BckbnPay::WebhookEndpointsApi.new
+api_instance = SubFiPay::WebhookEndpointsApi.new
 x_api_version = 'x_api_version_example' # String | 
-create_webhook_endpoint_request = BckbnPay::CreateWebhookEndpointRequest.new # CreateWebhookEndpointRequest | 
+create_webhook_endpoint_request = SubFiPay::CreateWebhookEndpointRequest.new # CreateWebhookEndpointRequest | 
 
 begin
   # Create a webhook endpoint
   result = api_instance.create_webhook_endpoint(x_api_version, create_webhook_endpoint_request)
   p result
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling WebhookEndpointsApi->create_webhook_endpoint: #{e}"
 end
 ```
@@ -56,7 +56,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <WebhookEndpoint>
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling WebhookEndpointsApi->create_webhook_endpoint_with_http_info: #{e}"
 end
 ```
@@ -84,7 +84,7 @@ end
 
 ## delete_webhook_endpoint
 
-> delete_webhook_endpoint(x_api_version, id)
+> delete_webhook_endpoint(x_api_version, x_account_id, id)
 
 Delete a webhook endpoint by ID
 
@@ -92,23 +92,24 @@ Delete a webhook endpoint by ID
 
 ```ruby
 require 'time'
-require 'bckbn_pay'
+require 'subfi_pay'
 # setup authorization
-BckbnPay.configure do |config|
+SubFiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = BckbnPay::WebhookEndpointsApi.new
+api_instance = SubFiPay::WebhookEndpointsApi.new
 x_api_version = 'x_api_version_example' # String | 
+x_account_id = 'x_account_id_example' # String | 
 id = 'id_example' # String | 
 
 begin
   # Delete a webhook endpoint by ID
-  api_instance.delete_webhook_endpoint(x_api_version, id)
-rescue BckbnPay::ApiError => e
+  api_instance.delete_webhook_endpoint(x_api_version, x_account_id, id)
+rescue SubFiPay::ApiError => e
   puts "Error when calling WebhookEndpointsApi->delete_webhook_endpoint: #{e}"
 end
 ```
@@ -117,16 +118,16 @@ end
 
 This returns an Array which contains the response data (`nil` in this case), status code and headers.
 
-> <Array(nil, Integer, Hash)> delete_webhook_endpoint_with_http_info(x_api_version, id)
+> <Array(nil, Integer, Hash)> delete_webhook_endpoint_with_http_info(x_api_version, x_account_id, id)
 
 ```ruby
 begin
   # Delete a webhook endpoint by ID
-  data, status_code, headers = api_instance.delete_webhook_endpoint_with_http_info(x_api_version, id)
+  data, status_code, headers = api_instance.delete_webhook_endpoint_with_http_info(x_api_version, x_account_id, id)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling WebhookEndpointsApi->delete_webhook_endpoint_with_http_info: #{e}"
 end
 ```
@@ -136,6 +137,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **x_api_version** | **String** |  |  |
+| **x_account_id** | **String** |  |  |
 | **id** | **String** |  |  |
 
 ### Return type
@@ -154,7 +156,7 @@ nil (empty response body)
 
 ## get_webhook_endpoint
 
-> <WebhookEndpoint> get_webhook_endpoint(x_api_version, id)
+> <WebhookEndpoint> get_webhook_endpoint(x_api_version, x_account_id, id)
 
 Retrieve a webhook endpoint by ID
 
@@ -162,24 +164,25 @@ Retrieve a webhook endpoint by ID
 
 ```ruby
 require 'time'
-require 'bckbn_pay'
+require 'subfi_pay'
 # setup authorization
-BckbnPay.configure do |config|
+SubFiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = BckbnPay::WebhookEndpointsApi.new
+api_instance = SubFiPay::WebhookEndpointsApi.new
 x_api_version = 'x_api_version_example' # String | 
+x_account_id = 'x_account_id_example' # String | 
 id = 'id_example' # String | 
 
 begin
   # Retrieve a webhook endpoint by ID
-  result = api_instance.get_webhook_endpoint(x_api_version, id)
+  result = api_instance.get_webhook_endpoint(x_api_version, x_account_id, id)
   p result
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling WebhookEndpointsApi->get_webhook_endpoint: #{e}"
 end
 ```
@@ -188,16 +191,16 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<WebhookEndpoint>, Integer, Hash)> get_webhook_endpoint_with_http_info(x_api_version, id)
+> <Array(<WebhookEndpoint>, Integer, Hash)> get_webhook_endpoint_with_http_info(x_api_version, x_account_id, id)
 
 ```ruby
 begin
   # Retrieve a webhook endpoint by ID
-  data, status_code, headers = api_instance.get_webhook_endpoint_with_http_info(x_api_version, id)
+  data, status_code, headers = api_instance.get_webhook_endpoint_with_http_info(x_api_version, x_account_id, id)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <WebhookEndpoint>
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling WebhookEndpointsApi->get_webhook_endpoint_with_http_info: #{e}"
 end
 ```
@@ -207,6 +210,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **x_api_version** | **String** |  |  |
+| **x_account_id** | **String** |  |  |
 | **id** | **String** |  |  |
 
 ### Return type
@@ -225,7 +229,7 @@ end
 
 ## list_webhook_endpoints
 
-> <ListWebhookEndpointsResponse> list_webhook_endpoints(x_api_version, opts)
+> <ListWebhookEndpointsResponse> list_webhook_endpoints(x_api_version, x_account_id, opts)
 
 List all webhook endpoints
 
@@ -233,17 +237,18 @@ List all webhook endpoints
 
 ```ruby
 require 'time'
-require 'bckbn_pay'
+require 'subfi_pay'
 # setup authorization
-BckbnPay.configure do |config|
+SubFiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = BckbnPay::WebhookEndpointsApi.new
+api_instance = SubFiPay::WebhookEndpointsApi.new
 x_api_version = 'x_api_version_example' # String | 
+x_account_id = 'x_account_id_example' # String | 
 opts = {
   page: 56, # Integer | The page of results to retrieve.
   per_page: 56 # Integer | Number of results per page.
@@ -251,9 +256,9 @@ opts = {
 
 begin
   # List all webhook endpoints
-  result = api_instance.list_webhook_endpoints(x_api_version, opts)
+  result = api_instance.list_webhook_endpoints(x_api_version, x_account_id, opts)
   p result
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling WebhookEndpointsApi->list_webhook_endpoints: #{e}"
 end
 ```
@@ -262,16 +267,16 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ListWebhookEndpointsResponse>, Integer, Hash)> list_webhook_endpoints_with_http_info(x_api_version, opts)
+> <Array(<ListWebhookEndpointsResponse>, Integer, Hash)> list_webhook_endpoints_with_http_info(x_api_version, x_account_id, opts)
 
 ```ruby
 begin
   # List all webhook endpoints
-  data, status_code, headers = api_instance.list_webhook_endpoints_with_http_info(x_api_version, opts)
+  data, status_code, headers = api_instance.list_webhook_endpoints_with_http_info(x_api_version, x_account_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ListWebhookEndpointsResponse>
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling WebhookEndpointsApi->list_webhook_endpoints_with_http_info: #{e}"
 end
 ```
@@ -281,6 +286,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **x_api_version** | **String** |  |  |
+| **x_account_id** | **String** |  |  |
 | **page** | **Integer** | The page of results to retrieve. | [optional] |
 | **per_page** | **Integer** | Number of results per page. | [optional] |
 
@@ -300,7 +306,7 @@ end
 
 ## update_webhook_endpoint
 
-> <WebhookEndpoint> update_webhook_endpoint(x_api_version, id, create_webhook_endpoint_request)
+> <WebhookEndpoint> update_webhook_endpoint(x_api_version, x_account_id, id, create_webhook_endpoint_request)
 
 Update a webhook endpoint by ID
 
@@ -308,25 +314,26 @@ Update a webhook endpoint by ID
 
 ```ruby
 require 'time'
-require 'bckbn_pay'
+require 'subfi_pay'
 # setup authorization
-BckbnPay.configure do |config|
+SubFiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = BckbnPay::WebhookEndpointsApi.new
+api_instance = SubFiPay::WebhookEndpointsApi.new
 x_api_version = 'x_api_version_example' # String | 
+x_account_id = 'x_account_id_example' # String | 
 id = 'id_example' # String | 
-create_webhook_endpoint_request = BckbnPay::CreateWebhookEndpointRequest.new # CreateWebhookEndpointRequest | 
+create_webhook_endpoint_request = SubFiPay::CreateWebhookEndpointRequest.new # CreateWebhookEndpointRequest | 
 
 begin
   # Update a webhook endpoint by ID
-  result = api_instance.update_webhook_endpoint(x_api_version, id, create_webhook_endpoint_request)
+  result = api_instance.update_webhook_endpoint(x_api_version, x_account_id, id, create_webhook_endpoint_request)
   p result
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling WebhookEndpointsApi->update_webhook_endpoint: #{e}"
 end
 ```
@@ -335,16 +342,16 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<WebhookEndpoint>, Integer, Hash)> update_webhook_endpoint_with_http_info(x_api_version, id, create_webhook_endpoint_request)
+> <Array(<WebhookEndpoint>, Integer, Hash)> update_webhook_endpoint_with_http_info(x_api_version, x_account_id, id, create_webhook_endpoint_request)
 
 ```ruby
 begin
   # Update a webhook endpoint by ID
-  data, status_code, headers = api_instance.update_webhook_endpoint_with_http_info(x_api_version, id, create_webhook_endpoint_request)
+  data, status_code, headers = api_instance.update_webhook_endpoint_with_http_info(x_api_version, x_account_id, id, create_webhook_endpoint_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <WebhookEndpoint>
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling WebhookEndpointsApi->update_webhook_endpoint_with_http_info: #{e}"
 end
 ```
@@ -354,6 +361,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **x_api_version** | **String** |  |  |
+| **x_account_id** | **String** |  |  |
 | **id** | **String** |  |  |
 | **create_webhook_endpoint_request** | [**CreateWebhookEndpointRequest**](CreateWebhookEndpointRequest.md) |  |  |
 

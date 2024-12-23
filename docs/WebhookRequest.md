@@ -1,4 +1,4 @@
-# BckbnPay::WebhookRequest
+# SubFiPay::WebhookRequest
 
 ## Properties
 
@@ -19,9 +19,9 @@
 ## Example
 
 ```ruby
-require 'bckbn_pay'
+require 'subfi_pay'
 
-instance = BckbnPay::WebhookRequest.new(
+instance = SubFiPay::WebhookRequest.new(
   id: null,
   event_id: null,
   webhook_endpoint_id: null,

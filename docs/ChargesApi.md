@@ -1,6 +1,6 @@
-# BckbnPay::ChargesApi
+# SubFiPay::ChargesApi
 
-All URIs are relative to *https://pay-sandbox.bckbn.com*
+All URIs are relative to *https://pay-sandbox.subfi.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
@@ -10,7 +10,7 @@ All URIs are relative to *https://pay-sandbox.bckbn.com*
 
 ## get_charge
 
-> <ChargeResponse> get_charge(x_api_version, id, opts)
+> <ChargeResponse> get_charge(x_api_version, x_account_id, id, opts)
 
 Retrieve a charge
 
@@ -18,27 +18,28 @@ Retrieve a charge
 
 ```ruby
 require 'time'
-require 'bckbn_pay'
+require 'subfi_pay'
 # setup authorization
-BckbnPay.configure do |config|
+SubFiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = BckbnPay::ChargesApi.new
+api_instance = SubFiPay::ChargesApi.new
 x_api_version = 'x_api_version_example' # String | 
+x_account_id = 'x_account_id_example' # String | 
 id = 'id_example' # String | 
 opts = {
-  sub_merchant_id: 'sub_merchant_id_example' # String | Filter results by sub_merchant ID.
+  connected_account_id: 'connected_account_id_example' # String | Filter results by sub_merchant ID.
 }
 
 begin
   # Retrieve a charge
-  result = api_instance.get_charge(x_api_version, id, opts)
+  result = api_instance.get_charge(x_api_version, x_account_id, id, opts)
   p result
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling ChargesApi->get_charge: #{e}"
 end
 ```
@@ -47,16 +48,16 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ChargeResponse>, Integer, Hash)> get_charge_with_http_info(x_api_version, id, opts)
+> <Array(<ChargeResponse>, Integer, Hash)> get_charge_with_http_info(x_api_version, x_account_id, id, opts)
 
 ```ruby
 begin
   # Retrieve a charge
-  data, status_code, headers = api_instance.get_charge_with_http_info(x_api_version, id, opts)
+  data, status_code, headers = api_instance.get_charge_with_http_info(x_api_version, x_account_id, id, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ChargeResponse>
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling ChargesApi->get_charge_with_http_info: #{e}"
 end
 ```
@@ -66,8 +67,9 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **x_api_version** | **String** |  |  |
+| **x_account_id** | **String** |  |  |
 | **id** | **String** |  |  |
-| **sub_merchant_id** | **String** | Filter results by sub_merchant ID. | [optional] |
+| **connected_account_id** | **String** | Filter results by sub_merchant ID. | [optional] |
 
 ### Return type
 
@@ -85,7 +87,7 @@ end
 
 ## list_charges
 
-> <ListChargesResponse> list_charges(x_api_version, opts)
+> <ListChargesResponse> list_charges(x_api_version, x_account_id, opts)
 
 List all charges
 
@@ -93,29 +95,30 @@ List all charges
 
 ```ruby
 require 'time'
-require 'bckbn_pay'
+require 'subfi_pay'
 # setup authorization
-BckbnPay.configure do |config|
+SubFiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = BckbnPay::ChargesApi.new
+api_instance = SubFiPay::ChargesApi.new
 x_api_version = 'x_api_version_example' # String | 
+x_account_id = 'x_account_id_example' # String | 
 opts = {
   page: 56, # Integer | The page of results to retrieve.
   per_page: 56, # Integer | Number of results per page.
-  sub_merchant_id: 'sub_merchant_id_example', # String | Filter results by sub_merchant ID.
+  connected_account_id: 'connected_account_id_example', # String | Filter results by sub_merchant ID.
   payment_intent_id: 'payment_intent_id_example' # String | Filter results by payment intent ID.
 }
 
 begin
   # List all charges
-  result = api_instance.list_charges(x_api_version, opts)
+  result = api_instance.list_charges(x_api_version, x_account_id, opts)
   p result
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling ChargesApi->list_charges: #{e}"
 end
 ```
@@ -124,16 +127,16 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ListChargesResponse>, Integer, Hash)> list_charges_with_http_info(x_api_version, opts)
+> <Array(<ListChargesResponse>, Integer, Hash)> list_charges_with_http_info(x_api_version, x_account_id, opts)
 
 ```ruby
 begin
   # List all charges
-  data, status_code, headers = api_instance.list_charges_with_http_info(x_api_version, opts)
+  data, status_code, headers = api_instance.list_charges_with_http_info(x_api_version, x_account_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ListChargesResponse>
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling ChargesApi->list_charges_with_http_info: #{e}"
 end
 ```
@@ -143,9 +146,10 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **x_api_version** | **String** |  |  |
+| **x_account_id** | **String** |  |  |
 | **page** | **Integer** | The page of results to retrieve. | [optional] |
 | **per_page** | **Integer** | Number of results per page. | [optional] |
-| **sub_merchant_id** | **String** | Filter results by sub_merchant ID. | [optional] |
+| **connected_account_id** | **String** | Filter results by sub_merchant ID. | [optional] |
 | **payment_intent_id** | **String** | Filter results by payment intent ID. | [optional] |
 
 ### Return type

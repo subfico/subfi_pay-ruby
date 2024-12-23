@@ -1,4 +1,4 @@
-# BckbnPay::BalanceTransactionResponse
+# SubFiPay::BalanceTransactionResponse
 
 ## Properties
 
@@ -7,7 +7,7 @@
 | **id** | **String** |  | [optional] |
 | **created_at** | **Time** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |
-| **sub_merchant_id** | **String** |  | [optional] |
+| **connected_account_id** | **String** |  | [optional] |
 | **amount** | **Integer** |  | [optional] |
 | **charge_id** | **String** |  | [optional] |
 | **fee** | **Integer** |  | [optional] |
@@ -19,13 +19,13 @@
 ## Example
 
 ```ruby
-require 'bckbn_pay'
+require 'subfi_pay'
 
-instance = BckbnPay::BalanceTransactionResponse.new(
+instance = SubFiPay::BalanceTransactionResponse.new(
   id: null,
   created_at: null,
   updated_at: null,
-  sub_merchant_id: null,
+  connected_account_id: null,
   amount: null,
   charge_id: null,
   fee: null,

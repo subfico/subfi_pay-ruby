@@ -1,6 +1,6 @@
-# BckbnPay::WebhookRequestsApi
+# SubFiPay::WebhookRequestsApi
 
-All URIs are relative to *https://pay-sandbox.bckbn.com*
+All URIs are relative to *https://pay-sandbox.subfi.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
@@ -9,7 +9,7 @@ All URIs are relative to *https://pay-sandbox.bckbn.com*
 
 ## list_webhook_requests
 
-> <ListWebhookRequestsResponse> list_webhook_requests(x_api_version, opts)
+> <ListWebhookRequestsResponse> list_webhook_requests(x_api_version, x_account_id, opts)
 
 List all webhook requests
 
@@ -17,17 +17,18 @@ List all webhook requests
 
 ```ruby
 require 'time'
-require 'bckbn_pay'
+require 'subfi_pay'
 # setup authorization
-BckbnPay.configure do |config|
+SubFiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = BckbnPay::WebhookRequestsApi.new
+api_instance = SubFiPay::WebhookRequestsApi.new
 x_api_version = 'x_api_version_example' # String | 
+x_account_id = 'x_account_id_example' # String | 
 opts = {
   page: 56, # Integer | The page of results to retrieve.
   per_page: 56 # Integer | Number of results per page.
@@ -35,9 +36,9 @@ opts = {
 
 begin
   # List all webhook requests
-  result = api_instance.list_webhook_requests(x_api_version, opts)
+  result = api_instance.list_webhook_requests(x_api_version, x_account_id, opts)
   p result
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling WebhookRequestsApi->list_webhook_requests: #{e}"
 end
 ```
@@ -46,16 +47,16 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ListWebhookRequestsResponse>, Integer, Hash)> list_webhook_requests_with_http_info(x_api_version, opts)
+> <Array(<ListWebhookRequestsResponse>, Integer, Hash)> list_webhook_requests_with_http_info(x_api_version, x_account_id, opts)
 
 ```ruby
 begin
   # List all webhook requests
-  data, status_code, headers = api_instance.list_webhook_requests_with_http_info(x_api_version, opts)
+  data, status_code, headers = api_instance.list_webhook_requests_with_http_info(x_api_version, x_account_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ListWebhookRequestsResponse>
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling WebhookRequestsApi->list_webhook_requests_with_http_info: #{e}"
 end
 ```
@@ -65,6 +66,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **x_api_version** | **String** |  |  |
+| **x_account_id** | **String** |  |  |
 | **page** | **Integer** | The page of results to retrieve. | [optional] |
 | **per_page** | **Integer** | Number of results per page. | [optional] |
 

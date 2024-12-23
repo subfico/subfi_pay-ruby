@@ -1,4 +1,4 @@
-# BckbnPay::AccessKey
+# SubFiPay::AccessKey
 
 ## Properties
 
@@ -16,9 +16,9 @@
 ## Example
 
 ```ruby
-require 'bckbn_pay'
+require 'subfi_pay'
 
-instance = BckbnPay::AccessKey.new(
+instance = SubFiPay::AccessKey.new(
   expires_at: null,
   key: null,
   live: null,

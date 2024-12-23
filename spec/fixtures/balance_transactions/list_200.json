@@ -9,7 +9,7 @@
             "net": 518032,
             "refund_id": null,
             "state": "processing",
-            "sub_merchant_id": "05868256-abe7-41a4-bd61-4af7c7b6b5f7",
+            "connected_account_id": "05868256-abe7-41a4-bd61-4af7c7b6b5f7",
             "type": "charge",
             "updated_at": "2024-07-10T12:09:01-04:00"
         },
@@ -22,7 +22,7 @@
             "net": 518032,
             "refund_id": null,
             "state": "authorized",
-            "sub_merchant_id": "05868256-abe7-41a4-bd61-4af7c7b6b5f7",
+            "connected_account_id": "05868256-abe7-41a4-bd61-4af7c7b6b5f7",
             "type": "charge",
             "updated_at": "2024-07-10T12:09:01-04:00"
         },
@@ -35,7 +35,7 @@
             "net": 518032,
             "refund_id": null,
             "state": "captured",
-            "sub_merchant_id": "05868256-abe7-41a4-bd61-4af7c7b6b5f7",
+            "connected_account_id": "05868256-abe7-41a4-bd61-4af7c7b6b5f7",
             "type": "charge",
             "updated_at": "2024-07-10T12:09:01-04:00"
         },
@@ -48,7 +48,7 @@
             "net": -518032,
             "refund_id": "692d3fcf-030f-4677-8f24-126fad1a57ca",
             "state": "processing",
-            "sub_merchant_id": "05868256-abe7-41a4-bd61-4af7c7b6b5f7",
+            "connected_account_id": "05868256-abe7-41a4-bd61-4af7c7b6b5f7",
             "type": "refund",
             "updated_at": "2024-07-10T12:09:01-04:00"
         },
@@ -61,7 +61,7 @@
             "net": -518032,
             "refund_id": "692d3fcf-030f-4677-8f24-126fad1a57ca",
             "state": "completed",
-            "sub_merchant_id": "05868256-abe7-41a4-bd61-4af7c7b6b5f7",
+            "connected_account_id": "05868256-abe7-41a4-bd61-4af7c7b6b5f7",
             "type": "refund",
             "updated_at": "2024-07-10T12:09:01-04:00"
         }

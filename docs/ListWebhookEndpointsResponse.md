@@ -1,4 +1,4 @@
-# BckbnPay::ListWebhookEndpointsResponse
+# SubFiPay::ListWebhookEndpointsResponse
 
 ## Properties
 
@@ -10,9 +10,9 @@
 ## Example
 
 ```ruby
-require 'bckbn_pay'
+require 'subfi_pay'
 
-instance = BckbnPay::ListWebhookEndpointsResponse.new(
+instance = SubFiPay::ListWebhookEndpointsResponse.new(
   data: null,
   meta: null
 )

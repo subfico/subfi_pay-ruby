@@ -1,4 +1,4 @@
-# BckbnPay::ListPaymentIntentsResponse
+# SubFiPay::ListPaymentIntentsResponse
 
 ## Properties
 
@@ -10,9 +10,9 @@
 ## Example
 
 ```ruby
-require 'bckbn_pay'
+require 'subfi_pay'
 
-instance = BckbnPay::ListPaymentIntentsResponse.new(
+instance = SubFiPay::ListPaymentIntentsResponse.new(
   data: null,
   meta: null
 )

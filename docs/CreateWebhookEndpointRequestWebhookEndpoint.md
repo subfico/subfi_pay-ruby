@@ -1,4 +1,4 @@
-# BckbnPay::CreateWebhookEndpointRequestWebhookEndpoint
+# SubFiPay::CreateWebhookEndpointRequestWebhookEndpoint
 
 ## Properties
 
@@ -9,20 +9,20 @@
 | **enabled** | **Boolean** |  | [optional] |
 | **secret** | **String** |  | [optional] |
 | **url** | **String** |  | [optional] |
-| **sub_merchant_id** | **String** |  | [optional] |
+| **connected_account_id** | **String** |  | [optional] |
 
 ## Example
 
 ```ruby
-require 'bckbn_pay'
+require 'subfi_pay'
 
-instance = BckbnPay::CreateWebhookEndpointRequestWebhookEndpoint.new(
+instance = SubFiPay::CreateWebhookEndpointRequestWebhookEndpoint.new(
   event: null,
   metadata: null,
   enabled: null,
   secret: null,
   url: null,
-  sub_merchant_id: null
+  connected_account_id: null
 )
 ```
 
