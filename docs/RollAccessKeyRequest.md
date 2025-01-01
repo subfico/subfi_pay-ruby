@@ -1,4 +1,4 @@
-# BckbnPay::RollAccessKeyRequest
+# SubFiPay::RollAccessKeyRequest
 
 ## Properties
 
@@ -9,9 +9,9 @@
 ## Example
 
 ```ruby
-require 'bckbn_pay'
+require 'subfi_pay'
 
-instance = BckbnPay::RollAccessKeyRequest.new(
+instance = SubFiPay::RollAccessKeyRequest.new(
   access_key: null
 )
 ```

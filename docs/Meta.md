@@ -1,4 +1,4 @@
-# BckbnPay::Meta
+# SubFiPay::Meta
 
 ## Properties
 
@@ -14,9 +14,9 @@
 ## Example
 
 ```ruby
-require 'bckbn_pay'
+require 'subfi_pay'
 
-instance = BckbnPay::Meta.new(
+instance = SubFiPay::Meta.new(
   current_page: null,
   next_page: null,
   prev_page: null,

@@ -1,6 +1,6 @@
-# BckbnPay::AccessKeysApi
+# SubFiPay::AccessKeysApi
 
-All URIs are relative to *https://pay-sandbox.bckbn.com*
+All URIs are relative to *https://pay-sandbox.subfi.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
@@ -19,23 +19,23 @@ Delete an access key by ID
 
 ```ruby
 require 'time'
-require 'bckbn_pay'
+require 'subfi_pay'
 # setup authorization
-BckbnPay.configure do |config|
+SubFiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = BckbnPay::AccessKeysApi.new
+api_instance = SubFiPay::AccessKeysApi.new
 x_api_version = 'x_api_version_example' # String | 
 id = 'id_example' # String | 
 
 begin
   # Delete an access key by ID
   api_instance.delete_access_key(x_api_version, id)
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling AccessKeysApi->delete_access_key: #{e}"
 end
 ```
@@ -53,7 +53,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling AccessKeysApi->delete_access_key_with_http_info: #{e}"
 end
 ```
@@ -89,16 +89,16 @@ List all access keys
 
 ```ruby
 require 'time'
-require 'bckbn_pay'
+require 'subfi_pay'
 # setup authorization
-BckbnPay.configure do |config|
+SubFiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = BckbnPay::AccessKeysApi.new
+api_instance = SubFiPay::AccessKeysApi.new
 x_api_version = 'x_api_version_example' # String | 
 opts = {
   page: 56, # Integer | The page of results to retrieve.
@@ -109,7 +109,7 @@ begin
   # List all access keys
   result = api_instance.list_access_keys(x_api_version, opts)
   p result
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling AccessKeysApi->list_access_keys: #{e}"
 end
 ```
@@ -127,7 +127,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ListAccessKeysResponse>
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling AccessKeysApi->list_access_keys_with_http_info: #{e}"
 end
 ```
@@ -156,7 +156,7 @@ end
 
 ## roll_access_key
 
-> <AccessKey> roll_access_key(x_api_version, id, roll_access_key_request)
+> <AccessKey> roll_access_key(x_api_version, id, roll_access_key_attributes)
 
 Roll an access key by ID
 
@@ -164,25 +164,25 @@ Roll an access key by ID
 
 ```ruby
 require 'time'
-require 'bckbn_pay'
+require 'subfi_pay'
 # setup authorization
-BckbnPay.configure do |config|
+SubFiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = BckbnPay::AccessKeysApi.new
+api_instance = SubFiPay::AccessKeysApi.new
 x_api_version = 'x_api_version_example' # String | 
 id = 'id_example' # String | 
-roll_access_key_request = BckbnPay::RollAccessKeyRequest.new # RollAccessKeyRequest | 
+roll_access_key_attributes = SubFiPay::RollAccessKeyAttributes.new # RollAccessKeyAttributes | 
 
 begin
   # Roll an access key by ID
-  result = api_instance.roll_access_key(x_api_version, id, roll_access_key_request)
+  result = api_instance.roll_access_key(x_api_version, id, roll_access_key_attributes)
   p result
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling AccessKeysApi->roll_access_key: #{e}"
 end
 ```
@@ -191,16 +191,16 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AccessKey>, Integer, Hash)> roll_access_key_with_http_info(x_api_version, id, roll_access_key_request)
+> <Array(<AccessKey>, Integer, Hash)> roll_access_key_with_http_info(x_api_version, id, roll_access_key_attributes)
 
 ```ruby
 begin
   # Roll an access key by ID
-  data, status_code, headers = api_instance.roll_access_key_with_http_info(x_api_version, id, roll_access_key_request)
+  data, status_code, headers = api_instance.roll_access_key_with_http_info(x_api_version, id, roll_access_key_attributes)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AccessKey>
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling AccessKeysApi->roll_access_key_with_http_info: #{e}"
 end
 ```
@@ -211,7 +211,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **x_api_version** | **String** |  |  |
 | **id** | **String** |  |  |
-| **roll_access_key_request** | [**RollAccessKeyRequest**](RollAccessKeyRequest.md) |  |  |
+| **roll_access_key_attributes** | [**RollAccessKeyAttributes**](RollAccessKeyAttributes.md) |  |  |
 
 ### Return type
 

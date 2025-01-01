@@ -1,4 +1,4 @@
-# BckbnPay::PaymentIntentUpdateAttributesPaymentIntent
+# SubFiPay::PaymentIntentUpdateAttributesPaymentIntent
 
 ## Properties
 
@@ -9,9 +9,9 @@
 ## Example
 
 ```ruby
-require 'bckbn_pay'
+require 'subfi_pay'
 
-instance = BckbnPay::PaymentIntentUpdateAttributesPaymentIntent.new(
+instance = SubFiPay::PaymentIntentUpdateAttributesPaymentIntent.new(
   payment_intent_ids: null
 )
 ```

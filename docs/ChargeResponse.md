@@ -1,4 +1,4 @@
-# BckbnPay::ChargeResponse
+# SubFiPay::ChargeResponse
 
 ## Properties
 
@@ -7,7 +7,7 @@
 | **id** | **String** |  | [optional] |
 | **captured_at** | **Time** |  | [optional] |
 | **failure_reason** | **String** |  | [optional] |
-| **merchant_id** | **String** |  | [optional] |
+| **account_id** | **String** |  | [optional] |
 | **payment_method** | [**PaymentMethodResponse**](PaymentMethodResponse.md) |  | [optional] |
 | **processor_id** | **String** |  | [optional] |
 | **state** | **String** |  | [optional] |
@@ -16,18 +16,18 @@
 | **description** | **String** |  | [optional] |
 | **immediate_capture** | **Boolean** | Determines whether the charge should be captured immediately | [optional] |
 | **payment_method_id** | **String** |  | [optional] |
-| **sub_merchant_id** | **String** |  | [optional] |
+| **connected_account_id** | **String** |  | [optional] |
 
 ## Example
 
 ```ruby
-require 'bckbn_pay'
+require 'subfi_pay'
 
-instance = BckbnPay::ChargeResponse.new(
+instance = SubFiPay::ChargeResponse.new(
   id: null,
   captured_at: null,
   failure_reason: null,
-  merchant_id: null,
+  account_id: null,
   payment_method: null,
   processor_id: null,
   state: null,
@@ -36,7 +36,7 @@ instance = BckbnPay::ChargeResponse.new(
   description: null,
   immediate_capture: null,
   payment_method_id: null,
-  sub_merchant_id: null
+  connected_account_id: null
 )
 ```
 

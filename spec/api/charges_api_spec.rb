@@ -2,9 +2,10 @@ require 'spec_helper'
 require 'json'
 
 describe 'ChargesApi' do
-  let(:api_instance) { BckbnPay::ChargesApi.new }
+  let(:api_instance) { SubFiPay::ChargesApi.new }
   let(:api_key) { Faker::Alphanumeric.alphanumeric(number: 32) }
   let(:api_version) { "0.1.0" }
+  let(:account_id) { Faker::Alphanumeric.alphanumeric(number: 32) }
   let(:config) do
     api_instance.api_client.config.tap do |c|
       c.api_key['ApiKeyAuth'] = api_key
@@ -18,7 +19,8 @@ describe 'ChargesApi' do
       'Accept'        =>  'application/json',
       "Content-Type"  => "application/json",
       'X-Api-Version' => api_version,
-      'X-Api-Key' => api_key
+      'X-Api-Key' => api_key,
+      'X-Account-Id' => account_id
     }
   end
   let(:response_headers) do
@@ -30,7 +32,7 @@ describe 'ChargesApi' do
 
   describe 'test an instance of ChargesApi' do
     it 'should create an instance of ChargesApi' do
-      expect(api_instance).to be_instance_of(BckbnPay::ChargesApi)
+      expect(api_instance).to be_instance_of(SubFiPay::ChargesApi)
     end
   end
 
@@ -53,10 +55,10 @@ describe 'ChargesApi' do
       end
 
       it 'should work' do
-        res = api_instance.list_charges(api_version)
+        res = api_instance.list_charges(api_version, account_id)
 
         expect(res.data).to be_a(Array)
-        expect(res.data.first).to be_a(BckbnPay::ChargeResponse)
+        expect(res.data.first).to be_a(SubFiPay::ChargeResponse)
         expect(a_request(:get, [config.host, path].join).with(headers: request_headers)).to have_been_made.once
 
         expect(res.data.first.amount).to be_truthy
@@ -77,10 +79,10 @@ describe 'ChargesApi' do
       end
 
       it do
-        res = api_instance.list_charges(api_version, page: 1, per_page: 2)
+        res = api_instance.list_charges(api_version, account_id, page: 1, per_page: 2)
 
         expect(res.data).to be_a(Array)
-        expect(res.data.first).to be_a(BckbnPay::ChargeResponse)
+        expect(res.data.first).to be_a(SubFiPay::ChargeResponse)
         expect(a_request(:get, [config.host, path, "?page=1&per_page=2"].join).with(headers: request_headers)).to have_been_made.once
 
         expect(res.data.first.amount).to be_truthy
@@ -111,9 +113,9 @@ describe 'ChargesApi' do
     end
 
     it 'should work' do
-      res = api_instance.get_charge(api_version, charge_id)
+      res = api_instance.get_charge(api_version, account_id, charge_id)
 
-      expect(res).to be_a(BckbnPay::ChargeResponse)
+      expect(res).to be_a(SubFiPay::ChargeResponse)
     end
   end
 end

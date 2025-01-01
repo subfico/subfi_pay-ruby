@@ -1,4 +1,4 @@
-# BckbnPay::BalanceTransactionAttributes
+# SubFiPay::BalanceTransactionAttributes
 
 ## Properties
 
@@ -15,9 +15,9 @@
 ## Example
 
 ```ruby
-require 'bckbn_pay'
+require 'subfi_pay'
 
-instance = BckbnPay::BalanceTransactionAttributes.new(
+instance = SubFiPay::BalanceTransactionAttributes.new(
   amount: null,
   charge_id: null,
   fee: null,

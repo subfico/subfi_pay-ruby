@@ -1,4 +1,4 @@
-# BckbnPay::BankAccountProfile
+# SubFiPay::BankAccountProfile
 
 ## Properties
 
@@ -14,9 +14,9 @@
 ## Example
 
 ```ruby
-require 'bckbn_pay'
+require 'subfi_pay'
 
-instance = BckbnPay::BankAccountProfile.new(
+instance = SubFiPay::BankAccountProfile.new(
   account_holder_name: null,
   bank_name: null,
   account_holder_type: null,

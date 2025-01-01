@@ -1,10 +1,10 @@
-# BckbnPay::SubscriptionResponse
+# SubFiPay::SubscriptionResponse
 
 ## Properties
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **sub_merchant_id** | **String** |  | [optional] |
+| **connected_account_id** | **String** |  | [optional] |
 | **customer_id** | **String** |  | [optional] |
 | **payment_method_id** | **String** |  | [optional] |
 | **amount** | **Integer** |  | [optional] |
@@ -18,10 +18,10 @@
 ## Example
 
 ```ruby
-require 'bckbn_pay'
+require 'subfi_pay'
 
-instance = BckbnPay::SubscriptionResponse.new(
-  sub_merchant_id: null,
+instance = SubFiPay::SubscriptionResponse.new(
+  connected_account_id: null,
   customer_id: null,
   payment_method_id: null,
   amount: null,

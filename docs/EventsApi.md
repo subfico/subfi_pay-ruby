@@ -1,6 +1,6 @@
-# BckbnPay::EventsApi
+# SubFiPay::EventsApi
 
-All URIs are relative to *https://pay-sandbox.bckbn.com*
+All URIs are relative to *https://pay-sandbox.subfi.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
@@ -10,7 +10,7 @@ All URIs are relative to *https://pay-sandbox.bckbn.com*
 
 ## get_event
 
-> <Event> get_event(x_api_version, id)
+> <Event> get_event(x_api_version, x_account_id, id)
 
 Retrieve a single event by ID
 
@@ -18,24 +18,25 @@ Retrieve a single event by ID
 
 ```ruby
 require 'time'
-require 'bckbn_pay'
+require 'subfi_pay'
 # setup authorization
-BckbnPay.configure do |config|
+SubFiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = BckbnPay::EventsApi.new
+api_instance = SubFiPay::EventsApi.new
 x_api_version = 'x_api_version_example' # String | 
+x_account_id = 'x_account_id_example' # String | 
 id = 'id_example' # String | 
 
 begin
   # Retrieve a single event by ID
-  result = api_instance.get_event(x_api_version, id)
+  result = api_instance.get_event(x_api_version, x_account_id, id)
   p result
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling EventsApi->get_event: #{e}"
 end
 ```
@@ -44,16 +45,16 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Event>, Integer, Hash)> get_event_with_http_info(x_api_version, id)
+> <Array(<Event>, Integer, Hash)> get_event_with_http_info(x_api_version, x_account_id, id)
 
 ```ruby
 begin
   # Retrieve a single event by ID
-  data, status_code, headers = api_instance.get_event_with_http_info(x_api_version, id)
+  data, status_code, headers = api_instance.get_event_with_http_info(x_api_version, x_account_id, id)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Event>
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling EventsApi->get_event_with_http_info: #{e}"
 end
 ```
@@ -63,6 +64,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **x_api_version** | **String** |  |  |
+| **x_account_id** | **String** |  |  |
 | **id** | **String** |  |  |
 
 ### Return type
@@ -81,7 +83,7 @@ end
 
 ## list_events
 
-> <ListEventsResponse> list_events(x_api_version, opts)
+> <ListEventsResponse> list_events(x_api_version, x_account_id, opts)
 
 List all events
 
@@ -89,17 +91,18 @@ List all events
 
 ```ruby
 require 'time'
-require 'bckbn_pay'
+require 'subfi_pay'
 # setup authorization
-BckbnPay.configure do |config|
+SubFiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = BckbnPay::EventsApi.new
+api_instance = SubFiPay::EventsApi.new
 x_api_version = 'x_api_version_example' # String | 
+x_account_id = 'x_account_id_example' # String | 
 opts = {
   page: 56, # Integer | The page of results to retrieve.
   per_page: 56 # Integer | Number of results per page.
@@ -107,9 +110,9 @@ opts = {
 
 begin
   # List all events
-  result = api_instance.list_events(x_api_version, opts)
+  result = api_instance.list_events(x_api_version, x_account_id, opts)
   p result
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling EventsApi->list_events: #{e}"
 end
 ```
@@ -118,16 +121,16 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ListEventsResponse>, Integer, Hash)> list_events_with_http_info(x_api_version, opts)
+> <Array(<ListEventsResponse>, Integer, Hash)> list_events_with_http_info(x_api_version, x_account_id, opts)
 
 ```ruby
 begin
   # List all events
-  data, status_code, headers = api_instance.list_events_with_http_info(x_api_version, opts)
+  data, status_code, headers = api_instance.list_events_with_http_info(x_api_version, x_account_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ListEventsResponse>
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling EventsApi->list_events_with_http_info: #{e}"
 end
 ```
@@ -137,6 +140,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **x_api_version** | **String** |  |  |
+| **x_account_id** | **String** |  |  |
 | **page** | **Integer** | The page of results to retrieve. | [optional] |
 | **per_page** | **Integer** | Number of results per page. | [optional] |
 

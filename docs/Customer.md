@@ -1,4 +1,4 @@
-# BckbnPay::Customer
+# SubFiPay::Customer
 
 ## Properties
 
@@ -13,9 +13,9 @@
 ## Example
 
 ```ruby
-require 'bckbn_pay'
+require 'subfi_pay'
 
-instance = BckbnPay::Customer.new(
+instance = SubFiPay::Customer.new(
   name: null,
   email: null,
   phone: null,

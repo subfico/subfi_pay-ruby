@@ -1,4 +1,4 @@
-# BckbnPay::ListBalanceTransactionsResponse
+# SubFiPay::ListBalanceTransactionsResponse
 
 ## Properties
 
@@ -10,9 +10,9 @@
 ## Example
 
 ```ruby
-require 'bckbn_pay'
+require 'subfi_pay'
 
-instance = BckbnPay::ListBalanceTransactionsResponse.new(
+instance = SubFiPay::ListBalanceTransactionsResponse.new(
   data: null,
   meta: null
 )

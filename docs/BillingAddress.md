@@ -1,4 +1,4 @@
-# BckbnPay::BillingAddress
+# SubFiPay::BillingAddress
 
 ## Properties
 
@@ -18,9 +18,9 @@
 ## Example
 
 ```ruby
-require 'bckbn_pay'
+require 'subfi_pay'
 
-instance = BckbnPay::BillingAddress.new(
+instance = SubFiPay::BillingAddress.new(
   first_name: null,
   last_name: null,
   email: null,

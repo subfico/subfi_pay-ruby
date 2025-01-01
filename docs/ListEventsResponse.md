@@ -1,4 +1,4 @@
-# BckbnPay::ListEventsResponse
+# SubFiPay::ListEventsResponse
 
 ## Properties
 
@@ -10,9 +10,9 @@
 ## Example
 
 ```ruby
-require 'bckbn_pay'
+require 'subfi_pay'
 
-instance = BckbnPay::ListEventsResponse.new(
+instance = SubFiPay::ListEventsResponse.new(
   data: null,
   meta: null
 )

@@ -1,17 +1,17 @@
-# BckbnPay::SubscriptionCreateRequest
+# SubFiPay::SubscriptionCreateRequest
 
 ## Properties
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **subscription** | [**SubscriptionCreateRequestSubscription**](SubscriptionCreateRequestSubscription.md) |  | [optional] |
+| **subscription** | [**SubscriptionAttributes**](SubscriptionAttributes.md) |  | [optional] |
 
 ## Example
 
 ```ruby
-require 'bckbn_pay'
+require 'subfi_pay'
 
-instance = BckbnPay::SubscriptionCreateRequest.new(
+instance = SubFiPay::SubscriptionCreateRequest.new(
   subscription: null
 )
 ```

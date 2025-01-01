@@ -1,6 +1,6 @@
-# BckbnPay::PaymentIntentsApi
+# SubFiPay::PaymentIntentsApi
 
-All URIs are relative to *https://pay-sandbox.bckbn.com*
+All URIs are relative to *https://pay-sandbox.subfi.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
@@ -15,7 +15,7 @@ All URIs are relative to *https://pay-sandbox.bckbn.com*
 
 ## cancel_payment_intent
 
-> <PaymentIntentResponse> cancel_payment_intent(x_api_version, id)
+> <PaymentIntentResponse> cancel_payment_intent(x_api_version, x_account_id, id)
 
 Cancel a payment intent
 
@@ -23,24 +23,25 @@ Cancel a payment intent
 
 ```ruby
 require 'time'
-require 'bckbn_pay'
+require 'subfi_pay'
 # setup authorization
-BckbnPay.configure do |config|
+SubFiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = BckbnPay::PaymentIntentsApi.new
+api_instance = SubFiPay::PaymentIntentsApi.new
 x_api_version = 'x_api_version_example' # String | 
+x_account_id = 'x_account_id_example' # String | 
 id = 'id_example' # String | The ID of the payment intent to cancel
 
 begin
   # Cancel a payment intent
-  result = api_instance.cancel_payment_intent(x_api_version, id)
+  result = api_instance.cancel_payment_intent(x_api_version, x_account_id, id)
   p result
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling PaymentIntentsApi->cancel_payment_intent: #{e}"
 end
 ```
@@ -49,16 +50,16 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PaymentIntentResponse>, Integer, Hash)> cancel_payment_intent_with_http_info(x_api_version, id)
+> <Array(<PaymentIntentResponse>, Integer, Hash)> cancel_payment_intent_with_http_info(x_api_version, x_account_id, id)
 
 ```ruby
 begin
   # Cancel a payment intent
-  data, status_code, headers = api_instance.cancel_payment_intent_with_http_info(x_api_version, id)
+  data, status_code, headers = api_instance.cancel_payment_intent_with_http_info(x_api_version, x_account_id, id)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PaymentIntentResponse>
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling PaymentIntentsApi->cancel_payment_intent_with_http_info: #{e}"
 end
 ```
@@ -68,6 +69,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **x_api_version** | **String** |  |  |
+| **x_account_id** | **String** |  |  |
 | **id** | **String** | The ID of the payment intent to cancel |  |
 
 ### Return type
@@ -86,7 +88,7 @@ end
 
 ## capture_payment_intent
 
-> <PaymentIntentResponse> capture_payment_intent(x_api_version, id)
+> <PaymentIntentResponse> capture_payment_intent(x_api_version, x_account_id, id)
 
 Capture a payment intent
 
@@ -94,24 +96,25 @@ Capture a payment intent
 
 ```ruby
 require 'time'
-require 'bckbn_pay'
+require 'subfi_pay'
 # setup authorization
-BckbnPay.configure do |config|
+SubFiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = BckbnPay::PaymentIntentsApi.new
+api_instance = SubFiPay::PaymentIntentsApi.new
 x_api_version = 'x_api_version_example' # String | 
+x_account_id = 'x_account_id_example' # String | 
 id = 'id_example' # String | The ID of the payment intent to capture
 
 begin
   # Capture a payment intent
-  result = api_instance.capture_payment_intent(x_api_version, id)
+  result = api_instance.capture_payment_intent(x_api_version, x_account_id, id)
   p result
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling PaymentIntentsApi->capture_payment_intent: #{e}"
 end
 ```
@@ -120,16 +123,16 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PaymentIntentResponse>, Integer, Hash)> capture_payment_intent_with_http_info(x_api_version, id)
+> <Array(<PaymentIntentResponse>, Integer, Hash)> capture_payment_intent_with_http_info(x_api_version, x_account_id, id)
 
 ```ruby
 begin
   # Capture a payment intent
-  data, status_code, headers = api_instance.capture_payment_intent_with_http_info(x_api_version, id)
+  data, status_code, headers = api_instance.capture_payment_intent_with_http_info(x_api_version, x_account_id, id)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PaymentIntentResponse>
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling PaymentIntentsApi->capture_payment_intent_with_http_info: #{e}"
 end
 ```
@@ -139,6 +142,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **x_api_version** | **String** |  |  |
+| **x_account_id** | **String** |  |  |
 | **id** | **String** | The ID of the payment intent to capture |  |
 
 ### Return type
@@ -157,7 +161,7 @@ end
 
 ## confirm_payment_intent
 
-> <PaymentIntentResponse> confirm_payment_intent(x_api_version, id)
+> <PaymentIntentResponse> confirm_payment_intent(x_api_version, x_account_id, id)
 
 Confirm a payment intent
 
@@ -165,24 +169,25 @@ Confirm a payment intent
 
 ```ruby
 require 'time'
-require 'bckbn_pay'
+require 'subfi_pay'
 # setup authorization
-BckbnPay.configure do |config|
+SubFiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = BckbnPay::PaymentIntentsApi.new
+api_instance = SubFiPay::PaymentIntentsApi.new
 x_api_version = 'x_api_version_example' # String | 
+x_account_id = 'x_account_id_example' # String | 
 id = 'id_example' # String | The ID of the payment intent to confirm
 
 begin
   # Confirm a payment intent
-  result = api_instance.confirm_payment_intent(x_api_version, id)
+  result = api_instance.confirm_payment_intent(x_api_version, x_account_id, id)
   p result
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling PaymentIntentsApi->confirm_payment_intent: #{e}"
 end
 ```
@@ -191,16 +196,16 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PaymentIntentResponse>, Integer, Hash)> confirm_payment_intent_with_http_info(x_api_version, id)
+> <Array(<PaymentIntentResponse>, Integer, Hash)> confirm_payment_intent_with_http_info(x_api_version, x_account_id, id)
 
 ```ruby
 begin
   # Confirm a payment intent
-  data, status_code, headers = api_instance.confirm_payment_intent_with_http_info(x_api_version, id)
+  data, status_code, headers = api_instance.confirm_payment_intent_with_http_info(x_api_version, x_account_id, id)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PaymentIntentResponse>
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling PaymentIntentsApi->confirm_payment_intent_with_http_info: #{e}"
 end
 ```
@@ -210,6 +215,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **x_api_version** | **String** |  |  |
+| **x_account_id** | **String** |  |  |
 | **id** | **String** | The ID of the payment intent to confirm |  |
 
 ### Return type
@@ -228,7 +234,7 @@ end
 
 ## create_payment_intent
 
-> <PaymentIntentResponse> create_payment_intent(x_api_version, payment_intent_attributes)
+> <PaymentIntentResponse> create_payment_intent(x_api_version, x_account_id, payment_intent_create_request)
 
 Create a new payment intent
 
@@ -236,24 +242,25 @@ Create a new payment intent
 
 ```ruby
 require 'time'
-require 'bckbn_pay'
+require 'subfi_pay'
 # setup authorization
-BckbnPay.configure do |config|
+SubFiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = BckbnPay::PaymentIntentsApi.new
+api_instance = SubFiPay::PaymentIntentsApi.new
 x_api_version = 'x_api_version_example' # String | 
-payment_intent_attributes = BckbnPay::PaymentIntentAttributes.new # PaymentIntentAttributes | 
+x_account_id = 'x_account_id_example' # String | 
+payment_intent_create_request = SubFiPay::PaymentIntentCreateRequest.new # PaymentIntentCreateRequest | 
 
 begin
   # Create a new payment intent
-  result = api_instance.create_payment_intent(x_api_version, payment_intent_attributes)
+  result = api_instance.create_payment_intent(x_api_version, x_account_id, payment_intent_create_request)
   p result
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling PaymentIntentsApi->create_payment_intent: #{e}"
 end
 ```
@@ -262,16 +269,16 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PaymentIntentResponse>, Integer, Hash)> create_payment_intent_with_http_info(x_api_version, payment_intent_attributes)
+> <Array(<PaymentIntentResponse>, Integer, Hash)> create_payment_intent_with_http_info(x_api_version, x_account_id, payment_intent_create_request)
 
 ```ruby
 begin
   # Create a new payment intent
-  data, status_code, headers = api_instance.create_payment_intent_with_http_info(x_api_version, payment_intent_attributes)
+  data, status_code, headers = api_instance.create_payment_intent_with_http_info(x_api_version, x_account_id, payment_intent_create_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PaymentIntentResponse>
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling PaymentIntentsApi->create_payment_intent_with_http_info: #{e}"
 end
 ```
@@ -281,7 +288,8 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **x_api_version** | **String** |  |  |
-| **payment_intent_attributes** | [**PaymentIntentAttributes**](PaymentIntentAttributes.md) |  |  |
+| **x_account_id** | **String** |  |  |
+| **payment_intent_create_request** | [**PaymentIntentCreateRequest**](PaymentIntentCreateRequest.md) |  |  |
 
 ### Return type
 
@@ -299,7 +307,7 @@ end
 
 ## get_payment_intent
 
-> <PaymentIntentResponse> get_payment_intent(x_api_version, id)
+> <PaymentIntentResponse> get_payment_intent(x_api_version, x_account_id, id)
 
 Retrieve a payment intent by ID
 
@@ -307,24 +315,25 @@ Retrieve a payment intent by ID
 
 ```ruby
 require 'time'
-require 'bckbn_pay'
+require 'subfi_pay'
 # setup authorization
-BckbnPay.configure do |config|
+SubFiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = BckbnPay::PaymentIntentsApi.new
+api_instance = SubFiPay::PaymentIntentsApi.new
 x_api_version = 'x_api_version_example' # String | 
+x_account_id = 'x_account_id_example' # String | 
 id = 'id_example' # String | The ID of the payment intent to retrieve
 
 begin
   # Retrieve a payment intent by ID
-  result = api_instance.get_payment_intent(x_api_version, id)
+  result = api_instance.get_payment_intent(x_api_version, x_account_id, id)
   p result
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling PaymentIntentsApi->get_payment_intent: #{e}"
 end
 ```
@@ -333,16 +342,16 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PaymentIntentResponse>, Integer, Hash)> get_payment_intent_with_http_info(x_api_version, id)
+> <Array(<PaymentIntentResponse>, Integer, Hash)> get_payment_intent_with_http_info(x_api_version, x_account_id, id)
 
 ```ruby
 begin
   # Retrieve a payment intent by ID
-  data, status_code, headers = api_instance.get_payment_intent_with_http_info(x_api_version, id)
+  data, status_code, headers = api_instance.get_payment_intent_with_http_info(x_api_version, x_account_id, id)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PaymentIntentResponse>
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling PaymentIntentsApi->get_payment_intent_with_http_info: #{e}"
 end
 ```
@@ -352,6 +361,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **x_api_version** | **String** |  |  |
+| **x_account_id** | **String** |  |  |
 | **id** | **String** | The ID of the payment intent to retrieve |  |
 
 ### Return type
@@ -370,7 +380,7 @@ end
 
 ## list_payment_intents
 
-> <ListPaymentIntentsResponse> list_payment_intents(x_api_version, opts)
+> <ListPaymentIntentsResponse> list_payment_intents(x_api_version, x_account_id, opts)
 
 List payment intents
 
@@ -378,28 +388,29 @@ List payment intents
 
 ```ruby
 require 'time'
-require 'bckbn_pay'
+require 'subfi_pay'
 # setup authorization
-BckbnPay.configure do |config|
+SubFiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = BckbnPay::PaymentIntentsApi.new
+api_instance = SubFiPay::PaymentIntentsApi.new
 x_api_version = 'x_api_version_example' # String | 
+x_account_id = 'x_account_id_example' # String | 
 opts = {
   page: 56, # Integer | The page of results to retrieve.
   per_page: 56, # Integer | Number of results per page.
-  sub_merchant_id: 'sub_merchant_id_example' # String | Filter results by sub_merchant ID.
+  connected_account_id: 'connected_account_id_example' # String | Filter results by sub_merchant ID.
 }
 
 begin
   # List payment intents
-  result = api_instance.list_payment_intents(x_api_version, opts)
+  result = api_instance.list_payment_intents(x_api_version, x_account_id, opts)
   p result
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling PaymentIntentsApi->list_payment_intents: #{e}"
 end
 ```
@@ -408,16 +419,16 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ListPaymentIntentsResponse>, Integer, Hash)> list_payment_intents_with_http_info(x_api_version, opts)
+> <Array(<ListPaymentIntentsResponse>, Integer, Hash)> list_payment_intents_with_http_info(x_api_version, x_account_id, opts)
 
 ```ruby
 begin
   # List payment intents
-  data, status_code, headers = api_instance.list_payment_intents_with_http_info(x_api_version, opts)
+  data, status_code, headers = api_instance.list_payment_intents_with_http_info(x_api_version, x_account_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ListPaymentIntentsResponse>
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling PaymentIntentsApi->list_payment_intents_with_http_info: #{e}"
 end
 ```
@@ -427,9 +438,10 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **x_api_version** | **String** |  |  |
+| **x_account_id** | **String** |  |  |
 | **page** | **Integer** | The page of results to retrieve. | [optional] |
 | **per_page** | **Integer** | Number of results per page. | [optional] |
-| **sub_merchant_id** | **String** | Filter results by sub_merchant ID. | [optional] |
+| **connected_account_id** | **String** | Filter results by sub_merchant ID. | [optional] |
 
 ### Return type
 
@@ -447,7 +459,7 @@ end
 
 ## update_payment_intent
 
-> <PaymentIntentResponse> update_payment_intent(x_api_version, id, payment_intent_update_attributes)
+> <PaymentIntentResponse> update_payment_intent(x_api_version, x_account_id, id, payment_intent_update_attributes)
 
 Update a payment intent
 
@@ -455,25 +467,26 @@ Update a payment intent
 
 ```ruby
 require 'time'
-require 'bckbn_pay'
+require 'subfi_pay'
 # setup authorization
-BckbnPay.configure do |config|
+SubFiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = BckbnPay::PaymentIntentsApi.new
+api_instance = SubFiPay::PaymentIntentsApi.new
 x_api_version = 'x_api_version_example' # String | 
+x_account_id = 'x_account_id_example' # String | 
 id = 'id_example' # String | The ID of the payment intent to update
-payment_intent_update_attributes = BckbnPay::PaymentIntentUpdateAttributes.new # PaymentIntentUpdateAttributes | 
+payment_intent_update_attributes = SubFiPay::PaymentIntentUpdateAttributes.new # PaymentIntentUpdateAttributes | 
 
 begin
   # Update a payment intent
-  result = api_instance.update_payment_intent(x_api_version, id, payment_intent_update_attributes)
+  result = api_instance.update_payment_intent(x_api_version, x_account_id, id, payment_intent_update_attributes)
   p result
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling PaymentIntentsApi->update_payment_intent: #{e}"
 end
 ```
@@ -482,16 +495,16 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PaymentIntentResponse>, Integer, Hash)> update_payment_intent_with_http_info(x_api_version, id, payment_intent_update_attributes)
+> <Array(<PaymentIntentResponse>, Integer, Hash)> update_payment_intent_with_http_info(x_api_version, x_account_id, id, payment_intent_update_attributes)
 
 ```ruby
 begin
   # Update a payment intent
-  data, status_code, headers = api_instance.update_payment_intent_with_http_info(x_api_version, id, payment_intent_update_attributes)
+  data, status_code, headers = api_instance.update_payment_intent_with_http_info(x_api_version, x_account_id, id, payment_intent_update_attributes)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PaymentIntentResponse>
-rescue BckbnPay::ApiError => e
+rescue SubFiPay::ApiError => e
   puts "Error when calling PaymentIntentsApi->update_payment_intent_with_http_info: #{e}"
 end
 ```
@@ -501,6 +514,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **x_api_version** | **String** |  |  |
+| **x_account_id** | **String** |  |  |
 | **id** | **String** | The ID of the payment intent to update |  |
 | **payment_intent_update_attributes** | [**PaymentIntentUpdateAttributes**](PaymentIntentUpdateAttributes.md) |  |  |
 

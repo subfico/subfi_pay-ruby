@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    bckbn_pay (0.5.2)
+    subfi_pay (0.1.0)
       typhoeus (~> 1.0, >= 1.0.1)
 
 GEM
@@ -27,7 +27,7 @@ GEM
     hashdiff (1.1.0)
     i18n (1.14.5)
       concurrent-ruby (~> 1.0)
-    json (2.9.0)
+    json (2.9.1)
     language_server-protocol (3.17.0.3)
     method_source (1.1.0)
     parallel (1.26.3)
@@ -44,7 +44,7 @@ GEM
     racc (1.8.1)
     rainbow (3.1.1)
     rake (13.0.6)
-    regexp_parser (2.9.3)
+    regexp_parser (2.10.0)
     rexml (3.3.1)
       strscan
     rspec (3.13.0)
@@ -76,7 +76,7 @@ GEM
     strscan (3.1.0)
     typhoeus (1.4.1)
       ethon (>= 0.9.0)
-    unicode-display_width (3.1.2)
+    unicode-display_width (3.1.3)
       unicode-emoji (~> 4.0, >= 4.0.4)
     unicode-emoji (4.0.4)
     webmock (3.23.1)
@@ -89,12 +89,12 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  bckbn_pay!
   faker
   pry-byebug
   rake (~> 13.0.1)
   rspec (~> 3.6, >= 3.6.0)
   rubocop
+  subfi_pay!
   webmock
 
 BUNDLED WITH
