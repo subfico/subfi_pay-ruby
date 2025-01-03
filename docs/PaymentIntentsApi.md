@@ -1,4 +1,4 @@
-# SubFiPay::PaymentIntentsApi
+# SubfiPay::PaymentIntentsApi
 
 All URIs are relative to *https://pay-sandbox.subfi.com*
 
@@ -25,14 +25,14 @@ Cancel a payment intent
 require 'time'
 require 'subfi_pay'
 # setup authorization
-SubFiPay.configure do |config|
+SubfiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = SubFiPay::PaymentIntentsApi.new
+api_instance = SubfiPay::PaymentIntentsApi.new
 x_api_version = 'x_api_version_example' # String | 
 x_account_id = 'x_account_id_example' # String | 
 id = 'id_example' # String | The ID of the payment intent to cancel
@@ -41,7 +41,7 @@ begin
   # Cancel a payment intent
   result = api_instance.cancel_payment_intent(x_api_version, x_account_id, id)
   p result
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling PaymentIntentsApi->cancel_payment_intent: #{e}"
 end
 ```
@@ -59,7 +59,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PaymentIntentResponse>
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling PaymentIntentsApi->cancel_payment_intent_with_http_info: #{e}"
 end
 ```
@@ -98,14 +98,14 @@ Capture a payment intent
 require 'time'
 require 'subfi_pay'
 # setup authorization
-SubFiPay.configure do |config|
+SubfiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = SubFiPay::PaymentIntentsApi.new
+api_instance = SubfiPay::PaymentIntentsApi.new
 x_api_version = 'x_api_version_example' # String | 
 x_account_id = 'x_account_id_example' # String | 
 id = 'id_example' # String | The ID of the payment intent to capture
@@ -114,7 +114,7 @@ begin
   # Capture a payment intent
   result = api_instance.capture_payment_intent(x_api_version, x_account_id, id)
   p result
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling PaymentIntentsApi->capture_payment_intent: #{e}"
 end
 ```
@@ -132,7 +132,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PaymentIntentResponse>
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling PaymentIntentsApi->capture_payment_intent_with_http_info: #{e}"
 end
 ```
@@ -171,14 +171,14 @@ Confirm a payment intent
 require 'time'
 require 'subfi_pay'
 # setup authorization
-SubFiPay.configure do |config|
+SubfiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = SubFiPay::PaymentIntentsApi.new
+api_instance = SubfiPay::PaymentIntentsApi.new
 x_api_version = 'x_api_version_example' # String | 
 x_account_id = 'x_account_id_example' # String | 
 id = 'id_example' # String | The ID of the payment intent to confirm
@@ -187,7 +187,7 @@ begin
   # Confirm a payment intent
   result = api_instance.confirm_payment_intent(x_api_version, x_account_id, id)
   p result
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling PaymentIntentsApi->confirm_payment_intent: #{e}"
 end
 ```
@@ -205,7 +205,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PaymentIntentResponse>
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling PaymentIntentsApi->confirm_payment_intent_with_http_info: #{e}"
 end
 ```
@@ -244,23 +244,23 @@ Create a new payment intent
 require 'time'
 require 'subfi_pay'
 # setup authorization
-SubFiPay.configure do |config|
+SubfiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = SubFiPay::PaymentIntentsApi.new
+api_instance = SubfiPay::PaymentIntentsApi.new
 x_api_version = 'x_api_version_example' # String | 
 x_account_id = 'x_account_id_example' # String | 
-payment_intent_create_request = SubFiPay::PaymentIntentCreateRequest.new # PaymentIntentCreateRequest | 
+payment_intent_create_request = SubfiPay::PaymentIntentCreateRequest.new # PaymentIntentCreateRequest | 
 
 begin
   # Create a new payment intent
   result = api_instance.create_payment_intent(x_api_version, x_account_id, payment_intent_create_request)
   p result
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling PaymentIntentsApi->create_payment_intent: #{e}"
 end
 ```
@@ -278,7 +278,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PaymentIntentResponse>
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling PaymentIntentsApi->create_payment_intent_with_http_info: #{e}"
 end
 ```
@@ -317,14 +317,14 @@ Retrieve a payment intent by ID
 require 'time'
 require 'subfi_pay'
 # setup authorization
-SubFiPay.configure do |config|
+SubfiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = SubFiPay::PaymentIntentsApi.new
+api_instance = SubfiPay::PaymentIntentsApi.new
 x_api_version = 'x_api_version_example' # String | 
 x_account_id = 'x_account_id_example' # String | 
 id = 'id_example' # String | The ID of the payment intent to retrieve
@@ -333,7 +333,7 @@ begin
   # Retrieve a payment intent by ID
   result = api_instance.get_payment_intent(x_api_version, x_account_id, id)
   p result
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling PaymentIntentsApi->get_payment_intent: #{e}"
 end
 ```
@@ -351,7 +351,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PaymentIntentResponse>
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling PaymentIntentsApi->get_payment_intent_with_http_info: #{e}"
 end
 ```
@@ -390,14 +390,14 @@ List payment intents
 require 'time'
 require 'subfi_pay'
 # setup authorization
-SubFiPay.configure do |config|
+SubfiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = SubFiPay::PaymentIntentsApi.new
+api_instance = SubfiPay::PaymentIntentsApi.new
 x_api_version = 'x_api_version_example' # String | 
 x_account_id = 'x_account_id_example' # String | 
 opts = {
@@ -410,7 +410,7 @@ begin
   # List payment intents
   result = api_instance.list_payment_intents(x_api_version, x_account_id, opts)
   p result
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling PaymentIntentsApi->list_payment_intents: #{e}"
 end
 ```
@@ -428,7 +428,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ListPaymentIntentsResponse>
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling PaymentIntentsApi->list_payment_intents_with_http_info: #{e}"
 end
 ```
@@ -469,24 +469,24 @@ Update a payment intent
 require 'time'
 require 'subfi_pay'
 # setup authorization
-SubFiPay.configure do |config|
+SubfiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = SubFiPay::PaymentIntentsApi.new
+api_instance = SubfiPay::PaymentIntentsApi.new
 x_api_version = 'x_api_version_example' # String | 
 x_account_id = 'x_account_id_example' # String | 
 id = 'id_example' # String | The ID of the payment intent to update
-payment_intent_update_attributes = SubFiPay::PaymentIntentUpdateAttributes.new # PaymentIntentUpdateAttributes | 
+payment_intent_update_attributes = SubfiPay::PaymentIntentUpdateAttributes.new # PaymentIntentUpdateAttributes | 
 
 begin
   # Update a payment intent
   result = api_instance.update_payment_intent(x_api_version, x_account_id, id, payment_intent_update_attributes)
   p result
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling PaymentIntentsApi->update_payment_intent: #{e}"
 end
 ```
@@ -504,7 +504,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PaymentIntentResponse>
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling PaymentIntentsApi->update_payment_intent_with_http_info: #{e}"
 end
 ```

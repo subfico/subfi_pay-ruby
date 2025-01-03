@@ -10,7 +10,7 @@ Generator version: 7.7.0
 
 =end
 
-module SubFiPay
+module SubfiPay
   class ApiError < StandardError
     attr_reader :code, :response_headers, :response_body
 

@@ -1,4 +1,4 @@
-# SubFiPay::PaymentMethodAttributes
+# SubfiPay::PaymentMethodAttributes
 
 ## Properties
 
@@ -14,7 +14,7 @@
 ```ruby
 require 'subfi_pay'
 
-instance = SubFiPay::PaymentMethodAttributes.new(
+instance = SubfiPay::PaymentMethodAttributes.new(
   type: null,
   billing_address_attributes: null,
   card_profile_attributes: null,

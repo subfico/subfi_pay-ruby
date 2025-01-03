@@ -10,6 +10,6 @@ Generator version: 7.7.0
 
 =end
 
-module SubFiPay
-  VERSION = '0.1.0'
+module SubfiPay
+  VERSION = '0.1.1'
 end

@@ -80,10 +80,10 @@ require 'subfi_pay/api/subscriptions_api'
 require 'subfi_pay/api/webhook_endpoints_api'
 require 'subfi_pay/api/webhook_requests_api'
 
-module SubFiPay
+module SubfiPay
   class << self
     # Customize default settings for the SDK using block.
-    #   SubFiPay.configure do |config|
+    #   SubfiPay.configure do |config|
     #     config.username = "xxx"
     #     config.password = "xxx"
     #   end

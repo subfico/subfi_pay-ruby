@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'json'
 
 describe 'BalanceTransactionsApi' do
-  let(:api_instance) { SubFiPay::BalanceTransactionsApi.new }
+  let(:api_instance) { SubfiPay::BalanceTransactionsApi.new }
   let(:api_key) { Faker::Alphanumeric.alphanumeric(number: 32) }
   let(:api_version) { "0.1.0" }
   let(:account_id) { Faker::Number.number(digits: 10) }
@@ -32,7 +32,7 @@ describe 'BalanceTransactionsApi' do
 
   describe 'test an instance of BalanceTransactionsApi' do
     it 'should create an instance of BalanceTransactionsApi' do
-      expect(api_instance).to be_instance_of(SubFiPay::BalanceTransactionsApi)
+      expect(api_instance).to be_instance_of(SubfiPay::BalanceTransactionsApi)
     end
   end
 
@@ -58,7 +58,7 @@ describe 'BalanceTransactionsApi' do
         res = api_instance.list_balance_transactions(api_version, account_id)
 
         expect(res.data).to be_a(Array)
-        expect(res.data.first).to be_a(SubFiPay::BalanceTransactionResponse)
+        expect(res.data.first).to be_a(SubfiPay::BalanceTransactionResponse)
         expect(a_request(:get, url).with(headers: request_headers)).to have_been_made.once
       end
     end
@@ -78,7 +78,7 @@ describe 'BalanceTransactionsApi' do
         res = api_instance.list_balance_transactions(api_version, account_id, page: 1, per_page: 2)
 
         expect(res.data).to be_a(Array)
-        expect(res.data.first).to be_a(SubFiPay::BalanceTransactionResponse)
+        expect(res.data.first).to be_a(SubfiPay::BalanceTransactionResponse)
         expect(a_request(:get, [url, "?page=1&per_page=2"].join).with(headers: request_headers)).to have_been_made.once
       end
     end

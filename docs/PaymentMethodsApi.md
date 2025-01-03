@@ -1,4 +1,4 @@
-# SubFiPay::PaymentMethodsApi
+# SubfiPay::PaymentMethodsApi
 
 All URIs are relative to *https://pay-sandbox.subfi.com*
 
@@ -21,17 +21,17 @@ Create a payment method
 require 'time'
 require 'subfi_pay'
 # setup authorization
-SubFiPay.configure do |config|
+SubfiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = SubFiPay::PaymentMethodsApi.new
+api_instance = SubfiPay::PaymentMethodsApi.new
 x_api_version = 'x_api_version_example' # String | 
 x_account_id = 'x_account_id_example' # String | 
-payment_method_attributes = SubFiPay::PaymentMethodAttributes.new({type: 'type_example'}) # PaymentMethodAttributes | 
+payment_method_attributes = SubfiPay::PaymentMethodAttributes.new({type: 'type_example'}) # PaymentMethodAttributes | 
 opts = {
   x_idempotency_key: 'x_idempotency_key_example' # String | 
 }
@@ -40,7 +40,7 @@ begin
   # Create a payment method
   result = api_instance.create_payment_method(x_api_version, x_account_id, payment_method_attributes, opts)
   p result
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling PaymentMethodsApi->create_payment_method: #{e}"
 end
 ```
@@ -58,7 +58,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PaymentMethodResponse>
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling PaymentMethodsApi->create_payment_method_with_http_info: #{e}"
 end
 ```
@@ -98,14 +98,14 @@ Retrieve a payment method
 require 'time'
 require 'subfi_pay'
 # setup authorization
-SubFiPay.configure do |config|
+SubfiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = SubFiPay::PaymentMethodsApi.new
+api_instance = SubfiPay::PaymentMethodsApi.new
 x_api_version = 'x_api_version_example' # String | 
 x_account_id = 'x_account_id_example' # String | 
 id = 'id_example' # String | 
@@ -114,7 +114,7 @@ begin
   # Retrieve a payment method
   result = api_instance.get_payment_method(x_api_version, x_account_id, id)
   p result
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling PaymentMethodsApi->get_payment_method: #{e}"
 end
 ```
@@ -132,7 +132,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PaymentMethodResponse>
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling PaymentMethodsApi->get_payment_method_with_http_info: #{e}"
 end
 ```
@@ -171,14 +171,14 @@ List all payment methods
 require 'time'
 require 'subfi_pay'
 # setup authorization
-SubFiPay.configure do |config|
+SubfiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = SubFiPay::PaymentMethodsApi.new
+api_instance = SubfiPay::PaymentMethodsApi.new
 x_api_version = 'x_api_version_example' # String | 
 x_account_id = 'x_account_id_example' # String | 
 customer_id = 'customer_id_example' # String | The ID of the customer to filter payment methods by.
@@ -191,7 +191,7 @@ begin
   # List all payment methods
   result = api_instance.list_payment_methods(x_api_version, x_account_id, customer_id, opts)
   p result
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling PaymentMethodsApi->list_payment_methods: #{e}"
 end
 ```
@@ -209,7 +209,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ListPaymentMethodsResponse>
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling PaymentMethodsApi->list_payment_methods_with_http_info: #{e}"
 end
 ```

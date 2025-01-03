@@ -12,7 +12,7 @@ Generator version: 7.7.0
 
 require 'cgi'
 
-module SubFiPay
+module SubfiPay
   class EventsApi
     attr_accessor :api_client
 

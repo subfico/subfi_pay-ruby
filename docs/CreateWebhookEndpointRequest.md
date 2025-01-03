@@ -1,4 +1,4 @@
-# SubFiPay::CreateWebhookEndpointRequest
+# SubfiPay::CreateWebhookEndpointRequest
 
 ## Properties
 
@@ -11,7 +11,7 @@
 ```ruby
 require 'subfi_pay'
 
-instance = SubFiPay::CreateWebhookEndpointRequest.new(
+instance = SubfiPay::CreateWebhookEndpointRequest.new(
   webhook_endpoint: null
 )
 ```

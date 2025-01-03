@@ -1,4 +1,4 @@
-# SubFiPay::PaymentMethodResponse
+# SubfiPay::PaymentMethodResponse
 
 ## Properties
 
@@ -20,7 +20,7 @@
 ```ruby
 require 'subfi_pay'
 
-instance = SubFiPay::PaymentMethodResponse.new(
+instance = SubfiPay::PaymentMethodResponse.new(
   id: null,
   type: null,
   partner_id: null,

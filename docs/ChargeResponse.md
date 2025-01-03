@@ -1,4 +1,4 @@
-# SubFiPay::ChargeResponse
+# SubfiPay::ChargeResponse
 
 ## Properties
 
@@ -23,7 +23,7 @@
 ```ruby
 require 'subfi_pay'
 
-instance = SubFiPay::ChargeResponse.new(
+instance = SubfiPay::ChargeResponse.new(
   id: null,
   captured_at: null,
   failure_reason: null,

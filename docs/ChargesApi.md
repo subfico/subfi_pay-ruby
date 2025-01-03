@@ -1,4 +1,4 @@
-# SubFiPay::ChargesApi
+# SubfiPay::ChargesApi
 
 All URIs are relative to *https://pay-sandbox.subfi.com*
 
@@ -20,14 +20,14 @@ Retrieve a charge
 require 'time'
 require 'subfi_pay'
 # setup authorization
-SubFiPay.configure do |config|
+SubfiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = SubFiPay::ChargesApi.new
+api_instance = SubfiPay::ChargesApi.new
 x_api_version = 'x_api_version_example' # String | 
 x_account_id = 'x_account_id_example' # String | 
 id = 'id_example' # String | 
@@ -39,7 +39,7 @@ begin
   # Retrieve a charge
   result = api_instance.get_charge(x_api_version, x_account_id, id, opts)
   p result
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling ChargesApi->get_charge: #{e}"
 end
 ```
@@ -57,7 +57,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ChargeResponse>
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling ChargesApi->get_charge_with_http_info: #{e}"
 end
 ```
@@ -97,14 +97,14 @@ List all charges
 require 'time'
 require 'subfi_pay'
 # setup authorization
-SubFiPay.configure do |config|
+SubfiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = SubFiPay::ChargesApi.new
+api_instance = SubfiPay::ChargesApi.new
 x_api_version = 'x_api_version_example' # String | 
 x_account_id = 'x_account_id_example' # String | 
 opts = {
@@ -118,7 +118,7 @@ begin
   # List all charges
   result = api_instance.list_charges(x_api_version, x_account_id, opts)
   p result
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling ChargesApi->list_charges: #{e}"
 end
 ```
@@ -136,7 +136,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ListChargesResponse>
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling ChargesApi->list_charges_with_http_info: #{e}"
 end
 ```

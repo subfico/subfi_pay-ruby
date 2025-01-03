@@ -1,4 +1,4 @@
-# SubFiPay::ConnectedAccountAttributes
+# SubfiPay::ConnectedAccountAttributes
 
 ## Properties
 
@@ -12,7 +12,7 @@
 ```ruby
 require 'subfi_pay'
 
-instance = SubFiPay::ConnectedAccountAttributes.new(
+instance = SubfiPay::ConnectedAccountAttributes.new(
   name: null,
   worldpay_merchant_id: null
 )

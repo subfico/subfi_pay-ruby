@@ -1,4 +1,4 @@
-# SubFiPay::RollAccessKeyAttributesAccessKey
+# SubfiPay::RollAccessKeyAttributesAccessKey
 
 ## Properties
 
@@ -11,7 +11,7 @@
 ```ruby
 require 'subfi_pay'
 
-instance = SubFiPay::RollAccessKeyAttributesAccessKey.new(
+instance = SubfiPay::RollAccessKeyAttributesAccessKey.new(
   expires_at: null
 )
 ```

@@ -1,4 +1,4 @@
-# SubFiPay::WebhookEndpointsApi
+# SubfiPay::WebhookEndpointsApi
 
 All URIs are relative to *https://pay-sandbox.subfi.com*
 
@@ -23,22 +23,22 @@ Create a webhook endpoint
 require 'time'
 require 'subfi_pay'
 # setup authorization
-SubFiPay.configure do |config|
+SubfiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = SubFiPay::WebhookEndpointsApi.new
+api_instance = SubfiPay::WebhookEndpointsApi.new
 x_api_version = 'x_api_version_example' # String | 
-create_webhook_endpoint_request = SubFiPay::CreateWebhookEndpointRequest.new # CreateWebhookEndpointRequest | 
+create_webhook_endpoint_request = SubfiPay::CreateWebhookEndpointRequest.new # CreateWebhookEndpointRequest | 
 
 begin
   # Create a webhook endpoint
   result = api_instance.create_webhook_endpoint(x_api_version, create_webhook_endpoint_request)
   p result
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling WebhookEndpointsApi->create_webhook_endpoint: #{e}"
 end
 ```
@@ -56,7 +56,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <WebhookEndpoint>
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling WebhookEndpointsApi->create_webhook_endpoint_with_http_info: #{e}"
 end
 ```
@@ -94,14 +94,14 @@ Delete a webhook endpoint by ID
 require 'time'
 require 'subfi_pay'
 # setup authorization
-SubFiPay.configure do |config|
+SubfiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = SubFiPay::WebhookEndpointsApi.new
+api_instance = SubfiPay::WebhookEndpointsApi.new
 x_api_version = 'x_api_version_example' # String | 
 x_account_id = 'x_account_id_example' # String | 
 id = 'id_example' # String | 
@@ -109,7 +109,7 @@ id = 'id_example' # String |
 begin
   # Delete a webhook endpoint by ID
   api_instance.delete_webhook_endpoint(x_api_version, x_account_id, id)
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling WebhookEndpointsApi->delete_webhook_endpoint: #{e}"
 end
 ```
@@ -127,7 +127,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling WebhookEndpointsApi->delete_webhook_endpoint_with_http_info: #{e}"
 end
 ```
@@ -166,14 +166,14 @@ Retrieve a webhook endpoint by ID
 require 'time'
 require 'subfi_pay'
 # setup authorization
-SubFiPay.configure do |config|
+SubfiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = SubFiPay::WebhookEndpointsApi.new
+api_instance = SubfiPay::WebhookEndpointsApi.new
 x_api_version = 'x_api_version_example' # String | 
 x_account_id = 'x_account_id_example' # String | 
 id = 'id_example' # String | 
@@ -182,7 +182,7 @@ begin
   # Retrieve a webhook endpoint by ID
   result = api_instance.get_webhook_endpoint(x_api_version, x_account_id, id)
   p result
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling WebhookEndpointsApi->get_webhook_endpoint: #{e}"
 end
 ```
@@ -200,7 +200,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <WebhookEndpoint>
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling WebhookEndpointsApi->get_webhook_endpoint_with_http_info: #{e}"
 end
 ```
@@ -239,14 +239,14 @@ List all webhook endpoints
 require 'time'
 require 'subfi_pay'
 # setup authorization
-SubFiPay.configure do |config|
+SubfiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = SubFiPay::WebhookEndpointsApi.new
+api_instance = SubfiPay::WebhookEndpointsApi.new
 x_api_version = 'x_api_version_example' # String | 
 x_account_id = 'x_account_id_example' # String | 
 opts = {
@@ -258,7 +258,7 @@ begin
   # List all webhook endpoints
   result = api_instance.list_webhook_endpoints(x_api_version, x_account_id, opts)
   p result
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling WebhookEndpointsApi->list_webhook_endpoints: #{e}"
 end
 ```
@@ -276,7 +276,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ListWebhookEndpointsResponse>
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling WebhookEndpointsApi->list_webhook_endpoints_with_http_info: #{e}"
 end
 ```
@@ -316,24 +316,24 @@ Update a webhook endpoint by ID
 require 'time'
 require 'subfi_pay'
 # setup authorization
-SubFiPay.configure do |config|
+SubfiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = SubFiPay::WebhookEndpointsApi.new
+api_instance = SubfiPay::WebhookEndpointsApi.new
 x_api_version = 'x_api_version_example' # String | 
 x_account_id = 'x_account_id_example' # String | 
 id = 'id_example' # String | 
-create_webhook_endpoint_request = SubFiPay::CreateWebhookEndpointRequest.new # CreateWebhookEndpointRequest | 
+create_webhook_endpoint_request = SubfiPay::CreateWebhookEndpointRequest.new # CreateWebhookEndpointRequest | 
 
 begin
   # Update a webhook endpoint by ID
   result = api_instance.update_webhook_endpoint(x_api_version, x_account_id, id, create_webhook_endpoint_request)
   p result
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling WebhookEndpointsApi->update_webhook_endpoint: #{e}"
 end
 ```
@@ -351,7 +351,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <WebhookEndpoint>
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling WebhookEndpointsApi->update_webhook_endpoint_with_http_info: #{e}"
 end
 ```

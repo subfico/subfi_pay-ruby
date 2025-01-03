@@ -1,4 +1,4 @@
-# SubFiPay::AccessKey
+# SubfiPay::AccessKey
 
 ## Properties
 
@@ -18,7 +18,7 @@
 ```ruby
 require 'subfi_pay'
 
-instance = SubFiPay::AccessKey.new(
+instance = SubfiPay::AccessKey.new(
   expires_at: null,
   key: null,
   live: null,

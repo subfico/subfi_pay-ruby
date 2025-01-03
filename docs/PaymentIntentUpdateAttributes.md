@@ -1,4 +1,4 @@
-# SubFiPay::PaymentIntentUpdateAttributes
+# SubfiPay::PaymentIntentUpdateAttributes
 
 ## Properties
 
@@ -11,7 +11,7 @@
 ```ruby
 require 'subfi_pay'
 
-instance = SubFiPay::PaymentIntentUpdateAttributes.new(
+instance = SubfiPay::PaymentIntentUpdateAttributes.new(
   payment_intent: null
 )
 ```

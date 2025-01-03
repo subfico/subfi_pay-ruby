@@ -1,4 +1,4 @@
-# SubFiPay::SubscriptionsApi
+# SubfiPay::SubscriptionsApi
 
 All URIs are relative to *https://pay-sandbox.subfi.com*
 
@@ -20,23 +20,23 @@ Create a new subscription
 require 'time'
 require 'subfi_pay'
 # setup authorization
-SubFiPay.configure do |config|
+SubfiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = SubFiPay::SubscriptionsApi.new
+api_instance = SubfiPay::SubscriptionsApi.new
 x_api_version = 'x_api_version_example' # String | 
 x_account_id = 'x_account_id_example' # String | 
-subscription_create_request = SubFiPay::SubscriptionCreateRequest.new # SubscriptionCreateRequest | 
+subscription_create_request = SubfiPay::SubscriptionCreateRequest.new # SubscriptionCreateRequest | 
 
 begin
   # Create a new subscription
   result = api_instance.create_subscription(x_api_version, x_account_id, subscription_create_request)
   p result
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling SubscriptionsApi->create_subscription: #{e}"
 end
 ```
@@ -54,7 +54,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <SubscriptionResponse>
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling SubscriptionsApi->create_subscription_with_http_info: #{e}"
 end
 ```
@@ -93,14 +93,14 @@ Retrieve a subscription by ID
 require 'time'
 require 'subfi_pay'
 # setup authorization
-SubFiPay.configure do |config|
+SubfiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = SubFiPay::SubscriptionsApi.new
+api_instance = SubfiPay::SubscriptionsApi.new
 x_api_version = 'x_api_version_example' # String | 
 x_account_id = 'x_account_id_example' # String | 
 id = 'id_example' # String | The ID of the subscription to retrieve
@@ -109,7 +109,7 @@ begin
   # Retrieve a subscription by ID
   result = api_instance.get_subscription(x_api_version, x_account_id, id)
   p result
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling SubscriptionsApi->get_subscription: #{e}"
 end
 ```
@@ -127,7 +127,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <SubscriptionResponse>
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling SubscriptionsApi->get_subscription_with_http_info: #{e}"
 end
 ```

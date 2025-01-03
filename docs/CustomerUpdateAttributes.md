@@ -1,4 +1,4 @@
-# SubFiPay::CustomerUpdateAttributes
+# SubfiPay::CustomerUpdateAttributes
 
 ## Properties
 
@@ -12,7 +12,7 @@
 ```ruby
 require 'subfi_pay'
 
-instance = SubFiPay::CustomerUpdateAttributes.new(
+instance = SubfiPay::CustomerUpdateAttributes.new(
   name: null,
   default_payment_method_id: null
 )

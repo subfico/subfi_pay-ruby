@@ -1,4 +1,4 @@
-# SubFiPay::CardProfile
+# SubfiPay::CardProfile
 
 ## Properties
 
@@ -23,7 +23,7 @@
 ```ruby
 require 'subfi_pay'
 
-instance = SubFiPay::CardProfile.new(
+instance = SubfiPay::CardProfile.new(
   avs_check: null,
   avs_check_message: null,
   brand: null,

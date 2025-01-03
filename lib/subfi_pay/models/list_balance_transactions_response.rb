@@ -13,7 +13,7 @@ Generator version: 7.7.0
 require 'date'
 require 'time'
 
-module SubFiPay
+module SubfiPay
   class ListBalanceTransactionsResponse
     attr_accessor :data
 
@@ -50,13 +50,13 @@ module SubFiPay
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `SubFiPay::ListBalanceTransactionsResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `SubfiPay::ListBalanceTransactionsResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `SubFiPay::ListBalanceTransactionsResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `SubfiPay::ListBalanceTransactionsResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -169,7 +169,7 @@ module SubFiPay
         end
       else # model
         # models (e.g. Pet) or oneOf
-        klass = SubFiPay.const_get(type)
+        klass = SubfiPay.const_get(type)
         klass.respond_to?(:openapi_any_of) || klass.respond_to?(:openapi_one_of) ? klass.build(value) : klass.build_from_hash(value)
       end
     end

@@ -1,4 +1,4 @@
-# SubFiPay::AccountResponse
+# SubfiPay::AccountResponse
 
 ## Properties
 
@@ -15,7 +15,7 @@
 ```ruby
 require 'subfi_pay'
 
-instance = SubFiPay::AccountResponse.new(
+instance = SubfiPay::AccountResponse.new(
   name: null,
   active: null,
   worldpay_merchant_id: null,

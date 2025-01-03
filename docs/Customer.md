@@ -1,4 +1,4 @@
-# SubFiPay::Customer
+# SubfiPay::Customer
 
 ## Properties
 
@@ -15,7 +15,7 @@
 ```ruby
 require 'subfi_pay'
 
-instance = SubFiPay::Customer.new(
+instance = SubfiPay::Customer.new(
   name: null,
   email: null,
   phone: null,
