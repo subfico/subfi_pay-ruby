@@ -1,4 +1,4 @@
-# SubFiPay::WebhookEndpoint
+# SubfiPay::WebhookEndpoint
 
 ## Properties
 
@@ -19,7 +19,7 @@
 ```ruby
 require 'subfi_pay'
 
-instance = SubFiPay::WebhookEndpoint.new(
+instance = SubfiPay::WebhookEndpoint.new(
   id: null,
   event: null,
   metadata: null,

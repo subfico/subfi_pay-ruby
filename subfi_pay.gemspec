@@ -17,7 +17,7 @@ require "subfi_pay/version"
 
 Gem::Specification.new do |s|
   s.name        = "subfi_pay"
-  s.version     = SubFiPay::VERSION
+  s.version     = SubfiPay::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["OpenAPI-Generator"]
   s.email       = [""]

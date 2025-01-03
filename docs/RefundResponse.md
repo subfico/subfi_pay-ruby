@@ -1,4 +1,4 @@
-# SubFiPay::RefundResponse
+# SubfiPay::RefundResponse
 
 ## Properties
 
@@ -17,7 +17,7 @@
 ```ruby
 require 'subfi_pay'
 
-instance = SubFiPay::RefundResponse.new(
+instance = SubfiPay::RefundResponse.new(
   id: null,
   failure_reason: null,
   state: null,

@@ -1,4 +1,4 @@
-# SubFiPay::Event
+# SubfiPay::Event
 
 ## Properties
 
@@ -17,7 +17,7 @@
 ```ruby
 require 'subfi_pay'
 
-instance = SubFiPay::Event.new(
+instance = SubfiPay::Event.new(
   id: null,
   event: null,
   data: null,

@@ -1,4 +1,4 @@
-# SubFiPay::BillingAddress
+# SubfiPay::BillingAddress
 
 ## Properties
 
@@ -20,7 +20,7 @@
 ```ruby
 require 'subfi_pay'
 
-instance = SubFiPay::BillingAddress.new(
+instance = SubfiPay::BillingAddress.new(
   first_name: null,
   last_name: null,
   email: null,

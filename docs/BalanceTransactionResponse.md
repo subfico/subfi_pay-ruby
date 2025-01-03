@@ -1,4 +1,4 @@
-# SubFiPay::BalanceTransactionResponse
+# SubfiPay::BalanceTransactionResponse
 
 ## Properties
 
@@ -21,7 +21,7 @@
 ```ruby
 require 'subfi_pay'
 
-instance = SubFiPay::BalanceTransactionResponse.new(
+instance = SubfiPay::BalanceTransactionResponse.new(
   id: null,
   created_at: null,
   updated_at: null,

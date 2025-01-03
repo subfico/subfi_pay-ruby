@@ -1,4 +1,4 @@
-# SubFiPay::BalanceTransactionsApi
+# SubfiPay::BalanceTransactionsApi
 
 All URIs are relative to *https://pay-sandbox.subfi.com*
 
@@ -19,14 +19,14 @@ List all balance transactions
 require 'time'
 require 'subfi_pay'
 # setup authorization
-SubFiPay.configure do |config|
+SubfiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = SubFiPay::BalanceTransactionsApi.new
+api_instance = SubfiPay::BalanceTransactionsApi.new
 x_api_version = 'x_api_version_example' # String | 
 x_account_id = 'x_account_id_example' # String | 
 opts = {
@@ -39,7 +39,7 @@ begin
   # List all balance transactions
   result = api_instance.list_balance_transactions(x_api_version, x_account_id, opts)
   p result
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling BalanceTransactionsApi->list_balance_transactions: #{e}"
 end
 ```
@@ -57,7 +57,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ListBalanceTransactionsResponse>
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling BalanceTransactionsApi->list_balance_transactions_with_http_info: #{e}"
 end
 ```

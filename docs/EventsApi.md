@@ -1,4 +1,4 @@
-# SubFiPay::EventsApi
+# SubfiPay::EventsApi
 
 All URIs are relative to *https://pay-sandbox.subfi.com*
 
@@ -20,14 +20,14 @@ Retrieve a single event by ID
 require 'time'
 require 'subfi_pay'
 # setup authorization
-SubFiPay.configure do |config|
+SubfiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = SubFiPay::EventsApi.new
+api_instance = SubfiPay::EventsApi.new
 x_api_version = 'x_api_version_example' # String | 
 x_account_id = 'x_account_id_example' # String | 
 id = 'id_example' # String | 
@@ -36,7 +36,7 @@ begin
   # Retrieve a single event by ID
   result = api_instance.get_event(x_api_version, x_account_id, id)
   p result
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling EventsApi->get_event: #{e}"
 end
 ```
@@ -54,7 +54,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Event>
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling EventsApi->get_event_with_http_info: #{e}"
 end
 ```
@@ -93,14 +93,14 @@ List all events
 require 'time'
 require 'subfi_pay'
 # setup authorization
-SubFiPay.configure do |config|
+SubfiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = SubFiPay::EventsApi.new
+api_instance = SubfiPay::EventsApi.new
 x_api_version = 'x_api_version_example' # String | 
 x_account_id = 'x_account_id_example' # String | 
 opts = {
@@ -112,7 +112,7 @@ begin
   # List all events
   result = api_instance.list_events(x_api_version, x_account_id, opts)
   p result
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling EventsApi->list_events: #{e}"
 end
 ```
@@ -130,7 +130,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ListEventsResponse>
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling EventsApi->list_events_with_http_info: #{e}"
 end
 ```

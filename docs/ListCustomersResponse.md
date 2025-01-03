@@ -1,4 +1,4 @@
-# SubFiPay::ListCustomersResponse
+# SubfiPay::ListCustomersResponse
 
 ## Properties
 
@@ -12,7 +12,7 @@
 ```ruby
 require 'subfi_pay'
 
-instance = SubFiPay::ListCustomersResponse.new(
+instance = SubfiPay::ListCustomersResponse.new(
   data: null,
   meta: null
 )

@@ -1,4 +1,4 @@
-# SubFiPay::BankAccountProfile
+# SubfiPay::BankAccountProfile
 
 ## Properties
 
@@ -16,7 +16,7 @@
 ```ruby
 require 'subfi_pay'
 
-instance = SubFiPay::BankAccountProfile.new(
+instance = SubfiPay::BankAccountProfile.new(
   account_holder_name: null,
   bank_name: null,
   account_holder_type: null,

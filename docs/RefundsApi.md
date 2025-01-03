@@ -1,4 +1,4 @@
-# SubFiPay::RefundsApi
+# SubfiPay::RefundsApi
 
 All URIs are relative to *https://pay-sandbox.subfi.com*
 
@@ -22,14 +22,14 @@ Cancel a refund
 require 'time'
 require 'subfi_pay'
 # setup authorization
-SubFiPay.configure do |config|
+SubfiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = SubFiPay::RefundsApi.new
+api_instance = SubfiPay::RefundsApi.new
 x_api_version = 'x_api_version_example' # String | 
 x_account_id = 'x_account_id_example' # String | 
 id = 'id_example' # String | The ID of the refund to cancel.
@@ -38,7 +38,7 @@ begin
   # Cancel a refund
   result = api_instance.cancel_refund(x_api_version, x_account_id, id)
   p result
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling RefundsApi->cancel_refund: #{e}"
 end
 ```
@@ -56,7 +56,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <RefundResponse>
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling RefundsApi->cancel_refund_with_http_info: #{e}"
 end
 ```
@@ -95,17 +95,17 @@ Create a refund
 require 'time'
 require 'subfi_pay'
 # setup authorization
-SubFiPay.configure do |config|
+SubfiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = SubFiPay::RefundsApi.new
+api_instance = SubfiPay::RefundsApi.new
 x_api_version = 'x_api_version_example' # String | 
 x_account_id = 'x_account_id_example' # String | 
-refund_attributes = SubFiPay::RefundAttributes.new({charge_id: 'charge_id_example'}) # RefundAttributes | 
+refund_attributes = SubfiPay::RefundAttributes.new({charge_id: 'charge_id_example'}) # RefundAttributes | 
 opts = {
   x_idempotency_key: 'x_idempotency_key_example' # String | 
 }
@@ -114,7 +114,7 @@ begin
   # Create a refund
   result = api_instance.create_refund(x_api_version, x_account_id, refund_attributes, opts)
   p result
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling RefundsApi->create_refund: #{e}"
 end
 ```
@@ -132,7 +132,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <RefundResponse>
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling RefundsApi->create_refund_with_http_info: #{e}"
 end
 ```
@@ -172,14 +172,14 @@ Get a refund by ID
 require 'time'
 require 'subfi_pay'
 # setup authorization
-SubFiPay.configure do |config|
+SubfiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = SubFiPay::RefundsApi.new
+api_instance = SubfiPay::RefundsApi.new
 x_api_version = 'x_api_version_example' # String | 
 x_account_id = 'x_account_id_example' # String | 
 id = 'id_example' # String | The ID of the refund to retrieve.
@@ -191,7 +191,7 @@ begin
   # Get a refund by ID
   result = api_instance.get_refund(x_api_version, x_account_id, id, opts)
   p result
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling RefundsApi->get_refund: #{e}"
 end
 ```
@@ -209,7 +209,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <RefundResponse>
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling RefundsApi->get_refund_with_http_info: #{e}"
 end
 ```
@@ -249,14 +249,14 @@ List refunds for a Charge
 require 'time'
 require 'subfi_pay'
 # setup authorization
-SubFiPay.configure do |config|
+SubfiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = SubFiPay::RefundsApi.new
+api_instance = SubfiPay::RefundsApi.new
 x_api_version = 'x_api_version_example' # String | 
 x_account_id = 'x_account_id_example' # String | 
 charge_id = 'charge_id_example' # String | The ID of the charge to which this refund belongs.
@@ -265,7 +265,7 @@ begin
   # List refunds for a Charge
   result = api_instance.list_refunds(x_api_version, x_account_id, charge_id)
   p result
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling RefundsApi->list_refunds: #{e}"
 end
 ```
@@ -283,7 +283,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ListRefundsResponse>
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling RefundsApi->list_refunds_with_http_info: #{e}"
 end
 ```

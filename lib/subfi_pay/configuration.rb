@@ -10,7 +10,7 @@ Generator version: 7.7.0
 
 =end
 
-module SubFiPay
+module SubfiPay
   class Configuration
     # Defines url scheme
     attr_accessor :scheme

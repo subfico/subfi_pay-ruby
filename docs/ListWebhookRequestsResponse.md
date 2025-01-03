@@ -1,4 +1,4 @@
-# SubFiPay::ListWebhookRequestsResponse
+# SubfiPay::ListWebhookRequestsResponse
 
 ## Properties
 
@@ -12,7 +12,7 @@
 ```ruby
 require 'subfi_pay'
 
-instance = SubFiPay::ListWebhookRequestsResponse.new(
+instance = SubfiPay::ListWebhookRequestsResponse.new(
   data: null,
   meta: null
 )

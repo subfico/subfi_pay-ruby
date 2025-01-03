@@ -1,4 +1,4 @@
-# SubFiPay::WebhookRequestsApi
+# SubfiPay::WebhookRequestsApi
 
 All URIs are relative to *https://pay-sandbox.subfi.com*
 
@@ -19,14 +19,14 @@ List all webhook requests
 require 'time'
 require 'subfi_pay'
 # setup authorization
-SubFiPay.configure do |config|
+SubfiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = SubFiPay::WebhookRequestsApi.new
+api_instance = SubfiPay::WebhookRequestsApi.new
 x_api_version = 'x_api_version_example' # String | 
 x_account_id = 'x_account_id_example' # String | 
 opts = {
@@ -38,7 +38,7 @@ begin
   # List all webhook requests
   result = api_instance.list_webhook_requests(x_api_version, x_account_id, opts)
   p result
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling WebhookRequestsApi->list_webhook_requests: #{e}"
 end
 ```
@@ -56,7 +56,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ListWebhookRequestsResponse>
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling WebhookRequestsApi->list_webhook_requests_with_http_info: #{e}"
 end
 ```

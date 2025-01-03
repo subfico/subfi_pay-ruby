@@ -1,4 +1,4 @@
-# SubFiPay::ListPaymentMethodsResponse
+# SubfiPay::ListPaymentMethodsResponse
 
 ## Properties
 
@@ -12,7 +12,7 @@
 ```ruby
 require 'subfi_pay'
 
-instance = SubFiPay::ListPaymentMethodsResponse.new(
+instance = SubfiPay::ListPaymentMethodsResponse.new(
   data: null,
   meta: null
 )

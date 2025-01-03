@@ -132,6 +132,5 @@ lib/subfi_pay/models/subscription_response.rb
 lib/subfi_pay/models/webhook_endpoint.rb
 lib/subfi_pay/models/webhook_request.rb
 lib/subfi_pay/version.rb
-spec/models/customer_update_request_spec.rb
 spec/spec_helper.rb
 subfi_pay.gemspec

@@ -1,4 +1,4 @@
-# SubFiPay::AccountsApi
+# SubfiPay::AccountsApi
 
 All URIs are relative to *https://pay-sandbox.subfi.com*
 
@@ -21,22 +21,22 @@ Create a new account
 require 'time'
 require 'subfi_pay'
 # setup authorization
-SubFiPay.configure do |config|
+SubfiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = SubFiPay::AccountsApi.new
+api_instance = SubfiPay::AccountsApi.new
 x_api_version = 'x_api_version_example' # String | 
-account_create_request = SubFiPay::AccountCreateRequest.new # AccountCreateRequest | 
+account_create_request = SubfiPay::AccountCreateRequest.new # AccountCreateRequest | 
 
 begin
   # Create a new account
   result = api_instance.create_account(x_api_version, account_create_request)
   p result
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling AccountsApi->create_account: #{e}"
 end
 ```
@@ -54,7 +54,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AccountResponse>
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling AccountsApi->create_account_with_http_info: #{e}"
 end
 ```
@@ -92,14 +92,14 @@ Retrieve an account by ID
 require 'time'
 require 'subfi_pay'
 # setup authorization
-SubFiPay.configure do |config|
+SubfiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = SubFiPay::AccountsApi.new
+api_instance = SubfiPay::AccountsApi.new
 x_api_version = 'x_api_version_example' # String | 
 id = 'id_example' # String | 
 
@@ -107,7 +107,7 @@ begin
   # Retrieve an account by ID
   result = api_instance.get_account(x_api_version, id)
   p result
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling AccountsApi->get_account: #{e}"
 end
 ```
@@ -125,7 +125,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AccountResponse>
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling AccountsApi->get_account_with_http_info: #{e}"
 end
 ```
@@ -163,14 +163,14 @@ List all accounts
 require 'time'
 require 'subfi_pay'
 # setup authorization
-SubFiPay.configure do |config|
+SubfiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = SubFiPay::AccountsApi.new
+api_instance = SubfiPay::AccountsApi.new
 x_api_version = 'x_api_version_example' # String | 
 opts = {
   page: 56, # Integer | The page of results to retrieve.
@@ -181,7 +181,7 @@ begin
   # List all accounts
   result = api_instance.list_accounts(x_api_version, opts)
   p result
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling AccountsApi->list_accounts: #{e}"
 end
 ```
@@ -199,7 +199,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ListAccountsResponse>
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling AccountsApi->list_accounts_with_http_info: #{e}"
 end
 ```

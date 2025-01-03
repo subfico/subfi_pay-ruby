@@ -1,4 +1,4 @@
-# SubFiPay::AccessKeysApi
+# SubfiPay::AccessKeysApi
 
 All URIs are relative to *https://pay-sandbox.subfi.com*
 
@@ -21,21 +21,21 @@ Delete an access key by ID
 require 'time'
 require 'subfi_pay'
 # setup authorization
-SubFiPay.configure do |config|
+SubfiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = SubFiPay::AccessKeysApi.new
+api_instance = SubfiPay::AccessKeysApi.new
 x_api_version = 'x_api_version_example' # String | 
 id = 'id_example' # String | 
 
 begin
   # Delete an access key by ID
   api_instance.delete_access_key(x_api_version, id)
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling AccessKeysApi->delete_access_key: #{e}"
 end
 ```
@@ -53,7 +53,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling AccessKeysApi->delete_access_key_with_http_info: #{e}"
 end
 ```
@@ -91,14 +91,14 @@ List all access keys
 require 'time'
 require 'subfi_pay'
 # setup authorization
-SubFiPay.configure do |config|
+SubfiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = SubFiPay::AccessKeysApi.new
+api_instance = SubfiPay::AccessKeysApi.new
 x_api_version = 'x_api_version_example' # String | 
 opts = {
   page: 56, # Integer | The page of results to retrieve.
@@ -109,7 +109,7 @@ begin
   # List all access keys
   result = api_instance.list_access_keys(x_api_version, opts)
   p result
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling AccessKeysApi->list_access_keys: #{e}"
 end
 ```
@@ -127,7 +127,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ListAccessKeysResponse>
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling AccessKeysApi->list_access_keys_with_http_info: #{e}"
 end
 ```
@@ -166,23 +166,23 @@ Roll an access key by ID
 require 'time'
 require 'subfi_pay'
 # setup authorization
-SubFiPay.configure do |config|
+SubfiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = SubFiPay::AccessKeysApi.new
+api_instance = SubfiPay::AccessKeysApi.new
 x_api_version = 'x_api_version_example' # String | 
 id = 'id_example' # String | 
-roll_access_key_attributes = SubFiPay::RollAccessKeyAttributes.new # RollAccessKeyAttributes | 
+roll_access_key_attributes = SubfiPay::RollAccessKeyAttributes.new # RollAccessKeyAttributes | 
 
 begin
   # Roll an access key by ID
   result = api_instance.roll_access_key(x_api_version, id, roll_access_key_attributes)
   p result
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling AccessKeysApi->roll_access_key: #{e}"
 end
 ```
@@ -200,7 +200,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AccessKey>
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling AccessKeysApi->roll_access_key_with_http_info: #{e}"
 end
 ```

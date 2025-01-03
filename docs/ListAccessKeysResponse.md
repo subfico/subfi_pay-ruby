@@ -1,4 +1,4 @@
-# SubFiPay::ListAccessKeysResponse
+# SubfiPay::ListAccessKeysResponse
 
 ## Properties
 
@@ -12,7 +12,7 @@
 ```ruby
 require 'subfi_pay'
 
-instance = SubFiPay::ListAccessKeysResponse.new(
+instance = SubfiPay::ListAccessKeysResponse.new(
   data: null,
   meta: null
 )

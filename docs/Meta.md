@@ -1,4 +1,4 @@
-# SubFiPay::Meta
+# SubfiPay::Meta
 
 ## Properties
 
@@ -16,7 +16,7 @@
 ```ruby
 require 'subfi_pay'
 
-instance = SubFiPay::Meta.new(
+instance = SubfiPay::Meta.new(
   current_page: null,
   next_page: null,
   prev_page: null,

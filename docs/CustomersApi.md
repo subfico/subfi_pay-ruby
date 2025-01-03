@@ -1,4 +1,4 @@
-# SubFiPay::CustomersApi
+# SubfiPay::CustomersApi
 
 All URIs are relative to *https://pay-sandbox.subfi.com*
 
@@ -22,22 +22,22 @@ Create a new customer
 require 'time'
 require 'subfi_pay'
 # setup authorization
-SubFiPay.configure do |config|
+SubfiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = SubFiPay::CustomersApi.new
+api_instance = SubfiPay::CustomersApi.new
 x_api_version = 'x_api_version_example' # String | 
-customer_create_request = SubFiPay::CustomerCreateRequest.new # CustomerCreateRequest | 
+customer_create_request = SubfiPay::CustomerCreateRequest.new # CustomerCreateRequest | 
 
 begin
   # Create a new customer
   result = api_instance.create_customer(x_api_version, customer_create_request)
   p result
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling CustomersApi->create_customer: #{e}"
 end
 ```
@@ -55,7 +55,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Customer>
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling CustomersApi->create_customer_with_http_info: #{e}"
 end
 ```
@@ -93,14 +93,14 @@ Retrieve a customer by ID
 require 'time'
 require 'subfi_pay'
 # setup authorization
-SubFiPay.configure do |config|
+SubfiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = SubFiPay::CustomersApi.new
+api_instance = SubfiPay::CustomersApi.new
 x_api_version = 'x_api_version_example' # String | 
 x_account_id = 'x_account_id_example' # String | 
 id = 'id_example' # String | 
@@ -109,7 +109,7 @@ begin
   # Retrieve a customer by ID
   result = api_instance.get_customer(x_api_version, x_account_id, id)
   p result
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling CustomersApi->get_customer: #{e}"
 end
 ```
@@ -127,7 +127,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Customer>
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling CustomersApi->get_customer_with_http_info: #{e}"
 end
 ```
@@ -166,14 +166,14 @@ List all customers
 require 'time'
 require 'subfi_pay'
 # setup authorization
-SubFiPay.configure do |config|
+SubfiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = SubFiPay::CustomersApi.new
+api_instance = SubfiPay::CustomersApi.new
 x_api_version = 'x_api_version_example' # String | 
 x_account_id = 'x_account_id_example' # String | 
 opts = {
@@ -185,7 +185,7 @@ begin
   # List all customers
   result = api_instance.list_customers(x_api_version, x_account_id, opts)
   p result
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling CustomersApi->list_customers: #{e}"
 end
 ```
@@ -203,7 +203,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ListCustomersResponse>
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling CustomersApi->list_customers_with_http_info: #{e}"
 end
 ```
@@ -243,24 +243,24 @@ Update a customer by ID
 require 'time'
 require 'subfi_pay'
 # setup authorization
-SubFiPay.configure do |config|
+SubfiPay.configure do |config|
   # Configure API key authorization: ApiKeyAuth
   config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 end
 
-api_instance = SubFiPay::CustomersApi.new
+api_instance = SubfiPay::CustomersApi.new
 x_api_version = 'x_api_version_example' # String | 
 x_account_id = 'x_account_id_example' # String | 
 id = 'id_example' # String | 
-customer_update_request = SubFiPay::CustomerUpdateRequest.new # CustomerUpdateRequest | 
+customer_update_request = SubfiPay::CustomerUpdateRequest.new # CustomerUpdateRequest | 
 
 begin
   # Update a customer by ID
   result = api_instance.update_customer(x_api_version, x_account_id, id, customer_update_request)
   p result
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling CustomersApi->update_customer: #{e}"
 end
 ```
@@ -278,7 +278,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Customer>
-rescue SubFiPay::ApiError => e
+rescue SubfiPay::ApiError => e
   puts "Error when calling CustomersApi->update_customer_with_http_info: #{e}"
 end
 ```
