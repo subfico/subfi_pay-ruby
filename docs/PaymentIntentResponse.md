@@ -7,6 +7,7 @@
 | **id** | **String** |  | [optional] |
 | **active_payment_method_id** | **String** |  | [optional] |
 | **amount** | **Float** |  | [optional] |
+| **capture_method** | **String** |  | [optional] |
 | **description** | **String** |  | [optional] |
 | **state** | **String** |  | [optional] |
 | **connected_account_id** | **String** |  | [optional] |
@@ -21,6 +22,7 @@ instance = SubfiPay::PaymentIntentResponse.new(
   id: null,
   active_payment_method_id: null,
   amount: null,
+  capture_method: null,
   description: null,
   state: null,
   connected_account_id: null,

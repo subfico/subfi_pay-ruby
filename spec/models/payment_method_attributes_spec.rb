@@ -26,7 +26,7 @@ describe SubfiPay::PaymentMethodAttributes do
     end
   end
 
-  let(:attributes) { %w[type billing_address_attributes card_profile_attributes bank_account_profile_attributes] }
+  let(:attributes) { %w[billing_address_attributes card_profile_attributes bank_account_profile_attributes] }
 
   describe 'test attributes' do
     it 'should respond to all attributes' do

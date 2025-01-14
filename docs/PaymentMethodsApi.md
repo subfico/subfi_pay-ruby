@@ -31,7 +31,7 @@ end
 api_instance = SubfiPay::PaymentMethodsApi.new
 x_api_version = 'x_api_version_example' # String | 
 x_account_id = 'x_account_id_example' # String | 
-payment_method_attributes = SubfiPay::PaymentMethodAttributes.new({type: 'type_example'}) # PaymentMethodAttributes | 
+payment_method_attributes = SubfiPay::PaymentMethodAttributes.new # PaymentMethodAttributes | 
 opts = {
   x_idempotency_key: 'x_idempotency_key_example' # String | 
 }
