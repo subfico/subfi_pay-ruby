@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **type** | **String** |  |  |
+| **customer_id** | **String** |  | [optional] |
 | **billing_address_attributes** | [**BillingAddress**](BillingAddress.md) |  | [optional] |
 | **card_profile_attributes** | [**CardProfile**](CardProfile.md) |  | [optional] |
 | **bank_account_profile_attributes** | [**BankAccountProfile**](BankAccountProfile.md) |  | [optional] |
@@ -15,7 +15,7 @@
 require 'subfi_pay'
 
 instance = SubfiPay::PaymentMethodAttributes.new(
-  type: null,
+  customer_id: null,
   billing_address_attributes: null,
   card_profile_attributes: null,
   bank_account_profile_attributes: null

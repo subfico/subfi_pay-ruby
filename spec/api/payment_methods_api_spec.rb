@@ -150,7 +150,6 @@ describe "PaymentMethodsApi" do
       let(:body) do
         {
           payment_method: {
-            type: "Card",
             billing_address_attributes: {
               country: "US",
               postal_code: "78704"
@@ -188,7 +187,6 @@ describe "PaymentMethodsApi" do
       let(:body) do
         {
           payment_method: {
-            type: "BankAccount",
             billing_address_attributes: {
               country: "US",
               postal_code: "78704"

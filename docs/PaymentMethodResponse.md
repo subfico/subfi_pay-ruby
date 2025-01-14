@@ -6,7 +6,6 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** |  | [optional] |
 | **type** | **String** |  | [optional] |
-| **partner_id** | **String** |  | [optional] |
 | **created_at** | **Time** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |
 | **customer_id** | **String** |  | [optional] |
@@ -23,7 +22,6 @@ require 'subfi_pay'
 instance = SubfiPay::PaymentMethodResponse.new(
   id: null,
   type: null,
-  partner_id: null,
   created_at: null,
   updated_at: null,
   customer_id: null,
