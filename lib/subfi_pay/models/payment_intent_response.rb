@@ -21,6 +21,8 @@ module SubfiPay
 
     attr_accessor :amount
 
+    attr_accessor :capture_method
+
     attr_accessor :description
 
     attr_accessor :state
@@ -35,6 +37,7 @@ module SubfiPay
         :'id' => :'id',
         :'active_payment_method_id' => :'active_payment_method_id',
         :'amount' => :'amount',
+        :'capture_method' => :'capture_method',
         :'description' => :'description',
         :'state' => :'state',
         :'connected_account_id' => :'connected_account_id',
@@ -53,6 +56,7 @@ module SubfiPay
         :'id' => :'String',
         :'active_payment_method_id' => :'String',
         :'amount' => :'Float',
+        :'capture_method' => :'String',
         :'description' => :'String',
         :'state' => :'String',
         :'connected_account_id' => :'String',
@@ -91,6 +95,10 @@ module SubfiPay
 
       if attributes.key?(:'amount')
         self.amount = attributes[:'amount']
+      end
+
+      if attributes.key?(:'capture_method')
+        self.capture_method = attributes[:'capture_method']
       end
 
       if attributes.key?(:'description')
@@ -135,6 +143,7 @@ module SubfiPay
           id == o.id &&
           active_payment_method_id == o.active_payment_method_id &&
           amount == o.amount &&
+          capture_method == o.capture_method &&
           description == o.description &&
           state == o.state &&
           connected_account_id == o.connected_account_id &&
@@ -150,7 +159,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, active_payment_method_id, amount, description, state, connected_account_id, payment_methods].hash
+      [id, active_payment_method_id, amount, capture_method, description, state, connected_account_id, payment_methods].hash
     end
 
     # Builds the object from hash
