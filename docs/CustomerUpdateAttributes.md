@@ -5,7 +5,9 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **name** | **String** |  | [optional] |
-| **default_payment_method_id** | **String** |  | [optional] |
+| **email** | **String** |  | [optional] |
+| **phone** | **String** |  | [optional] |
+| **payment_method_id** | **String** |  | [optional] |
 
 ## Example
 
@@ -14,7 +16,9 @@ require 'subfi_pay'
 
 instance = SubfiPay::CustomerUpdateAttributes.new(
   name: null,
-  default_payment_method_id: null
+  email: null,
+  phone: null,
+  payment_method_id: null
 )
 ```
 

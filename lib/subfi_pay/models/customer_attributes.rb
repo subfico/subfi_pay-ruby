@@ -21,6 +21,7 @@ module SubfiPay
 
     attr_accessor :phone
 
+    # Additional metadata key-value pairs
     attr_accessor :metadata
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -44,7 +45,7 @@ module SubfiPay
         :'name' => :'String',
         :'email' => :'String',
         :'phone' => :'String',
-        :'metadata' => :'Object'
+        :'metadata' => :'Hash<String, MetadataValue>'
       }
     end
 
@@ -82,7 +83,9 @@ module SubfiPay
       end
 
       if attributes.key?(:'metadata')
-        self.metadata = attributes[:'metadata']
+        if (value = attributes[:'metadata']).is_a?(Hash)
+          self.metadata = value
+        end
       end
     end
 

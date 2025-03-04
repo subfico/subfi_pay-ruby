@@ -17,8 +17,6 @@ module SubfiPay
   class WebhookRequest
     attr_accessor :id
 
-    attr_accessor :event_id
-
     attr_accessor :webhook_endpoint_id
 
     attr_accessor :status_code
@@ -31,8 +29,6 @@ module SubfiPay
 
     attr_accessor :success
 
-    attr_accessor :retry_count
-
     attr_accessor :created_at
 
     attr_accessor :updated_at
@@ -41,14 +37,12 @@ module SubfiPay
     def self.attribute_map
       {
         :'id' => :'id',
-        :'event_id' => :'event_id',
         :'webhook_endpoint_id' => :'webhook_endpoint_id',
         :'status_code' => :'status_code',
         :'error_message' => :'error_message',
         :'request_body' => :'request_body',
         :'response_body' => :'response_body',
         :'success' => :'success',
-        :'retry_count' => :'retry_count',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
       }
@@ -63,14 +57,12 @@ module SubfiPay
     def self.openapi_types
       {
         :'id' => :'String',
-        :'event_id' => :'String',
         :'webhook_endpoint_id' => :'String',
         :'status_code' => :'Integer',
         :'error_message' => :'String',
         :'request_body' => :'Object',
         :'response_body' => :'Object',
         :'success' => :'Boolean',
-        :'retry_count' => :'Integer',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
       }
@@ -101,10 +93,6 @@ module SubfiPay
         self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'event_id')
-        self.event_id = attributes[:'event_id']
-      end
-
       if attributes.key?(:'webhook_endpoint_id')
         self.webhook_endpoint_id = attributes[:'webhook_endpoint_id']
       end
@@ -127,10 +115,6 @@ module SubfiPay
 
       if attributes.key?(:'success')
         self.success = attributes[:'success']
-      end
-
-      if attributes.key?(:'retry_count')
-        self.retry_count = attributes[:'retry_count']
       end
 
       if attributes.key?(:'created_at')
@@ -163,14 +147,12 @@ module SubfiPay
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          event_id == o.event_id &&
           webhook_endpoint_id == o.webhook_endpoint_id &&
           status_code == o.status_code &&
           error_message == o.error_message &&
           request_body == o.request_body &&
           response_body == o.response_body &&
           success == o.success &&
-          retry_count == o.retry_count &&
           created_at == o.created_at &&
           updated_at == o.updated_at
     end
@@ -184,7 +166,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, event_id, webhook_endpoint_id, status_code, error_message, request_body, response_body, success, retry_count, created_at, updated_at].hash
+      [id, webhook_endpoint_id, status_code, error_message, request_body, response_body, success, created_at, updated_at].hash
     end
 
     # Builds the object from hash

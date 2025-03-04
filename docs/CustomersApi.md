@@ -12,7 +12,7 @@ All URIs are relative to *https://pay-sandbox.subfi.com*
 
 ## create_customer
 
-> <Customer> create_customer(x_api_version, customer_create_request)
+> <CustomerResponse> create_customer(x_api_version, x_account_id, customer_create_request)
 
 Create a new customer
 
@@ -23,19 +23,20 @@ require 'time'
 require 'subfi_pay'
 # setup authorization
 SubfiPay.configure do |config|
-  # Configure API key authorization: ApiKeyAuth
-  config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
+  # Configure API key authorization: X-Api-Key
+  config.api_key['X-Api-Key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+  # config.api_key_prefix['X-Api-Key'] = 'Bearer'
 end
 
 api_instance = SubfiPay::CustomersApi.new
 x_api_version = 'x_api_version_example' # String | 
+x_account_id = 'x_account_id_example' # String | 
 customer_create_request = SubfiPay::CustomerCreateRequest.new # CustomerCreateRequest | 
 
 begin
   # Create a new customer
-  result = api_instance.create_customer(x_api_version, customer_create_request)
+  result = api_instance.create_customer(x_api_version, x_account_id, customer_create_request)
   p result
 rescue SubfiPay::ApiError => e
   puts "Error when calling CustomersApi->create_customer: #{e}"
@@ -46,15 +47,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Customer>, Integer, Hash)> create_customer_with_http_info(x_api_version, customer_create_request)
+> <Array(<CustomerResponse>, Integer, Hash)> create_customer_with_http_info(x_api_version, x_account_id, customer_create_request)
 
 ```ruby
 begin
   # Create a new customer
-  data, status_code, headers = api_instance.create_customer_with_http_info(x_api_version, customer_create_request)
+  data, status_code, headers = api_instance.create_customer_with_http_info(x_api_version, x_account_id, customer_create_request)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <Customer>
+  p data # => <CustomerResponse>
 rescue SubfiPay::ApiError => e
   puts "Error when calling CustomersApi->create_customer_with_http_info: #{e}"
 end
@@ -65,15 +66,16 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **x_api_version** | **String** |  |  |
+| **x_account_id** | **String** |  |  |
 | **customer_create_request** | [**CustomerCreateRequest**](CustomerCreateRequest.md) |  |  |
 
 ### Return type
 
-[**Customer**](Customer.md)
+[**CustomerResponse**](CustomerResponse.md)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[X-Api-Key](../README.md#X-Api-Key)
 
 ### HTTP request headers
 
@@ -83,7 +85,7 @@ end
 
 ## get_customer
 
-> <Customer> get_customer(x_api_version, x_account_id, id)
+> <CustomerResponse> get_customer(x_api_version, id)
 
 Retrieve a customer by ID
 
@@ -94,20 +96,19 @@ require 'time'
 require 'subfi_pay'
 # setup authorization
 SubfiPay.configure do |config|
-  # Configure API key authorization: ApiKeyAuth
-  config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
+  # Configure API key authorization: X-Api-Key
+  config.api_key['X-Api-Key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+  # config.api_key_prefix['X-Api-Key'] = 'Bearer'
 end
 
 api_instance = SubfiPay::CustomersApi.new
 x_api_version = 'x_api_version_example' # String | 
-x_account_id = 'x_account_id_example' # String | 
 id = 'id_example' # String | 
 
 begin
   # Retrieve a customer by ID
-  result = api_instance.get_customer(x_api_version, x_account_id, id)
+  result = api_instance.get_customer(x_api_version, id)
   p result
 rescue SubfiPay::ApiError => e
   puts "Error when calling CustomersApi->get_customer: #{e}"
@@ -118,15 +119,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Customer>, Integer, Hash)> get_customer_with_http_info(x_api_version, x_account_id, id)
+> <Array(<CustomerResponse>, Integer, Hash)> get_customer_with_http_info(x_api_version, id)
 
 ```ruby
 begin
   # Retrieve a customer by ID
-  data, status_code, headers = api_instance.get_customer_with_http_info(x_api_version, x_account_id, id)
+  data, status_code, headers = api_instance.get_customer_with_http_info(x_api_version, id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <Customer>
+  p data # => <CustomerResponse>
 rescue SubfiPay::ApiError => e
   puts "Error when calling CustomersApi->get_customer_with_http_info: #{e}"
 end
@@ -137,16 +138,15 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **x_api_version** | **String** |  |  |
-| **x_account_id** | **String** |  |  |
 | **id** | **String** |  |  |
 
 ### Return type
 
-[**Customer**](Customer.md)
+[**CustomerResponse**](CustomerResponse.md)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[X-Api-Key](../README.md#X-Api-Key)
 
 ### HTTP request headers
 
@@ -156,7 +156,7 @@ end
 
 ## list_customers
 
-> <ListCustomersResponse> list_customers(x_api_version, x_account_id, opts)
+> <ListCustomersResponse> list_customers(x_api_version, opts)
 
 List all customers
 
@@ -167,23 +167,23 @@ require 'time'
 require 'subfi_pay'
 # setup authorization
 SubfiPay.configure do |config|
-  # Configure API key authorization: ApiKeyAuth
-  config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
+  # Configure API key authorization: X-Api-Key
+  config.api_key['X-Api-Key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+  # config.api_key_prefix['X-Api-Key'] = 'Bearer'
 end
 
 api_instance = SubfiPay::CustomersApi.new
 x_api_version = 'x_api_version_example' # String | 
-x_account_id = 'x_account_id_example' # String | 
 opts = {
   page: 56, # Integer | The page of results to retrieve.
-  per_page: 56 # Integer | Number of results per page.
+  per_page: 56, # Integer | Number of results per page.
+  account_id: 'account_id_example' # String | 
 }
 
 begin
   # List all customers
-  result = api_instance.list_customers(x_api_version, x_account_id, opts)
+  result = api_instance.list_customers(x_api_version, opts)
   p result
 rescue SubfiPay::ApiError => e
   puts "Error when calling CustomersApi->list_customers: #{e}"
@@ -194,12 +194,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ListCustomersResponse>, Integer, Hash)> list_customers_with_http_info(x_api_version, x_account_id, opts)
+> <Array(<ListCustomersResponse>, Integer, Hash)> list_customers_with_http_info(x_api_version, opts)
 
 ```ruby
 begin
   # List all customers
-  data, status_code, headers = api_instance.list_customers_with_http_info(x_api_version, x_account_id, opts)
+  data, status_code, headers = api_instance.list_customers_with_http_info(x_api_version, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ListCustomersResponse>
@@ -213,9 +213,9 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **x_api_version** | **String** |  |  |
-| **x_account_id** | **String** |  |  |
 | **page** | **Integer** | The page of results to retrieve. | [optional] |
 | **per_page** | **Integer** | Number of results per page. | [optional] |
+| **account_id** | **String** |  | [optional] |
 
 ### Return type
 
@@ -223,7 +223,7 @@ end
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[X-Api-Key](../README.md#X-Api-Key)
 
 ### HTTP request headers
 
@@ -233,7 +233,7 @@ end
 
 ## update_customer
 
-> <Customer> update_customer(x_api_version, x_account_id, id, customer_update_request)
+> <CustomerResponse> update_customer(x_api_version, x_account_id, id, customer_update_request)
 
 Update a customer by ID
 
@@ -244,10 +244,10 @@ require 'time'
 require 'subfi_pay'
 # setup authorization
 SubfiPay.configure do |config|
-  # Configure API key authorization: ApiKeyAuth
-  config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
+  # Configure API key authorization: X-Api-Key
+  config.api_key['X-Api-Key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+  # config.api_key_prefix['X-Api-Key'] = 'Bearer'
 end
 
 api_instance = SubfiPay::CustomersApi.new
@@ -269,7 +269,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Customer>, Integer, Hash)> update_customer_with_http_info(x_api_version, x_account_id, id, customer_update_request)
+> <Array(<CustomerResponse>, Integer, Hash)> update_customer_with_http_info(x_api_version, x_account_id, id, customer_update_request)
 
 ```ruby
 begin
@@ -277,7 +277,7 @@ begin
   data, status_code, headers = api_instance.update_customer_with_http_info(x_api_version, x_account_id, id, customer_update_request)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <Customer>
+  p data # => <CustomerResponse>
 rescue SubfiPay::ApiError => e
   puts "Error when calling CustomersApi->update_customer_with_http_info: #{e}"
 end
@@ -294,11 +294,11 @@ end
 
 ### Return type
 
-[**Customer**](Customer.md)
+[**CustomerResponse**](CustomerResponse.md)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[X-Api-Key](../README.md#X-Api-Key)
 
 ### HTTP request headers
 

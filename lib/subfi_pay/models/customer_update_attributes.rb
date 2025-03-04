@@ -17,13 +17,19 @@ module SubfiPay
   class CustomerUpdateAttributes
     attr_accessor :name
 
-    attr_accessor :default_payment_method_id
+    attr_accessor :email
+
+    attr_accessor :phone
+
+    attr_accessor :payment_method_id
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'name' => :'name',
-        :'default_payment_method_id' => :'default_payment_method_id'
+        :'email' => :'email',
+        :'phone' => :'phone',
+        :'payment_method_id' => :'payment_method_id'
       }
     end
 
@@ -36,7 +42,9 @@ module SubfiPay
     def self.openapi_types
       {
         :'name' => :'String',
-        :'default_payment_method_id' => :'String'
+        :'email' => :'String',
+        :'phone' => :'String',
+        :'payment_method_id' => :'String'
       }
     end
 
@@ -65,8 +73,16 @@ module SubfiPay
         self.name = attributes[:'name']
       end
 
-      if attributes.key?(:'default_payment_method_id')
-        self.default_payment_method_id = attributes[:'default_payment_method_id']
+      if attributes.key?(:'email')
+        self.email = attributes[:'email']
+      end
+
+      if attributes.key?(:'phone')
+        self.phone = attributes[:'phone']
+      end
+
+      if attributes.key?(:'payment_method_id')
+        self.payment_method_id = attributes[:'payment_method_id']
       end
     end
 
@@ -91,7 +107,9 @@ module SubfiPay
       return true if self.equal?(o)
       self.class == o.class &&
           name == o.name &&
-          default_payment_method_id == o.default_payment_method_id
+          email == o.email &&
+          phone == o.phone &&
+          payment_method_id == o.payment_method_id
     end
 
     # @see the `==` method
@@ -103,7 +121,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, default_payment_method_id].hash
+      [name, email, phone, payment_method_id].hash
     end
 
     # Builds the object from hash

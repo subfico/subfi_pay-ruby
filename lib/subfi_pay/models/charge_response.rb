@@ -17,47 +17,99 @@ module SubfiPay
   class ChargeResponse
     attr_accessor :id
 
-    attr_accessor :captured_at
-
-    attr_accessor :failure_reason
-
     attr_accessor :account_id
 
-    attr_accessor :payment_method
-
-    attr_accessor :processor_id
-
-    attr_accessor :state
-
-    attr_accessor :created_at
+    attr_accessor :adjustment_reason
 
     attr_accessor :amount
 
+    attr_accessor :currency
+
+    attr_accessor :customer_id
+
     attr_accessor :description
 
-    # Determines whether the charge should be captured immediately
-    attr_accessor :immediate_capture
+    attr_accessor :can_refund
+
+    attr_accessor :can_void
+
+    # Additional metadata key-value pairs
+    attr_accessor :metadata
+
+    attr_accessor :original_transaction_id
+
+    attr_accessor :parent_transaction_id
+
+    attr_accessor :payment_intent_id
 
     attr_accessor :payment_method_id
 
-    attr_accessor :connected_account_id
+    attr_accessor :platform_fee
+
+    attr_accessor :platform_per_txn_fee
+
+    attr_accessor :platform_rate
+
+    attr_accessor :source
+
+    attr_accessor :state
+
+    attr_accessor :statement_descriptor
+
+    attr_accessor :succeeded_at
+
+    attr_accessor :created_at
+
+    attr_accessor :updated_at
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
-        :'captured_at' => :'captured_at',
-        :'failure_reason' => :'failure_reason',
         :'account_id' => :'account_id',
-        :'payment_method' => :'payment_method',
-        :'processor_id' => :'processor_id',
-        :'state' => :'state',
-        :'created_at' => :'created_at',
+        :'adjustment_reason' => :'adjustment_reason',
         :'amount' => :'amount',
+        :'currency' => :'currency',
+        :'customer_id' => :'customer_id',
         :'description' => :'description',
-        :'immediate_capture' => :'immediate_capture',
+        :'can_refund' => :'can_refund',
+        :'can_void' => :'can_void',
+        :'metadata' => :'metadata',
+        :'original_transaction_id' => :'original_transaction_id',
+        :'parent_transaction_id' => :'parent_transaction_id',
+        :'payment_intent_id' => :'payment_intent_id',
         :'payment_method_id' => :'payment_method_id',
-        :'connected_account_id' => :'connected_account_id'
+        :'platform_fee' => :'platform_fee',
+        :'platform_per_txn_fee' => :'platform_per_txn_fee',
+        :'platform_rate' => :'platform_rate',
+        :'source' => :'source',
+        :'state' => :'state',
+        :'statement_descriptor' => :'statement_descriptor',
+        :'succeeded_at' => :'succeeded_at',
+        :'created_at' => :'created_at',
+        :'updated_at' => :'updated_at'
       }
     end
 
@@ -70,29 +122,35 @@ module SubfiPay
     def self.openapi_types
       {
         :'id' => :'String',
-        :'captured_at' => :'Time',
-        :'failure_reason' => :'String',
         :'account_id' => :'String',
-        :'payment_method' => :'PaymentMethodResponse',
-        :'processor_id' => :'String',
-        :'state' => :'String',
-        :'created_at' => :'Time',
+        :'adjustment_reason' => :'String',
         :'amount' => :'Integer',
+        :'currency' => :'String',
+        :'customer_id' => :'String',
         :'description' => :'String',
-        :'immediate_capture' => :'Boolean',
+        :'can_refund' => :'Boolean',
+        :'can_void' => :'Boolean',
+        :'metadata' => :'Hash<String, MetadataValue>',
+        :'original_transaction_id' => :'String',
+        :'parent_transaction_id' => :'String',
+        :'payment_intent_id' => :'String',
         :'payment_method_id' => :'String',
-        :'connected_account_id' => :'String'
+        :'platform_fee' => :'String',
+        :'platform_per_txn_fee' => :'Integer',
+        :'platform_rate' => :'String',
+        :'source' => :'String',
+        :'state' => :'String',
+        :'statement_descriptor' => :'String',
+        :'succeeded_at' => :'Time',
+        :'created_at' => :'Time',
+        :'updated_at' => :'Time'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'captured_at',
-        :'failure_reason',
-        :'processor_id',
         :'description',
-        :'connected_account_id'
       ])
     end
 
@@ -115,52 +173,94 @@ module SubfiPay
         self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'captured_at')
-        self.captured_at = attributes[:'captured_at']
-      end
-
-      if attributes.key?(:'failure_reason')
-        self.failure_reason = attributes[:'failure_reason']
-      end
-
       if attributes.key?(:'account_id')
         self.account_id = attributes[:'account_id']
       end
 
-      if attributes.key?(:'payment_method')
-        self.payment_method = attributes[:'payment_method']
-      end
-
-      if attributes.key?(:'processor_id')
-        self.processor_id = attributes[:'processor_id']
-      end
-
-      if attributes.key?(:'state')
-        self.state = attributes[:'state']
-      end
-
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
+      if attributes.key?(:'adjustment_reason')
+        self.adjustment_reason = attributes[:'adjustment_reason']
       end
 
       if attributes.key?(:'amount')
         self.amount = attributes[:'amount']
       end
 
+      if attributes.key?(:'currency')
+        self.currency = attributes[:'currency']
+      end
+
+      if attributes.key?(:'customer_id')
+        self.customer_id = attributes[:'customer_id']
+      end
+
       if attributes.key?(:'description')
         self.description = attributes[:'description']
       end
 
-      if attributes.key?(:'immediate_capture')
-        self.immediate_capture = attributes[:'immediate_capture']
+      if attributes.key?(:'can_refund')
+        self.can_refund = attributes[:'can_refund']
+      end
+
+      if attributes.key?(:'can_void')
+        self.can_void = attributes[:'can_void']
+      end
+
+      if attributes.key?(:'metadata')
+        if (value = attributes[:'metadata']).is_a?(Hash)
+          self.metadata = value
+        end
+      end
+
+      if attributes.key?(:'original_transaction_id')
+        self.original_transaction_id = attributes[:'original_transaction_id']
+      end
+
+      if attributes.key?(:'parent_transaction_id')
+        self.parent_transaction_id = attributes[:'parent_transaction_id']
+      end
+
+      if attributes.key?(:'payment_intent_id')
+        self.payment_intent_id = attributes[:'payment_intent_id']
       end
 
       if attributes.key?(:'payment_method_id')
         self.payment_method_id = attributes[:'payment_method_id']
       end
 
-      if attributes.key?(:'connected_account_id')
-        self.connected_account_id = attributes[:'connected_account_id']
+      if attributes.key?(:'platform_fee')
+        self.platform_fee = attributes[:'platform_fee']
+      end
+
+      if attributes.key?(:'platform_per_txn_fee')
+        self.platform_per_txn_fee = attributes[:'platform_per_txn_fee']
+      end
+
+      if attributes.key?(:'platform_rate')
+        self.platform_rate = attributes[:'platform_rate']
+      end
+
+      if attributes.key?(:'source')
+        self.source = attributes[:'source']
+      end
+
+      if attributes.key?(:'state')
+        self.state = attributes[:'state']
+      end
+
+      if attributes.key?(:'statement_descriptor')
+        self.statement_descriptor = attributes[:'statement_descriptor']
+      end
+
+      if attributes.key?(:'succeeded_at')
+        self.succeeded_at = attributes[:'succeeded_at']
+      end
+
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
+      end
+
+      if attributes.key?(:'updated_at')
+        self.updated_at = attributes[:'updated_at']
       end
     end
 
@@ -176,7 +276,19 @@ module SubfiPay
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      source_validator = EnumAttributeValidator.new('String', ["api", "dashboard", "subscription"])
+      return false unless source_validator.valid?(@source)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] source Object to be assigned
+    def source=(source)
+      validator = EnumAttributeValidator.new('String', ["api", "dashboard", "subscription"])
+      unless validator.valid?(source)
+        fail ArgumentError, "invalid value for \"source\", must be one of #{validator.allowable_values}."
+      end
+      @source = source
     end
 
     # Checks equality by comparing each attribute.
@@ -185,18 +297,28 @@ module SubfiPay
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          captured_at == o.captured_at &&
-          failure_reason == o.failure_reason &&
           account_id == o.account_id &&
-          payment_method == o.payment_method &&
-          processor_id == o.processor_id &&
-          state == o.state &&
-          created_at == o.created_at &&
+          adjustment_reason == o.adjustment_reason &&
           amount == o.amount &&
+          currency == o.currency &&
+          customer_id == o.customer_id &&
           description == o.description &&
-          immediate_capture == o.immediate_capture &&
+          can_refund == o.can_refund &&
+          can_void == o.can_void &&
+          metadata == o.metadata &&
+          original_transaction_id == o.original_transaction_id &&
+          parent_transaction_id == o.parent_transaction_id &&
+          payment_intent_id == o.payment_intent_id &&
           payment_method_id == o.payment_method_id &&
-          connected_account_id == o.connected_account_id
+          platform_fee == o.platform_fee &&
+          platform_per_txn_fee == o.platform_per_txn_fee &&
+          platform_rate == o.platform_rate &&
+          source == o.source &&
+          state == o.state &&
+          statement_descriptor == o.statement_descriptor &&
+          succeeded_at == o.succeeded_at &&
+          created_at == o.created_at &&
+          updated_at == o.updated_at
     end
 
     # @see the `==` method
@@ -208,7 +330,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, captured_at, failure_reason, account_id, payment_method, processor_id, state, created_at, amount, description, immediate_capture, payment_method_id, connected_account_id].hash
+      [id, account_id, adjustment_reason, amount, currency, customer_id, description, can_refund, can_void, metadata, original_transaction_id, parent_transaction_id, payment_intent_id, payment_method_id, platform_fee, platform_per_txn_fee, platform_rate, source, state, statement_descriptor, succeeded_at, created_at, updated_at].hash
     end
 
     # Builds the object from hash
