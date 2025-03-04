@@ -14,25 +14,13 @@ require 'date'
 require 'time'
 
 module SubfiPay
-  class ConnectedAccountResponse
-    attr_accessor :id
-
-    attr_accessor :created_at
-
-    attr_accessor :updated_at
-
-    attr_accessor :name
-
-    attr_accessor :worldpay_merchant_id
+  class ErrorResponse
+    attr_accessor :errors
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'created_at' => :'created_at',
-        :'updated_at' => :'updated_at',
-        :'name' => :'name',
-        :'worldpay_merchant_id' => :'worldpay_merchant_id'
+        :'errors' => :'errors'
       }
     end
 
@@ -44,11 +32,7 @@ module SubfiPay
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'String',
-        :'created_at' => :'Time',
-        :'updated_at' => :'Time',
-        :'name' => :'String',
-        :'worldpay_merchant_id' => :'String'
+        :'errors' => :'Object'
       }
     end
 
@@ -62,35 +46,19 @@ module SubfiPay
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `SubfiPay::ConnectedAccountResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `SubfiPay::ErrorResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `SubfiPay::ConnectedAccountResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `SubfiPay::ErrorResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
-      end
-
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
-      end
-
-      if attributes.key?(:'updated_at')
-        self.updated_at = attributes[:'updated_at']
-      end
-
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'worldpay_merchant_id')
-        self.worldpay_merchant_id = attributes[:'worldpay_merchant_id']
+      if attributes.key?(:'errors')
+        self.errors = attributes[:'errors']
       end
     end
 
@@ -114,11 +82,7 @@ module SubfiPay
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          created_at == o.created_at &&
-          updated_at == o.updated_at &&
-          name == o.name &&
-          worldpay_merchant_id == o.worldpay_merchant_id
+          errors == o.errors
     end
 
     # @see the `==` method
@@ -130,7 +94,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, created_at, updated_at, name, worldpay_merchant_id].hash
+      [errors].hash
     end
 
     # Builds the object from hash

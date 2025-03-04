@@ -23,8 +23,6 @@ module SubfiPay
 
     attr_accessor :account_id
 
-    attr_accessor :connected_account_id
-
     attr_accessor :created_at
 
     attr_accessor :updated_at
@@ -36,7 +34,6 @@ module SubfiPay
         :'event' => :'event',
         :'data' => :'data',
         :'account_id' => :'account_id',
-        :'connected_account_id' => :'connected_account_id',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
       }
@@ -54,7 +51,6 @@ module SubfiPay
         :'event' => :'String',
         :'data' => :'Object',
         :'account_id' => :'String',
-        :'connected_account_id' => :'String',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
       }
@@ -97,10 +93,6 @@ module SubfiPay
         self.account_id = attributes[:'account_id']
       end
 
-      if attributes.key?(:'connected_account_id')
-        self.connected_account_id = attributes[:'connected_account_id']
-      end
-
       if attributes.key?(:'created_at')
         self.created_at = attributes[:'created_at']
       end
@@ -134,7 +126,6 @@ module SubfiPay
           event == o.event &&
           data == o.data &&
           account_id == o.account_id &&
-          connected_account_id == o.connected_account_id &&
           created_at == o.created_at &&
           updated_at == o.updated_at
     end
@@ -148,7 +139,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, event, data, account_id, connected_account_id, created_at, updated_at].hash
+      [id, event, data, account_id, created_at, updated_at].hash
     end
 
     # Builds the object from hash

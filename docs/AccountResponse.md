@@ -4,9 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **id** | **String** |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **active** | **Boolean** |  | [optional] |
-| **worldpay_merchant_id** | **String** |  | [optional] |
 | **created_at** | **Time** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |
 
@@ -16,9 +16,9 @@
 require 'subfi_pay'
 
 instance = SubfiPay::AccountResponse.new(
+  id: null,
   name: null,
   active: null,
-  worldpay_merchant_id: null,
   created_at: null,
   updated_at: null
 )

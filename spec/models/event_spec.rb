@@ -26,7 +26,7 @@ describe SubfiPay::Event do
     end
   end
 
-  let(:attributes) { %w[id event data account_id connected_account_id created_at updated_at] }
+  let(:attributes) { %w[id event data account_id created_at updated_at] }
 
   describe 'test attributes' do
     it 'should respond to all attributes' do

@@ -26,7 +26,7 @@ describe SubfiPay::RefundResponse do
     end
   end
 
-  let(:attributes) { %w[amount charge_id id failure_reason state created_at connected_account_id] }
+  let(:attributes) { %w[amount customer_id description metadata payment_intent_id payment_method_id id account_id state succeeded_at created_at updated_at type can_cancel adjustment_reason] }
 
   describe 'test attributes' do
     it 'should respond to all attributes' do

@@ -402,8 +402,7 @@ x_api_version = 'x_api_version_example' # String |
 x_account_id = 'x_account_id_example' # String | 
 opts = {
   page: 56, # Integer | The page of results to retrieve.
-  per_page: 56, # Integer | Number of results per page.
-  connected_account_id: 'connected_account_id_example' # String | Filter results by sub_merchant ID.
+  per_page: 56 # Integer | Number of results per page.
 }
 
 begin
@@ -441,7 +440,6 @@ end
 | **x_account_id** | **String** |  |  |
 | **page** | **Integer** | The page of results to retrieve. | [optional] |
 | **per_page** | **Integer** | Number of results per page. | [optional] |
-| **connected_account_id** | **String** | Filter results by sub_merchant ID. | [optional] |
 
 ### Return type
 
@@ -459,7 +457,7 @@ end
 
 ## update_payment_intent
 
-> <PaymentIntentResponse> update_payment_intent(x_api_version, x_account_id, id, payment_intent_update_attributes)
+> <PaymentIntentResponse> update_payment_intent(x_api_version, x_account_id, id, payment_intent_update_request)
 
 Update a payment intent
 
@@ -480,11 +478,11 @@ api_instance = SubfiPay::PaymentIntentsApi.new
 x_api_version = 'x_api_version_example' # String | 
 x_account_id = 'x_account_id_example' # String | 
 id = 'id_example' # String | The ID of the payment intent to update
-payment_intent_update_attributes = SubfiPay::PaymentIntentUpdateAttributes.new # PaymentIntentUpdateAttributes | 
+payment_intent_update_request = SubfiPay::PaymentIntentUpdateRequest.new # PaymentIntentUpdateRequest | 
 
 begin
   # Update a payment intent
-  result = api_instance.update_payment_intent(x_api_version, x_account_id, id, payment_intent_update_attributes)
+  result = api_instance.update_payment_intent(x_api_version, x_account_id, id, payment_intent_update_request)
   p result
 rescue SubfiPay::ApiError => e
   puts "Error when calling PaymentIntentsApi->update_payment_intent: #{e}"
@@ -495,12 +493,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PaymentIntentResponse>, Integer, Hash)> update_payment_intent_with_http_info(x_api_version, x_account_id, id, payment_intent_update_attributes)
+> <Array(<PaymentIntentResponse>, Integer, Hash)> update_payment_intent_with_http_info(x_api_version, x_account_id, id, payment_intent_update_request)
 
 ```ruby
 begin
   # Update a payment intent
-  data, status_code, headers = api_instance.update_payment_intent_with_http_info(x_api_version, x_account_id, id, payment_intent_update_attributes)
+  data, status_code, headers = api_instance.update_payment_intent_with_http_info(x_api_version, x_account_id, id, payment_intent_update_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PaymentIntentResponse>
@@ -516,7 +514,7 @@ end
 | **x_api_version** | **String** |  |  |
 | **x_account_id** | **String** |  |  |
 | **id** | **String** | The ID of the payment intent to update |  |
-| **payment_intent_update_attributes** | [**PaymentIntentUpdateAttributes**](PaymentIntentUpdateAttributes.md) |  |  |
+| **payment_intent_update_request** | [**PaymentIntentUpdateRequest**](PaymentIntentUpdateRequest.md) |  |  |
 
 ### Return type
 

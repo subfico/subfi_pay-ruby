@@ -21,9 +21,9 @@ module SubfiPay
 
     attr_accessor :capture_method
 
-    attr_accessor :connected_account_id
-
     attr_accessor :description
+
+    attr_accessor :metadata
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -31,8 +31,8 @@ module SubfiPay
         :'amount' => :'amount',
         :'payment_method_id' => :'payment_method_id',
         :'capture_method' => :'capture_method',
-        :'connected_account_id' => :'connected_account_id',
-        :'description' => :'description'
+        :'description' => :'description',
+        :'metadata' => :'metadata'
       }
     end
 
@@ -47,16 +47,15 @@ module SubfiPay
         :'amount' => :'Integer',
         :'payment_method_id' => :'String',
         :'capture_method' => :'String',
-        :'connected_account_id' => :'String',
-        :'description' => :'String'
+        :'description' => :'String',
+        :'metadata' => :'Object'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'connected_account_id',
-        :'description'
+        :'description',
       ])
     end
 
@@ -89,12 +88,12 @@ module SubfiPay
         self.capture_method = attributes[:'capture_method']
       end
 
-      if attributes.key?(:'connected_account_id')
-        self.connected_account_id = attributes[:'connected_account_id']
-      end
-
       if attributes.key?(:'description')
         self.description = attributes[:'description']
+      end
+
+      if attributes.key?(:'metadata')
+        self.metadata = attributes[:'metadata']
       end
     end
 
@@ -126,8 +125,8 @@ module SubfiPay
           amount == o.amount &&
           payment_method_id == o.payment_method_id &&
           capture_method == o.capture_method &&
-          connected_account_id == o.connected_account_id &&
-          description == o.description
+          description == o.description &&
+          metadata == o.metadata
     end
 
     # @see the `==` method
@@ -139,7 +138,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [amount, payment_method_id, capture_method, connected_account_id, description].hash
+      [amount, payment_method_id, capture_method, description, metadata].hash
     end
 
     # Builds the object from hash

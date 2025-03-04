@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **data** | [**Array&lt;WebhookEndpoint&gt;**](WebhookEndpoint.md) |  | [optional] |
+| **data** | [**Array&lt;WebhookEndpointResponse&gt;**](WebhookEndpointResponse.md) |  | [optional] |
 | **meta** | [**Meta**](Meta.md) |  | [optional] |
 
 ## Example

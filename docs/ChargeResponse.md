@@ -5,18 +5,35 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** |  | [optional] |
-| **captured_at** | **Time** |  | [optional] |
-| **failure_reason** | **String** |  | [optional] |
 | **account_id** | **String** |  | [optional] |
-| **payment_method** | [**PaymentMethodResponse**](PaymentMethodResponse.md) |  | [optional] |
-| **processor_id** | **String** |  | [optional] |
-| **state** | **String** |  | [optional] |
-| **created_at** | **Time** |  | [optional] |
+| **adjustment_reason** | **String** |  | [optional] |
 | **amount** | **Integer** |  | [optional] |
+| **customer_id** | **String** |  | [optional] |
 | **description** | **String** |  | [optional] |
-| **immediate_capture** | **Boolean** | Determines whether the charge should be captured immediately | [optional] |
+| **metadata** | **Object** |  | [optional] |
+| **org_fee** | **Integer** |  | [optional] |
+| **org_per_txn_fee** | **Integer** |  | [optional] |
+| **org_rate** | **Float** |  | [optional] |
+| **original_transaction_id** | **String** |  | [optional] |
+| **payment_intent_id** | **String** |  | [optional] |
 | **payment_method_id** | **String** |  | [optional] |
-| **connected_account_id** | **String** |  | [optional] |
+| **platform_fee** | **Integer** |  | [optional] |
+| **platform_per_txn_fee** | **Integer** |  | [optional] |
+| **platform_rate** | **Float** |  | [optional] |
+| **processor_authorization_id** | **String** |  | [optional] |
+| **processor_capture_id** | **String** |  | [optional] |
+| **processor_data** | **Object** |  | [optional] |
+| **processor_refund_id** | **String** |  | [optional] |
+| **processor_sale_id** | **String** |  | [optional] |
+| **processor_void_id** | **String** |  | [optional] |
+| **state** | **String** |  | [optional] |
+| **succeeded_at** | **Time** |  | [optional] |
+| **type** | **String** |  | [optional] |
+| **created_at** | **Time** |  | [optional] |
+| **updated_at** | **Time** |  | [optional] |
+| **reversal_action** | **String** |  | [optional] |
+| **refunds** | [**Array&lt;RefundResponse&gt;**](RefundResponse.md) |  | [optional] |
+| **voids** | [**Array&lt;VoidResponse&gt;**](VoidResponse.md) |  | [optional] |
 
 ## Example
 
@@ -25,18 +42,35 @@ require 'subfi_pay'
 
 instance = SubfiPay::ChargeResponse.new(
   id: null,
-  captured_at: null,
-  failure_reason: null,
   account_id: null,
-  payment_method: null,
-  processor_id: null,
-  state: null,
-  created_at: null,
+  adjustment_reason: null,
   amount: null,
+  customer_id: null,
   description: null,
-  immediate_capture: null,
+  metadata: null,
+  org_fee: null,
+  org_per_txn_fee: null,
+  org_rate: null,
+  original_transaction_id: null,
+  payment_intent_id: null,
   payment_method_id: null,
-  connected_account_id: null
+  platform_fee: null,
+  platform_per_txn_fee: null,
+  platform_rate: null,
+  processor_authorization_id: null,
+  processor_capture_id: null,
+  processor_data: null,
+  processor_refund_id: null,
+  processor_sale_id: null,
+  processor_void_id: null,
+  state: null,
+  succeeded_at: null,
+  type: null,
+  created_at: null,
+  updated_at: null,
+  reversal_action: null,
+  refunds: null,
+  voids: null
 )
 ```
 
