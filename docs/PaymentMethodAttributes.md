@@ -5,9 +5,11 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **customer_id** | **String** |  | [optional] |
-| **billing_address_attributes** | [**BillingAddress**](BillingAddress.md) |  | [optional] |
-| **card_profile_attributes** | [**CardProfile**](CardProfile.md) |  | [optional] |
-| **bank_account_profile_attributes** | [**BankAccountProfile**](BankAccountProfile.md) |  | [optional] |
+| **metadata** | **Object** |  | [optional] |
+| **set_as_customer_default** | **String** |  | [optional] |
+| **billing_address_attributes** | [**BillingAddressAttributes**](BillingAddressAttributes.md) |  | [optional] |
+| **card_profile_attributes** | [**CardProfileAttributes**](CardProfileAttributes.md) |  | [optional] |
+| **bank_account_profile_attributes** | [**BankAccountProfileAttributes**](BankAccountProfileAttributes.md) |  | [optional] |
 
 ## Example
 
@@ -16,6 +18,8 @@ require 'subfi_pay'
 
 instance = SubfiPay::PaymentMethodAttributes.new(
   customer_id: null,
+  metadata: null,
+  set_as_customer_default: null,
   billing_address_attributes: null,
   card_profile_attributes: null,
   bank_account_profile_attributes: null

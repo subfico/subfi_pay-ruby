@@ -75,7 +75,7 @@ module SubfiPay
       return_type = opts[:debug_return_type] || 'Event'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key']
 
       new_options = opts.merge(
         :operation => :"EventsApi.get_event",
@@ -150,7 +150,7 @@ module SubfiPay
       return_type = opts[:debug_return_type] || 'ListEventsResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key']
 
       new_options = opts.merge(
         :operation => :"EventsApi.list_events",

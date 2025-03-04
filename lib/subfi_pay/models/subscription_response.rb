@@ -15,21 +15,17 @@ require 'time'
 
 module SubfiPay
   class SubscriptionResponse
-    attr_accessor :connected_account_id
+    attr_accessor :current_billing_period_end
+
+    attr_accessor :current_billing_period_start
 
     attr_accessor :customer_id
 
     attr_accessor :payment_method_id
 
-    attr_accessor :amount
-
-    attr_accessor :interval
-
-    attr_accessor :interval_count
-
-    attr_accessor :next_payment_date
-
     attr_accessor :state
+
+    attr_accessor :subscription_plan_id
 
     attr_accessor :created_at
 
@@ -38,14 +34,12 @@ module SubfiPay
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'connected_account_id' => :'connected_account_id',
+        :'current_billing_period_end' => :'current_billing_period_end',
+        :'current_billing_period_start' => :'current_billing_period_start',
         :'customer_id' => :'customer_id',
         :'payment_method_id' => :'payment_method_id',
-        :'amount' => :'amount',
-        :'interval' => :'interval',
-        :'interval_count' => :'interval_count',
-        :'next_payment_date' => :'next_payment_date',
         :'state' => :'state',
+        :'subscription_plan_id' => :'subscription_plan_id',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
       }
@@ -59,14 +53,12 @@ module SubfiPay
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'connected_account_id' => :'String',
+        :'current_billing_period_end' => :'Time',
+        :'current_billing_period_start' => :'Time',
         :'customer_id' => :'String',
         :'payment_method_id' => :'String',
-        :'amount' => :'Integer',
-        :'interval' => :'String',
-        :'interval_count' => :'Integer',
-        :'next_payment_date' => :'Time',
         :'state' => :'String',
+        :'subscription_plan_id' => :'String',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
       }
@@ -93,8 +85,12 @@ module SubfiPay
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'connected_account_id')
-        self.connected_account_id = attributes[:'connected_account_id']
+      if attributes.key?(:'current_billing_period_end')
+        self.current_billing_period_end = attributes[:'current_billing_period_end']
+      end
+
+      if attributes.key?(:'current_billing_period_start')
+        self.current_billing_period_start = attributes[:'current_billing_period_start']
       end
 
       if attributes.key?(:'customer_id')
@@ -105,24 +101,12 @@ module SubfiPay
         self.payment_method_id = attributes[:'payment_method_id']
       end
 
-      if attributes.key?(:'amount')
-        self.amount = attributes[:'amount']
-      end
-
-      if attributes.key?(:'interval')
-        self.interval = attributes[:'interval']
-      end
-
-      if attributes.key?(:'interval_count')
-        self.interval_count = attributes[:'interval_count']
-      end
-
-      if attributes.key?(:'next_payment_date')
-        self.next_payment_date = attributes[:'next_payment_date']
-      end
-
       if attributes.key?(:'state')
         self.state = attributes[:'state']
+      end
+
+      if attributes.key?(:'subscription_plan_id')
+        self.subscription_plan_id = attributes[:'subscription_plan_id']
       end
 
       if attributes.key?(:'created_at')
@@ -154,14 +138,12 @@ module SubfiPay
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          connected_account_id == o.connected_account_id &&
+          current_billing_period_end == o.current_billing_period_end &&
+          current_billing_period_start == o.current_billing_period_start &&
           customer_id == o.customer_id &&
           payment_method_id == o.payment_method_id &&
-          amount == o.amount &&
-          interval == o.interval &&
-          interval_count == o.interval_count &&
-          next_payment_date == o.next_payment_date &&
           state == o.state &&
+          subscription_plan_id == o.subscription_plan_id &&
           created_at == o.created_at &&
           updated_at == o.updated_at
     end
@@ -175,7 +157,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [connected_account_id, customer_id, payment_method_id, amount, interval, interval_count, next_payment_date, state, created_at, updated_at].hash
+      [current_billing_period_end, current_billing_period_start, customer_id, payment_method_id, state, subscription_plan_id, created_at, updated_at].hash
     end
 
     # Builds the object from hash
