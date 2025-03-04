@@ -182,7 +182,6 @@ module SubfiPay
     # @param x_account_id [String] 
     # @param id [String] The ID of the refund to retrieve.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :connected_account_id Filter results by sub_merchant ID.
     # @return [RefundResponse]
     def get_refund(x_api_version, x_account_id, id, opts = {})
       data, _status_code, _headers = get_refund_with_http_info(x_api_version, x_account_id, id, opts)
@@ -194,7 +193,6 @@ module SubfiPay
     # @param x_account_id [String] 
     # @param id [String] The ID of the refund to retrieve.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :connected_account_id Filter results by sub_merchant ID.
     # @return [Array<(RefundResponse, Integer, Hash)>] RefundResponse data, response status code and response headers
     def get_refund_with_http_info(x_api_version, x_account_id, id, opts = {})
       if @api_client.config.debugging
@@ -217,7 +215,6 @@ module SubfiPay
 
       # query parameters
       query_params = opts[:query_params] || {}
-      query_params[:'connected_account_id'] = opts[:'connected_account_id'] if !opts[:'connected_account_id'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

@@ -15,8 +15,6 @@ require 'time'
 
 module SubfiPay
   class SubscriptionResponse
-    attr_accessor :connected_account_id
-
     attr_accessor :customer_id
 
     attr_accessor :payment_method_id
@@ -38,7 +36,6 @@ module SubfiPay
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'connected_account_id' => :'connected_account_id',
         :'customer_id' => :'customer_id',
         :'payment_method_id' => :'payment_method_id',
         :'amount' => :'amount',
@@ -59,7 +56,6 @@ module SubfiPay
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'connected_account_id' => :'String',
         :'customer_id' => :'String',
         :'payment_method_id' => :'String',
         :'amount' => :'Integer',
@@ -92,10 +88,6 @@ module SubfiPay
         end
         h[k.to_sym] = v
       }
-
-      if attributes.key?(:'connected_account_id')
-        self.connected_account_id = attributes[:'connected_account_id']
-      end
 
       if attributes.key?(:'customer_id')
         self.customer_id = attributes[:'customer_id']
@@ -154,7 +146,6 @@ module SubfiPay
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          connected_account_id == o.connected_account_id &&
           customer_id == o.customer_id &&
           payment_method_id == o.payment_method_id &&
           amount == o.amount &&
@@ -175,7 +166,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [connected_account_id, customer_id, payment_method_id, amount, interval, interval_count, next_payment_date, state, created_at, updated_at].hash
+      [customer_id, payment_method_id, amount, interval, interval_count, next_payment_date, state, created_at, updated_at].hash
     end
 
     # Builds the object from hash
