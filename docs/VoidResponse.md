@@ -1,4 +1,4 @@
-# SubfiPay::ChargeResponse
+# SubfiPay::VoidResponse
 
 ## Properties
 
@@ -27,18 +27,13 @@
 | **org_per_txn_fee** | **Integer** |  | [optional] |
 | **created_at** | **Time** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |
-| **can_cancel** | **Boolean** |  | [optional] |
-| **can_refund** | **Boolean** |  | [optional] |
-| **can_void** | **Boolean** |  | [optional] |
-| **refunds** | [**Array&lt;RefundResponse&gt;**](RefundResponse.md) |  | [optional] |
-| **voids** | [**Array&lt;VoidResponse&gt;**](VoidResponse.md) |  | [optional] |
 
 ## Example
 
 ```ruby
 require 'subfi_pay'
 
-instance = SubfiPay::ChargeResponse.new(
+instance = SubfiPay::VoidResponse.new(
   id: null,
   account_id: null,
   amount: null,
@@ -61,12 +56,7 @@ instance = SubfiPay::ChargeResponse.new(
   org_rate: null,
   org_per_txn_fee: null,
   created_at: null,
-  updated_at: null,
-  can_cancel: null,
-  can_refund: null,
-  can_void: null,
-  refunds: null,
-  voids: null
+  updated_at: null
 )
 ```
 

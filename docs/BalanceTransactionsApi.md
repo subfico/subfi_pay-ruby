@@ -31,8 +31,7 @@ x_api_version = 'x_api_version_example' # String |
 x_account_id = 'x_account_id_example' # String | 
 opts = {
   page: 56, # Integer | The page of results to retrieve.
-  per_page: 56, # Integer | Number of results per page.
-  connected_account_id: 'connected_account_id_example' # String | Filter results by sub_merchant ID.
+  per_page: 56 # Integer | Number of results per page.
 }
 
 begin
@@ -70,7 +69,6 @@ end
 | **x_account_id** | **String** |  |  |
 | **page** | **Integer** | The page of results to retrieve. | [optional] |
 | **per_page** | **Integer** | Number of results per page. | [optional] |
-| **connected_account_id** | **String** | Filter results by sub_merchant ID. | [optional] |
 
 ### Return type
 
