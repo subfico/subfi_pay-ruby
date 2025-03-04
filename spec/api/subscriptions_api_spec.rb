@@ -23,7 +23,7 @@ describe 'SubscriptionsApi' do
   let(:account_id) { Faker::Alphanumeric.alphanumeric(number: 32) }
   let(:config) do
     api_instance.api_client.config.tap do |c|
-      c.api_key['ApiKeyAuth'] = api_key
+      c.api_key['X-Api-Key'] = api_key
       c.host = "localhost:3000"
       c.scheme = "http"
     end
@@ -53,8 +53,8 @@ describe 'SubscriptionsApi' do
 
   # unit tests for create_subscription
   # Create a new subscription
-  # @param x_api_version 
-  # @param subscription_create_request 
+  # @param x_api_version
+  # @param subscription_create_request
   # @param [Hash] opts the optional parameters
   # @return [SubscriptionResponse]
   describe 'create_subscription test' do
@@ -86,7 +86,7 @@ describe 'SubscriptionsApi' do
 
   # unit tests for get_subscription
   # Retrieve a subscription by ID
-  # @param x_api_version 
+  # @param x_api_version
   # @param id The ID of the subscription to retrieve
   # @param [Hash] opts the optional parameters
   # @return [SubscriptionResponse]
