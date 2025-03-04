@@ -23,7 +23,7 @@ describe 'WebhookEndpointsApi' do
   let(:account_id) { Faker::Alphanumeric.alphanumeric(number: 32) }
   let(:config) do
     api_instance.api_client.config.tap do |c|
-      c.api_key['ApiKeyAuth'] = api_key
+      c.api_key['X-Api-Key'] = api_key
       c.host = "localhost:3000"
       c.scheme = "http"
     end
@@ -55,7 +55,7 @@ describe 'WebhookEndpointsApi' do
   # @param x_api_version
   # @param create_webhook_endpoint_request
   # @param [Hash] opts the optional parameters
-  # @return [WebhookEndpoint]
+  # @return [WebhookEndpointResponse]
   describe 'create_webhook_endpoint test' do
     let(:body) do
       {
@@ -79,7 +79,7 @@ describe 'WebhookEndpointsApi' do
     it 'should work' do
       res = api_instance.create_webhook_endpoint(api_version, account_id, body)
 
-      expect(res).to be_instance_of(SubfiPay::WebhookEndpoint)
+      expect(res).to be_instance_of(SubfiPay::WebhookEndpointResponse)
     end
   end
 
@@ -114,7 +114,7 @@ describe 'WebhookEndpointsApi' do
   # @param x_api_version
   # @param id
   # @param [Hash] opts the optional parameters
-  # @return [WebhookEndpoint]
+  # @return [WebhookEndpointResponse]
   describe 'get_webhook_endpoint test' do
     let(:webhook_endpoint_id) { Faker::Alphanumeric.alphanumeric(number: 32) }
 
@@ -131,7 +131,7 @@ describe 'WebhookEndpointsApi' do
     it 'should work' do
       res = api_instance.get_webhook_endpoint(api_version, account_id, webhook_endpoint_id)
 
-      expect(res).to be_instance_of(SubfiPay::WebhookEndpoint)
+      expect(res).to be_instance_of(SubfiPay::WebhookEndpointResponse)
     end
   end
 
@@ -166,7 +166,7 @@ describe 'WebhookEndpointsApi' do
   # @param id
   # @param create_webhook_endpoint_request
   # @param [Hash] opts the optional parameters
-  # @return [WebhookEndpoint]
+  # @return [WebhookEndpointResponse]
   describe 'update_webhook_endpoint test' do
     let(:webhook_endpoint_id) { Faker::Alphanumeric.alphanumeric(number: 32) }
 
@@ -180,7 +180,7 @@ describe 'WebhookEndpointsApi' do
     end
 
     before do
-      stub_request(:patch, [config.host, "#{path}/#{webhook_endpoint_id}"].join)
+      stub_request(:put, [config.host, "#{path}/#{webhook_endpoint_id}"].join)
         .with(headers: request_headers, body:)
         .to_return(
           status: 200,
@@ -192,7 +192,7 @@ describe 'WebhookEndpointsApi' do
     it 'should work' do
       res = api_instance.update_webhook_endpoint(api_version, account_id, webhook_endpoint_id, body)
 
-      expect(res).to be_instance_of(SubfiPay::WebhookEndpoint)
+      expect(res).to be_instance_of(SubfiPay::WebhookEndpointResponse)
     end
   end
 end

@@ -15,11 +15,21 @@ require 'time'
 
 module SubfiPay
   class Customer
-    attr_accessor :name
+    attr_accessor :id
+
+    attr_accessor :account_id
 
     attr_accessor :email
 
+    attr_accessor :metadata
+
+    attr_accessor :name
+
+    attr_accessor :payment_method_id
+
     attr_accessor :phone
+
+    attr_accessor :type
 
     attr_accessor :created_at
 
@@ -28,9 +38,14 @@ module SubfiPay
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name',
+        :'id' => :'id',
+        :'account_id' => :'account_id',
         :'email' => :'email',
+        :'metadata' => :'metadata',
+        :'name' => :'name',
+        :'payment_method_id' => :'payment_method_id',
         :'phone' => :'phone',
+        :'type' => :'type',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
       }
@@ -44,9 +59,14 @@ module SubfiPay
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'name' => :'String',
+        :'id' => :'String',
+        :'account_id' => :'String',
         :'email' => :'String',
+        :'metadata' => :'Object',
+        :'name' => :'String',
+        :'payment_method_id' => :'String',
         :'phone' => :'String',
+        :'type' => :'String',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
       }
@@ -73,16 +93,36 @@ module SubfiPay
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
+      end
+
+      if attributes.key?(:'account_id')
+        self.account_id = attributes[:'account_id']
       end
 
       if attributes.key?(:'email')
         self.email = attributes[:'email']
       end
 
+      if attributes.key?(:'metadata')
+        self.metadata = attributes[:'metadata']
+      end
+
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
+      end
+
+      if attributes.key?(:'payment_method_id')
+        self.payment_method_id = attributes[:'payment_method_id']
+      end
+
       if attributes.key?(:'phone')
         self.phone = attributes[:'phone']
+      end
+
+      if attributes.key?(:'type')
+        self.type = attributes[:'type']
       end
 
       if attributes.key?(:'created_at')
@@ -114,9 +154,14 @@ module SubfiPay
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name &&
+          id == o.id &&
+          account_id == o.account_id &&
           email == o.email &&
+          metadata == o.metadata &&
+          name == o.name &&
+          payment_method_id == o.payment_method_id &&
           phone == o.phone &&
+          type == o.type &&
           created_at == o.created_at &&
           updated_at == o.updated_at
     end
@@ -130,7 +175,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, email, phone, created_at, updated_at].hash
+      [id, account_id, email, metadata, name, payment_method_id, phone, type, created_at, updated_at].hash
     end
 
     # Builds the object from hash

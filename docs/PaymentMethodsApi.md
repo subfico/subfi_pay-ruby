@@ -22,10 +22,10 @@ require 'time'
 require 'subfi_pay'
 # setup authorization
 SubfiPay.configure do |config|
-  # Configure API key authorization: ApiKeyAuth
-  config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
+  # Configure API key authorization: X-Api-Key
+  config.api_key['X-Api-Key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+  # config.api_key_prefix['X-Api-Key'] = 'Bearer'
 end
 
 api_instance = SubfiPay::PaymentMethodsApi.new
@@ -78,7 +78,7 @@ end
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[X-Api-Key](../README.md#X-Api-Key)
 
 ### HTTP request headers
 
@@ -99,10 +99,10 @@ require 'time'
 require 'subfi_pay'
 # setup authorization
 SubfiPay.configure do |config|
-  # Configure API key authorization: ApiKeyAuth
-  config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
+  # Configure API key authorization: X-Api-Key
+  config.api_key['X-Api-Key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+  # config.api_key_prefix['X-Api-Key'] = 'Bearer'
 end
 
 api_instance = SubfiPay::PaymentMethodsApi.new
@@ -151,7 +151,7 @@ end
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[X-Api-Key](../README.md#X-Api-Key)
 
 ### HTTP request headers
 
@@ -172,10 +172,10 @@ require 'time'
 require 'subfi_pay'
 # setup authorization
 SubfiPay.configure do |config|
-  # Configure API key authorization: ApiKeyAuth
-  config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
+  # Configure API key authorization: X-Api-Key
+  config.api_key['X-Api-Key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+  # config.api_key_prefix['X-Api-Key'] = 'Bearer'
 end
 
 api_instance = SubfiPay::PaymentMethodsApi.new
@@ -230,7 +230,7 @@ end
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[X-Api-Key](../README.md#X-Api-Key)
 
 ### HTTP request headers
 

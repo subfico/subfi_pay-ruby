@@ -75,7 +75,7 @@ module SubfiPay
       return_type = opts[:debug_return_type] || 'ListWebhookRequestsResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key']
 
       new_options = opts.merge(
         :operation => :"WebhookRequestsApi.list_webhook_requests",

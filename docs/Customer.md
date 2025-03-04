@@ -4,9 +4,14 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **name** | **String** |  | [optional] |
+| **id** | **String** |  | [optional] |
+| **account_id** | **String** |  | [optional] |
 | **email** | **String** |  | [optional] |
+| **metadata** | **Object** |  | [optional] |
+| **name** | **String** |  | [optional] |
+| **payment_method_id** | **String** |  | [optional] |
 | **phone** | **String** |  | [optional] |
+| **type** | **String** |  | [optional] |
 | **created_at** | **Time** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |
 
@@ -16,9 +21,14 @@
 require 'subfi_pay'
 
 instance = SubfiPay::Customer.new(
-  name: null,
+  id: null,
+  account_id: null,
   email: null,
+  metadata: null,
+  name: null,
+  payment_method_id: null,
   phone: null,
+  type: null,
   created_at: null,
   updated_at: null
 )

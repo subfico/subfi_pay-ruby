@@ -83,7 +83,7 @@ module SubfiPay
       return_type = opts[:debug_return_type] || 'PaymentMethodResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key']
 
       new_options = opts.merge(
         :operation => :"PaymentMethodsApi.create_payment_method",
@@ -158,7 +158,7 @@ module SubfiPay
       return_type = opts[:debug_return_type] || 'PaymentMethodResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key']
 
       new_options = opts.merge(
         :operation => :"PaymentMethodsApi.get_payment_method",
@@ -240,7 +240,7 @@ module SubfiPay
       return_type = opts[:debug_return_type] || 'ListPaymentMethodsResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key']
 
       new_options = opts.merge(
         :operation => :"PaymentMethodsApi.list_payment_methods",
