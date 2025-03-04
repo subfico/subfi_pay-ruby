@@ -26,7 +26,7 @@ describe SubfiPay::AccountAttributes do
     end
   end
 
-  let(:attributes) { %w[name worldpay_merchant_id] }
+  let(:attributes) { %w[name worldpay_mid] }
 
   describe 'test attributes' do
     it 'should respond to all attributes' do

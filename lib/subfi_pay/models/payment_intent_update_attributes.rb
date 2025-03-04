@@ -15,12 +15,16 @@ require 'time'
 
 module SubfiPay
   class PaymentIntentUpdateAttributes
-    attr_accessor :payment_intent
+    attr_accessor :payment_method_id
+
+    # Additional metadata key-value pairs
+    attr_accessor :metadata
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'payment_intent' => :'payment_intent'
+        :'payment_method_id' => :'payment_method_id',
+        :'metadata' => :'metadata'
       }
     end
 
@@ -32,7 +36,8 @@ module SubfiPay
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'payment_intent' => :'PaymentIntentUpdateAttributesPaymentIntent'
+        :'payment_method_id' => :'String',
+        :'metadata' => :'Hash<String, MetadataValue>'
       }
     end
 
@@ -57,8 +62,14 @@ module SubfiPay
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'payment_intent')
-        self.payment_intent = attributes[:'payment_intent']
+      if attributes.key?(:'payment_method_id')
+        self.payment_method_id = attributes[:'payment_method_id']
+      end
+
+      if attributes.key?(:'metadata')
+        if (value = attributes[:'metadata']).is_a?(Hash)
+          self.metadata = value
+        end
       end
     end
 
@@ -82,7 +93,8 @@ module SubfiPay
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          payment_intent == o.payment_intent
+          payment_method_id == o.payment_method_id &&
+          metadata == o.metadata
     end
 
     # @see the `==` method
@@ -94,7 +106,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [payment_intent].hash
+      [payment_method_id, metadata].hash
     end
 
     # Builds the object from hash

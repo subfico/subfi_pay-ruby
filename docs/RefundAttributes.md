@@ -5,7 +5,10 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **amount** | **Integer** |  | [optional] |
-| **charge_id** | **String** |  |  |
+| **adjustment_reason** | **String** |  | [optional] |
+| **parent_transaction_id** | **String** |  |  |
+| **description** | **String** |  | [optional] |
+| **metadata** | [**Hash&lt;String, MetadataValue&gt;**](MetadataValue.md) | Additional metadata key-value pairs | [optional] |
 
 ## Example
 
@@ -14,7 +17,10 @@ require 'subfi_pay'
 
 instance = SubfiPay::RefundAttributes.new(
   amount: null,
-  charge_id: null
+  adjustment_reason: null,
+  parent_transaction_id: null,
+  description: null,
+  metadata: null
 )
 ```
 
