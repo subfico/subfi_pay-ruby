@@ -193,7 +193,6 @@ describe 'PaymentIntentsApi' do
   # @param [Hash] opts the optional parameters
   # @option opts [Integer] :page The page of results to retrieve.
   # @option opts [Integer] :per_page Number of results per page.
-  # @option opts [String] :connected_account_id Filter results by connected_account ID.
   # @return [ListPaymentIntentsResponse]
   describe 'list_payment_intents test' do
     before do

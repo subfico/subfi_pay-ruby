@@ -17,31 +17,40 @@ module SubfiPay
   class PaymentIntentResponse
     attr_accessor :id
 
-    attr_accessor :active_payment_method_id
+    attr_accessor :payment_method_id
 
     attr_accessor :amount
 
     attr_accessor :capture_method
 
+    attr_accessor :customer_id
+
     attr_accessor :description
+
+    attr_accessor :metadata
 
     attr_accessor :state
 
-    attr_accessor :connected_account_id
+    attr_accessor :active_charge
 
-    attr_accessor :payment_methods
+    attr_accessor :created_at
+
+    attr_accessor :updated_at
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
-        :'active_payment_method_id' => :'active_payment_method_id',
+        :'payment_method_id' => :'payment_method_id',
         :'amount' => :'amount',
         :'capture_method' => :'capture_method',
+        :'customer_id' => :'customer_id',
         :'description' => :'description',
+        :'metadata' => :'metadata',
         :'state' => :'state',
-        :'connected_account_id' => :'connected_account_id',
-        :'payment_methods' => :'payment_methods'
+        :'active_charge' => :'active_charge',
+        :'created_at' => :'created_at',
+        :'updated_at' => :'updated_at'
       }
     end
 
@@ -54,13 +63,16 @@ module SubfiPay
     def self.openapi_types
       {
         :'id' => :'String',
-        :'active_payment_method_id' => :'String',
+        :'payment_method_id' => :'String',
         :'amount' => :'Float',
         :'capture_method' => :'String',
+        :'customer_id' => :'String',
         :'description' => :'String',
+        :'metadata' => :'Object',
         :'state' => :'String',
-        :'connected_account_id' => :'String',
-        :'payment_methods' => :'Array<PaymentMethodResponse>'
+        :'active_charge' => :'ChargeResponse',
+        :'created_at' => :'Time',
+        :'updated_at' => :'Time'
       }
     end
 
@@ -89,8 +101,8 @@ module SubfiPay
         self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'active_payment_method_id')
-        self.active_payment_method_id = attributes[:'active_payment_method_id']
+      if attributes.key?(:'payment_method_id')
+        self.payment_method_id = attributes[:'payment_method_id']
       end
 
       if attributes.key?(:'amount')
@@ -101,22 +113,32 @@ module SubfiPay
         self.capture_method = attributes[:'capture_method']
       end
 
+      if attributes.key?(:'customer_id')
+        self.customer_id = attributes[:'customer_id']
+      end
+
       if attributes.key?(:'description')
         self.description = attributes[:'description']
+      end
+
+      if attributes.key?(:'metadata')
+        self.metadata = attributes[:'metadata']
       end
 
       if attributes.key?(:'state')
         self.state = attributes[:'state']
       end
 
-      if attributes.key?(:'connected_account_id')
-        self.connected_account_id = attributes[:'connected_account_id']
+      if attributes.key?(:'active_charge')
+        self.active_charge = attributes[:'active_charge']
       end
 
-      if attributes.key?(:'payment_methods')
-        if (value = attributes[:'payment_methods']).is_a?(Array)
-          self.payment_methods = value
-        end
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
+      end
+
+      if attributes.key?(:'updated_at')
+        self.updated_at = attributes[:'updated_at']
       end
     end
 
@@ -141,13 +163,16 @@ module SubfiPay
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          active_payment_method_id == o.active_payment_method_id &&
+          payment_method_id == o.payment_method_id &&
           amount == o.amount &&
           capture_method == o.capture_method &&
+          customer_id == o.customer_id &&
           description == o.description &&
+          metadata == o.metadata &&
           state == o.state &&
-          connected_account_id == o.connected_account_id &&
-          payment_methods == o.payment_methods
+          active_charge == o.active_charge &&
+          created_at == o.created_at &&
+          updated_at == o.updated_at
     end
 
     # @see the `==` method
@@ -159,7 +184,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, active_payment_method_id, amount, capture_method, description, state, connected_account_id, payment_methods].hash
+      [id, payment_method_id, amount, capture_method, customer_id, description, metadata, state, active_charge, created_at, updated_at].hash
     end
 
     # Builds the object from hash
