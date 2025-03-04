@@ -20,10 +20,9 @@ describe 'WebhookRequestsApi' do
   let(:api_instance) { SubfiPay::WebhookRequestsApi.new }
   let(:api_key) { Faker::Alphanumeric.alphanumeric(number: 32) }
   let(:api_version) { "0.1.0" }
-  let(:account_id) { Faker::Number.number(digits: 10) }
   let(:config) do
     api_instance.api_client.config.tap do |c|
-      c.api_key['ApiKeyAuth'] = api_key
+      c.api_key['X-Api-Key'] = api_key
       c.host = "localhost:3000"
       c.scheme = "http"
     end
@@ -70,7 +69,7 @@ describe 'WebhookRequestsApi' do
     end
 
     it 'should work' do
-      res = api_instance.list_webhook_requests(api_version, account_id)
+      res = api_instance.list_webhook_requests(api_version)
 
       expect(res).to be_instance_of(SubfiPay::ListWebhookRequestsResponse)
     end

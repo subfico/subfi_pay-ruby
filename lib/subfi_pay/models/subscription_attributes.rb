@@ -15,30 +15,52 @@ require 'time'
 
 module SubfiPay
   class SubscriptionAttributes
-    attr_accessor :connected_account_id
+    attr_accessor :amount
+
+    attr_accessor :currency
 
     attr_accessor :customer_id
 
-    attr_accessor :payment_method_id
-
-    attr_accessor :amount
+    attr_accessor :cycles
 
     attr_accessor :interval
 
     attr_accessor :interval_count
 
-    attr_accessor :next_payment_date
+    attr_accessor :subscription_plan_id
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'connected_account_id' => :'connected_account_id',
-        :'customer_id' => :'customer_id',
-        :'payment_method_id' => :'payment_method_id',
         :'amount' => :'amount',
+        :'currency' => :'currency',
+        :'customer_id' => :'customer_id',
+        :'cycles' => :'cycles',
         :'interval' => :'interval',
         :'interval_count' => :'interval_count',
-        :'next_payment_date' => :'next_payment_date'
+        :'subscription_plan_id' => :'subscription_plan_id'
       }
     end
 
@@ -50,13 +72,13 @@ module SubfiPay
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'connected_account_id' => :'String',
-        :'customer_id' => :'String',
-        :'payment_method_id' => :'String',
         :'amount' => :'Integer',
+        :'currency' => :'String',
+        :'customer_id' => :'String',
+        :'cycles' => :'Integer',
         :'interval' => :'String',
         :'interval_count' => :'Integer',
-        :'next_payment_date' => :'Time'
+        :'subscription_plan_id' => :'String'
       }
     end
 
@@ -81,20 +103,20 @@ module SubfiPay
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'connected_account_id')
-        self.connected_account_id = attributes[:'connected_account_id']
+      if attributes.key?(:'amount')
+        self.amount = attributes[:'amount']
+      end
+
+      if attributes.key?(:'currency')
+        self.currency = attributes[:'currency']
       end
 
       if attributes.key?(:'customer_id')
         self.customer_id = attributes[:'customer_id']
       end
 
-      if attributes.key?(:'payment_method_id')
-        self.payment_method_id = attributes[:'payment_method_id']
-      end
-
-      if attributes.key?(:'amount')
-        self.amount = attributes[:'amount']
+      if attributes.key?(:'cycles')
+        self.cycles = attributes[:'cycles']
       end
 
       if attributes.key?(:'interval')
@@ -105,8 +127,8 @@ module SubfiPay
         self.interval_count = attributes[:'interval_count']
       end
 
-      if attributes.key?(:'next_payment_date')
-        self.next_payment_date = attributes[:'next_payment_date']
+      if attributes.key?(:'subscription_plan_id')
+        self.subscription_plan_id = attributes[:'subscription_plan_id']
       end
     end
 
@@ -122,7 +144,19 @@ module SubfiPay
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      interval_validator = EnumAttributeValidator.new('String', ["day", "week", "month", "year"])
+      return false unless interval_validator.valid?(@interval)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] interval Object to be assigned
+    def interval=(interval)
+      validator = EnumAttributeValidator.new('String', ["day", "week", "month", "year"])
+      unless validator.valid?(interval)
+        fail ArgumentError, "invalid value for \"interval\", must be one of #{validator.allowable_values}."
+      end
+      @interval = interval
     end
 
     # Checks equality by comparing each attribute.
@@ -130,13 +164,13 @@ module SubfiPay
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          connected_account_id == o.connected_account_id &&
-          customer_id == o.customer_id &&
-          payment_method_id == o.payment_method_id &&
           amount == o.amount &&
+          currency == o.currency &&
+          customer_id == o.customer_id &&
+          cycles == o.cycles &&
           interval == o.interval &&
           interval_count == o.interval_count &&
-          next_payment_date == o.next_payment_date
+          subscription_plan_id == o.subscription_plan_id
     end
 
     # @see the `==` method
@@ -148,7 +182,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [connected_account_id, customer_id, payment_method_id, amount, interval, interval_count, next_payment_date].hash
+      [amount, currency, customer_id, cycles, interval, interval_count, subscription_plan_id].hash
     end
 
     # Builds the object from hash

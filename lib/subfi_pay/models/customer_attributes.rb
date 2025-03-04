@@ -15,17 +15,21 @@ require 'time'
 
 module SubfiPay
   class CustomerAttributes
+    attr_accessor :account_id
+
     attr_accessor :name
 
     attr_accessor :email
 
     attr_accessor :phone
 
+    # Additional metadata key-value pairs
     attr_accessor :metadata
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'account_id' => :'account_id',
         :'name' => :'name',
         :'email' => :'email',
         :'phone' => :'phone',
@@ -41,10 +45,11 @@ module SubfiPay
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'account_id' => :'String',
         :'name' => :'String',
         :'email' => :'String',
         :'phone' => :'String',
-        :'metadata' => :'Object'
+        :'metadata' => :'Hash<String, MetadataValue>'
       }
     end
 
@@ -69,6 +74,10 @@ module SubfiPay
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'account_id')
+        self.account_id = attributes[:'account_id']
+      end
+
       if attributes.key?(:'name')
         self.name = attributes[:'name']
       end
@@ -82,7 +91,9 @@ module SubfiPay
       end
 
       if attributes.key?(:'metadata')
-        self.metadata = attributes[:'metadata']
+        if (value = attributes[:'metadata']).is_a?(Hash)
+          self.metadata = value
+        end
       end
     end
 
@@ -106,6 +117,7 @@ module SubfiPay
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          account_id == o.account_id &&
           name == o.name &&
           email == o.email &&
           phone == o.phone &&
@@ -121,7 +133,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, email, phone, metadata].hash
+      [account_id, name, email, phone, metadata].hash
     end
 
     # Builds the object from hash
