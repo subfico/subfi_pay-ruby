@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module SubfiPay
-  class ChargeResponse
+  class VoidResponse
     attr_accessor :id
 
     attr_accessor :account_id
@@ -69,12 +69,6 @@ module SubfiPay
 
     attr_accessor :updated_at
 
-    attr_accessor :reversal_action
-
-    attr_accessor :refunds
-
-    attr_accessor :voids
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -104,10 +98,7 @@ module SubfiPay
         :'succeeded_at' => :'succeeded_at',
         :'type' => :'type',
         :'created_at' => :'created_at',
-        :'updated_at' => :'updated_at',
-        :'reversal_action' => :'reversal_action',
-        :'refunds' => :'refunds',
-        :'voids' => :'voids'
+        :'updated_at' => :'updated_at'
       }
     end
 
@@ -145,10 +136,7 @@ module SubfiPay
         :'succeeded_at' => :'Time',
         :'type' => :'String',
         :'created_at' => :'Time',
-        :'updated_at' => :'Time',
-        :'reversal_action' => :'String',
-        :'refunds' => :'Array<RefundResponse>',
-        :'voids' => :'Array<VoidResponse>'
+        :'updated_at' => :'Time'
       }
     end
 
@@ -163,13 +151,13 @@ module SubfiPay
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `SubfiPay::ChargeResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `SubfiPay::VoidResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `SubfiPay::ChargeResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `SubfiPay::VoidResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -281,22 +269,6 @@ module SubfiPay
       if attributes.key?(:'updated_at')
         self.updated_at = attributes[:'updated_at']
       end
-
-      if attributes.key?(:'reversal_action')
-        self.reversal_action = attributes[:'reversal_action']
-      end
-
-      if attributes.key?(:'refunds')
-        if (value = attributes[:'refunds']).is_a?(Array)
-          self.refunds = value
-        end
-      end
-
-      if attributes.key?(:'voids')
-        if (value = attributes[:'voids']).is_a?(Array)
-          self.voids = value
-        end
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -345,10 +317,7 @@ module SubfiPay
           succeeded_at == o.succeeded_at &&
           type == o.type &&
           created_at == o.created_at &&
-          updated_at == o.updated_at &&
-          reversal_action == o.reversal_action &&
-          refunds == o.refunds &&
-          voids == o.voids
+          updated_at == o.updated_at
     end
 
     # @see the `==` method
@@ -360,7 +329,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, account_id, adjustment_reason, amount, customer_id, description, failure_reason, metadata, org_fee, org_per_txn_fee, org_rate, original_transaction_id, payment_intent_id, payment_method_id, platform_fee, platform_per_txn_fee, platform_rate, processor_authorization_id, processor_capture_id, processor_refund_id, processor_sale_id, processor_void_id, state, succeeded_at, type, created_at, updated_at, reversal_action, refunds, voids].hash
+      [id, account_id, adjustment_reason, amount, customer_id, description, failure_reason, metadata, org_fee, org_per_txn_fee, org_rate, original_transaction_id, payment_intent_id, payment_method_id, platform_fee, platform_per_txn_fee, platform_rate, processor_authorization_id, processor_capture_id, processor_refund_id, processor_sale_id, processor_void_id, state, succeeded_at, type, created_at, updated_at].hash
     end
 
     # Builds the object from hash

@@ -111,48 +111,4 @@ describe 'RefundsApi' do
       expect(res).to be_a(SubfiPay::RefundResponse)
     end
   end
-
-  describe "list refunds" do
-    let(:charge_id) { SecureRandom.uuid }
-    let(:path) { "/refunds?charge_id=#{charge_id}" }
-
-    before do
-      stub_request(:get, [config.host, path].join)
-        .with(headers: request_headers)
-        .to_return(
-          body: fixture("refunds/list_200.json"),
-          headers: response_headers,
-          status: 200
-        )
-    end
-
-    it 'should work' do
-      res = api_instance.list_refunds(api_version, account_id, charge_id)
-
-      expect(res).to be_a(SubfiPay::ListRefundsResponse)
-    end
-
-  end
-
-  describe "get refund" do
-    let(:id) { SecureRandom.uuid }
-    let(:path) { "/refunds/#{id}" }
-
-    before do
-      stub_request(:get, [config.host, path].join)
-      .with(headers: request_headers)
-      .to_return(
-        # re-using the same create response since it is the same object.
-        body: fixture("refunds/create_201.json"),
-        headers: response_headers,
-        status: 200
-      )
-    end
-
-    it 'should work' do
-      res = api_instance.get_refund(api_version, account_id, id)
-
-      expect(res).to be_a(SubfiPay::RefundResponse)
-    end
-  end
 end

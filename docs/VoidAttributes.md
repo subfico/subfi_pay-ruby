@@ -1,4 +1,4 @@
-# SubfiPay::RefundAttributes
+# SubfiPay::VoidAttributes
 
 ## Properties
 
@@ -14,7 +14,7 @@
 ```ruby
 require 'subfi_pay'
 
-instance = SubfiPay::RefundAttributes.new(
+instance = SubfiPay::VoidAttributes.new(
   amount: null,
   adjustment_reason: null,
   charge_id: null,

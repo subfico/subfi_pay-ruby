@@ -21,20 +21,22 @@ module SubfiPay
     end
     # Create a webhook endpoint
     # @param x_api_version [String] 
-    # @param create_webhook_endpoint_request [CreateWebhookEndpointRequest] 
+    # @param x_account_id [String] 
+    # @param webhook_endpoint_create_request [WebhookEndpointCreateRequest] 
     # @param [Hash] opts the optional parameters
-    # @return [WebhookEndpoint]
-    def create_webhook_endpoint(x_api_version, create_webhook_endpoint_request, opts = {})
-      data, _status_code, _headers = create_webhook_endpoint_with_http_info(x_api_version, create_webhook_endpoint_request, opts)
+    # @return [WebhookEndpointResponse]
+    def create_webhook_endpoint(x_api_version, x_account_id, webhook_endpoint_create_request, opts = {})
+      data, _status_code, _headers = create_webhook_endpoint_with_http_info(x_api_version, x_account_id, webhook_endpoint_create_request, opts)
       data
     end
 
     # Create a webhook endpoint
     # @param x_api_version [String] 
-    # @param create_webhook_endpoint_request [CreateWebhookEndpointRequest] 
+    # @param x_account_id [String] 
+    # @param webhook_endpoint_create_request [WebhookEndpointCreateRequest] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(WebhookEndpoint, Integer, Hash)>] WebhookEndpoint data, response status code and response headers
-    def create_webhook_endpoint_with_http_info(x_api_version, create_webhook_endpoint_request, opts = {})
+    # @return [Array<(WebhookEndpointResponse, Integer, Hash)>] WebhookEndpointResponse data, response status code and response headers
+    def create_webhook_endpoint_with_http_info(x_api_version, x_account_id, webhook_endpoint_create_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: WebhookEndpointsApi.create_webhook_endpoint ...'
       end
@@ -42,9 +44,13 @@ module SubfiPay
       if @api_client.config.client_side_validation && x_api_version.nil?
         fail ArgumentError, "Missing the required parameter 'x_api_version' when calling WebhookEndpointsApi.create_webhook_endpoint"
       end
-      # verify the required parameter 'create_webhook_endpoint_request' is set
-      if @api_client.config.client_side_validation && create_webhook_endpoint_request.nil?
-        fail ArgumentError, "Missing the required parameter 'create_webhook_endpoint_request' when calling WebhookEndpointsApi.create_webhook_endpoint"
+      # verify the required parameter 'x_account_id' is set
+      if @api_client.config.client_side_validation && x_account_id.nil?
+        fail ArgumentError, "Missing the required parameter 'x_account_id' when calling WebhookEndpointsApi.create_webhook_endpoint"
+      end
+      # verify the required parameter 'webhook_endpoint_create_request' is set
+      if @api_client.config.client_side_validation && webhook_endpoint_create_request.nil?
+        fail ArgumentError, "Missing the required parameter 'webhook_endpoint_create_request' when calling WebhookEndpointsApi.create_webhook_endpoint"
       end
       # resource path
       local_var_path = '/webhook_endpoints'
@@ -62,15 +68,16 @@ module SubfiPay
         header_params['Content-Type'] = content_type
       end
       header_params[:'X-Api-Version'] = x_api_version
+      header_params[:'X-Account-Id'] = x_account_id
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_webhook_endpoint_request)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(webhook_endpoint_create_request)
 
       # return_type
-      return_type = opts[:debug_return_type] || 'WebhookEndpoint'
+      return_type = opts[:debug_return_type] || 'WebhookEndpointResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
@@ -170,7 +177,7 @@ module SubfiPay
     # @param x_account_id [String] 
     # @param id [String] 
     # @param [Hash] opts the optional parameters
-    # @return [WebhookEndpoint]
+    # @return [WebhookEndpointResponse]
     def get_webhook_endpoint(x_api_version, x_account_id, id, opts = {})
       data, _status_code, _headers = get_webhook_endpoint_with_http_info(x_api_version, x_account_id, id, opts)
       data
@@ -181,7 +188,7 @@ module SubfiPay
     # @param x_account_id [String] 
     # @param id [String] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(WebhookEndpoint, Integer, Hash)>] WebhookEndpoint data, response status code and response headers
+    # @return [Array<(WebhookEndpointResponse, Integer, Hash)>] WebhookEndpointResponse data, response status code and response headers
     def get_webhook_endpoint_with_http_info(x_api_version, x_account_id, id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: WebhookEndpointsApi.get_webhook_endpoint ...'
@@ -218,7 +225,7 @@ module SubfiPay
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'WebhookEndpoint'
+      return_type = opts[:debug_return_type] || 'WebhookEndpointResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
@@ -319,11 +326,11 @@ module SubfiPay
     # @param x_api_version [String] 
     # @param x_account_id [String] 
     # @param id [String] 
-    # @param create_webhook_endpoint_request [CreateWebhookEndpointRequest] 
+    # @param webhook_endpoint_create_request [WebhookEndpointCreateRequest] 
     # @param [Hash] opts the optional parameters
-    # @return [WebhookEndpoint]
-    def update_webhook_endpoint(x_api_version, x_account_id, id, create_webhook_endpoint_request, opts = {})
-      data, _status_code, _headers = update_webhook_endpoint_with_http_info(x_api_version, x_account_id, id, create_webhook_endpoint_request, opts)
+    # @return [WebhookEndpointResponse]
+    def update_webhook_endpoint(x_api_version, x_account_id, id, webhook_endpoint_create_request, opts = {})
+      data, _status_code, _headers = update_webhook_endpoint_with_http_info(x_api_version, x_account_id, id, webhook_endpoint_create_request, opts)
       data
     end
 
@@ -331,10 +338,10 @@ module SubfiPay
     # @param x_api_version [String] 
     # @param x_account_id [String] 
     # @param id [String] 
-    # @param create_webhook_endpoint_request [CreateWebhookEndpointRequest] 
+    # @param webhook_endpoint_create_request [WebhookEndpointCreateRequest] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(WebhookEndpoint, Integer, Hash)>] WebhookEndpoint data, response status code and response headers
-    def update_webhook_endpoint_with_http_info(x_api_version, x_account_id, id, create_webhook_endpoint_request, opts = {})
+    # @return [Array<(WebhookEndpointResponse, Integer, Hash)>] WebhookEndpointResponse data, response status code and response headers
+    def update_webhook_endpoint_with_http_info(x_api_version, x_account_id, id, webhook_endpoint_create_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: WebhookEndpointsApi.update_webhook_endpoint ...'
       end
@@ -350,9 +357,9 @@ module SubfiPay
       if @api_client.config.client_side_validation && id.nil?
         fail ArgumentError, "Missing the required parameter 'id' when calling WebhookEndpointsApi.update_webhook_endpoint"
       end
-      # verify the required parameter 'create_webhook_endpoint_request' is set
-      if @api_client.config.client_side_validation && create_webhook_endpoint_request.nil?
-        fail ArgumentError, "Missing the required parameter 'create_webhook_endpoint_request' when calling WebhookEndpointsApi.update_webhook_endpoint"
+      # verify the required parameter 'webhook_endpoint_create_request' is set
+      if @api_client.config.client_side_validation && webhook_endpoint_create_request.nil?
+        fail ArgumentError, "Missing the required parameter 'webhook_endpoint_create_request' when calling WebhookEndpointsApi.update_webhook_endpoint"
       end
       # resource path
       local_var_path = '/webhook_endpoints/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
@@ -376,10 +383,10 @@ module SubfiPay
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_webhook_endpoint_request)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(webhook_endpoint_create_request)
 
       # return_type
-      return_type = opts[:debug_return_type] || 'WebhookEndpoint'
+      return_type = opts[:debug_return_type] || 'WebhookEndpointResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']

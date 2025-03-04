@@ -14,25 +14,22 @@ require 'date'
 require 'time'
 
 module SubfiPay
-  class ConnectedAccountResponse
-    attr_accessor :id
+  class VoidAttributes
+    attr_accessor :amount
 
-    attr_accessor :created_at
+    attr_accessor :adjustment_reason
 
-    attr_accessor :updated_at
+    attr_accessor :charge_id
 
-    attr_accessor :name
-
-    attr_accessor :worldpay_merchant_id
+    attr_accessor :description
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'created_at' => :'created_at',
-        :'updated_at' => :'updated_at',
-        :'name' => :'name',
-        :'worldpay_merchant_id' => :'worldpay_merchant_id'
+        :'amount' => :'amount',
+        :'adjustment_reason' => :'adjustment_reason',
+        :'charge_id' => :'charge_id',
+        :'description' => :'description'
       }
     end
 
@@ -44,11 +41,10 @@ module SubfiPay
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'String',
-        :'created_at' => :'Time',
-        :'updated_at' => :'Time',
-        :'name' => :'String',
-        :'worldpay_merchant_id' => :'String'
+        :'amount' => :'Integer',
+        :'adjustment_reason' => :'String',
+        :'charge_id' => :'String',
+        :'description' => :'String'
       }
     end
 
@@ -62,35 +58,33 @@ module SubfiPay
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `SubfiPay::ConnectedAccountResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `SubfiPay::VoidAttributes` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `SubfiPay::ConnectedAccountResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `SubfiPay::VoidAttributes`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.key?(:'amount')
+        self.amount = attributes[:'amount']
       end
 
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
+      if attributes.key?(:'adjustment_reason')
+        self.adjustment_reason = attributes[:'adjustment_reason']
       end
 
-      if attributes.key?(:'updated_at')
-        self.updated_at = attributes[:'updated_at']
+      if attributes.key?(:'charge_id')
+        self.charge_id = attributes[:'charge_id']
+      else
+        self.charge_id = nil
       end
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'worldpay_merchant_id')
-        self.worldpay_merchant_id = attributes[:'worldpay_merchant_id']
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
     end
 
@@ -99,6 +93,10 @@ module SubfiPay
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @charge_id.nil?
+        invalid_properties.push('invalid value for "charge_id", charge_id cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -106,6 +104,7 @@ module SubfiPay
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @charge_id.nil?
       true
     end
 
@@ -114,11 +113,10 @@ module SubfiPay
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          created_at == o.created_at &&
-          updated_at == o.updated_at &&
-          name == o.name &&
-          worldpay_merchant_id == o.worldpay_merchant_id
+          amount == o.amount &&
+          adjustment_reason == o.adjustment_reason &&
+          charge_id == o.charge_id &&
+          description == o.description
     end
 
     # @see the `==` method
@@ -130,7 +128,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, created_at, updated_at, name, worldpay_merchant_id].hash
+      [amount, adjustment_reason, charge_id, description].hash
     end
 
     # Builds the object from hash

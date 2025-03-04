@@ -4,7 +4,6 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **connected_account_id** | **String** |  | [optional] |
 | **customer_id** | **String** |  | [optional] |
 | **payment_method_id** | **String** |  | [optional] |
 | **amount** | **Integer** |  | [optional] |
@@ -21,7 +20,6 @@
 require 'subfi_pay'
 
 instance = SubfiPay::SubscriptionResponse.new(
-  connected_account_id: null,
   customer_id: null,
   payment_method_id: null,
   amount: null,
