@@ -73,7 +73,7 @@ module SubfiPay
       return_type = opts[:debug_return_type] || 'AccountResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key']
 
       new_options = opts.merge(
         :operation => :"AccountsApi.create_account",
@@ -141,7 +141,7 @@ module SubfiPay
       return_type = opts[:debug_return_type] || 'AccountResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key']
 
       new_options = opts.merge(
         :operation => :"AccountsApi.get_account",
@@ -209,7 +209,7 @@ module SubfiPay
       return_type = opts[:debug_return_type] || 'ListAccountsResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key']
 
       new_options = opts.merge(
         :operation => :"AccountsApi.list_accounts",

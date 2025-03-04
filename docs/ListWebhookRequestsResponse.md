@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **data** | [**Array&lt;WebhookRequest&gt;**](WebhookRequest.md) |  | [optional] |
+| **data** | [**Array&lt;WebhookRequestResponse&gt;**](WebhookRequestResponse.md) |  | [optional] |
 | **meta** | [**Meta**](Meta.md) |  | [optional] |
 
 ## Example
