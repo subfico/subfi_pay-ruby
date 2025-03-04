@@ -14,20 +14,48 @@ require 'date'
 require 'time'
 
 module SubfiPay
-  class WebhookEndpoint
+  class VoidResponse
     attr_accessor :id
-
-    attr_accessor :event
-
-    attr_accessor :metadata
-
-    attr_accessor :url
-
-    attr_accessor :enabled
 
     attr_accessor :account_id
 
-    attr_accessor :connected_account_id
+    attr_accessor :amount
+
+    attr_accessor :customer_id
+
+    attr_accessor :description
+
+    attr_accessor :metadata
+
+    attr_accessor :original_transaction_id
+
+    attr_accessor :payment_intent_id
+
+    attr_accessor :payment_method_id
+
+    attr_accessor :processor_transaction_id
+
+    attr_accessor :state
+
+    attr_accessor :succeeded_at
+
+    attr_accessor :type
+
+    attr_accessor :failure_reason
+
+    attr_accessor :adjustment_reason
+
+    attr_accessor :platform_fee
+
+    attr_accessor :platform_rate
+
+    attr_accessor :platform_per_txn_fee
+
+    attr_accessor :org_fee
+
+    attr_accessor :org_rate
+
+    attr_accessor :org_per_txn_fee
 
     attr_accessor :created_at
 
@@ -37,12 +65,26 @@ module SubfiPay
     def self.attribute_map
       {
         :'id' => :'id',
-        :'event' => :'event',
-        :'metadata' => :'metadata',
-        :'url' => :'url',
-        :'enabled' => :'enabled',
         :'account_id' => :'account_id',
-        :'connected_account_id' => :'connected_account_id',
+        :'amount' => :'amount',
+        :'customer_id' => :'customer_id',
+        :'description' => :'description',
+        :'metadata' => :'metadata',
+        :'original_transaction_id' => :'original_transaction_id',
+        :'payment_intent_id' => :'payment_intent_id',
+        :'payment_method_id' => :'payment_method_id',
+        :'processor_transaction_id' => :'processor_transaction_id',
+        :'state' => :'state',
+        :'succeeded_at' => :'succeeded_at',
+        :'type' => :'type',
+        :'failure_reason' => :'failure_reason',
+        :'adjustment_reason' => :'adjustment_reason',
+        :'platform_fee' => :'platform_fee',
+        :'platform_rate' => :'platform_rate',
+        :'platform_per_txn_fee' => :'platform_per_txn_fee',
+        :'org_fee' => :'org_fee',
+        :'org_rate' => :'org_rate',
+        :'org_per_txn_fee' => :'org_per_txn_fee',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
       }
@@ -57,12 +99,26 @@ module SubfiPay
     def self.openapi_types
       {
         :'id' => :'String',
-        :'event' => :'String',
-        :'metadata' => :'Object',
-        :'url' => :'String',
-        :'enabled' => :'Boolean',
         :'account_id' => :'String',
-        :'connected_account_id' => :'String',
+        :'amount' => :'Integer',
+        :'customer_id' => :'String',
+        :'description' => :'String',
+        :'metadata' => :'Object',
+        :'original_transaction_id' => :'String',
+        :'payment_intent_id' => :'String',
+        :'payment_method_id' => :'String',
+        :'processor_transaction_id' => :'String',
+        :'state' => :'String',
+        :'succeeded_at' => :'Time',
+        :'type' => :'String',
+        :'failure_reason' => :'String',
+        :'adjustment_reason' => :'String',
+        :'platform_fee' => :'Integer',
+        :'platform_rate' => :'Numeric',
+        :'platform_per_txn_fee' => :'Integer',
+        :'org_fee' => :'Integer',
+        :'org_rate' => :'Numeric',
+        :'org_per_txn_fee' => :'Integer',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
       }
@@ -71,6 +127,8 @@ module SubfiPay
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'description',
+        :'processor_transaction_id',
       ])
     end
 
@@ -78,13 +136,13 @@ module SubfiPay
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `SubfiPay::WebhookEndpoint` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `SubfiPay::VoidResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `SubfiPay::WebhookEndpoint`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `SubfiPay::VoidResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -93,28 +151,84 @@ module SubfiPay
         self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'event')
-        self.event = attributes[:'event']
+      if attributes.key?(:'account_id')
+        self.account_id = attributes[:'account_id']
+      end
+
+      if attributes.key?(:'amount')
+        self.amount = attributes[:'amount']
+      end
+
+      if attributes.key?(:'customer_id')
+        self.customer_id = attributes[:'customer_id']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'metadata')
         self.metadata = attributes[:'metadata']
       end
 
-      if attributes.key?(:'url')
-        self.url = attributes[:'url']
+      if attributes.key?(:'original_transaction_id')
+        self.original_transaction_id = attributes[:'original_transaction_id']
       end
 
-      if attributes.key?(:'enabled')
-        self.enabled = attributes[:'enabled']
+      if attributes.key?(:'payment_intent_id')
+        self.payment_intent_id = attributes[:'payment_intent_id']
       end
 
-      if attributes.key?(:'account_id')
-        self.account_id = attributes[:'account_id']
+      if attributes.key?(:'payment_method_id')
+        self.payment_method_id = attributes[:'payment_method_id']
       end
 
-      if attributes.key?(:'connected_account_id')
-        self.connected_account_id = attributes[:'connected_account_id']
+      if attributes.key?(:'processor_transaction_id')
+        self.processor_transaction_id = attributes[:'processor_transaction_id']
+      end
+
+      if attributes.key?(:'state')
+        self.state = attributes[:'state']
+      end
+
+      if attributes.key?(:'succeeded_at')
+        self.succeeded_at = attributes[:'succeeded_at']
+      end
+
+      if attributes.key?(:'type')
+        self.type = attributes[:'type']
+      end
+
+      if attributes.key?(:'failure_reason')
+        self.failure_reason = attributes[:'failure_reason']
+      end
+
+      if attributes.key?(:'adjustment_reason')
+        self.adjustment_reason = attributes[:'adjustment_reason']
+      end
+
+      if attributes.key?(:'platform_fee')
+        self.platform_fee = attributes[:'platform_fee']
+      end
+
+      if attributes.key?(:'platform_rate')
+        self.platform_rate = attributes[:'platform_rate']
+      end
+
+      if attributes.key?(:'platform_per_txn_fee')
+        self.platform_per_txn_fee = attributes[:'platform_per_txn_fee']
+      end
+
+      if attributes.key?(:'org_fee')
+        self.org_fee = attributes[:'org_fee']
+      end
+
+      if attributes.key?(:'org_rate')
+        self.org_rate = attributes[:'org_rate']
+      end
+
+      if attributes.key?(:'org_per_txn_fee')
+        self.org_per_txn_fee = attributes[:'org_per_txn_fee']
       end
 
       if attributes.key?(:'created_at')
@@ -147,12 +261,26 @@ module SubfiPay
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          event == o.event &&
-          metadata == o.metadata &&
-          url == o.url &&
-          enabled == o.enabled &&
           account_id == o.account_id &&
-          connected_account_id == o.connected_account_id &&
+          amount == o.amount &&
+          customer_id == o.customer_id &&
+          description == o.description &&
+          metadata == o.metadata &&
+          original_transaction_id == o.original_transaction_id &&
+          payment_intent_id == o.payment_intent_id &&
+          payment_method_id == o.payment_method_id &&
+          processor_transaction_id == o.processor_transaction_id &&
+          state == o.state &&
+          succeeded_at == o.succeeded_at &&
+          type == o.type &&
+          failure_reason == o.failure_reason &&
+          adjustment_reason == o.adjustment_reason &&
+          platform_fee == o.platform_fee &&
+          platform_rate == o.platform_rate &&
+          platform_per_txn_fee == o.platform_per_txn_fee &&
+          org_fee == o.org_fee &&
+          org_rate == o.org_rate &&
+          org_per_txn_fee == o.org_per_txn_fee &&
           created_at == o.created_at &&
           updated_at == o.updated_at
     end
@@ -166,7 +294,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, event, metadata, url, enabled, account_id, connected_account_id, created_at, updated_at].hash
+      [id, account_id, amount, customer_id, description, metadata, original_transaction_id, payment_intent_id, payment_method_id, processor_transaction_id, state, succeeded_at, type, failure_reason, adjustment_reason, platform_fee, platform_rate, platform_per_txn_fee, org_fee, org_rate, org_per_txn_fee, created_at, updated_at].hash
     end
 
     # Builds the object from hash

@@ -17,47 +17,91 @@ module SubfiPay
   class ChargeResponse
     attr_accessor :id
 
-    attr_accessor :captured_at
-
-    attr_accessor :failure_reason
-
     attr_accessor :account_id
-
-    attr_accessor :payment_method
-
-    attr_accessor :processor_id
-
-    attr_accessor :state
-
-    attr_accessor :created_at
 
     attr_accessor :amount
 
+    attr_accessor :customer_id
+
     attr_accessor :description
 
-    # Determines whether the charge should be captured immediately
-    attr_accessor :immediate_capture
+    attr_accessor :metadata
+
+    attr_accessor :original_transaction_id
+
+    attr_accessor :payment_intent_id
 
     attr_accessor :payment_method_id
 
-    attr_accessor :connected_account_id
+    attr_accessor :processor_transaction_id
+
+    attr_accessor :state
+
+    attr_accessor :succeeded_at
+
+    attr_accessor :type
+
+    attr_accessor :failure_reason
+
+    attr_accessor :adjustment_reason
+
+    attr_accessor :platform_fee
+
+    attr_accessor :platform_rate
+
+    attr_accessor :platform_per_txn_fee
+
+    attr_accessor :org_fee
+
+    attr_accessor :org_rate
+
+    attr_accessor :org_per_txn_fee
+
+    attr_accessor :created_at
+
+    attr_accessor :updated_at
+
+    attr_accessor :can_cancel
+
+    attr_accessor :can_refund
+
+    attr_accessor :can_void
+
+    attr_accessor :refunds
+
+    attr_accessor :voids
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
-        :'captured_at' => :'captured_at',
-        :'failure_reason' => :'failure_reason',
         :'account_id' => :'account_id',
-        :'payment_method' => :'payment_method',
-        :'processor_id' => :'processor_id',
-        :'state' => :'state',
-        :'created_at' => :'created_at',
         :'amount' => :'amount',
+        :'customer_id' => :'customer_id',
         :'description' => :'description',
-        :'immediate_capture' => :'immediate_capture',
+        :'metadata' => :'metadata',
+        :'original_transaction_id' => :'original_transaction_id',
+        :'payment_intent_id' => :'payment_intent_id',
         :'payment_method_id' => :'payment_method_id',
-        :'connected_account_id' => :'connected_account_id'
+        :'processor_transaction_id' => :'processor_transaction_id',
+        :'state' => :'state',
+        :'succeeded_at' => :'succeeded_at',
+        :'type' => :'type',
+        :'failure_reason' => :'failure_reason',
+        :'adjustment_reason' => :'adjustment_reason',
+        :'platform_fee' => :'platform_fee',
+        :'platform_rate' => :'platform_rate',
+        :'platform_per_txn_fee' => :'platform_per_txn_fee',
+        :'org_fee' => :'org_fee',
+        :'org_rate' => :'org_rate',
+        :'org_per_txn_fee' => :'org_per_txn_fee',
+        :'created_at' => :'created_at',
+        :'updated_at' => :'updated_at',
+        :'can_cancel' => :'can_cancel',
+        :'can_refund' => :'can_refund',
+        :'can_void' => :'can_void',
+        :'refunds' => :'refunds',
+        :'voids' => :'voids'
       }
     end
 
@@ -70,29 +114,41 @@ module SubfiPay
     def self.openapi_types
       {
         :'id' => :'String',
-        :'captured_at' => :'Time',
-        :'failure_reason' => :'String',
         :'account_id' => :'String',
-        :'payment_method' => :'PaymentMethodResponse',
-        :'processor_id' => :'String',
-        :'state' => :'String',
-        :'created_at' => :'Time',
         :'amount' => :'Integer',
+        :'customer_id' => :'String',
         :'description' => :'String',
-        :'immediate_capture' => :'Boolean',
+        :'metadata' => :'Object',
+        :'original_transaction_id' => :'String',
+        :'payment_intent_id' => :'String',
         :'payment_method_id' => :'String',
-        :'connected_account_id' => :'String'
+        :'processor_transaction_id' => :'String',
+        :'state' => :'String',
+        :'succeeded_at' => :'Time',
+        :'type' => :'String',
+        :'failure_reason' => :'String',
+        :'adjustment_reason' => :'String',
+        :'platform_fee' => :'Integer',
+        :'platform_rate' => :'Numeric',
+        :'platform_per_txn_fee' => :'Integer',
+        :'org_fee' => :'Integer',
+        :'org_rate' => :'Numeric',
+        :'org_per_txn_fee' => :'Integer',
+        :'created_at' => :'Time',
+        :'updated_at' => :'Time',
+        :'can_cancel' => :'Boolean',
+        :'can_refund' => :'Boolean',
+        :'can_void' => :'Boolean',
+        :'refunds' => :'Array<RefundResponse>',
+        :'voids' => :'Array<VoidResponse>'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'captured_at',
-        :'failure_reason',
-        :'processor_id',
         :'description',
-        :'connected_account_id'
+        :'processor_transaction_id',
       ])
     end
 
@@ -115,52 +171,116 @@ module SubfiPay
         self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'captured_at')
-        self.captured_at = attributes[:'captured_at']
-      end
-
-      if attributes.key?(:'failure_reason')
-        self.failure_reason = attributes[:'failure_reason']
-      end
-
       if attributes.key?(:'account_id')
         self.account_id = attributes[:'account_id']
-      end
-
-      if attributes.key?(:'payment_method')
-        self.payment_method = attributes[:'payment_method']
-      end
-
-      if attributes.key?(:'processor_id')
-        self.processor_id = attributes[:'processor_id']
-      end
-
-      if attributes.key?(:'state')
-        self.state = attributes[:'state']
-      end
-
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
       end
 
       if attributes.key?(:'amount')
         self.amount = attributes[:'amount']
       end
 
+      if attributes.key?(:'customer_id')
+        self.customer_id = attributes[:'customer_id']
+      end
+
       if attributes.key?(:'description')
         self.description = attributes[:'description']
       end
 
-      if attributes.key?(:'immediate_capture')
-        self.immediate_capture = attributes[:'immediate_capture']
+      if attributes.key?(:'metadata')
+        self.metadata = attributes[:'metadata']
+      end
+
+      if attributes.key?(:'original_transaction_id')
+        self.original_transaction_id = attributes[:'original_transaction_id']
+      end
+
+      if attributes.key?(:'payment_intent_id')
+        self.payment_intent_id = attributes[:'payment_intent_id']
       end
 
       if attributes.key?(:'payment_method_id')
         self.payment_method_id = attributes[:'payment_method_id']
       end
 
-      if attributes.key?(:'connected_account_id')
-        self.connected_account_id = attributes[:'connected_account_id']
+      if attributes.key?(:'processor_transaction_id')
+        self.processor_transaction_id = attributes[:'processor_transaction_id']
+      end
+
+      if attributes.key?(:'state')
+        self.state = attributes[:'state']
+      end
+
+      if attributes.key?(:'succeeded_at')
+        self.succeeded_at = attributes[:'succeeded_at']
+      end
+
+      if attributes.key?(:'type')
+        self.type = attributes[:'type']
+      end
+
+      if attributes.key?(:'failure_reason')
+        self.failure_reason = attributes[:'failure_reason']
+      end
+
+      if attributes.key?(:'adjustment_reason')
+        self.adjustment_reason = attributes[:'adjustment_reason']
+      end
+
+      if attributes.key?(:'platform_fee')
+        self.platform_fee = attributes[:'platform_fee']
+      end
+
+      if attributes.key?(:'platform_rate')
+        self.platform_rate = attributes[:'platform_rate']
+      end
+
+      if attributes.key?(:'platform_per_txn_fee')
+        self.platform_per_txn_fee = attributes[:'platform_per_txn_fee']
+      end
+
+      if attributes.key?(:'org_fee')
+        self.org_fee = attributes[:'org_fee']
+      end
+
+      if attributes.key?(:'org_rate')
+        self.org_rate = attributes[:'org_rate']
+      end
+
+      if attributes.key?(:'org_per_txn_fee')
+        self.org_per_txn_fee = attributes[:'org_per_txn_fee']
+      end
+
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
+      end
+
+      if attributes.key?(:'updated_at')
+        self.updated_at = attributes[:'updated_at']
+      end
+
+      if attributes.key?(:'can_cancel')
+        self.can_cancel = attributes[:'can_cancel']
+      end
+
+      if attributes.key?(:'can_refund')
+        self.can_refund = attributes[:'can_refund']
+      end
+
+      if attributes.key?(:'can_void')
+        self.can_void = attributes[:'can_void']
+      end
+
+      if attributes.key?(:'refunds')
+        if (value = attributes[:'refunds']).is_a?(Array)
+          self.refunds = value
+        end
+      end
+
+      if attributes.key?(:'voids')
+        if (value = attributes[:'voids']).is_a?(Array)
+          self.voids = value
+        end
       end
     end
 
@@ -185,18 +305,33 @@ module SubfiPay
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          captured_at == o.captured_at &&
-          failure_reason == o.failure_reason &&
           account_id == o.account_id &&
-          payment_method == o.payment_method &&
-          processor_id == o.processor_id &&
-          state == o.state &&
-          created_at == o.created_at &&
           amount == o.amount &&
+          customer_id == o.customer_id &&
           description == o.description &&
-          immediate_capture == o.immediate_capture &&
+          metadata == o.metadata &&
+          original_transaction_id == o.original_transaction_id &&
+          payment_intent_id == o.payment_intent_id &&
           payment_method_id == o.payment_method_id &&
-          connected_account_id == o.connected_account_id
+          processor_transaction_id == o.processor_transaction_id &&
+          state == o.state &&
+          succeeded_at == o.succeeded_at &&
+          type == o.type &&
+          failure_reason == o.failure_reason &&
+          adjustment_reason == o.adjustment_reason &&
+          platform_fee == o.platform_fee &&
+          platform_rate == o.platform_rate &&
+          platform_per_txn_fee == o.platform_per_txn_fee &&
+          org_fee == o.org_fee &&
+          org_rate == o.org_rate &&
+          org_per_txn_fee == o.org_per_txn_fee &&
+          created_at == o.created_at &&
+          updated_at == o.updated_at &&
+          can_cancel == o.can_cancel &&
+          can_refund == o.can_refund &&
+          can_void == o.can_void &&
+          refunds == o.refunds &&
+          voids == o.voids
     end
 
     # @see the `==` method
@@ -208,7 +343,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, captured_at, failure_reason, account_id, payment_method, processor_id, state, created_at, amount, description, immediate_capture, payment_method_id, connected_account_id].hash
+      [id, account_id, amount, customer_id, description, metadata, original_transaction_id, payment_intent_id, payment_method_id, processor_transaction_id, state, succeeded_at, type, failure_reason, adjustment_reason, platform_fee, platform_rate, platform_per_txn_fee, org_fee, org_rate, org_per_txn_fee, created_at, updated_at, can_cancel, can_refund, can_void, refunds, voids].hash
     end
 
     # Builds the object from hash

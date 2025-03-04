@@ -4,7 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **payment_intent** | [**PaymentIntentUpdateAttributesPaymentIntent**](PaymentIntentUpdateAttributesPaymentIntent.md) |  | [optional] |
+| **payment_method_id** | **String** |  | [optional] |
+| **metadata** | **Object** |  | [optional] |
 
 ## Example
 
@@ -12,7 +13,8 @@
 require 'subfi_pay'
 
 instance = SubfiPay::PaymentIntentUpdateAttributes.new(
-  payment_intent: null
+  payment_method_id: null,
+  metadata: null
 )
 ```
 

@@ -8,7 +8,6 @@
 | **event** | **String** |  | [optional] |
 | **data** | **Object** |  | [optional] |
 | **account_id** | **String** |  | [optional] |
-| **connected_account_id** | **String** |  | [optional] |
 | **created_at** | **Time** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |
 
@@ -22,7 +21,6 @@ instance = SubfiPay::Event.new(
   event: null,
   data: null,
   account_id: null,
-  connected_account_id: null,
   created_at: null,
   updated_at: null
 )

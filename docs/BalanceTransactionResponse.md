@@ -7,7 +7,6 @@
 | **id** | **String** |  | [optional] |
 | **created_at** | **Time** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |
-| **connected_account_id** | **String** |  | [optional] |
 | **amount** | **Integer** |  | [optional] |
 | **charge_id** | **String** |  | [optional] |
 | **fee** | **Integer** |  | [optional] |
@@ -25,7 +24,6 @@ instance = SubfiPay::BalanceTransactionResponse.new(
   id: null,
   created_at: null,
   updated_at: null,
-  connected_account_id: null,
   amount: null,
   charge_id: null,
   fee: null,
