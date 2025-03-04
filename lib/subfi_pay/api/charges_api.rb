@@ -24,7 +24,6 @@ module SubfiPay
     # @param x_account_id [String] 
     # @param id [String] 
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :connected_account_id Filter results by sub_merchant ID.
     # @return [ChargeResponse]
     def get_charge(x_api_version, x_account_id, id, opts = {})
       data, _status_code, _headers = get_charge_with_http_info(x_api_version, x_account_id, id, opts)
@@ -36,7 +35,6 @@ module SubfiPay
     # @param x_account_id [String] 
     # @param id [String] 
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :connected_account_id Filter results by sub_merchant ID.
     # @return [Array<(ChargeResponse, Integer, Hash)>] ChargeResponse data, response status code and response headers
     def get_charge_with_http_info(x_api_version, x_account_id, id, opts = {})
       if @api_client.config.debugging
@@ -59,7 +57,6 @@ module SubfiPay
 
       # query parameters
       query_params = opts[:query_params] || {}
-      query_params[:'connected_account_id'] = opts[:'connected_account_id'] if !opts[:'connected_account_id'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -78,7 +75,7 @@ module SubfiPay
       return_type = opts[:debug_return_type] || 'ChargeResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key']
 
       new_options = opts.merge(
         :operation => :"ChargesApi.get_charge",
@@ -103,8 +100,7 @@ module SubfiPay
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page The page of results to retrieve.
     # @option opts [Integer] :per_page Number of results per page.
-    # @option opts [String] :connected_account_id Filter results by sub_merchant ID.
-    # @option opts [String] :payment_intent_id Filter results by payment intent ID.
+    # @option opts [String] :payment_intent_id The ID of the payment intent to filter by
     # @return [ListChargesResponse]
     def list_charges(x_api_version, x_account_id, opts = {})
       data, _status_code, _headers = list_charges_with_http_info(x_api_version, x_account_id, opts)
@@ -117,8 +113,7 @@ module SubfiPay
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page The page of results to retrieve.
     # @option opts [Integer] :per_page Number of results per page.
-    # @option opts [String] :connected_account_id Filter results by sub_merchant ID.
-    # @option opts [String] :payment_intent_id Filter results by payment intent ID.
+    # @option opts [String] :payment_intent_id The ID of the payment intent to filter by
     # @return [Array<(ListChargesResponse, Integer, Hash)>] ListChargesResponse data, response status code and response headers
     def list_charges_with_http_info(x_api_version, x_account_id, opts = {})
       if @api_client.config.debugging
@@ -139,7 +134,6 @@ module SubfiPay
       query_params = opts[:query_params] || {}
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
       query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
-      query_params[:'connected_account_id'] = opts[:'connected_account_id'] if !opts[:'connected_account_id'].nil?
       query_params[:'payment_intent_id'] = opts[:'payment_intent_id'] if !opts[:'payment_intent_id'].nil?
 
       # header parameters
@@ -159,7 +153,7 @@ module SubfiPay
       return_type = opts[:debug_return_type] || 'ListChargesResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key']
 
       new_options = opts.merge(
         :operation => :"ChargesApi.list_charges",

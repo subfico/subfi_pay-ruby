@@ -32,7 +32,7 @@ module SubfiPay
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'payment_intent' => :'PaymentIntentAttributes'
+        :'payment_intent' => :'PaymentIntentCreateAttributes'
       }
     end
 

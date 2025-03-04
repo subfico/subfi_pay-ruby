@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **payment_intent** | [**PaymentIntentAttributes**](PaymentIntentAttributes.md) |  | [optional] |
+| **payment_intent** | [**PaymentIntentCreateAttributes**](PaymentIntentCreateAttributes.md) |  | [optional] |
 
 ## Example
 

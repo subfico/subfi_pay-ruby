@@ -19,6 +19,81 @@ module SubfiPay
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
+    # Cancel a subscription by ID
+    # @param x_api_version [String] 
+    # @param x_account_id [String] 
+    # @param id [String] The ID of the subscription to cancel
+    # @param [Hash] opts the optional parameters
+    # @return [SubscriptionResponse]
+    def cancel_subscription(x_api_version, x_account_id, id, opts = {})
+      data, _status_code, _headers = cancel_subscription_with_http_info(x_api_version, x_account_id, id, opts)
+      data
+    end
+
+    # Cancel a subscription by ID
+    # @param x_api_version [String] 
+    # @param x_account_id [String] 
+    # @param id [String] The ID of the subscription to cancel
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SubscriptionResponse, Integer, Hash)>] SubscriptionResponse data, response status code and response headers
+    def cancel_subscription_with_http_info(x_api_version, x_account_id, id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SubscriptionsApi.cancel_subscription ...'
+      end
+      # verify the required parameter 'x_api_version' is set
+      if @api_client.config.client_side_validation && x_api_version.nil?
+        fail ArgumentError, "Missing the required parameter 'x_api_version' when calling SubscriptionsApi.cancel_subscription"
+      end
+      # verify the required parameter 'x_account_id' is set
+      if @api_client.config.client_side_validation && x_account_id.nil?
+        fail ArgumentError, "Missing the required parameter 'x_account_id' when calling SubscriptionsApi.cancel_subscription"
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling SubscriptionsApi.cancel_subscription"
+      end
+      # resource path
+      local_var_path = '/subscriptions/{id}/cancel'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params[:'X-Api-Version'] = x_api_version
+      header_params[:'X-Account-Id'] = x_account_id
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SubscriptionResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key']
+
+      new_options = opts.merge(
+        :operation => :"SubscriptionsApi.cancel_subscription",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SubscriptionsApi#cancel_subscription\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Create a new subscription
     # @param x_api_version [String] 
     # @param x_account_id [String] 
@@ -80,7 +155,7 @@ module SubfiPay
       return_type = opts[:debug_return_type] || 'SubscriptionResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key']
 
       new_options = opts.merge(
         :operation => :"SubscriptionsApi.create_subscription",
@@ -155,7 +230,7 @@ module SubfiPay
       return_type = opts[:debug_return_type] || 'SubscriptionResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key']
 
       new_options = opts.merge(
         :operation => :"SubscriptionsApi.get_subscription",
@@ -170,6 +245,81 @@ module SubfiPay
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SubscriptionsApi#get_subscription\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List all subscriptions
+    # @param x_api_version [String] 
+    # @param x_account_id [String] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page The page of results to retrieve.
+    # @option opts [Integer] :per_page Number of results per page.
+    # @return [ListSubscriptionsResponse]
+    def list_subscriptions(x_api_version, x_account_id, opts = {})
+      data, _status_code, _headers = list_subscriptions_with_http_info(x_api_version, x_account_id, opts)
+      data
+    end
+
+    # List all subscriptions
+    # @param x_api_version [String] 
+    # @param x_account_id [String] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page The page of results to retrieve.
+    # @option opts [Integer] :per_page Number of results per page.
+    # @return [Array<(ListSubscriptionsResponse, Integer, Hash)>] ListSubscriptionsResponse data, response status code and response headers
+    def list_subscriptions_with_http_info(x_api_version, x_account_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SubscriptionsApi.list_subscriptions ...'
+      end
+      # verify the required parameter 'x_api_version' is set
+      if @api_client.config.client_side_validation && x_api_version.nil?
+        fail ArgumentError, "Missing the required parameter 'x_api_version' when calling SubscriptionsApi.list_subscriptions"
+      end
+      # verify the required parameter 'x_account_id' is set
+      if @api_client.config.client_side_validation && x_account_id.nil?
+        fail ArgumentError, "Missing the required parameter 'x_account_id' when calling SubscriptionsApi.list_subscriptions"
+      end
+      # resource path
+      local_var_path = '/subscriptions'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params[:'X-Api-Version'] = x_api_version
+      header_params[:'X-Account-Id'] = x_account_id
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ListSubscriptionsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key']
+
+      new_options = opts.merge(
+        :operation => :"SubscriptionsApi.list_subscriptions",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SubscriptionsApi#list_subscriptions\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

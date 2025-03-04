@@ -26,7 +26,7 @@ describe SubfiPay::Meta do
     end
   end
 
-  let(:attributes) { %w[current_page next_page prev_page first_page last_page total_pages] }
+  let(:attributes) { %w[current_page next_page prev_page first_page] }
 
   describe 'test attributes' do
     it 'should respond to all attributes' do

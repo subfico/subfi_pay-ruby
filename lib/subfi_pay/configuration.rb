@@ -244,12 +244,12 @@ module SubfiPay
     # Returns Auth Settings hash for api client.
     def auth_settings
       {
-        'ApiKeyAuth' =>
+        'X-Api-Key' =>
           {
             type: 'api_key',
             in: 'header',
-            key: 'X-API-KEY',
-            value: api_key_with_prefix('ApiKeyAuth')
+            key: 'X-Api-Key',
+            value: api_key_with_prefix('X-Api-Key')
           },
       }
     end

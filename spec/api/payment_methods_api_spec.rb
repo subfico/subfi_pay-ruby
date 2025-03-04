@@ -23,7 +23,7 @@ describe "PaymentMethodsApi" do
   let(:account_id) { Faker::Alphanumeric.alphanumeric(number: 32) }
   let(:config) do
     api_instance.api_client.config.tap do |c|
-      c.api_key['ApiKeyAuth'] = api_key
+      c.api_key['X-Api-Key'] = api_key
       c.host = "localhost:3000"
       c.scheme = "http"
     end
@@ -72,7 +72,7 @@ describe "PaymentMethodsApi" do
 
     before do
       stub_request(:get, url + "/#{id}")
-      .with(headers: request_headers.merge({ 'X-Account-Id' => account_id }))
+      .with(headers: request_headers)
       .to_return(
         body: fixture("payment_methods/get_#{type}_200.json"),
         headers: response_headers,
@@ -84,7 +84,7 @@ describe "PaymentMethodsApi" do
       let(:type) { "card" }
 
       it "should work" do
-        res = api_instance.get_payment_method(api_version, account_id, id)
+        res = api_instance.get_payment_method(api_version, id)
 
         expect(res).to be_a(SubfiPay::PaymentMethodResponse)
         expect(a_request(:get, url + "/#{id}").with(headers: request_headers)).to have_been_made.once
@@ -98,7 +98,7 @@ describe "PaymentMethodsApi" do
       let(:type) { "bank_account" }
 
       it "should work" do
-        res = api_instance.get_payment_method(api_version, account_id, id)
+        res = api_instance.get_payment_method(api_version, id)
 
         expect(res).to be_a(SubfiPay::PaymentMethodResponse)
         expect(a_request(:get, url + "/#{id}").with(headers: request_headers)).to have_been_made.once
@@ -125,13 +125,13 @@ describe "PaymentMethodsApi" do
         .with(headers: request_headers, query: { customer_id: customer_id, page: page, per_page: per_page })
         .to_return(
           body: fixture("payment_methods/list_200.json"),
-          headers: response_headers.merge({ 'X-Account-Id' => account_id }),
+          headers: response_headers,
           status: 200
         )
     end
 
     it "should work" do
-      res = api_instance.list_payment_methods(api_version, account_id, customer_id, { page: page, per_page: per_page })
+      res = api_instance.list_payment_methods(api_version, customer_id, { page: page, per_page: per_page })
 
       expect(res).to be_a(SubfiPay::ListPaymentMethodsResponse)
       expect(a_request(:get, url).with(query: { customer_id: customer_id, page: page, per_page: per_page }, headers: request_headers)).to have_been_made.once

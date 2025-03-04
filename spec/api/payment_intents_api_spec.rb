@@ -23,7 +23,7 @@ describe 'PaymentIntentsApi' do
   let(:account_id) { Faker::Alphanumeric.alphanumeric(number: 32) }
   let(:config) do
     api_instance.api_client.config.tap do |c|
-      c.api_key['ApiKeyAuth'] = api_key
+      c.api_key['X-Api-Key'] = api_key
       c.host = "localhost:3000"
       c.scheme = "http"
     end
@@ -193,7 +193,6 @@ describe 'PaymentIntentsApi' do
   # @param [Hash] opts the optional parameters
   # @option opts [Integer] :page The page of results to retrieve.
   # @option opts [Integer] :per_page Number of results per page.
-  # @option opts [String] :connected_account_id Filter results by connected_account ID.
   # @return [ListPaymentIntentsResponse]
   describe 'list_payment_intents test' do
     before do

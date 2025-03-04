@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **data** | [**Array&lt;Customer&gt;**](Customer.md) |  | [optional] |
+| **data** | [**Array&lt;CustomerResponse&gt;**](CustomerResponse.md) |  | [optional] |
 | **meta** | [**Meta**](Meta.md) |  | [optional] |
 
 ## Example

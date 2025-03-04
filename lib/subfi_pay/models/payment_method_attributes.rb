@@ -17,6 +17,11 @@ module SubfiPay
   class PaymentMethodAttributes
     attr_accessor :customer_id
 
+    # Additional metadata key-value pairs
+    attr_accessor :metadata
+
+    attr_accessor :set_as_customer_default
+
     attr_accessor :billing_address_attributes
 
     attr_accessor :card_profile_attributes
@@ -27,6 +32,8 @@ module SubfiPay
     def self.attribute_map
       {
         :'customer_id' => :'customer_id',
+        :'metadata' => :'metadata',
+        :'set_as_customer_default' => :'set_as_customer_default',
         :'billing_address_attributes' => :'billing_address_attributes',
         :'card_profile_attributes' => :'card_profile_attributes',
         :'bank_account_profile_attributes' => :'bank_account_profile_attributes'
@@ -42,9 +49,11 @@ module SubfiPay
     def self.openapi_types
       {
         :'customer_id' => :'String',
-        :'billing_address_attributes' => :'BillingAddress',
-        :'card_profile_attributes' => :'CardProfile',
-        :'bank_account_profile_attributes' => :'BankAccountProfile'
+        :'metadata' => :'Hash<String, MetadataValue>',
+        :'set_as_customer_default' => :'String',
+        :'billing_address_attributes' => :'BillingAddressAttributes',
+        :'card_profile_attributes' => :'CardProfileAttributes',
+        :'bank_account_profile_attributes' => :'BankAccountProfileAttributes'
       }
     end
 
@@ -71,6 +80,16 @@ module SubfiPay
 
       if attributes.key?(:'customer_id')
         self.customer_id = attributes[:'customer_id']
+      end
+
+      if attributes.key?(:'metadata')
+        if (value = attributes[:'metadata']).is_a?(Hash)
+          self.metadata = value
+        end
+      end
+
+      if attributes.key?(:'set_as_customer_default')
+        self.set_as_customer_default = attributes[:'set_as_customer_default']
       end
 
       if attributes.key?(:'billing_address_attributes')
@@ -107,6 +126,8 @@ module SubfiPay
       return true if self.equal?(o)
       self.class == o.class &&
           customer_id == o.customer_id &&
+          metadata == o.metadata &&
+          set_as_customer_default == o.set_as_customer_default &&
           billing_address_attributes == o.billing_address_attributes &&
           card_profile_attributes == o.card_profile_attributes &&
           bank_account_profile_attributes == o.bank_account_profile_attributes
@@ -121,7 +142,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [customer_id, billing_address_attributes, card_profile_attributes, bank_account_profile_attributes].hash
+      [customer_id, metadata, set_as_customer_default, billing_address_attributes, card_profile_attributes, bank_account_profile_attributes].hash
     end
 
     # Builds the object from hash

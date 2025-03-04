@@ -26,7 +26,7 @@ describe SubfiPay::CustomerUpdateAttributes do
     end
   end
 
-  let(:attributes) { %w[name default_payment_method_id] }
+  let(:attributes) { %w[name payment_method_id] }
 
   describe 'test attributes' do
     it 'should respond to all attributes' do

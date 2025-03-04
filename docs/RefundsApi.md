@@ -6,8 +6,8 @@ All URIs are relative to *https://pay-sandbox.subfi.com*
 | ------ | ------------ | ----------- |
 | [**cancel_refund**](RefundsApi.md#cancel_refund) | **PUT** /refunds/{id}/cancel | Cancel a refund |
 | [**create_refund**](RefundsApi.md#create_refund) | **POST** /refunds | Create a refund |
-| [**get_refund**](RefundsApi.md#get_refund) | **GET** /refunds/{id} | Get a refund by ID |
-| [**list_refunds**](RefundsApi.md#list_refunds) | **GET** /refunds | List refunds for a Charge |
+| [**get_refund**](RefundsApi.md#get_refund) | **GET** /refunds/{id} | Retrieve a refund by ID |
+| [**list_refunds**](RefundsApi.md#list_refunds) | **GET** /refunds | List all refunds |
 
 
 ## cancel_refund
@@ -23,10 +23,10 @@ require 'time'
 require 'subfi_pay'
 # setup authorization
 SubfiPay.configure do |config|
-  # Configure API key authorization: ApiKeyAuth
-  config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
+  # Configure API key authorization: X-Api-Key
+  config.api_key['X-Api-Key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+  # config.api_key_prefix['X-Api-Key'] = 'Bearer'
 end
 
 api_instance = SubfiPay::RefundsApi.new
@@ -75,7 +75,7 @@ end
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[X-Api-Key](../README.md#X-Api-Key)
 
 ### HTTP request headers
 
@@ -96,16 +96,16 @@ require 'time'
 require 'subfi_pay'
 # setup authorization
 SubfiPay.configure do |config|
-  # Configure API key authorization: ApiKeyAuth
-  config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
+  # Configure API key authorization: X-Api-Key
+  config.api_key['X-Api-Key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+  # config.api_key_prefix['X-Api-Key'] = 'Bearer'
 end
 
 api_instance = SubfiPay::RefundsApi.new
 x_api_version = 'x_api_version_example' # String | 
 x_account_id = 'x_account_id_example' # String | 
-refund_attributes = SubfiPay::RefundAttributes.new({charge_id: 'charge_id_example'}) # RefundAttributes | 
+refund_attributes = SubfiPay::RefundAttributes.new({parent_transaction_id: 'parent_transaction_id_example'}) # RefundAttributes | 
 opts = {
   x_idempotency_key: 'x_idempotency_key_example' # String | 
 }
@@ -152,7 +152,7 @@ end
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[X-Api-Key](../README.md#X-Api-Key)
 
 ### HTTP request headers
 
@@ -162,9 +162,9 @@ end
 
 ## get_refund
 
-> <RefundResponse> get_refund(x_api_version, x_account_id, id, opts)
+> <RefundResponse> get_refund(x_api_version, x_account_id, id)
 
-Get a refund by ID
+Retrieve a refund by ID
 
 ### Examples
 
@@ -173,23 +173,20 @@ require 'time'
 require 'subfi_pay'
 # setup authorization
 SubfiPay.configure do |config|
-  # Configure API key authorization: ApiKeyAuth
-  config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
+  # Configure API key authorization: X-Api-Key
+  config.api_key['X-Api-Key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+  # config.api_key_prefix['X-Api-Key'] = 'Bearer'
 end
 
 api_instance = SubfiPay::RefundsApi.new
 x_api_version = 'x_api_version_example' # String | 
 x_account_id = 'x_account_id_example' # String | 
-id = 'id_example' # String | The ID of the refund to retrieve.
-opts = {
-  connected_account_id: 'connected_account_id_example' # String | Filter results by sub_merchant ID.
-}
+id = 'id_example' # String | The ID of the refund to retrieve
 
 begin
-  # Get a refund by ID
-  result = api_instance.get_refund(x_api_version, x_account_id, id, opts)
+  # Retrieve a refund by ID
+  result = api_instance.get_refund(x_api_version, x_account_id, id)
   p result
 rescue SubfiPay::ApiError => e
   puts "Error when calling RefundsApi->get_refund: #{e}"
@@ -200,12 +197,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<RefundResponse>, Integer, Hash)> get_refund_with_http_info(x_api_version, x_account_id, id, opts)
+> <Array(<RefundResponse>, Integer, Hash)> get_refund_with_http_info(x_api_version, x_account_id, id)
 
 ```ruby
 begin
-  # Get a refund by ID
-  data, status_code, headers = api_instance.get_refund_with_http_info(x_api_version, x_account_id, id, opts)
+  # Retrieve a refund by ID
+  data, status_code, headers = api_instance.get_refund_with_http_info(x_api_version, x_account_id, id)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <RefundResponse>
@@ -220,8 +217,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **x_api_version** | **String** |  |  |
 | **x_account_id** | **String** |  |  |
-| **id** | **String** | The ID of the refund to retrieve. |  |
-| **connected_account_id** | **String** | Filter results by sub_merchant ID. | [optional] |
+| **id** | **String** | The ID of the refund to retrieve |  |
 
 ### Return type
 
@@ -229,7 +225,7 @@ end
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[X-Api-Key](../README.md#X-Api-Key)
 
 ### HTTP request headers
 
@@ -239,9 +235,9 @@ end
 
 ## list_refunds
 
-> <ListRefundsResponse> list_refunds(x_api_version, x_account_id, charge_id)
+> <ListRefundsResponse> list_refunds(x_api_version, x_account_id, customer_id, opts)
 
-List refunds for a Charge
+List all refunds
 
 ### Examples
 
@@ -250,20 +246,25 @@ require 'time'
 require 'subfi_pay'
 # setup authorization
 SubfiPay.configure do |config|
-  # Configure API key authorization: ApiKeyAuth
-  config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
+  # Configure API key authorization: X-Api-Key
+  config.api_key['X-Api-Key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+  # config.api_key_prefix['X-Api-Key'] = 'Bearer'
 end
 
 api_instance = SubfiPay::RefundsApi.new
 x_api_version = 'x_api_version_example' # String | 
 x_account_id = 'x_account_id_example' # String | 
-charge_id = 'charge_id_example' # String | The ID of the charge to which this refund belongs.
+customer_id = 'customer_id_example' # String | The ID of the customer to filter by
+opts = {
+  page: 56, # Integer | The page of results to retrieve.
+  per_page: 56, # Integer | Number of results per page.
+  parent_transaction_id: 'parent_transaction_id_example' # String | The ID of the original transaction to filter by
+}
 
 begin
-  # List refunds for a Charge
-  result = api_instance.list_refunds(x_api_version, x_account_id, charge_id)
+  # List all refunds
+  result = api_instance.list_refunds(x_api_version, x_account_id, customer_id, opts)
   p result
 rescue SubfiPay::ApiError => e
   puts "Error when calling RefundsApi->list_refunds: #{e}"
@@ -274,12 +275,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ListRefundsResponse>, Integer, Hash)> list_refunds_with_http_info(x_api_version, x_account_id, charge_id)
+> <Array(<ListRefundsResponse>, Integer, Hash)> list_refunds_with_http_info(x_api_version, x_account_id, customer_id, opts)
 
 ```ruby
 begin
-  # List refunds for a Charge
-  data, status_code, headers = api_instance.list_refunds_with_http_info(x_api_version, x_account_id, charge_id)
+  # List all refunds
+  data, status_code, headers = api_instance.list_refunds_with_http_info(x_api_version, x_account_id, customer_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ListRefundsResponse>
@@ -294,7 +295,10 @@ end
 | ---- | ---- | ----------- | ----- |
 | **x_api_version** | **String** |  |  |
 | **x_account_id** | **String** |  |  |
-| **charge_id** | **String** | The ID of the charge to which this refund belongs. |  |
+| **customer_id** | **String** | The ID of the customer to filter by |  |
+| **page** | **Integer** | The page of results to retrieve. | [optional] |
+| **per_page** | **Integer** | Number of results per page. | [optional] |
+| **parent_transaction_id** | **String** | The ID of the original transaction to filter by | [optional] |
 
 ### Return type
 
@@ -302,7 +306,7 @@ end
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[X-Api-Key](../README.md#X-Api-Key)
 
 ### HTTP request headers
 

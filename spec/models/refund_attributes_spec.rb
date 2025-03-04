@@ -26,7 +26,7 @@ describe SubfiPay::RefundAttributes do
     end
   end
 
-  let(:attributes) { %w[amount charge_id] }
+  let(:attributes) { %w[adjustment_reason amount description metadata parent_transaction_id] }
 
   describe 'test attributes' do
 

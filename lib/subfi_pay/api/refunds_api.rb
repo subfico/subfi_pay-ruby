@@ -75,7 +75,7 @@ module SubfiPay
       return_type = opts[:debug_return_type] || 'RefundResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key']
 
       new_options = opts.merge(
         :operation => :"RefundsApi.cancel_refund",
@@ -158,7 +158,7 @@ module SubfiPay
       return_type = opts[:debug_return_type] || 'RefundResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key']
 
       new_options = opts.merge(
         :operation => :"RefundsApi.create_refund",
@@ -177,24 +177,22 @@ module SubfiPay
       return data, status_code, headers
     end
 
-    # Get a refund by ID
+    # Retrieve a refund by ID
     # @param x_api_version [String] 
     # @param x_account_id [String] 
-    # @param id [String] The ID of the refund to retrieve.
+    # @param id [String] The ID of the refund to retrieve
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :connected_account_id Filter results by sub_merchant ID.
     # @return [RefundResponse]
     def get_refund(x_api_version, x_account_id, id, opts = {})
       data, _status_code, _headers = get_refund_with_http_info(x_api_version, x_account_id, id, opts)
       data
     end
 
-    # Get a refund by ID
+    # Retrieve a refund by ID
     # @param x_api_version [String] 
     # @param x_account_id [String] 
-    # @param id [String] The ID of the refund to retrieve.
+    # @param id [String] The ID of the refund to retrieve
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :connected_account_id Filter results by sub_merchant ID.
     # @return [Array<(RefundResponse, Integer, Hash)>] RefundResponse data, response status code and response headers
     def get_refund_with_http_info(x_api_version, x_account_id, id, opts = {})
       if @api_client.config.debugging
@@ -217,7 +215,6 @@ module SubfiPay
 
       # query parameters
       query_params = opts[:query_params] || {}
-      query_params[:'connected_account_id'] = opts[:'connected_account_id'] if !opts[:'connected_account_id'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -236,7 +233,7 @@ module SubfiPay
       return_type = opts[:debug_return_type] || 'RefundResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key']
 
       new_options = opts.merge(
         :operation => :"RefundsApi.get_refund",
@@ -255,24 +252,30 @@ module SubfiPay
       return data, status_code, headers
     end
 
-    # List refunds for a Charge
+    # List all refunds
     # @param x_api_version [String] 
     # @param x_account_id [String] 
-    # @param charge_id [String] The ID of the charge to which this refund belongs.
+    # @param customer_id [String] The ID of the customer to filter by
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page The page of results to retrieve.
+    # @option opts [Integer] :per_page Number of results per page.
+    # @option opts [String] :parent_transaction_id The ID of the original transaction to filter by
     # @return [ListRefundsResponse]
-    def list_refunds(x_api_version, x_account_id, charge_id, opts = {})
-      data, _status_code, _headers = list_refunds_with_http_info(x_api_version, x_account_id, charge_id, opts)
+    def list_refunds(x_api_version, x_account_id, customer_id, opts = {})
+      data, _status_code, _headers = list_refunds_with_http_info(x_api_version, x_account_id, customer_id, opts)
       data
     end
 
-    # List refunds for a Charge
+    # List all refunds
     # @param x_api_version [String] 
     # @param x_account_id [String] 
-    # @param charge_id [String] The ID of the charge to which this refund belongs.
+    # @param customer_id [String] The ID of the customer to filter by
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page The page of results to retrieve.
+    # @option opts [Integer] :per_page Number of results per page.
+    # @option opts [String] :parent_transaction_id The ID of the original transaction to filter by
     # @return [Array<(ListRefundsResponse, Integer, Hash)>] ListRefundsResponse data, response status code and response headers
-    def list_refunds_with_http_info(x_api_version, x_account_id, charge_id, opts = {})
+    def list_refunds_with_http_info(x_api_version, x_account_id, customer_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RefundsApi.list_refunds ...'
       end
@@ -284,16 +287,19 @@ module SubfiPay
       if @api_client.config.client_side_validation && x_account_id.nil?
         fail ArgumentError, "Missing the required parameter 'x_account_id' when calling RefundsApi.list_refunds"
       end
-      # verify the required parameter 'charge_id' is set
-      if @api_client.config.client_side_validation && charge_id.nil?
-        fail ArgumentError, "Missing the required parameter 'charge_id' when calling RefundsApi.list_refunds"
+      # verify the required parameter 'customer_id' is set
+      if @api_client.config.client_side_validation && customer_id.nil?
+        fail ArgumentError, "Missing the required parameter 'customer_id' when calling RefundsApi.list_refunds"
       end
       # resource path
       local_var_path = '/refunds'
 
       # query parameters
       query_params = opts[:query_params] || {}
-      query_params[:'charge_id'] = charge_id
+      query_params[:'customer_id'] = customer_id
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'parent_transaction_id'] = opts[:'parent_transaction_id'] if !opts[:'parent_transaction_id'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -312,7 +318,7 @@ module SubfiPay
       return_type = opts[:debug_return_type] || 'ListRefundsResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key']
 
       new_options = opts.merge(
         :operation => :"RefundsApi.list_refunds",
