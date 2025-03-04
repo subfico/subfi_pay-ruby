@@ -14,26 +14,79 @@ require 'date'
 require 'time'
 
 module SubfiPay
-  class ChargeAttributes
+  class VoidResponse
+    attr_accessor :id
+
+    attr_accessor :account_id
+
     attr_accessor :amount
+
+    attr_accessor :customer_id
 
     attr_accessor :description
 
+    attr_accessor :metadata
+
+    attr_accessor :original_transaction_id
+
+    attr_accessor :payment_intent_id
+
     attr_accessor :payment_method_id
 
-    attr_accessor :connected_account_id
+    attr_accessor :processor_transaction_id
 
-    # Determines whether the charge should be captured immediately
-    attr_accessor :immediate_capture
+    attr_accessor :state
+
+    attr_accessor :succeeded_at
+
+    attr_accessor :type
+
+    attr_accessor :failure_reason
+
+    attr_accessor :adjustment_reason
+
+    attr_accessor :platform_fee
+
+    attr_accessor :platform_rate
+
+    attr_accessor :platform_per_txn_fee
+
+    attr_accessor :org_fee
+
+    attr_accessor :org_rate
+
+    attr_accessor :org_per_txn_fee
+
+    attr_accessor :created_at
+
+    attr_accessor :updated_at
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'id' => :'id',
+        :'account_id' => :'account_id',
         :'amount' => :'amount',
+        :'customer_id' => :'customer_id',
         :'description' => :'description',
+        :'metadata' => :'metadata',
+        :'original_transaction_id' => :'original_transaction_id',
+        :'payment_intent_id' => :'payment_intent_id',
         :'payment_method_id' => :'payment_method_id',
-        :'connected_account_id' => :'connected_account_id',
-        :'immediate_capture' => :'immediate_capture'
+        :'processor_transaction_id' => :'processor_transaction_id',
+        :'state' => :'state',
+        :'succeeded_at' => :'succeeded_at',
+        :'type' => :'type',
+        :'failure_reason' => :'failure_reason',
+        :'adjustment_reason' => :'adjustment_reason',
+        :'platform_fee' => :'platform_fee',
+        :'platform_rate' => :'platform_rate',
+        :'platform_per_txn_fee' => :'platform_per_txn_fee',
+        :'org_fee' => :'org_fee',
+        :'org_rate' => :'org_rate',
+        :'org_per_txn_fee' => :'org_per_txn_fee',
+        :'created_at' => :'created_at',
+        :'updated_at' => :'updated_at'
       }
     end
 
@@ -45,11 +98,29 @@ module SubfiPay
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'id' => :'String',
+        :'account_id' => :'String',
         :'amount' => :'Integer',
+        :'customer_id' => :'String',
         :'description' => :'String',
+        :'metadata' => :'Object',
+        :'original_transaction_id' => :'String',
+        :'payment_intent_id' => :'String',
         :'payment_method_id' => :'String',
-        :'connected_account_id' => :'String',
-        :'immediate_capture' => :'Boolean'
+        :'processor_transaction_id' => :'String',
+        :'state' => :'String',
+        :'succeeded_at' => :'Time',
+        :'type' => :'String',
+        :'failure_reason' => :'String',
+        :'adjustment_reason' => :'String',
+        :'platform_fee' => :'Integer',
+        :'platform_rate' => :'Numeric',
+        :'platform_per_txn_fee' => :'Integer',
+        :'org_fee' => :'Integer',
+        :'org_rate' => :'Numeric',
+        :'org_per_txn_fee' => :'Integer',
+        :'created_at' => :'Time',
+        :'updated_at' => :'Time'
       }
     end
 
@@ -57,7 +128,7 @@ module SubfiPay
     def self.openapi_nullable
       Set.new([
         :'description',
-        :'connected_account_id',
+        :'processor_transaction_id',
       ])
     end
 
@@ -65,39 +136,107 @@ module SubfiPay
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `SubfiPay::ChargeAttributes` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `SubfiPay::VoidResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `SubfiPay::ChargeAttributes`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `SubfiPay::VoidResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
+      end
+
+      if attributes.key?(:'account_id')
+        self.account_id = attributes[:'account_id']
+      end
+
       if attributes.key?(:'amount')
         self.amount = attributes[:'amount']
-      else
-        self.amount = nil
+      end
+
+      if attributes.key?(:'customer_id')
+        self.customer_id = attributes[:'customer_id']
       end
 
       if attributes.key?(:'description')
         self.description = attributes[:'description']
       end
 
+      if attributes.key?(:'metadata')
+        self.metadata = attributes[:'metadata']
+      end
+
+      if attributes.key?(:'original_transaction_id')
+        self.original_transaction_id = attributes[:'original_transaction_id']
+      end
+
+      if attributes.key?(:'payment_intent_id')
+        self.payment_intent_id = attributes[:'payment_intent_id']
+      end
+
       if attributes.key?(:'payment_method_id')
         self.payment_method_id = attributes[:'payment_method_id']
-      else
-        self.payment_method_id = nil
       end
 
-      if attributes.key?(:'connected_account_id')
-        self.connected_account_id = attributes[:'connected_account_id']
+      if attributes.key?(:'processor_transaction_id')
+        self.processor_transaction_id = attributes[:'processor_transaction_id']
       end
 
-      if attributes.key?(:'immediate_capture')
-        self.immediate_capture = attributes[:'immediate_capture']
+      if attributes.key?(:'state')
+        self.state = attributes[:'state']
+      end
+
+      if attributes.key?(:'succeeded_at')
+        self.succeeded_at = attributes[:'succeeded_at']
+      end
+
+      if attributes.key?(:'type')
+        self.type = attributes[:'type']
+      end
+
+      if attributes.key?(:'failure_reason')
+        self.failure_reason = attributes[:'failure_reason']
+      end
+
+      if attributes.key?(:'adjustment_reason')
+        self.adjustment_reason = attributes[:'adjustment_reason']
+      end
+
+      if attributes.key?(:'platform_fee')
+        self.platform_fee = attributes[:'platform_fee']
+      end
+
+      if attributes.key?(:'platform_rate')
+        self.platform_rate = attributes[:'platform_rate']
+      end
+
+      if attributes.key?(:'platform_per_txn_fee')
+        self.platform_per_txn_fee = attributes[:'platform_per_txn_fee']
+      end
+
+      if attributes.key?(:'org_fee')
+        self.org_fee = attributes[:'org_fee']
+      end
+
+      if attributes.key?(:'org_rate')
+        self.org_rate = attributes[:'org_rate']
+      end
+
+      if attributes.key?(:'org_per_txn_fee')
+        self.org_per_txn_fee = attributes[:'org_per_txn_fee']
+      end
+
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
+      end
+
+      if attributes.key?(:'updated_at')
+        self.updated_at = attributes[:'updated_at']
       end
     end
 
@@ -106,14 +245,6 @@ module SubfiPay
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @amount.nil?
-        invalid_properties.push('invalid value for "amount", amount cannot be nil.')
-      end
-
-      if @payment_method_id.nil?
-        invalid_properties.push('invalid value for "payment_method_id", payment_method_id cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -121,8 +252,6 @@ module SubfiPay
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @amount.nil?
-      return false if @payment_method_id.nil?
       true
     end
 
@@ -131,11 +260,29 @@ module SubfiPay
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          id == o.id &&
+          account_id == o.account_id &&
           amount == o.amount &&
+          customer_id == o.customer_id &&
           description == o.description &&
+          metadata == o.metadata &&
+          original_transaction_id == o.original_transaction_id &&
+          payment_intent_id == o.payment_intent_id &&
           payment_method_id == o.payment_method_id &&
-          connected_account_id == o.connected_account_id &&
-          immediate_capture == o.immediate_capture
+          processor_transaction_id == o.processor_transaction_id &&
+          state == o.state &&
+          succeeded_at == o.succeeded_at &&
+          type == o.type &&
+          failure_reason == o.failure_reason &&
+          adjustment_reason == o.adjustment_reason &&
+          platform_fee == o.platform_fee &&
+          platform_rate == o.platform_rate &&
+          platform_per_txn_fee == o.platform_per_txn_fee &&
+          org_fee == o.org_fee &&
+          org_rate == o.org_rate &&
+          org_per_txn_fee == o.org_per_txn_fee &&
+          created_at == o.created_at &&
+          updated_at == o.updated_at
     end
 
     # @see the `==` method
@@ -147,7 +294,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [amount, description, payment_method_id, connected_account_id, immediate_capture].hash
+      [id, account_id, amount, customer_id, description, metadata, original_transaction_id, payment_intent_id, payment_method_id, processor_transaction_id, state, succeeded_at, type, failure_reason, adjustment_reason, platform_fee, platform_rate, platform_per_txn_fee, org_fee, org_rate, org_per_txn_fee, created_at, updated_at].hash
     end
 
     # Builds the object from hash

@@ -26,7 +26,7 @@ describe SubfiPay::AccountResponse do
     end
   end
 
-  let(:attributes) { %w[name active worldpay_merchant_id created_at updated_at] }
+  let(:attributes) { %w[name active created_at updated_at] }
 
   describe 'test attributes' do
     it 'should respond to all attributes' do

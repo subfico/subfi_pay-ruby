@@ -14,25 +14,31 @@ require 'date'
 require 'time'
 
 module SubfiPay
-  class ConnectedAccountResponse
+  class WebhookEndpointResponse
     attr_accessor :id
+
+    attr_accessor :event
+
+    attr_accessor :metadata
+
+    attr_accessor :url
+
+    attr_accessor :enabled
 
     attr_accessor :created_at
 
     attr_accessor :updated_at
 
-    attr_accessor :name
-
-    attr_accessor :worldpay_merchant_id
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
+        :'event' => :'event',
+        :'metadata' => :'metadata',
+        :'url' => :'url',
+        :'enabled' => :'enabled',
         :'created_at' => :'created_at',
-        :'updated_at' => :'updated_at',
-        :'name' => :'name',
-        :'worldpay_merchant_id' => :'worldpay_merchant_id'
+        :'updated_at' => :'updated_at'
       }
     end
 
@@ -45,10 +51,12 @@ module SubfiPay
     def self.openapi_types
       {
         :'id' => :'String',
+        :'event' => :'String',
+        :'metadata' => :'Object',
+        :'url' => :'String',
+        :'enabled' => :'Boolean',
         :'created_at' => :'Time',
-        :'updated_at' => :'Time',
-        :'name' => :'String',
-        :'worldpay_merchant_id' => :'String'
+        :'updated_at' => :'Time'
       }
     end
 
@@ -62,13 +70,13 @@ module SubfiPay
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `SubfiPay::ConnectedAccountResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `SubfiPay::WebhookEndpointResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `SubfiPay::ConnectedAccountResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `SubfiPay::WebhookEndpointResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -77,20 +85,28 @@ module SubfiPay
         self.id = attributes[:'id']
       end
 
+      if attributes.key?(:'event')
+        self.event = attributes[:'event']
+      end
+
+      if attributes.key?(:'metadata')
+        self.metadata = attributes[:'metadata']
+      end
+
+      if attributes.key?(:'url')
+        self.url = attributes[:'url']
+      end
+
+      if attributes.key?(:'enabled')
+        self.enabled = attributes[:'enabled']
+      end
+
       if attributes.key?(:'created_at')
         self.created_at = attributes[:'created_at']
       end
 
       if attributes.key?(:'updated_at')
         self.updated_at = attributes[:'updated_at']
-      end
-
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'worldpay_merchant_id')
-        self.worldpay_merchant_id = attributes[:'worldpay_merchant_id']
       end
     end
 
@@ -115,10 +131,12 @@ module SubfiPay
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
+          event == o.event &&
+          metadata == o.metadata &&
+          url == o.url &&
+          enabled == o.enabled &&
           created_at == o.created_at &&
-          updated_at == o.updated_at &&
-          name == o.name &&
-          worldpay_merchant_id == o.worldpay_merchant_id
+          updated_at == o.updated_at
     end
 
     # @see the `==` method
@@ -130,7 +148,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, created_at, updated_at, name, worldpay_merchant_id].hash
+      [id, event, metadata, url, enabled, created_at, updated_at].hash
     end
 
     # Builds the object from hash

@@ -17,13 +17,19 @@ module SubfiPay
   class RefundAttributes
     attr_accessor :amount
 
+    attr_accessor :adjustment_reason
+
     attr_accessor :charge_id
+
+    attr_accessor :description
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'amount' => :'amount',
-        :'charge_id' => :'charge_id'
+        :'adjustment_reason' => :'adjustment_reason',
+        :'charge_id' => :'charge_id',
+        :'description' => :'description'
       }
     end
 
@@ -36,7 +42,9 @@ module SubfiPay
     def self.openapi_types
       {
         :'amount' => :'Integer',
-        :'charge_id' => :'String'
+        :'adjustment_reason' => :'String',
+        :'charge_id' => :'String',
+        :'description' => :'String'
       }
     end
 
@@ -65,10 +73,18 @@ module SubfiPay
         self.amount = attributes[:'amount']
       end
 
+      if attributes.key?(:'adjustment_reason')
+        self.adjustment_reason = attributes[:'adjustment_reason']
+      end
+
       if attributes.key?(:'charge_id')
         self.charge_id = attributes[:'charge_id']
       else
         self.charge_id = nil
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
     end
 
@@ -98,7 +114,9 @@ module SubfiPay
       return true if self.equal?(o)
       self.class == o.class &&
           amount == o.amount &&
-          charge_id == o.charge_id
+          adjustment_reason == o.adjustment_reason &&
+          charge_id == o.charge_id &&
+          description == o.description
     end
 
     # @see the `==` method
@@ -110,7 +128,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [amount, charge_id].hash
+      [amount, adjustment_reason, charge_id, description].hash
     end
 
     # Builds the object from hash
