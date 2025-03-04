@@ -73,7 +73,7 @@ module SubfiPay
       return_type = opts[:debug_return_type] || 'AccountResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key']
 
       new_options = opts.merge(
         :operation => :"AccountsApi.create_account",
@@ -141,7 +141,7 @@ module SubfiPay
       return_type = opts[:debug_return_type] || 'AccountResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key']
 
       new_options = opts.merge(
         :operation => :"AccountsApi.get_account",
@@ -162,22 +162,24 @@ module SubfiPay
 
     # List all accounts
     # @param x_api_version [String] 
+    # @param merchant_id [String] 
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page The page of results to retrieve.
     # @option opts [Integer] :per_page Number of results per page.
     # @return [ListAccountsResponse]
-    def list_accounts(x_api_version, opts = {})
-      data, _status_code, _headers = list_accounts_with_http_info(x_api_version, opts)
+    def list_accounts(x_api_version, merchant_id, opts = {})
+      data, _status_code, _headers = list_accounts_with_http_info(x_api_version, merchant_id, opts)
       data
     end
 
     # List all accounts
     # @param x_api_version [String] 
+    # @param merchant_id [String] 
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page The page of results to retrieve.
     # @option opts [Integer] :per_page Number of results per page.
     # @return [Array<(ListAccountsResponse, Integer, Hash)>] ListAccountsResponse data, response status code and response headers
-    def list_accounts_with_http_info(x_api_version, opts = {})
+    def list_accounts_with_http_info(x_api_version, merchant_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AccountsApi.list_accounts ...'
       end
@@ -185,11 +187,16 @@ module SubfiPay
       if @api_client.config.client_side_validation && x_api_version.nil?
         fail ArgumentError, "Missing the required parameter 'x_api_version' when calling AccountsApi.list_accounts"
       end
+      # verify the required parameter 'merchant_id' is set
+      if @api_client.config.client_side_validation && merchant_id.nil?
+        fail ArgumentError, "Missing the required parameter 'merchant_id' when calling AccountsApi.list_accounts"
+      end
       # resource path
       local_var_path = '/accounts'
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'merchant_id'] = merchant_id
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
       query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
 
@@ -209,7 +216,7 @@ module SubfiPay
       return_type = opts[:debug_return_type] || 'ListAccountsResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key']
 
       new_options = opts.merge(
         :operation => :"AccountsApi.list_accounts",
@@ -224,6 +231,85 @@ module SubfiPay
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AccountsApi#list_accounts\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update an account by ID
+    # @param x_api_version [String] 
+    # @param id [String] 
+    # @param account_update_request [AccountUpdateRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [AccountResponse]
+    def update_account(x_api_version, id, account_update_request, opts = {})
+      data, _status_code, _headers = update_account_with_http_info(x_api_version, id, account_update_request, opts)
+      data
+    end
+
+    # Update an account by ID
+    # @param x_api_version [String] 
+    # @param id [String] 
+    # @param account_update_request [AccountUpdateRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AccountResponse, Integer, Hash)>] AccountResponse data, response status code and response headers
+    def update_account_with_http_info(x_api_version, id, account_update_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AccountsApi.update_account ...'
+      end
+      # verify the required parameter 'x_api_version' is set
+      if @api_client.config.client_side_validation && x_api_version.nil?
+        fail ArgumentError, "Missing the required parameter 'x_api_version' when calling AccountsApi.update_account"
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling AccountsApi.update_account"
+      end
+      # verify the required parameter 'account_update_request' is set
+      if @api_client.config.client_side_validation && account_update_request.nil?
+        fail ArgumentError, "Missing the required parameter 'account_update_request' when calling AccountsApi.update_account"
+      end
+      # resource path
+      local_var_path = '/accounts/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+      header_params[:'X-Api-Version'] = x_api_version
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(account_update_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AccountResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key']
+
+      new_options = opts.merge(
+        :operation => :"AccountsApi.update_account",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AccountsApi#update_account\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

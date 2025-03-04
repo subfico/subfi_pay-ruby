@@ -6,8 +6,10 @@ All URIs are relative to *https://pay-sandbox.subfi.com*
 | ------ | ------------ | ----------- |
 | [**cancel_payment_intent**](PaymentIntentsApi.md#cancel_payment_intent) | **POST** /payment_intents/{id}/cancel | Cancel a payment intent |
 | [**capture_payment_intent**](PaymentIntentsApi.md#capture_payment_intent) | **POST** /payment_intents/{id}/capture | Capture a payment intent |
+| [**confirm_embed_payment_intent**](PaymentIntentsApi.md#confirm_embed_payment_intent) | **POST** /embed/payment_intents/{id}/confirm | Confirm a payment intent |
 | [**confirm_payment_intent**](PaymentIntentsApi.md#confirm_payment_intent) | **POST** /payment_intents/{id}/confirm | Confirm a payment intent |
 | [**create_payment_intent**](PaymentIntentsApi.md#create_payment_intent) | **POST** /payment_intents | Create a new payment intent |
+| [**get_embed_payment_intent**](PaymentIntentsApi.md#get_embed_payment_intent) | **GET** /embed/payment_intents/{id} | Retrieve a payment intent by ID |
 | [**get_payment_intent**](PaymentIntentsApi.md#get_payment_intent) | **GET** /payment_intents/{id} | Retrieve a payment intent by ID |
 | [**list_payment_intents**](PaymentIntentsApi.md#list_payment_intents) | **GET** /payment_intents | List payment intents |
 | [**update_payment_intent**](PaymentIntentsApi.md#update_payment_intent) | **PATCH** /payment_intents/{id} | Update a payment intent |
@@ -26,10 +28,10 @@ require 'time'
 require 'subfi_pay'
 # setup authorization
 SubfiPay.configure do |config|
-  # Configure API key authorization: ApiKeyAuth
-  config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
+  # Configure API key authorization: X-Api-Key
+  config.api_key['X-Api-Key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+  # config.api_key_prefix['X-Api-Key'] = 'Bearer'
 end
 
 api_instance = SubfiPay::PaymentIntentsApi.new
@@ -78,7 +80,7 @@ end
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[X-Api-Key](../README.md#X-Api-Key)
 
 ### HTTP request headers
 
@@ -99,10 +101,10 @@ require 'time'
 require 'subfi_pay'
 # setup authorization
 SubfiPay.configure do |config|
-  # Configure API key authorization: ApiKeyAuth
-  config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
+  # Configure API key authorization: X-Api-Key
+  config.api_key['X-Api-Key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+  # config.api_key_prefix['X-Api-Key'] = 'Bearer'
 end
 
 api_instance = SubfiPay::PaymentIntentsApi.new
@@ -151,11 +153,86 @@ end
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[X-Api-Key](../README.md#X-Api-Key)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## confirm_embed_payment_intent
+
+> <PaymentIntentResponse> confirm_embed_payment_intent(x_api_version, x_account_id, id, payment_intent_confirm_request)
+
+Confirm a payment intent
+
+### Examples
+
+```ruby
+require 'time'
+require 'subfi_pay'
+# setup authorization
+SubfiPay.configure do |config|
+  # Configure API key authorization: Embed
+  config.api_key['Embed'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Embed'] = 'Bearer'
+end
+
+api_instance = SubfiPay::PaymentIntentsApi.new
+x_api_version = 'x_api_version_example' # String | 
+x_account_id = 'x_account_id_example' # String | 
+id = 'id_example' # String | The ID of the payment intent to confirm
+payment_intent_confirm_request = SubfiPay::PaymentIntentConfirmRequest.new # PaymentIntentConfirmRequest | 
+
+begin
+  # Confirm a payment intent
+  result = api_instance.confirm_embed_payment_intent(x_api_version, x_account_id, id, payment_intent_confirm_request)
+  p result
+rescue SubfiPay::ApiError => e
+  puts "Error when calling PaymentIntentsApi->confirm_embed_payment_intent: #{e}"
+end
+```
+
+#### Using the confirm_embed_payment_intent_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PaymentIntentResponse>, Integer, Hash)> confirm_embed_payment_intent_with_http_info(x_api_version, x_account_id, id, payment_intent_confirm_request)
+
+```ruby
+begin
+  # Confirm a payment intent
+  data, status_code, headers = api_instance.confirm_embed_payment_intent_with_http_info(x_api_version, x_account_id, id, payment_intent_confirm_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PaymentIntentResponse>
+rescue SubfiPay::ApiError => e
+  puts "Error when calling PaymentIntentsApi->confirm_embed_payment_intent_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **x_api_version** | **String** |  |  |
+| **x_account_id** | **String** |  |  |
+| **id** | **String** | The ID of the payment intent to confirm |  |
+| **payment_intent_confirm_request** | [**PaymentIntentConfirmRequest**](PaymentIntentConfirmRequest.md) |  |  |
+
+### Return type
+
+[**PaymentIntentResponse**](PaymentIntentResponse.md)
+
+### Authorization
+
+[Embed](../README.md#Embed)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
@@ -172,10 +249,10 @@ require 'time'
 require 'subfi_pay'
 # setup authorization
 SubfiPay.configure do |config|
-  # Configure API key authorization: ApiKeyAuth
-  config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
+  # Configure API key authorization: X-Api-Key
+  config.api_key['X-Api-Key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+  # config.api_key_prefix['X-Api-Key'] = 'Bearer'
 end
 
 api_instance = SubfiPay::PaymentIntentsApi.new
@@ -224,7 +301,7 @@ end
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[X-Api-Key](../README.md#X-Api-Key)
 
 ### HTTP request headers
 
@@ -245,10 +322,10 @@ require 'time'
 require 'subfi_pay'
 # setup authorization
 SubfiPay.configure do |config|
-  # Configure API key authorization: ApiKeyAuth
-  config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
+  # Configure API key authorization: X-Api-Key
+  config.api_key['X-Api-Key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+  # config.api_key_prefix['X-Api-Key'] = 'Bearer'
 end
 
 api_instance = SubfiPay::PaymentIntentsApi.new
@@ -297,11 +374,84 @@ end
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[X-Api-Key](../README.md#X-Api-Key)
 
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## get_embed_payment_intent
+
+> <PaymentIntentResponse> get_embed_payment_intent(x_api_version, x_account_id, id)
+
+Retrieve a payment intent by ID
+
+### Examples
+
+```ruby
+require 'time'
+require 'subfi_pay'
+# setup authorization
+SubfiPay.configure do |config|
+  # Configure API key authorization: Embed
+  config.api_key['Embed'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Embed'] = 'Bearer'
+end
+
+api_instance = SubfiPay::PaymentIntentsApi.new
+x_api_version = 'x_api_version_example' # String | 
+x_account_id = 'x_account_id_example' # String | 
+id = 'id_example' # String | The ID of the payment intent to retrieve
+
+begin
+  # Retrieve a payment intent by ID
+  result = api_instance.get_embed_payment_intent(x_api_version, x_account_id, id)
+  p result
+rescue SubfiPay::ApiError => e
+  puts "Error when calling PaymentIntentsApi->get_embed_payment_intent: #{e}"
+end
+```
+
+#### Using the get_embed_payment_intent_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PaymentIntentResponse>, Integer, Hash)> get_embed_payment_intent_with_http_info(x_api_version, x_account_id, id)
+
+```ruby
+begin
+  # Retrieve a payment intent by ID
+  data, status_code, headers = api_instance.get_embed_payment_intent_with_http_info(x_api_version, x_account_id, id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PaymentIntentResponse>
+rescue SubfiPay::ApiError => e
+  puts "Error when calling PaymentIntentsApi->get_embed_payment_intent_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **x_api_version** | **String** |  |  |
+| **x_account_id** | **String** |  |  |
+| **id** | **String** | The ID of the payment intent to retrieve |  |
+
+### Return type
+
+[**PaymentIntentResponse**](PaymentIntentResponse.md)
+
+### Authorization
+
+[Embed](../README.md#Embed)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
@@ -318,10 +468,10 @@ require 'time'
 require 'subfi_pay'
 # setup authorization
 SubfiPay.configure do |config|
-  # Configure API key authorization: ApiKeyAuth
-  config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
+  # Configure API key authorization: X-Api-Key
+  config.api_key['X-Api-Key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+  # config.api_key_prefix['X-Api-Key'] = 'Bearer'
 end
 
 api_instance = SubfiPay::PaymentIntentsApi.new
@@ -370,7 +520,7 @@ end
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[X-Api-Key](../README.md#X-Api-Key)
 
 ### HTTP request headers
 
@@ -391,10 +541,10 @@ require 'time'
 require 'subfi_pay'
 # setup authorization
 SubfiPay.configure do |config|
-  # Configure API key authorization: ApiKeyAuth
-  config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
+  # Configure API key authorization: X-Api-Key
+  config.api_key['X-Api-Key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+  # config.api_key_prefix['X-Api-Key'] = 'Bearer'
 end
 
 api_instance = SubfiPay::PaymentIntentsApi.new
@@ -402,8 +552,7 @@ x_api_version = 'x_api_version_example' # String |
 x_account_id = 'x_account_id_example' # String | 
 opts = {
   page: 56, # Integer | The page of results to retrieve.
-  per_page: 56, # Integer | Number of results per page.
-  connected_account_id: 'connected_account_id_example' # String | Filter results by sub_merchant ID.
+  per_page: 56 # Integer | Number of results per page.
 }
 
 begin
@@ -441,7 +590,6 @@ end
 | **x_account_id** | **String** |  |  |
 | **page** | **Integer** | The page of results to retrieve. | [optional] |
 | **per_page** | **Integer** | Number of results per page. | [optional] |
-| **connected_account_id** | **String** | Filter results by sub_merchant ID. | [optional] |
 
 ### Return type
 
@@ -449,7 +597,7 @@ end
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[X-Api-Key](../README.md#X-Api-Key)
 
 ### HTTP request headers
 
@@ -459,7 +607,7 @@ end
 
 ## update_payment_intent
 
-> <PaymentIntentResponse> update_payment_intent(x_api_version, x_account_id, id, payment_intent_update_attributes)
+> <PaymentIntentResponse> update_payment_intent(x_api_version, x_account_id, id, payment_intent_update_request)
 
 Update a payment intent
 
@@ -470,21 +618,21 @@ require 'time'
 require 'subfi_pay'
 # setup authorization
 SubfiPay.configure do |config|
-  # Configure API key authorization: ApiKeyAuth
-  config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
+  # Configure API key authorization: X-Api-Key
+  config.api_key['X-Api-Key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+  # config.api_key_prefix['X-Api-Key'] = 'Bearer'
 end
 
 api_instance = SubfiPay::PaymentIntentsApi.new
 x_api_version = 'x_api_version_example' # String | 
 x_account_id = 'x_account_id_example' # String | 
 id = 'id_example' # String | The ID of the payment intent to update
-payment_intent_update_attributes = SubfiPay::PaymentIntentUpdateAttributes.new # PaymentIntentUpdateAttributes | 
+payment_intent_update_request = SubfiPay::PaymentIntentUpdateRequest.new # PaymentIntentUpdateRequest | 
 
 begin
   # Update a payment intent
-  result = api_instance.update_payment_intent(x_api_version, x_account_id, id, payment_intent_update_attributes)
+  result = api_instance.update_payment_intent(x_api_version, x_account_id, id, payment_intent_update_request)
   p result
 rescue SubfiPay::ApiError => e
   puts "Error when calling PaymentIntentsApi->update_payment_intent: #{e}"
@@ -495,12 +643,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PaymentIntentResponse>, Integer, Hash)> update_payment_intent_with_http_info(x_api_version, x_account_id, id, payment_intent_update_attributes)
+> <Array(<PaymentIntentResponse>, Integer, Hash)> update_payment_intent_with_http_info(x_api_version, x_account_id, id, payment_intent_update_request)
 
 ```ruby
 begin
   # Update a payment intent
-  data, status_code, headers = api_instance.update_payment_intent_with_http_info(x_api_version, x_account_id, id, payment_intent_update_attributes)
+  data, status_code, headers = api_instance.update_payment_intent_with_http_info(x_api_version, x_account_id, id, payment_intent_update_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PaymentIntentResponse>
@@ -516,7 +664,7 @@ end
 | **x_api_version** | **String** |  |  |
 | **x_account_id** | **String** |  |  |
 | **id** | **String** | The ID of the payment intent to update |  |
-| **payment_intent_update_attributes** | [**PaymentIntentUpdateAttributes**](PaymentIntentUpdateAttributes.md) |  |  |
+| **payment_intent_update_request** | [**PaymentIntentUpdateRequest**](PaymentIntentUpdateRequest.md) |  |  |
 
 ### Return type
 
@@ -524,7 +672,7 @@ end
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[X-Api-Key](../README.md#X-Api-Key)
 
 ### HTTP request headers
 
