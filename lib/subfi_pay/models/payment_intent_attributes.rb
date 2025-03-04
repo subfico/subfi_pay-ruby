@@ -21,9 +21,16 @@ module SubfiPay
 
     attr_accessor :capture_method
 
-    attr_accessor :connected_account_id
+    attr_accessor :customer_id
 
     attr_accessor :description
+
+    attr_accessor :embed
+
+    attr_accessor :embed_origin
+
+    # Additional metadata key-value pairs
+    attr_accessor :metadata
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -31,8 +38,11 @@ module SubfiPay
         :'amount' => :'amount',
         :'payment_method_id' => :'payment_method_id',
         :'capture_method' => :'capture_method',
-        :'connected_account_id' => :'connected_account_id',
-        :'description' => :'description'
+        :'customer_id' => :'customer_id',
+        :'description' => :'description',
+        :'embed' => :'embed',
+        :'embed_origin' => :'embed_origin',
+        :'metadata' => :'metadata'
       }
     end
 
@@ -47,16 +57,18 @@ module SubfiPay
         :'amount' => :'Integer',
         :'payment_method_id' => :'String',
         :'capture_method' => :'String',
-        :'connected_account_id' => :'String',
-        :'description' => :'String'
+        :'customer_id' => :'String',
+        :'description' => :'String',
+        :'embed' => :'Boolean',
+        :'embed_origin' => :'String',
+        :'metadata' => :'Hash<String, MetadataValue>'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'connected_account_id',
-        :'description'
+        :'description',
       ])
     end
 
@@ -89,12 +101,26 @@ module SubfiPay
         self.capture_method = attributes[:'capture_method']
       end
 
-      if attributes.key?(:'connected_account_id')
-        self.connected_account_id = attributes[:'connected_account_id']
+      if attributes.key?(:'customer_id')
+        self.customer_id = attributes[:'customer_id']
       end
 
       if attributes.key?(:'description')
         self.description = attributes[:'description']
+      end
+
+      if attributes.key?(:'embed')
+        self.embed = attributes[:'embed']
+      end
+
+      if attributes.key?(:'embed_origin')
+        self.embed_origin = attributes[:'embed_origin']
+      end
+
+      if attributes.key?(:'metadata')
+        if (value = attributes[:'metadata']).is_a?(Hash)
+          self.metadata = value
+        end
       end
     end
 
@@ -126,8 +152,11 @@ module SubfiPay
           amount == o.amount &&
           payment_method_id == o.payment_method_id &&
           capture_method == o.capture_method &&
-          connected_account_id == o.connected_account_id &&
-          description == o.description
+          customer_id == o.customer_id &&
+          description == o.description &&
+          embed == o.embed &&
+          embed_origin == o.embed_origin &&
+          metadata == o.metadata
     end
 
     # @see the `==` method
@@ -139,7 +168,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [amount, payment_method_id, capture_method, connected_account_id, description].hash
+      [amount, payment_method_id, capture_method, customer_id, description, embed, embed_origin, metadata].hash
     end
 
     # Builds the object from hash
