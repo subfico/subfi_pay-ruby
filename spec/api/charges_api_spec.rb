@@ -62,8 +62,6 @@ describe 'ChargesApi' do
         expect(a_request(:get, [config.host, path].join).with(headers: request_headers)).to have_been_made.once
 
         expect(res.data.first.amount).to be_truthy
-        expect(res.data.first.payment_method.card_profile).to be_truthy
-        expect(res.data.first.payment_method.billing_address).to be_truthy
       end
     end
 
@@ -86,8 +84,6 @@ describe 'ChargesApi' do
         expect(a_request(:get, [config.host, path, "?page=1&per_page=2"].join).with(headers: request_headers)).to have_been_made.once
 
         expect(res.data.first.amount).to be_truthy
-        expect(res.data.first.payment_method.card_profile).to be_truthy
-        expect(res.data.first.payment_method.billing_address).to be_truthy
       end
     end
   end

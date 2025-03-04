@@ -17,47 +17,58 @@ module SubfiPay
   class ChargeResponse
     attr_accessor :id
 
-    attr_accessor :captured_at
-
-    attr_accessor :failure_reason
-
     attr_accessor :account_id
-
-    attr_accessor :payment_method
-
-    attr_accessor :processor_id
-
-    attr_accessor :state
-
-    attr_accessor :created_at
 
     attr_accessor :amount
 
+    attr_accessor :customer_id
+
     attr_accessor :description
 
-    # Determines whether the charge should be captured immediately
-    attr_accessor :immediate_capture
+    attr_accessor :metadata
+
+    attr_accessor :payment_intent_id
 
     attr_accessor :payment_method_id
 
-    attr_accessor :connected_account_id
+    attr_accessor :processor_transaction_id
+
+    attr_accessor :state
+
+    attr_accessor :succeeded_at
+
+    attr_accessor :type
+
+    attr_accessor :created_at
+
+    attr_accessor :updated_at
+
+    attr_accessor :can_cancel
+
+    attr_accessor :can_refund
+
+    attr_accessor :can_void
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
-        :'captured_at' => :'captured_at',
-        :'failure_reason' => :'failure_reason',
         :'account_id' => :'account_id',
-        :'payment_method' => :'payment_method',
-        :'processor_id' => :'processor_id',
-        :'state' => :'state',
-        :'created_at' => :'created_at',
         :'amount' => :'amount',
+        :'customer_id' => :'customer_id',
         :'description' => :'description',
-        :'immediate_capture' => :'immediate_capture',
+        :'metadata' => :'metadata',
+        :'payment_intent_id' => :'payment_intent_id',
         :'payment_method_id' => :'payment_method_id',
-        :'connected_account_id' => :'connected_account_id'
+        :'processor_transaction_id' => :'processor_transaction_id',
+        :'state' => :'state',
+        :'succeeded_at' => :'succeeded_at',
+        :'type' => :'type',
+        :'created_at' => :'created_at',
+        :'updated_at' => :'updated_at',
+        :'can_cancel' => :'can_cancel',
+        :'can_refund' => :'can_refund',
+        :'can_void' => :'can_void'
       }
     end
 
@@ -70,29 +81,30 @@ module SubfiPay
     def self.openapi_types
       {
         :'id' => :'String',
-        :'captured_at' => :'Time',
-        :'failure_reason' => :'String',
         :'account_id' => :'String',
-        :'payment_method' => :'PaymentMethodResponse',
-        :'processor_id' => :'String',
-        :'state' => :'String',
-        :'created_at' => :'Time',
         :'amount' => :'Integer',
+        :'customer_id' => :'String',
         :'description' => :'String',
-        :'immediate_capture' => :'Boolean',
+        :'metadata' => :'Object',
+        :'payment_intent_id' => :'String',
         :'payment_method_id' => :'String',
-        :'connected_account_id' => :'String'
+        :'processor_transaction_id' => :'String',
+        :'state' => :'String',
+        :'succeeded_at' => :'Time',
+        :'type' => :'String',
+        :'created_at' => :'Time',
+        :'updated_at' => :'Time',
+        :'can_cancel' => :'Boolean',
+        :'can_refund' => :'Boolean',
+        :'can_void' => :'Boolean'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'captured_at',
-        :'failure_reason',
-        :'processor_id',
         :'description',
-        :'connected_account_id'
+        :'processor_transaction_id',
       ])
     end
 
@@ -115,52 +127,68 @@ module SubfiPay
         self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'captured_at')
-        self.captured_at = attributes[:'captured_at']
-      end
-
-      if attributes.key?(:'failure_reason')
-        self.failure_reason = attributes[:'failure_reason']
-      end
-
       if attributes.key?(:'account_id')
         self.account_id = attributes[:'account_id']
-      end
-
-      if attributes.key?(:'payment_method')
-        self.payment_method = attributes[:'payment_method']
-      end
-
-      if attributes.key?(:'processor_id')
-        self.processor_id = attributes[:'processor_id']
-      end
-
-      if attributes.key?(:'state')
-        self.state = attributes[:'state']
-      end
-
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
       end
 
       if attributes.key?(:'amount')
         self.amount = attributes[:'amount']
       end
 
+      if attributes.key?(:'customer_id')
+        self.customer_id = attributes[:'customer_id']
+      end
+
       if attributes.key?(:'description')
         self.description = attributes[:'description']
       end
 
-      if attributes.key?(:'immediate_capture')
-        self.immediate_capture = attributes[:'immediate_capture']
+      if attributes.key?(:'metadata')
+        self.metadata = attributes[:'metadata']
+      end
+
+      if attributes.key?(:'payment_intent_id')
+        self.payment_intent_id = attributes[:'payment_intent_id']
       end
 
       if attributes.key?(:'payment_method_id')
         self.payment_method_id = attributes[:'payment_method_id']
       end
 
-      if attributes.key?(:'connected_account_id')
-        self.connected_account_id = attributes[:'connected_account_id']
+      if attributes.key?(:'processor_transaction_id')
+        self.processor_transaction_id = attributes[:'processor_transaction_id']
+      end
+
+      if attributes.key?(:'state')
+        self.state = attributes[:'state']
+      end
+
+      if attributes.key?(:'succeeded_at')
+        self.succeeded_at = attributes[:'succeeded_at']
+      end
+
+      if attributes.key?(:'type')
+        self.type = attributes[:'type']
+      end
+
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
+      end
+
+      if attributes.key?(:'updated_at')
+        self.updated_at = attributes[:'updated_at']
+      end
+
+      if attributes.key?(:'can_cancel')
+        self.can_cancel = attributes[:'can_cancel']
+      end
+
+      if attributes.key?(:'can_refund')
+        self.can_refund = attributes[:'can_refund']
+      end
+
+      if attributes.key?(:'can_void')
+        self.can_void = attributes[:'can_void']
       end
     end
 
@@ -185,18 +213,22 @@ module SubfiPay
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          captured_at == o.captured_at &&
-          failure_reason == o.failure_reason &&
           account_id == o.account_id &&
-          payment_method == o.payment_method &&
-          processor_id == o.processor_id &&
-          state == o.state &&
-          created_at == o.created_at &&
           amount == o.amount &&
+          customer_id == o.customer_id &&
           description == o.description &&
-          immediate_capture == o.immediate_capture &&
+          metadata == o.metadata &&
+          payment_intent_id == o.payment_intent_id &&
           payment_method_id == o.payment_method_id &&
-          connected_account_id == o.connected_account_id
+          processor_transaction_id == o.processor_transaction_id &&
+          state == o.state &&
+          succeeded_at == o.succeeded_at &&
+          type == o.type &&
+          created_at == o.created_at &&
+          updated_at == o.updated_at &&
+          can_cancel == o.can_cancel &&
+          can_refund == o.can_refund &&
+          can_void == o.can_void
     end
 
     # @see the `==` method
@@ -208,7 +240,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, captured_at, failure_reason, account_id, payment_method, processor_id, state, created_at, amount, description, immediate_capture, payment_method_id, connected_account_id].hash
+      [id, account_id, amount, customer_id, description, metadata, payment_intent_id, payment_method_id, processor_transaction_id, state, succeeded_at, type, created_at, updated_at, can_cancel, can_refund, can_void].hash
     end
 
     # Builds the object from hash

@@ -17,28 +17,55 @@ module SubfiPay
   class RefundResponse
     attr_accessor :id
 
-    attr_accessor :failure_reason
-
-    attr_accessor :state
-
-    attr_accessor :created_at
-
-    attr_accessor :connected_account_id
+    attr_accessor :account_id
 
     attr_accessor :amount
 
-    attr_accessor :charge_id
+    attr_accessor :customer_id
+
+    attr_accessor :description
+
+    attr_accessor :metadata
+
+    attr_accessor :payment_intent_id
+
+    attr_accessor :payment_method_id
+
+    attr_accessor :processor_transaction_id
+
+    attr_accessor :state
+
+    attr_accessor :succeeded_at
+
+    attr_accessor :type
+
+    attr_accessor :created_at
+
+    attr_accessor :updated_at
+
+    attr_accessor :can_cancel
+
+    attr_accessor :adjustment_reason
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
-        :'failure_reason' => :'failure_reason',
-        :'state' => :'state',
-        :'created_at' => :'created_at',
-        :'connected_account_id' => :'connected_account_id',
+        :'account_id' => :'account_id',
         :'amount' => :'amount',
-        :'charge_id' => :'charge_id'
+        :'customer_id' => :'customer_id',
+        :'description' => :'description',
+        :'metadata' => :'metadata',
+        :'payment_intent_id' => :'payment_intent_id',
+        :'payment_method_id' => :'payment_method_id',
+        :'processor_transaction_id' => :'processor_transaction_id',
+        :'state' => :'state',
+        :'succeeded_at' => :'succeeded_at',
+        :'type' => :'type',
+        :'created_at' => :'created_at',
+        :'updated_at' => :'updated_at',
+        :'can_cancel' => :'can_cancel',
+        :'adjustment_reason' => :'adjustment_reason'
       }
     end
 
@@ -51,20 +78,29 @@ module SubfiPay
     def self.openapi_types
       {
         :'id' => :'String',
-        :'failure_reason' => :'String',
-        :'state' => :'String',
-        :'created_at' => :'Time',
-        :'connected_account_id' => :'String',
+        :'account_id' => :'String',
         :'amount' => :'Integer',
-        :'charge_id' => :'String'
+        :'customer_id' => :'String',
+        :'description' => :'String',
+        :'metadata' => :'Object',
+        :'payment_intent_id' => :'String',
+        :'payment_method_id' => :'String',
+        :'processor_transaction_id' => :'String',
+        :'state' => :'String',
+        :'succeeded_at' => :'Time',
+        :'type' => :'String',
+        :'created_at' => :'Time',
+        :'updated_at' => :'Time',
+        :'can_cancel' => :'Boolean',
+        :'adjustment_reason' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'failure_reason',
-        :'connected_account_id',
+        :'description',
+        :'processor_transaction_id',
       ])
     end
 
@@ -87,28 +123,64 @@ module SubfiPay
         self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'failure_reason')
-        self.failure_reason = attributes[:'failure_reason']
-      end
-
-      if attributes.key?(:'state')
-        self.state = attributes[:'state']
-      end
-
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
-      end
-
-      if attributes.key?(:'connected_account_id')
-        self.connected_account_id = attributes[:'connected_account_id']
+      if attributes.key?(:'account_id')
+        self.account_id = attributes[:'account_id']
       end
 
       if attributes.key?(:'amount')
         self.amount = attributes[:'amount']
       end
 
-      if attributes.key?(:'charge_id')
-        self.charge_id = attributes[:'charge_id']
+      if attributes.key?(:'customer_id')
+        self.customer_id = attributes[:'customer_id']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
+      end
+
+      if attributes.key?(:'metadata')
+        self.metadata = attributes[:'metadata']
+      end
+
+      if attributes.key?(:'payment_intent_id')
+        self.payment_intent_id = attributes[:'payment_intent_id']
+      end
+
+      if attributes.key?(:'payment_method_id')
+        self.payment_method_id = attributes[:'payment_method_id']
+      end
+
+      if attributes.key?(:'processor_transaction_id')
+        self.processor_transaction_id = attributes[:'processor_transaction_id']
+      end
+
+      if attributes.key?(:'state')
+        self.state = attributes[:'state']
+      end
+
+      if attributes.key?(:'succeeded_at')
+        self.succeeded_at = attributes[:'succeeded_at']
+      end
+
+      if attributes.key?(:'type')
+        self.type = attributes[:'type']
+      end
+
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
+      end
+
+      if attributes.key?(:'updated_at')
+        self.updated_at = attributes[:'updated_at']
+      end
+
+      if attributes.key?(:'can_cancel')
+        self.can_cancel = attributes[:'can_cancel']
+      end
+
+      if attributes.key?(:'adjustment_reason')
+        self.adjustment_reason = attributes[:'adjustment_reason']
       end
     end
 
@@ -133,12 +205,21 @@ module SubfiPay
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          failure_reason == o.failure_reason &&
-          state == o.state &&
-          created_at == o.created_at &&
-          connected_account_id == o.connected_account_id &&
+          account_id == o.account_id &&
           amount == o.amount &&
-          charge_id == o.charge_id
+          customer_id == o.customer_id &&
+          description == o.description &&
+          metadata == o.metadata &&
+          payment_intent_id == o.payment_intent_id &&
+          payment_method_id == o.payment_method_id &&
+          processor_transaction_id == o.processor_transaction_id &&
+          state == o.state &&
+          succeeded_at == o.succeeded_at &&
+          type == o.type &&
+          created_at == o.created_at &&
+          updated_at == o.updated_at &&
+          can_cancel == o.can_cancel &&
+          adjustment_reason == o.adjustment_reason
     end
 
     # @see the `==` method
@@ -150,7 +231,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, failure_reason, state, created_at, connected_account_id, amount, charge_id].hash
+      [id, account_id, amount, customer_id, description, metadata, payment_intent_id, payment_method_id, processor_transaction_id, state, succeeded_at, type, created_at, updated_at, can_cancel, adjustment_reason].hash
     end
 
     # Builds the object from hash

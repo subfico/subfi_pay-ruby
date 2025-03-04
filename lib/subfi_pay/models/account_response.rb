@@ -19,8 +19,6 @@ module SubfiPay
 
     attr_accessor :active
 
-    attr_accessor :worldpay_merchant_id
-
     attr_accessor :created_at
 
     attr_accessor :updated_at
@@ -30,7 +28,6 @@ module SubfiPay
       {
         :'name' => :'name',
         :'active' => :'active',
-        :'worldpay_merchant_id' => :'worldpay_merchant_id',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
       }
@@ -46,7 +43,6 @@ module SubfiPay
       {
         :'name' => :'String',
         :'active' => :'Boolean',
-        :'worldpay_merchant_id' => :'String',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
       }
@@ -81,10 +77,6 @@ module SubfiPay
         self.active = attributes[:'active']
       end
 
-      if attributes.key?(:'worldpay_merchant_id')
-        self.worldpay_merchant_id = attributes[:'worldpay_merchant_id']
-      end
-
       if attributes.key?(:'created_at')
         self.created_at = attributes[:'created_at']
       end
@@ -116,7 +108,6 @@ module SubfiPay
       self.class == o.class &&
           name == o.name &&
           active == o.active &&
-          worldpay_merchant_id == o.worldpay_merchant_id &&
           created_at == o.created_at &&
           updated_at == o.updated_at
     end
@@ -130,7 +121,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, active, worldpay_merchant_id, created_at, updated_at].hash
+      [name, active, created_at, updated_at].hash
     end
 
     # Builds the object from hash

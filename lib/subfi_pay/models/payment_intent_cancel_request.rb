@@ -14,26 +14,13 @@ require 'date'
 require 'time'
 
 module SubfiPay
-  class ChargeAttributes
-    attr_accessor :amount
-
-    attr_accessor :description
-
-    attr_accessor :payment_method_id
-
-    attr_accessor :connected_account_id
-
-    # Determines whether the charge should be captured immediately
-    attr_accessor :immediate_capture
+  class PaymentIntentCancelRequest
+    attr_accessor :payment_intent
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'amount' => :'amount',
-        :'description' => :'description',
-        :'payment_method_id' => :'payment_method_id',
-        :'connected_account_id' => :'connected_account_id',
-        :'immediate_capture' => :'immediate_capture'
+        :'payment_intent' => :'payment_intent'
       }
     end
 
@@ -45,19 +32,13 @@ module SubfiPay
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'amount' => :'Integer',
-        :'description' => :'String',
-        :'payment_method_id' => :'String',
-        :'connected_account_id' => :'String',
-        :'immediate_capture' => :'Boolean'
+        :'payment_intent' => :'PaymentIntentCancelAttributes'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'description',
-        :'connected_account_id',
       ])
     end
 
@@ -65,39 +46,19 @@ module SubfiPay
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `SubfiPay::ChargeAttributes` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `SubfiPay::PaymentIntentCancelRequest` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `SubfiPay::ChargeAttributes`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `SubfiPay::PaymentIntentCancelRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'amount')
-        self.amount = attributes[:'amount']
-      else
-        self.amount = nil
-      end
-
-      if attributes.key?(:'description')
-        self.description = attributes[:'description']
-      end
-
-      if attributes.key?(:'payment_method_id')
-        self.payment_method_id = attributes[:'payment_method_id']
-      else
-        self.payment_method_id = nil
-      end
-
-      if attributes.key?(:'connected_account_id')
-        self.connected_account_id = attributes[:'connected_account_id']
-      end
-
-      if attributes.key?(:'immediate_capture')
-        self.immediate_capture = attributes[:'immediate_capture']
+      if attributes.key?(:'payment_intent')
+        self.payment_intent = attributes[:'payment_intent']
       end
     end
 
@@ -106,14 +67,6 @@ module SubfiPay
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @amount.nil?
-        invalid_properties.push('invalid value for "amount", amount cannot be nil.')
-      end
-
-      if @payment_method_id.nil?
-        invalid_properties.push('invalid value for "payment_method_id", payment_method_id cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -121,8 +74,6 @@ module SubfiPay
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @amount.nil?
-      return false if @payment_method_id.nil?
       true
     end
 
@@ -131,11 +82,7 @@ module SubfiPay
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          amount == o.amount &&
-          description == o.description &&
-          payment_method_id == o.payment_method_id &&
-          connected_account_id == o.connected_account_id &&
-          immediate_capture == o.immediate_capture
+          payment_intent == o.payment_intent
     end
 
     # @see the `==` method
@@ -147,7 +94,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [amount, description, payment_method_id, connected_account_id, immediate_capture].hash
+      [payment_intent].hash
     end
 
     # Builds the object from hash

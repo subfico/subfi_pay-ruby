@@ -21,8 +21,6 @@ module SubfiPay
 
     attr_accessor :updated_at
 
-    attr_accessor :connected_account_id
-
     attr_accessor :amount
 
     attr_accessor :charge_id
@@ -43,7 +41,6 @@ module SubfiPay
         :'id' => :'id',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at',
-        :'connected_account_id' => :'connected_account_id',
         :'amount' => :'amount',
         :'charge_id' => :'charge_id',
         :'fee' => :'fee',
@@ -65,7 +62,6 @@ module SubfiPay
         :'id' => :'String',
         :'created_at' => :'Time',
         :'updated_at' => :'Time',
-        :'connected_account_id' => :'String',
         :'amount' => :'Integer',
         :'charge_id' => :'String',
         :'fee' => :'Integer',
@@ -79,7 +75,6 @@ module SubfiPay
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'connected_account_id',
       ])
     end
 
@@ -108,10 +103,6 @@ module SubfiPay
 
       if attributes.key?(:'updated_at')
         self.updated_at = attributes[:'updated_at']
-      end
-
-      if attributes.key?(:'connected_account_id')
-        self.connected_account_id = attributes[:'connected_account_id']
       end
 
       if attributes.key?(:'amount')
@@ -166,7 +157,6 @@ module SubfiPay
           id == o.id &&
           created_at == o.created_at &&
           updated_at == o.updated_at &&
-          connected_account_id == o.connected_account_id &&
           amount == o.amount &&
           charge_id == o.charge_id &&
           fee == o.fee &&
@@ -185,7 +175,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, created_at, updated_at, connected_account_id, amount, charge_id, fee, net, refund_id, state, type].hash
+      [id, created_at, updated_at, amount, charge_id, fee, net, refund_id, state, type].hash
     end
 
     # Builds the object from hash

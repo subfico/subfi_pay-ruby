@@ -17,13 +17,13 @@ module SubfiPay
   class AccountAttributes
     attr_accessor :name
 
-    attr_accessor :worldpay_merchant_id
+    attr_accessor :worldpay_mid
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'name' => :'name',
-        :'worldpay_merchant_id' => :'worldpay_merchant_id'
+        :'worldpay_mid' => :'worldpay_mid'
       }
     end
 
@@ -36,7 +36,7 @@ module SubfiPay
     def self.openapi_types
       {
         :'name' => :'String',
-        :'worldpay_merchant_id' => :'String'
+        :'worldpay_mid' => :'String'
       }
     end
 
@@ -65,8 +65,8 @@ module SubfiPay
         self.name = attributes[:'name']
       end
 
-      if attributes.key?(:'worldpay_merchant_id')
-        self.worldpay_merchant_id = attributes[:'worldpay_merchant_id']
+      if attributes.key?(:'worldpay_mid')
+        self.worldpay_mid = attributes[:'worldpay_mid']
       end
     end
 
@@ -91,7 +91,7 @@ module SubfiPay
       return true if self.equal?(o)
       self.class == o.class &&
           name == o.name &&
-          worldpay_merchant_id == o.worldpay_merchant_id
+          worldpay_mid == o.worldpay_mid
     end
 
     # @see the `==` method
@@ -103,7 +103,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, worldpay_merchant_id].hash
+      [name, worldpay_mid].hash
     end
 
     # Builds the object from hash

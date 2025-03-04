@@ -26,7 +26,7 @@ describe SubfiPay::BalanceTransactionResponse do
     end
   end
 
-  let(:attributes) { %w[amount charge_id fee net refund_id state type id created_at updated_at connected_account_id] }
+  let(:attributes) { %w[amount charge_id fee net refund_id state type id created_at updated_at] }
 
   describe 'test attributes' do
     it 'should respond to all attributes' do

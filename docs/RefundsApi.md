@@ -162,7 +162,7 @@ end
 
 ## get_refund
 
-> <RefundResponse> get_refund(x_api_version, x_account_id, id, opts)
+> <RefundResponse> get_refund(x_api_version, x_account_id, id)
 
 Get a refund by ID
 
@@ -183,13 +183,10 @@ api_instance = SubfiPay::RefundsApi.new
 x_api_version = 'x_api_version_example' # String | 
 x_account_id = 'x_account_id_example' # String | 
 id = 'id_example' # String | The ID of the refund to retrieve.
-opts = {
-  connected_account_id: 'connected_account_id_example' # String | Filter results by sub_merchant ID.
-}
 
 begin
   # Get a refund by ID
-  result = api_instance.get_refund(x_api_version, x_account_id, id, opts)
+  result = api_instance.get_refund(x_api_version, x_account_id, id)
   p result
 rescue SubfiPay::ApiError => e
   puts "Error when calling RefundsApi->get_refund: #{e}"
@@ -200,12 +197,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<RefundResponse>, Integer, Hash)> get_refund_with_http_info(x_api_version, x_account_id, id, opts)
+> <Array(<RefundResponse>, Integer, Hash)> get_refund_with_http_info(x_api_version, x_account_id, id)
 
 ```ruby
 begin
   # Get a refund by ID
-  data, status_code, headers = api_instance.get_refund_with_http_info(x_api_version, x_account_id, id, opts)
+  data, status_code, headers = api_instance.get_refund_with_http_info(x_api_version, x_account_id, id)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <RefundResponse>
@@ -221,7 +218,6 @@ end
 | **x_api_version** | **String** |  |  |
 | **x_account_id** | **String** |  |  |
 | **id** | **String** | The ID of the refund to retrieve. |  |
-| **connected_account_id** | **String** | Filter results by sub_merchant ID. | [optional] |
 
 ### Return type
 

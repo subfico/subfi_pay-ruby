@@ -14,13 +14,13 @@ require 'date'
 require 'time'
 
 module SubfiPay
-  class CreateWebhookEndpointRequest
-    attr_accessor :webhook_endpoint
+  class PaymentIntentUpdateRequest
+    attr_accessor :payment_intent
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'webhook_endpoint' => :'webhook_endpoint'
+        :'payment_intent' => :'payment_intent'
       }
     end
 
@@ -32,7 +32,7 @@ module SubfiPay
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'webhook_endpoint' => :'CreateWebhookEndpointRequestWebhookEndpoint'
+        :'payment_intent' => :'PaymentIntentUpdateAttributes'
       }
     end
 
@@ -46,19 +46,19 @@ module SubfiPay
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `SubfiPay::CreateWebhookEndpointRequest` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `SubfiPay::PaymentIntentUpdateRequest` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `SubfiPay::CreateWebhookEndpointRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `SubfiPay::PaymentIntentUpdateRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'webhook_endpoint')
-        self.webhook_endpoint = attributes[:'webhook_endpoint']
+      if attributes.key?(:'payment_intent')
+        self.payment_intent = attributes[:'payment_intent']
       end
     end
 
@@ -82,7 +82,7 @@ module SubfiPay
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          webhook_endpoint == o.webhook_endpoint
+          payment_intent == o.payment_intent
     end
 
     # @see the `==` method
@@ -94,7 +94,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [webhook_endpoint].hash
+      [payment_intent].hash
     end
 
     # Builds the object from hash
