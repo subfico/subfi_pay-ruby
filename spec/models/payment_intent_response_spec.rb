@@ -26,7 +26,7 @@ describe SubfiPay::PaymentIntentResponse do
     end
   end
 
-  let(:attributes) { %w[id active_payment_method_id amount description state connected_account_id payment_methods] }
+  let(:attributes) { %w[id payment_method_id amount capture_method customer_id description metadata state active_charge created_at updated_at] }
 
   describe "encoding" do
     it "should be UTF-8" do

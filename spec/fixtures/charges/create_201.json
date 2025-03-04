@@ -4,9 +4,9 @@
  "description": null,
  "failure_reason": null,
  "merchant_id": "2e98f79a-8277-4191-a318-0031d8ed2b28",
- "payment_method": 
+ "payment_method":
   {"id": "50a68d58-14b3-45e4-901e-45d55e452d79",
-   "billing_address": 
+   "billing_address":
     {"address_line1": "980 Hyatt Course",
      "address_line2": null,
      "city": "New Isiahstad",
@@ -17,7 +17,7 @@
      "phone": "1619783601",
      "postal_code": "192351986",
      "state": "NC"},
-   "card_profile": 
+   "card_profile":
     {"avs_check": "00",
      "avs_check_message": null,
      "brand": "visa",
@@ -34,6 +34,6 @@
    "partner_id": "23a7c1d3e79270701fe9",
    "sub_merchant_id": null,
    "updated_at": "2024-09-17T20:39:20Z"},
- "processor_id": null,
+ "processor_transaction_id": null,
  "state": "processing",
  "sub_merchant_id": "a19bd11f-2715-4176-9508-64086548c286"}

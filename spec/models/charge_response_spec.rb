@@ -26,12 +26,12 @@ describe SubfiPay::ChargeResponse do
     end
   end
 
-  let(:attributes) { %w[amount description payment_method_id connected_account_id immediate_capture id captured_at failure_reason account_id payment_method processor_id state created_at] }
+  let(:attributes) { %w[amount customer_id description metadata payment_intent_id payment_method_id id account_id processor_transaction_id state succeeded_at created_at updated_at type can_cancel can_refund can_void] }
 
   describe "encoding" do
     it "should be UTF-8" do
-      instance.processor_id = "foobar"
-      expect(instance.processor_id.encoding.to_s).to eq("UTF-8")
+      instance.processor_transaction_id = "foobar"
+      expect(instance.processor_transaction_id.encoding.to_s).to eq("UTF-8")
     end
   end
 

@@ -25,7 +25,7 @@ describe SubfiPay::PaymentIntentUpdateAttributes do
     end
   end
 
-  let(:attributes) { %w[payment_intent] }
+  let(:attributes) { %w[metadata payment_method_id] }
 
   describe 'test attributes' do
     it 'should respond to all attributes' do

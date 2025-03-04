@@ -55,7 +55,7 @@ describe 'WebhookEndpointsApi' do
   # @param x_api_version
   # @param create_webhook_endpoint_request
   # @param [Hash] opts the optional parameters
-  # @return [WebhookEndpoint]
+  # @return [WebhookEndpointResponse]
   describe 'create_webhook_endpoint test' do
     let(:body) do
       {
@@ -79,7 +79,7 @@ describe 'WebhookEndpointsApi' do
     it 'should work' do
       res = api_instance.create_webhook_endpoint(api_version, account_id, body)
 
-      expect(res).to be_instance_of(SubfiPay::WebhookEndpoint)
+      expect(res).to be_instance_of(SubfiPay::WebhookEndpointResponse)
     end
   end
 
@@ -114,7 +114,7 @@ describe 'WebhookEndpointsApi' do
   # @param x_api_version
   # @param id
   # @param [Hash] opts the optional parameters
-  # @return [WebhookEndpoint]
+  # @return [WebhookEndpointResponse]
   describe 'get_webhook_endpoint test' do
     let(:webhook_endpoint_id) { Faker::Alphanumeric.alphanumeric(number: 32) }
 
@@ -131,7 +131,7 @@ describe 'WebhookEndpointsApi' do
     it 'should work' do
       res = api_instance.get_webhook_endpoint(api_version, account_id, webhook_endpoint_id)
 
-      expect(res).to be_instance_of(SubfiPay::WebhookEndpoint)
+      expect(res).to be_instance_of(SubfiPay::WebhookEndpointResponse)
     end
   end
 
@@ -166,7 +166,7 @@ describe 'WebhookEndpointsApi' do
   # @param id
   # @param create_webhook_endpoint_request
   # @param [Hash] opts the optional parameters
-  # @return [WebhookEndpoint]
+  # @return [WebhookEndpointResponse]
   describe 'update_webhook_endpoint test' do
     let(:webhook_endpoint_id) { Faker::Alphanumeric.alphanumeric(number: 32) }
 
@@ -192,7 +192,7 @@ describe 'WebhookEndpointsApi' do
     it 'should work' do
       res = api_instance.update_webhook_endpoint(api_version, account_id, webhook_endpoint_id, body)
 
-      expect(res).to be_instance_of(SubfiPay::WebhookEndpoint)
+      expect(res).to be_instance_of(SubfiPay::WebhookEndpointResponse)
     end
   end
 end
