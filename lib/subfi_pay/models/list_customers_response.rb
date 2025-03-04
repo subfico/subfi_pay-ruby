@@ -35,7 +35,7 @@ module SubfiPay
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'data' => :'Array<Customer>',
+        :'data' => :'Array<CustomerResponse>',
         :'meta' => :'Meta'
       }
     end

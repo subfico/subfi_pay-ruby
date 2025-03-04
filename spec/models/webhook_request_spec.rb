@@ -26,7 +26,7 @@ describe SubfiPay::WebhookRequest do
     end
   end
 
-  let(:attributes) { %w[id event_id webhook_endpoint_id status_code error_message request_body response_body success retry_count created_at updated_at] }
+  let(:attributes) { %w[id webhook_endpoint_id status_code error_message request_body response_body success created_at updated_at] }
 
   describe 'test attributes' do
     it 'should respond to all attributes' do

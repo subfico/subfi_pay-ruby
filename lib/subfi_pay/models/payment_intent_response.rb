@@ -17,31 +17,69 @@ module SubfiPay
   class PaymentIntentResponse
     attr_accessor :id
 
-    attr_accessor :active_payment_method_id
+    attr_accessor :account_id
 
     attr_accessor :amount
 
     attr_accessor :capture_method
 
+    attr_accessor :currency
+
+    attr_accessor :customer_id
+
     attr_accessor :description
+
+    # Additional metadata key-value pairs
+    attr_accessor :metadata
+
+    attr_accessor :source
 
     attr_accessor :state
 
-    attr_accessor :connected_account_id
+    attr_accessor :statement_descriptor
 
-    attr_accessor :payment_methods
+    attr_accessor :created_at
+
+    attr_accessor :updated_at
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
-        :'active_payment_method_id' => :'active_payment_method_id',
+        :'account_id' => :'account_id',
         :'amount' => :'amount',
         :'capture_method' => :'capture_method',
+        :'currency' => :'currency',
+        :'customer_id' => :'customer_id',
         :'description' => :'description',
+        :'metadata' => :'metadata',
+        :'source' => :'source',
         :'state' => :'state',
-        :'connected_account_id' => :'connected_account_id',
-        :'payment_methods' => :'payment_methods'
+        :'statement_descriptor' => :'statement_descriptor',
+        :'created_at' => :'created_at',
+        :'updated_at' => :'updated_at'
       }
     end
 
@@ -54,13 +92,18 @@ module SubfiPay
     def self.openapi_types
       {
         :'id' => :'String',
-        :'active_payment_method_id' => :'String',
+        :'account_id' => :'String',
         :'amount' => :'Float',
         :'capture_method' => :'String',
+        :'currency' => :'String',
+        :'customer_id' => :'String',
         :'description' => :'String',
+        :'metadata' => :'Hash<String, MetadataValue>',
+        :'source' => :'String',
         :'state' => :'String',
-        :'connected_account_id' => :'String',
-        :'payment_methods' => :'Array<PaymentMethodResponse>'
+        :'statement_descriptor' => :'String',
+        :'created_at' => :'Time',
+        :'updated_at' => :'Time'
       }
     end
 
@@ -89,8 +132,8 @@ module SubfiPay
         self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'active_payment_method_id')
-        self.active_payment_method_id = attributes[:'active_payment_method_id']
+      if attributes.key?(:'account_id')
+        self.account_id = attributes[:'account_id']
       end
 
       if attributes.key?(:'amount')
@@ -101,22 +144,42 @@ module SubfiPay
         self.capture_method = attributes[:'capture_method']
       end
 
+      if attributes.key?(:'currency')
+        self.currency = attributes[:'currency']
+      end
+
+      if attributes.key?(:'customer_id')
+        self.customer_id = attributes[:'customer_id']
+      end
+
       if attributes.key?(:'description')
         self.description = attributes[:'description']
+      end
+
+      if attributes.key?(:'metadata')
+        if (value = attributes[:'metadata']).is_a?(Hash)
+          self.metadata = value
+        end
+      end
+
+      if attributes.key?(:'source')
+        self.source = attributes[:'source']
       end
 
       if attributes.key?(:'state')
         self.state = attributes[:'state']
       end
 
-      if attributes.key?(:'connected_account_id')
-        self.connected_account_id = attributes[:'connected_account_id']
+      if attributes.key?(:'statement_descriptor')
+        self.statement_descriptor = attributes[:'statement_descriptor']
       end
 
-      if attributes.key?(:'payment_methods')
-        if (value = attributes[:'payment_methods']).is_a?(Array)
-          self.payment_methods = value
-        end
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
+      end
+
+      if attributes.key?(:'updated_at')
+        self.updated_at = attributes[:'updated_at']
       end
     end
 
@@ -132,7 +195,19 @@ module SubfiPay
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      source_validator = EnumAttributeValidator.new('String', ["api", "dashboard", "subscription"])
+      return false unless source_validator.valid?(@source)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] source Object to be assigned
+    def source=(source)
+      validator = EnumAttributeValidator.new('String', ["api", "dashboard", "subscription"])
+      unless validator.valid?(source)
+        fail ArgumentError, "invalid value for \"source\", must be one of #{validator.allowable_values}."
+      end
+      @source = source
     end
 
     # Checks equality by comparing each attribute.
@@ -141,13 +216,18 @@ module SubfiPay
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          active_payment_method_id == o.active_payment_method_id &&
+          account_id == o.account_id &&
           amount == o.amount &&
           capture_method == o.capture_method &&
+          currency == o.currency &&
+          customer_id == o.customer_id &&
           description == o.description &&
+          metadata == o.metadata &&
+          source == o.source &&
           state == o.state &&
-          connected_account_id == o.connected_account_id &&
-          payment_methods == o.payment_methods
+          statement_descriptor == o.statement_descriptor &&
+          created_at == o.created_at &&
+          updated_at == o.updated_at
     end
 
     # @see the `==` method
@@ -159,7 +239,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, active_payment_method_id, amount, capture_method, description, state, connected_account_id, payment_methods].hash
+      [id, account_id, amount, capture_method, currency, customer_id, description, metadata, source, state, statement_descriptor, created_at, updated_at].hash
     end
 
     # Builds the object from hash
