@@ -75,7 +75,7 @@ module SubfiPay
       return_type = opts[:debug_return_type] || 'PaymentIntentResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key']
 
       new_options = opts.merge(
         :operation => :"PaymentIntentsApi.cancel_payment_intent",
@@ -150,7 +150,7 @@ module SubfiPay
       return_type = opts[:debug_return_type] || 'PaymentIntentResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key']
 
       new_options = opts.merge(
         :operation => :"PaymentIntentsApi.capture_payment_intent",
@@ -225,7 +225,7 @@ module SubfiPay
       return_type = opts[:debug_return_type] || 'PaymentIntentResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key']
 
       new_options = opts.merge(
         :operation => :"PaymentIntentsApi.confirm_payment_intent",
@@ -305,7 +305,7 @@ module SubfiPay
       return_type = opts[:debug_return_type] || 'PaymentIntentResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key']
 
       new_options = opts.merge(
         :operation => :"PaymentIntentsApi.create_payment_intent",
@@ -380,7 +380,7 @@ module SubfiPay
       return_type = opts[:debug_return_type] || 'PaymentIntentResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key']
 
       new_options = opts.merge(
         :operation => :"PaymentIntentsApi.get_payment_intent",
@@ -405,7 +405,6 @@ module SubfiPay
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page The page of results to retrieve.
     # @option opts [Integer] :per_page Number of results per page.
-    # @option opts [String] :connected_account_id Filter results by sub_merchant ID.
     # @return [ListPaymentIntentsResponse]
     def list_payment_intents(x_api_version, x_account_id, opts = {})
       data, _status_code, _headers = list_payment_intents_with_http_info(x_api_version, x_account_id, opts)
@@ -418,7 +417,6 @@ module SubfiPay
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page The page of results to retrieve.
     # @option opts [Integer] :per_page Number of results per page.
-    # @option opts [String] :connected_account_id Filter results by sub_merchant ID.
     # @return [Array<(ListPaymentIntentsResponse, Integer, Hash)>] ListPaymentIntentsResponse data, response status code and response headers
     def list_payment_intents_with_http_info(x_api_version, x_account_id, opts = {})
       if @api_client.config.debugging
@@ -439,7 +437,6 @@ module SubfiPay
       query_params = opts[:query_params] || {}
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
       query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
-      query_params[:'connected_account_id'] = opts[:'connected_account_id'] if !opts[:'connected_account_id'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -458,7 +455,7 @@ module SubfiPay
       return_type = opts[:debug_return_type] || 'ListPaymentIntentsResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key']
 
       new_options = opts.merge(
         :operation => :"PaymentIntentsApi.list_payment_intents",
@@ -481,11 +478,11 @@ module SubfiPay
     # @param x_api_version [String] 
     # @param x_account_id [String] 
     # @param id [String] The ID of the payment intent to update
-    # @param payment_intent_update_attributes [PaymentIntentUpdateAttributes] 
+    # @param payment_intent_update_request [PaymentIntentUpdateRequest] 
     # @param [Hash] opts the optional parameters
     # @return [PaymentIntentResponse]
-    def update_payment_intent(x_api_version, x_account_id, id, payment_intent_update_attributes, opts = {})
-      data, _status_code, _headers = update_payment_intent_with_http_info(x_api_version, x_account_id, id, payment_intent_update_attributes, opts)
+    def update_payment_intent(x_api_version, x_account_id, id, payment_intent_update_request, opts = {})
+      data, _status_code, _headers = update_payment_intent_with_http_info(x_api_version, x_account_id, id, payment_intent_update_request, opts)
       data
     end
 
@@ -493,10 +490,10 @@ module SubfiPay
     # @param x_api_version [String] 
     # @param x_account_id [String] 
     # @param id [String] The ID of the payment intent to update
-    # @param payment_intent_update_attributes [PaymentIntentUpdateAttributes] 
+    # @param payment_intent_update_request [PaymentIntentUpdateRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(PaymentIntentResponse, Integer, Hash)>] PaymentIntentResponse data, response status code and response headers
-    def update_payment_intent_with_http_info(x_api_version, x_account_id, id, payment_intent_update_attributes, opts = {})
+    def update_payment_intent_with_http_info(x_api_version, x_account_id, id, payment_intent_update_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PaymentIntentsApi.update_payment_intent ...'
       end
@@ -512,9 +509,9 @@ module SubfiPay
       if @api_client.config.client_side_validation && id.nil?
         fail ArgumentError, "Missing the required parameter 'id' when calling PaymentIntentsApi.update_payment_intent"
       end
-      # verify the required parameter 'payment_intent_update_attributes' is set
-      if @api_client.config.client_side_validation && payment_intent_update_attributes.nil?
-        fail ArgumentError, "Missing the required parameter 'payment_intent_update_attributes' when calling PaymentIntentsApi.update_payment_intent"
+      # verify the required parameter 'payment_intent_update_request' is set
+      if @api_client.config.client_side_validation && payment_intent_update_request.nil?
+        fail ArgumentError, "Missing the required parameter 'payment_intent_update_request' when calling PaymentIntentsApi.update_payment_intent"
       end
       # resource path
       local_var_path = '/payment_intents/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
@@ -538,13 +535,13 @@ module SubfiPay
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(payment_intent_update_attributes)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(payment_intent_update_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'PaymentIntentResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
+      auth_names = opts[:debug_auth_names] || ['X-Api-Key']
 
       new_options = opts.merge(
         :operation => :"PaymentIntentsApi.update_payment_intent",

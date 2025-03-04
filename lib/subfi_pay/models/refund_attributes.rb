@@ -17,13 +17,23 @@ module SubfiPay
   class RefundAttributes
     attr_accessor :amount
 
-    attr_accessor :charge_id
+    attr_accessor :adjustment_reason
+
+    attr_accessor :parent_transaction_id
+
+    attr_accessor :description
+
+    # Additional metadata key-value pairs
+    attr_accessor :metadata
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'amount' => :'amount',
-        :'charge_id' => :'charge_id'
+        :'adjustment_reason' => :'adjustment_reason',
+        :'parent_transaction_id' => :'parent_transaction_id',
+        :'description' => :'description',
+        :'metadata' => :'metadata'
       }
     end
 
@@ -36,7 +46,10 @@ module SubfiPay
     def self.openapi_types
       {
         :'amount' => :'Integer',
-        :'charge_id' => :'String'
+        :'adjustment_reason' => :'String',
+        :'parent_transaction_id' => :'String',
+        :'description' => :'String',
+        :'metadata' => :'Hash<String, MetadataValue>'
       }
     end
 
@@ -65,10 +78,24 @@ module SubfiPay
         self.amount = attributes[:'amount']
       end
 
-      if attributes.key?(:'charge_id')
-        self.charge_id = attributes[:'charge_id']
+      if attributes.key?(:'adjustment_reason')
+        self.adjustment_reason = attributes[:'adjustment_reason']
+      end
+
+      if attributes.key?(:'parent_transaction_id')
+        self.parent_transaction_id = attributes[:'parent_transaction_id']
       else
-        self.charge_id = nil
+        self.parent_transaction_id = nil
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
+      end
+
+      if attributes.key?(:'metadata')
+        if (value = attributes[:'metadata']).is_a?(Hash)
+          self.metadata = value
+        end
       end
     end
 
@@ -77,8 +104,8 @@ module SubfiPay
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @charge_id.nil?
-        invalid_properties.push('invalid value for "charge_id", charge_id cannot be nil.')
+      if @parent_transaction_id.nil?
+        invalid_properties.push('invalid value for "parent_transaction_id", parent_transaction_id cannot be nil.')
       end
 
       invalid_properties
@@ -88,7 +115,7 @@ module SubfiPay
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @charge_id.nil?
+      return false if @parent_transaction_id.nil?
       true
     end
 
@@ -98,7 +125,10 @@ module SubfiPay
       return true if self.equal?(o)
       self.class == o.class &&
           amount == o.amount &&
-          charge_id == o.charge_id
+          adjustment_reason == o.adjustment_reason &&
+          parent_transaction_id == o.parent_transaction_id &&
+          description == o.description &&
+          metadata == o.metadata
     end
 
     # @see the `==` method
@@ -110,7 +140,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [amount, charge_id].hash
+      [amount, adjustment_reason, parent_transaction_id, description, metadata].hash
     end
 
     # Builds the object from hash

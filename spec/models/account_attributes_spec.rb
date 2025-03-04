@@ -22,12 +22,11 @@ describe SubfiPay::AccountAttributes do
 
   describe 'test an instance of AccountAttributes' do
     it 'should create an instance of AccountAttributes' do
-      # uncomment below to test the instance creation
       expect(instance).to be_instance_of(SubfiPay::AccountAttributes)
     end
   end
 
-  let(:attributes) { %w[name worldpay_merchant_id] }
+  let(:attributes) { %w[name mcc merchant_id] }
 
   describe 'test attributes' do
     it 'should respond to all attributes' do

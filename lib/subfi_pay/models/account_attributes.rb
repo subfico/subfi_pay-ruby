@@ -15,15 +15,21 @@ require 'time'
 
 module SubfiPay
   class AccountAttributes
+    attr_accessor :merchant_id
+
     attr_accessor :name
 
-    attr_accessor :worldpay_merchant_id
+    attr_accessor :mcc
+
+    attr_accessor :processor
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'merchant_id' => :'merchant_id',
         :'name' => :'name',
-        :'worldpay_merchant_id' => :'worldpay_merchant_id'
+        :'mcc' => :'mcc',
+        :'processor' => :'processor'
       }
     end
 
@@ -35,8 +41,10 @@ module SubfiPay
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'merchant_id' => :'String',
         :'name' => :'String',
-        :'worldpay_merchant_id' => :'String'
+        :'mcc' => :'String',
+        :'processor' => :'AccountAttributesProcessor'
       }
     end
 
@@ -61,12 +69,20 @@ module SubfiPay
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'merchant_id')
+        self.merchant_id = attributes[:'merchant_id']
+      end
+
       if attributes.key?(:'name')
         self.name = attributes[:'name']
       end
 
-      if attributes.key?(:'worldpay_merchant_id')
-        self.worldpay_merchant_id = attributes[:'worldpay_merchant_id']
+      if attributes.key?(:'mcc')
+        self.mcc = attributes[:'mcc']
+      end
+
+      if attributes.key?(:'processor')
+        self.processor = attributes[:'processor']
       end
     end
 
@@ -90,8 +106,10 @@ module SubfiPay
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          merchant_id == o.merchant_id &&
           name == o.name &&
-          worldpay_merchant_id == o.worldpay_merchant_id
+          mcc == o.mcc &&
+          processor == o.processor
     end
 
     # @see the `==` method
@@ -103,7 +121,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, worldpay_merchant_id].hash
+      [merchant_id, name, mcc, processor].hash
     end
 
     # Builds the object from hash

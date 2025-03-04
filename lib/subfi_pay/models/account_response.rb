@@ -15,11 +15,17 @@ require 'time'
 
 module SubfiPay
   class AccountResponse
+    attr_accessor :id
+
     attr_accessor :name
 
     attr_accessor :active
 
-    attr_accessor :worldpay_merchant_id
+    attr_accessor :merchant_id
+
+    attr_accessor :mcc
+
+    attr_accessor :processor_id
 
     attr_accessor :created_at
 
@@ -28,9 +34,12 @@ module SubfiPay
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'id' => :'id',
         :'name' => :'name',
         :'active' => :'active',
-        :'worldpay_merchant_id' => :'worldpay_merchant_id',
+        :'merchant_id' => :'merchant_id',
+        :'mcc' => :'mcc',
+        :'processor_id' => :'processor_id',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
       }
@@ -44,9 +53,12 @@ module SubfiPay
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'id' => :'String',
         :'name' => :'String',
         :'active' => :'Boolean',
-        :'worldpay_merchant_id' => :'String',
+        :'merchant_id' => :'String',
+        :'mcc' => :'String',
+        :'processor_id' => :'String',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
       }
@@ -73,6 +85,10 @@ module SubfiPay
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
+      end
+
       if attributes.key?(:'name')
         self.name = attributes[:'name']
       end
@@ -81,8 +97,16 @@ module SubfiPay
         self.active = attributes[:'active']
       end
 
-      if attributes.key?(:'worldpay_merchant_id')
-        self.worldpay_merchant_id = attributes[:'worldpay_merchant_id']
+      if attributes.key?(:'merchant_id')
+        self.merchant_id = attributes[:'merchant_id']
+      end
+
+      if attributes.key?(:'mcc')
+        self.mcc = attributes[:'mcc']
+      end
+
+      if attributes.key?(:'processor_id')
+        self.processor_id = attributes[:'processor_id']
       end
 
       if attributes.key?(:'created_at')
@@ -114,9 +138,12 @@ module SubfiPay
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          id == o.id &&
           name == o.name &&
           active == o.active &&
-          worldpay_merchant_id == o.worldpay_merchant_id &&
+          merchant_id == o.merchant_id &&
+          mcc == o.mcc &&
+          processor_id == o.processor_id &&
           created_at == o.created_at &&
           updated_at == o.updated_at
     end
@@ -130,7 +157,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, active, worldpay_merchant_id, created_at, updated_at].hash
+      [id, name, active, merchant_id, mcc, processor_id, created_at, updated_at].hash
     end
 
     # Builds the object from hash
