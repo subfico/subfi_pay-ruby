@@ -23,7 +23,7 @@ describe 'AccountsApi' do
   let(:account_id) { Faker::Alphanumeric.alphanumeric(number: 32) }
   let(:config) do
     api_instance.api_client.config.tap do |c|
-      c.api_key['ApiKeyAuth'] = api_key
+      c.api_key['X-Api-Key'] = api_key
       c.host = "localhost:3000"
       c.scheme = "http"
     end
@@ -120,6 +120,7 @@ describe 'AccountsApi' do
   # @option opts [Integer] :per_page Number of results per page.
   # @return [ListAccountsResponse]
   describe 'list_accounts test' do
+    let(:merchant_id) { SecureRandom.uuid }
     let(:page) { 1 }
     let(:per_page) { 10 }
 
@@ -127,7 +128,7 @@ describe 'AccountsApi' do
       stub_request(:get, [config.host, path].join)
         .with(
           headers: request_headers,
-          query: { page: page, per_page: per_page }
+          query: { merchant_id:, page:, per_page: }
         )
         .to_return(
           status: 200,
@@ -137,7 +138,7 @@ describe 'AccountsApi' do
     end
 
     it 'should work' do
-      res = api_instance.list_accounts(api_version, page: page, per_page: per_page)
+      res = api_instance.list_accounts(api_version, merchant_id, page:, per_page:)
 
       expect(res).to be_instance_of(SubfiPay::ListAccountsResponse)
     end

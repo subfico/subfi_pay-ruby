@@ -22,10 +22,10 @@ require 'time'
 require 'subfi_pay'
 # setup authorization
 SubfiPay.configure do |config|
-  # Configure API key authorization: ApiKeyAuth
-  config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
+  # Configure API key authorization: X-Api-Key
+  config.api_key['X-Api-Key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+  # config.api_key_prefix['X-Api-Key'] = 'Bearer'
 end
 
 api_instance = SubfiPay::PaymentMethodsApi.new
@@ -78,7 +78,7 @@ end
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[X-Api-Key](../README.md#X-Api-Key)
 
 ### HTTP request headers
 
@@ -88,7 +88,7 @@ end
 
 ## get_payment_method
 
-> <PaymentMethodResponse> get_payment_method(x_api_version, x_account_id, id)
+> <PaymentMethodResponse> get_payment_method(x_api_version, id)
 
 Retrieve a payment method
 
@@ -99,20 +99,19 @@ require 'time'
 require 'subfi_pay'
 # setup authorization
 SubfiPay.configure do |config|
-  # Configure API key authorization: ApiKeyAuth
-  config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
+  # Configure API key authorization: X-Api-Key
+  config.api_key['X-Api-Key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+  # config.api_key_prefix['X-Api-Key'] = 'Bearer'
 end
 
 api_instance = SubfiPay::PaymentMethodsApi.new
 x_api_version = 'x_api_version_example' # String | 
-x_account_id = 'x_account_id_example' # String | 
 id = 'id_example' # String | 
 
 begin
   # Retrieve a payment method
-  result = api_instance.get_payment_method(x_api_version, x_account_id, id)
+  result = api_instance.get_payment_method(x_api_version, id)
   p result
 rescue SubfiPay::ApiError => e
   puts "Error when calling PaymentMethodsApi->get_payment_method: #{e}"
@@ -123,12 +122,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PaymentMethodResponse>, Integer, Hash)> get_payment_method_with_http_info(x_api_version, x_account_id, id)
+> <Array(<PaymentMethodResponse>, Integer, Hash)> get_payment_method_with_http_info(x_api_version, id)
 
 ```ruby
 begin
   # Retrieve a payment method
-  data, status_code, headers = api_instance.get_payment_method_with_http_info(x_api_version, x_account_id, id)
+  data, status_code, headers = api_instance.get_payment_method_with_http_info(x_api_version, id)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PaymentMethodResponse>
@@ -142,7 +141,6 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **x_api_version** | **String** |  |  |
-| **x_account_id** | **String** |  |  |
 | **id** | **String** |  |  |
 
 ### Return type
@@ -151,7 +149,7 @@ end
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[X-Api-Key](../README.md#X-Api-Key)
 
 ### HTTP request headers
 
@@ -161,7 +159,7 @@ end
 
 ## list_payment_methods
 
-> <ListPaymentMethodsResponse> list_payment_methods(x_api_version, x_account_id, customer_id, opts)
+> <ListPaymentMethodsResponse> list_payment_methods(x_api_version, customer_id, opts)
 
 List all payment methods
 
@@ -172,16 +170,15 @@ require 'time'
 require 'subfi_pay'
 # setup authorization
 SubfiPay.configure do |config|
-  # Configure API key authorization: ApiKeyAuth
-  config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
+  # Configure API key authorization: X-Api-Key
+  config.api_key['X-Api-Key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+  # config.api_key_prefix['X-Api-Key'] = 'Bearer'
 end
 
 api_instance = SubfiPay::PaymentMethodsApi.new
 x_api_version = 'x_api_version_example' # String | 
-x_account_id = 'x_account_id_example' # String | 
-customer_id = 'customer_id_example' # String | The ID of the customer to filter payment methods by.
+customer_id = 'customer_id_example' # String | The ID of the customer to filter by
 opts = {
   page: 56, # Integer | The page of results to retrieve.
   per_page: 56 # Integer | Number of results per page.
@@ -189,7 +186,7 @@ opts = {
 
 begin
   # List all payment methods
-  result = api_instance.list_payment_methods(x_api_version, x_account_id, customer_id, opts)
+  result = api_instance.list_payment_methods(x_api_version, customer_id, opts)
   p result
 rescue SubfiPay::ApiError => e
   puts "Error when calling PaymentMethodsApi->list_payment_methods: #{e}"
@@ -200,12 +197,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ListPaymentMethodsResponse>, Integer, Hash)> list_payment_methods_with_http_info(x_api_version, x_account_id, customer_id, opts)
+> <Array(<ListPaymentMethodsResponse>, Integer, Hash)> list_payment_methods_with_http_info(x_api_version, customer_id, opts)
 
 ```ruby
 begin
   # List all payment methods
-  data, status_code, headers = api_instance.list_payment_methods_with_http_info(x_api_version, x_account_id, customer_id, opts)
+  data, status_code, headers = api_instance.list_payment_methods_with_http_info(x_api_version, customer_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ListPaymentMethodsResponse>
@@ -219,8 +216,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **x_api_version** | **String** |  |  |
-| **x_account_id** | **String** |  |  |
-| **customer_id** | **String** | The ID of the customer to filter payment methods by. |  |
+| **customer_id** | **String** | The ID of the customer to filter by |  |
 | **page** | **Integer** | The page of results to retrieve. | [optional] |
 | **per_page** | **Integer** | Number of results per page. | [optional] |
 
@@ -230,7 +226,7 @@ end
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[X-Api-Key](../README.md#X-Api-Key)
 
 ### HTTP request headers
 

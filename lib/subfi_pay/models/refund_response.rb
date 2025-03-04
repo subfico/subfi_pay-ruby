@@ -17,28 +17,90 @@ module SubfiPay
   class RefundResponse
     attr_accessor :id
 
-    attr_accessor :failure_reason
+    attr_accessor :account_id
 
-    attr_accessor :state
-
-    attr_accessor :created_at
-
-    attr_accessor :connected_account_id
+    attr_accessor :adjustment_reason
 
     attr_accessor :amount
 
-    attr_accessor :charge_id
+    attr_accessor :currency
+
+    attr_accessor :customer_id
+
+    attr_accessor :description
+
+    # Additional metadata key-value pairs
+    attr_accessor :metadata
+
+    attr_accessor :original_transaction_id
+
+    attr_accessor :parent_transaction_id
+
+    attr_accessor :payment_intent_id
+
+    attr_accessor :payment_method_id
+
+    attr_accessor :platform_fee
+
+    attr_accessor :source
+
+    attr_accessor :state
+
+    attr_accessor :statement_descriptor
+
+    attr_accessor :succeeded_at
+
+    attr_accessor :created_at
+
+    attr_accessor :updated_at
+
+    attr_accessor :allowed_reverse_action
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
-        :'failure_reason' => :'failure_reason',
-        :'state' => :'state',
-        :'created_at' => :'created_at',
-        :'connected_account_id' => :'connected_account_id',
+        :'account_id' => :'account_id',
+        :'adjustment_reason' => :'adjustment_reason',
         :'amount' => :'amount',
-        :'charge_id' => :'charge_id'
+        :'currency' => :'currency',
+        :'customer_id' => :'customer_id',
+        :'description' => :'description',
+        :'metadata' => :'metadata',
+        :'original_transaction_id' => :'original_transaction_id',
+        :'parent_transaction_id' => :'parent_transaction_id',
+        :'payment_intent_id' => :'payment_intent_id',
+        :'payment_method_id' => :'payment_method_id',
+        :'platform_fee' => :'platform_fee',
+        :'source' => :'source',
+        :'state' => :'state',
+        :'statement_descriptor' => :'statement_descriptor',
+        :'succeeded_at' => :'succeeded_at',
+        :'created_at' => :'created_at',
+        :'updated_at' => :'updated_at',
+        :'allowed_reverse_action' => :'allowed_reverse_action'
       }
     end
 
@@ -51,20 +113,33 @@ module SubfiPay
     def self.openapi_types
       {
         :'id' => :'String',
-        :'failure_reason' => :'String',
-        :'state' => :'String',
-        :'created_at' => :'Time',
-        :'connected_account_id' => :'String',
+        :'account_id' => :'String',
+        :'adjustment_reason' => :'String',
         :'amount' => :'Integer',
-        :'charge_id' => :'String'
+        :'currency' => :'String',
+        :'customer_id' => :'String',
+        :'description' => :'String',
+        :'metadata' => :'Hash<String, MetadataValue>',
+        :'original_transaction_id' => :'String',
+        :'parent_transaction_id' => :'String',
+        :'payment_intent_id' => :'String',
+        :'payment_method_id' => :'String',
+        :'platform_fee' => :'Integer',
+        :'source' => :'String',
+        :'state' => :'String',
+        :'statement_descriptor' => :'String',
+        :'succeeded_at' => :'Time',
+        :'created_at' => :'Time',
+        :'updated_at' => :'Time',
+        :'allowed_reverse_action' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'failure_reason',
-        :'connected_account_id',
+        :'description',
+        :'allowed_reverse_action'
       ])
     end
 
@@ -87,28 +162,82 @@ module SubfiPay
         self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'failure_reason')
-        self.failure_reason = attributes[:'failure_reason']
+      if attributes.key?(:'account_id')
+        self.account_id = attributes[:'account_id']
       end
 
-      if attributes.key?(:'state')
-        self.state = attributes[:'state']
-      end
-
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
-      end
-
-      if attributes.key?(:'connected_account_id')
-        self.connected_account_id = attributes[:'connected_account_id']
+      if attributes.key?(:'adjustment_reason')
+        self.adjustment_reason = attributes[:'adjustment_reason']
       end
 
       if attributes.key?(:'amount')
         self.amount = attributes[:'amount']
       end
 
-      if attributes.key?(:'charge_id')
-        self.charge_id = attributes[:'charge_id']
+      if attributes.key?(:'currency')
+        self.currency = attributes[:'currency']
+      end
+
+      if attributes.key?(:'customer_id')
+        self.customer_id = attributes[:'customer_id']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
+      end
+
+      if attributes.key?(:'metadata')
+        if (value = attributes[:'metadata']).is_a?(Hash)
+          self.metadata = value
+        end
+      end
+
+      if attributes.key?(:'original_transaction_id')
+        self.original_transaction_id = attributes[:'original_transaction_id']
+      end
+
+      if attributes.key?(:'parent_transaction_id')
+        self.parent_transaction_id = attributes[:'parent_transaction_id']
+      end
+
+      if attributes.key?(:'payment_intent_id')
+        self.payment_intent_id = attributes[:'payment_intent_id']
+      end
+
+      if attributes.key?(:'payment_method_id')
+        self.payment_method_id = attributes[:'payment_method_id']
+      end
+
+      if attributes.key?(:'platform_fee')
+        self.platform_fee = attributes[:'platform_fee']
+      end
+
+      if attributes.key?(:'source')
+        self.source = attributes[:'source']
+      end
+
+      if attributes.key?(:'state')
+        self.state = attributes[:'state']
+      end
+
+      if attributes.key?(:'statement_descriptor')
+        self.statement_descriptor = attributes[:'statement_descriptor']
+      end
+
+      if attributes.key?(:'succeeded_at')
+        self.succeeded_at = attributes[:'succeeded_at']
+      end
+
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
+      end
+
+      if attributes.key?(:'updated_at')
+        self.updated_at = attributes[:'updated_at']
+      end
+
+      if attributes.key?(:'allowed_reverse_action')
+        self.allowed_reverse_action = attributes[:'allowed_reverse_action']
       end
     end
 
@@ -124,7 +253,43 @@ module SubfiPay
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      source_validator = EnumAttributeValidator.new('String', ["api", "dashboard", "iframe", "system", "subscription"])
+      return false unless source_validator.valid?(@source)
+      state_validator = EnumAttributeValidator.new('String', ["pending", "processing", "requires_review", "succeeded", "cancelled", "failed"])
+      return false unless state_validator.valid?(@state)
+      allowed_reverse_action_validator = EnumAttributeValidator.new('String', ["void"])
+      return false unless allowed_reverse_action_validator.valid?(@allowed_reverse_action)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] source Object to be assigned
+    def source=(source)
+      validator = EnumAttributeValidator.new('String', ["api", "dashboard", "iframe", "system", "subscription"])
+      unless validator.valid?(source)
+        fail ArgumentError, "invalid value for \"source\", must be one of #{validator.allowable_values}."
+      end
+      @source = source
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] state Object to be assigned
+    def state=(state)
+      validator = EnumAttributeValidator.new('String', ["pending", "processing", "requires_review", "succeeded", "cancelled", "failed"])
+      unless validator.valid?(state)
+        fail ArgumentError, "invalid value for \"state\", must be one of #{validator.allowable_values}."
+      end
+      @state = state
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] allowed_reverse_action Object to be assigned
+    def allowed_reverse_action=(allowed_reverse_action)
+      validator = EnumAttributeValidator.new('String', ["void"])
+      unless validator.valid?(allowed_reverse_action)
+        fail ArgumentError, "invalid value for \"allowed_reverse_action\", must be one of #{validator.allowable_values}."
+      end
+      @allowed_reverse_action = allowed_reverse_action
     end
 
     # Checks equality by comparing each attribute.
@@ -133,12 +298,25 @@ module SubfiPay
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          failure_reason == o.failure_reason &&
-          state == o.state &&
-          created_at == o.created_at &&
-          connected_account_id == o.connected_account_id &&
+          account_id == o.account_id &&
+          adjustment_reason == o.adjustment_reason &&
           amount == o.amount &&
-          charge_id == o.charge_id
+          currency == o.currency &&
+          customer_id == o.customer_id &&
+          description == o.description &&
+          metadata == o.metadata &&
+          original_transaction_id == o.original_transaction_id &&
+          parent_transaction_id == o.parent_transaction_id &&
+          payment_intent_id == o.payment_intent_id &&
+          payment_method_id == o.payment_method_id &&
+          platform_fee == o.platform_fee &&
+          source == o.source &&
+          state == o.state &&
+          statement_descriptor == o.statement_descriptor &&
+          succeeded_at == o.succeeded_at &&
+          created_at == o.created_at &&
+          updated_at == o.updated_at &&
+          allowed_reverse_action == o.allowed_reverse_action
     end
 
     # @see the `==` method
@@ -150,7 +328,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, failure_reason, state, created_at, connected_account_id, amount, charge_id].hash
+      [id, account_id, adjustment_reason, amount, currency, customer_id, description, metadata, original_transaction_id, parent_transaction_id, payment_intent_id, payment_method_id, platform_fee, source, state, statement_descriptor, succeeded_at, created_at, updated_at, allowed_reverse_action].hash
     end
 
     # Builds the object from hash

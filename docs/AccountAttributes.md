@@ -4,8 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **merchant_id** | **String** |  | [optional] |
 | **name** | **String** |  | [optional] |
-| **worldpay_merchant_id** | **String** |  | [optional] |
+| **processor** | [**AccountAttributesProcessor**](AccountAttributesProcessor.md) |  | [optional] |
 
 ## Example
 
@@ -13,8 +14,9 @@
 require 'subfi_pay'
 
 instance = SubfiPay::AccountAttributes.new(
+  merchant_id: null,
   name: null,
-  worldpay_merchant_id: null
+  processor: null
 )
 ```
 
