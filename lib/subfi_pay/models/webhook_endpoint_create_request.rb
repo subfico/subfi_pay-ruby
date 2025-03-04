@@ -14,28 +14,13 @@ require 'date'
 require 'time'
 
 module SubfiPay
-  class CreateWebhookEndpointRequestWebhookEndpoint
-    attr_accessor :event
-
-    attr_accessor :metadata
-
-    attr_accessor :enabled
-
-    attr_accessor :secret
-
-    attr_accessor :url
-
-    attr_accessor :connected_account_id
+  class WebhookEndpointCreateRequest
+    attr_accessor :webhook_endpoint
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'event' => :'event',
-        :'metadata' => :'metadata',
-        :'enabled' => :'enabled',
-        :'secret' => :'secret',
-        :'url' => :'url',
-        :'connected_account_id' => :'connected_account_id'
+        :'webhook_endpoint' => :'webhook_endpoint'
       }
     end
 
@@ -47,12 +32,7 @@ module SubfiPay
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'event' => :'String',
-        :'metadata' => :'Object',
-        :'enabled' => :'Boolean',
-        :'secret' => :'String',
-        :'url' => :'String',
-        :'connected_account_id' => :'String'
+        :'webhook_endpoint' => :'WebhookEndpointAttributes'
       }
     end
 
@@ -66,39 +46,19 @@ module SubfiPay
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `SubfiPay::CreateWebhookEndpointRequestWebhookEndpoint` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `SubfiPay::WebhookEndpointCreateRequest` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `SubfiPay::CreateWebhookEndpointRequestWebhookEndpoint`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `SubfiPay::WebhookEndpointCreateRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'event')
-        self.event = attributes[:'event']
-      end
-
-      if attributes.key?(:'metadata')
-        self.metadata = attributes[:'metadata']
-      end
-
-      if attributes.key?(:'enabled')
-        self.enabled = attributes[:'enabled']
-      end
-
-      if attributes.key?(:'secret')
-        self.secret = attributes[:'secret']
-      end
-
-      if attributes.key?(:'url')
-        self.url = attributes[:'url']
-      end
-
-      if attributes.key?(:'connected_account_id')
-        self.connected_account_id = attributes[:'connected_account_id']
+      if attributes.key?(:'webhook_endpoint')
+        self.webhook_endpoint = attributes[:'webhook_endpoint']
       end
     end
 
@@ -122,12 +82,7 @@ module SubfiPay
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          event == o.event &&
-          metadata == o.metadata &&
-          enabled == o.enabled &&
-          secret == o.secret &&
-          url == o.url &&
-          connected_account_id == o.connected_account_id
+          webhook_endpoint == o.webhook_endpoint
     end
 
     # @see the `==` method
@@ -139,7 +94,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [event, metadata, enabled, secret, url, connected_account_id].hash
+      [webhook_endpoint].hash
     end
 
     # Builds the object from hash

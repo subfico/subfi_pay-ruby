@@ -14,13 +14,25 @@ require 'date'
 require 'time'
 
 module SubfiPay
-  class CreateWebhookEndpointRequest
-    attr_accessor :webhook_endpoint
+  class WebhookEndpointAttributes
+    attr_accessor :event
+
+    attr_accessor :metadata
+
+    attr_accessor :enabled
+
+    attr_accessor :secret
+
+    attr_accessor :url
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'webhook_endpoint' => :'webhook_endpoint'
+        :'event' => :'event',
+        :'metadata' => :'metadata',
+        :'enabled' => :'enabled',
+        :'secret' => :'secret',
+        :'url' => :'url'
       }
     end
 
@@ -32,7 +44,11 @@ module SubfiPay
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'webhook_endpoint' => :'CreateWebhookEndpointRequestWebhookEndpoint'
+        :'event' => :'String',
+        :'metadata' => :'Object',
+        :'enabled' => :'Boolean',
+        :'secret' => :'String',
+        :'url' => :'String'
       }
     end
 
@@ -46,19 +62,35 @@ module SubfiPay
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `SubfiPay::CreateWebhookEndpointRequest` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `SubfiPay::WebhookEndpointAttributes` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `SubfiPay::CreateWebhookEndpointRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `SubfiPay::WebhookEndpointAttributes`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'webhook_endpoint')
-        self.webhook_endpoint = attributes[:'webhook_endpoint']
+      if attributes.key?(:'event')
+        self.event = attributes[:'event']
+      end
+
+      if attributes.key?(:'metadata')
+        self.metadata = attributes[:'metadata']
+      end
+
+      if attributes.key?(:'enabled')
+        self.enabled = attributes[:'enabled']
+      end
+
+      if attributes.key?(:'secret')
+        self.secret = attributes[:'secret']
+      end
+
+      if attributes.key?(:'url')
+        self.url = attributes[:'url']
       end
     end
 
@@ -82,7 +114,11 @@ module SubfiPay
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          webhook_endpoint == o.webhook_endpoint
+          event == o.event &&
+          metadata == o.metadata &&
+          enabled == o.enabled &&
+          secret == o.secret &&
+          url == o.url
     end
 
     # @see the `==` method
@@ -94,7 +130,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [webhook_endpoint].hash
+      [event, metadata, enabled, secret, url].hash
     end
 
     # Builds the object from hash

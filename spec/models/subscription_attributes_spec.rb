@@ -26,7 +26,7 @@ describe SubfiPay::SubscriptionAttributes do
     end
   end
 
-  let(:attributes) { %w[connected_account_id customer_id payment_method_id amount interval interval_count next_payment_date] }
+  let(:attributes) { %w[customer_id payment_method_id amount interval interval_count next_payment_date] }
 
   describe 'test attributes' do
     it 'should respond to all attributes' do
