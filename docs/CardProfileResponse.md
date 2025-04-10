@@ -1,4 +1,4 @@
-# SubfiPay::CardProfile
+# SubfiPay::CardProfileResponse
 
 ## Properties
 
@@ -11,19 +11,21 @@
 | **cvc_check_message** | **String** |  | [optional] |
 | **exp_month** | **Integer** |  | [optional] |
 | **exp_year** | **Integer** |  | [optional] |
-| **funding** | **String** |  | [optional] |
 | **first6** | **String** |  | [optional] |
+| **funding** | **String** |  | [optional] |
 | **last4** | **String** |  | [optional] |
+| **state** | **String** |  | [optional] |
 | **three_d_secure_supported** | **Boolean** |  | [optional] |
 | **token** | **String** |  | [optional] |
-| **state** | **String** |  | [optional] |
+| **created_at** | **Time** |  | [optional] |
+| **updated_at** | **Time** |  | [optional] |
 
 ## Example
 
 ```ruby
 require 'subfi_pay'
 
-instance = SubfiPay::CardProfile.new(
+instance = SubfiPay::CardProfileResponse.new(
   avs_check: null,
   avs_check_message: null,
   brand: null,
@@ -31,12 +33,14 @@ instance = SubfiPay::CardProfile.new(
   cvc_check_message: null,
   exp_month: null,
   exp_year: null,
-  funding: null,
   first6: null,
+  funding: null,
   last4: null,
+  state: null,
   three_d_secure_supported: null,
   token: null,
-  state: null
+  created_at: null,
+  updated_at: null
 )
 ```
 

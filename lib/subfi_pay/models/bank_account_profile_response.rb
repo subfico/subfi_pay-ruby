@@ -14,28 +14,40 @@ require 'date'
 require 'time'
 
 module SubfiPay
-  class BankAccountProfile
+  class BankAccountProfileResponse
     attr_accessor :account_holder_name
-
-    attr_accessor :bank_name
 
     attr_accessor :account_holder_type
 
     attr_accessor :account_type
 
-    attr_accessor :encrypted_account_number
+    attr_accessor :bank_name
+
+    attr_accessor :last4
 
     attr_accessor :routing_number
+
+    attr_accessor :state
+
+    attr_accessor :token
+
+    attr_accessor :created_at
+
+    attr_accessor :updated_at
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'account_holder_name' => :'account_holder_name',
-        :'bank_name' => :'bank_name',
         :'account_holder_type' => :'account_holder_type',
         :'account_type' => :'account_type',
-        :'encrypted_account_number' => :'encrypted_account_number',
-        :'routing_number' => :'routing_number'
+        :'bank_name' => :'bank_name',
+        :'last4' => :'last4',
+        :'routing_number' => :'routing_number',
+        :'state' => :'state',
+        :'token' => :'token',
+        :'created_at' => :'created_at',
+        :'updated_at' => :'updated_at'
       }
     end
 
@@ -48,11 +60,15 @@ module SubfiPay
     def self.openapi_types
       {
         :'account_holder_name' => :'String',
-        :'bank_name' => :'String',
         :'account_holder_type' => :'String',
         :'account_type' => :'String',
-        :'encrypted_account_number' => :'String',
-        :'routing_number' => :'String'
+        :'bank_name' => :'String',
+        :'last4' => :'String',
+        :'routing_number' => :'String',
+        :'state' => :'String',
+        :'token' => :'String',
+        :'created_at' => :'Time',
+        :'updated_at' => :'Time'
       }
     end
 
@@ -66,23 +82,19 @@ module SubfiPay
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `SubfiPay::BankAccountProfile` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `SubfiPay::BankAccountProfileResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `SubfiPay::BankAccountProfile`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `SubfiPay::BankAccountProfileResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
       if attributes.key?(:'account_holder_name')
         self.account_holder_name = attributes[:'account_holder_name']
-      end
-
-      if attributes.key?(:'bank_name')
-        self.bank_name = attributes[:'bank_name']
       end
 
       if attributes.key?(:'account_holder_type')
@@ -93,12 +105,32 @@ module SubfiPay
         self.account_type = attributes[:'account_type']
       end
 
-      if attributes.key?(:'encrypted_account_number')
-        self.encrypted_account_number = attributes[:'encrypted_account_number']
+      if attributes.key?(:'bank_name')
+        self.bank_name = attributes[:'bank_name']
+      end
+
+      if attributes.key?(:'last4')
+        self.last4 = attributes[:'last4']
       end
 
       if attributes.key?(:'routing_number')
         self.routing_number = attributes[:'routing_number']
+      end
+
+      if attributes.key?(:'state')
+        self.state = attributes[:'state']
+      end
+
+      if attributes.key?(:'token')
+        self.token = attributes[:'token']
+      end
+
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
+      end
+
+      if attributes.key?(:'updated_at')
+        self.updated_at = attributes[:'updated_at']
       end
     end
 
@@ -123,11 +155,15 @@ module SubfiPay
       return true if self.equal?(o)
       self.class == o.class &&
           account_holder_name == o.account_holder_name &&
-          bank_name == o.bank_name &&
           account_holder_type == o.account_holder_type &&
           account_type == o.account_type &&
-          encrypted_account_number == o.encrypted_account_number &&
-          routing_number == o.routing_number
+          bank_name == o.bank_name &&
+          last4 == o.last4 &&
+          routing_number == o.routing_number &&
+          state == o.state &&
+          token == o.token &&
+          created_at == o.created_at &&
+          updated_at == o.updated_at
     end
 
     # @see the `==` method
@@ -139,7 +175,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [account_holder_name, bank_name, account_holder_type, account_type, encrypted_account_number, routing_number].hash
+      [account_holder_name, account_holder_type, account_type, bank_name, last4, routing_number, state, token, created_at, updated_at].hash
     end
 
     # Builds the object from hash

@@ -14,28 +14,37 @@ require 'date'
 require 'time'
 
 module SubfiPay
-  class PaymentMethodAttributes
-    attr_accessor :customer_id
+  class BillingAddressAttributes
+    attr_accessor :address_line1
 
-    attr_accessor :metadata
+    attr_accessor :address_line2
 
-    attr_accessor :set_as_customer_default
+    attr_accessor :city
 
-    attr_accessor :billing_address_attributes
+    attr_accessor :country
 
-    attr_accessor :card_profile_attributes
+    attr_accessor :email
 
-    attr_accessor :bank_account_profile_attributes
+    attr_accessor :name
+
+    attr_accessor :phone
+
+    attr_accessor :postal_code
+
+    attr_accessor :state
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'customer_id' => :'customer_id',
-        :'metadata' => :'metadata',
-        :'set_as_customer_default' => :'set_as_customer_default',
-        :'billing_address_attributes' => :'billing_address_attributes',
-        :'card_profile_attributes' => :'card_profile_attributes',
-        :'bank_account_profile_attributes' => :'bank_account_profile_attributes'
+        :'address_line1' => :'address_line1',
+        :'address_line2' => :'address_line2',
+        :'city' => :'city',
+        :'country' => :'country',
+        :'email' => :'email',
+        :'name' => :'name',
+        :'phone' => :'phone',
+        :'postal_code' => :'postal_code',
+        :'state' => :'state'
       }
     end
 
@@ -47,18 +56,22 @@ module SubfiPay
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'customer_id' => :'String',
-        :'metadata' => :'Object',
-        :'set_as_customer_default' => :'String',
-        :'billing_address_attributes' => :'BillingAddressAttributes',
-        :'card_profile_attributes' => :'CardProfileAttributes',
-        :'bank_account_profile_attributes' => :'BankAccountProfileAttributes'
+        :'address_line1' => :'String',
+        :'address_line2' => :'String',
+        :'city' => :'String',
+        :'country' => :'String',
+        :'email' => :'String',
+        :'name' => :'String',
+        :'phone' => :'String',
+        :'postal_code' => :'String',
+        :'state' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'address_line2',
       ])
     end
 
@@ -66,39 +79,51 @@ module SubfiPay
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `SubfiPay::PaymentMethodAttributes` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `SubfiPay::BillingAddressAttributes` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `SubfiPay::PaymentMethodAttributes`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `SubfiPay::BillingAddressAttributes`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'customer_id')
-        self.customer_id = attributes[:'customer_id']
+      if attributes.key?(:'address_line1')
+        self.address_line1 = attributes[:'address_line1']
       end
 
-      if attributes.key?(:'metadata')
-        self.metadata = attributes[:'metadata']
+      if attributes.key?(:'address_line2')
+        self.address_line2 = attributes[:'address_line2']
       end
 
-      if attributes.key?(:'set_as_customer_default')
-        self.set_as_customer_default = attributes[:'set_as_customer_default']
+      if attributes.key?(:'city')
+        self.city = attributes[:'city']
       end
 
-      if attributes.key?(:'billing_address_attributes')
-        self.billing_address_attributes = attributes[:'billing_address_attributes']
+      if attributes.key?(:'country')
+        self.country = attributes[:'country']
       end
 
-      if attributes.key?(:'card_profile_attributes')
-        self.card_profile_attributes = attributes[:'card_profile_attributes']
+      if attributes.key?(:'email')
+        self.email = attributes[:'email']
       end
 
-      if attributes.key?(:'bank_account_profile_attributes')
-        self.bank_account_profile_attributes = attributes[:'bank_account_profile_attributes']
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
+      end
+
+      if attributes.key?(:'phone')
+        self.phone = attributes[:'phone']
+      end
+
+      if attributes.key?(:'postal_code')
+        self.postal_code = attributes[:'postal_code']
+      end
+
+      if attributes.key?(:'state')
+        self.state = attributes[:'state']
       end
     end
 
@@ -122,12 +147,15 @@ module SubfiPay
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          customer_id == o.customer_id &&
-          metadata == o.metadata &&
-          set_as_customer_default == o.set_as_customer_default &&
-          billing_address_attributes == o.billing_address_attributes &&
-          card_profile_attributes == o.card_profile_attributes &&
-          bank_account_profile_attributes == o.bank_account_profile_attributes
+          address_line1 == o.address_line1 &&
+          address_line2 == o.address_line2 &&
+          city == o.city &&
+          country == o.country &&
+          email == o.email &&
+          name == o.name &&
+          phone == o.phone &&
+          postal_code == o.postal_code &&
+          state == o.state
     end
 
     # @see the `==` method
@@ -139,7 +167,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [customer_id, metadata, set_as_customer_default, billing_address_attributes, card_profile_attributes, bank_account_profile_attributes].hash
+      [address_line1, address_line2, city, country, email, name, phone, postal_code, state].hash
     end
 
     # Builds the object from hash

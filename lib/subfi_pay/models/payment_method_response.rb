@@ -17,35 +17,35 @@ module SubfiPay
   class PaymentMethodResponse
     attr_accessor :id
 
-    attr_accessor :type
-
-    attr_accessor :created_at
-
-    attr_accessor :updated_at
-
     attr_accessor :customer_id
 
     # Additional metadata key-value pairs
     attr_accessor :metadata
 
+    attr_accessor :type
+
+    attr_accessor :bank_account_profile
+
     attr_accessor :billing_address
 
     attr_accessor :card_profile
 
-    attr_accessor :bank_account_profile
+    attr_accessor :created_at
+
+    attr_accessor :updated_at
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
-        :'type' => :'type',
-        :'created_at' => :'created_at',
-        :'updated_at' => :'updated_at',
         :'customer_id' => :'customer_id',
         :'metadata' => :'metadata',
+        :'type' => :'type',
+        :'bank_account_profile' => :'bank_account_profile',
         :'billing_address' => :'billing_address',
         :'card_profile' => :'card_profile',
-        :'bank_account_profile' => :'bank_account_profile'
+        :'created_at' => :'created_at',
+        :'updated_at' => :'updated_at'
       }
     end
 
@@ -58,14 +58,14 @@ module SubfiPay
     def self.openapi_types
       {
         :'id' => :'String',
-        :'type' => :'String',
-        :'created_at' => :'Time',
-        :'updated_at' => :'Time',
         :'customer_id' => :'String',
         :'metadata' => :'Hash<String, String>',
-        :'billing_address' => :'BillingAddress',
-        :'card_profile' => :'CardProfile',
-        :'bank_account_profile' => :'BankAccountProfile'
+        :'type' => :'String',
+        :'bank_account_profile' => :'BankAccountProfileResponse',
+        :'billing_address' => :'BillingAddressResponse',
+        :'card_profile' => :'CardProfileResponse',
+        :'created_at' => :'Time',
+        :'updated_at' => :'Time'
       }
     end
 
@@ -94,18 +94,6 @@ module SubfiPay
         self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'type')
-        self.type = attributes[:'type']
-      end
-
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
-      end
-
-      if attributes.key?(:'updated_at')
-        self.updated_at = attributes[:'updated_at']
-      end
-
       if attributes.key?(:'customer_id')
         self.customer_id = attributes[:'customer_id']
       end
@@ -116,6 +104,14 @@ module SubfiPay
         end
       end
 
+      if attributes.key?(:'type')
+        self.type = attributes[:'type']
+      end
+
+      if attributes.key?(:'bank_account_profile')
+        self.bank_account_profile = attributes[:'bank_account_profile']
+      end
+
       if attributes.key?(:'billing_address')
         self.billing_address = attributes[:'billing_address']
       end
@@ -124,8 +120,12 @@ module SubfiPay
         self.card_profile = attributes[:'card_profile']
       end
 
-      if attributes.key?(:'bank_account_profile')
-        self.bank_account_profile = attributes[:'bank_account_profile']
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
+      end
+
+      if attributes.key?(:'updated_at')
+        self.updated_at = attributes[:'updated_at']
       end
     end
 
@@ -150,14 +150,14 @@ module SubfiPay
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          type == o.type &&
-          created_at == o.created_at &&
-          updated_at == o.updated_at &&
           customer_id == o.customer_id &&
           metadata == o.metadata &&
+          type == o.type &&
+          bank_account_profile == o.bank_account_profile &&
           billing_address == o.billing_address &&
           card_profile == o.card_profile &&
-          bank_account_profile == o.bank_account_profile
+          created_at == o.created_at &&
+          updated_at == o.updated_at
     end
 
     # @see the `==` method
@@ -169,7 +169,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, type, created_at, updated_at, customer_id, metadata, billing_address, card_profile, bank_account_profile].hash
+      [id, customer_id, metadata, type, bank_account_profile, billing_address, card_profile, created_at, updated_at].hash
     end
 
     # Builds the object from hash

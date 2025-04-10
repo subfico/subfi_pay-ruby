@@ -14,40 +14,31 @@ require 'date'
 require 'time'
 
 module SubfiPay
-  class BillingAddress
-    attr_accessor :first_name
+  class BankAccountProfileAttributes
+    attr_accessor :account_holder_name
 
-    attr_accessor :last_name
+    attr_accessor :account_holder_type
 
-    attr_accessor :email
+    attr_accessor :account_type
 
-    attr_accessor :phone
+    attr_accessor :bank_name
 
-    attr_accessor :address_line1
+    attr_accessor :currency
 
-    attr_accessor :address_line2
+    attr_accessor :encrypted_account_number
 
-    attr_accessor :city
-
-    attr_accessor :state
-
-    attr_accessor :country
-
-    attr_accessor :postal_code
+    attr_accessor :routing_number
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'first_name' => :'first_name',
-        :'last_name' => :'last_name',
-        :'email' => :'email',
-        :'phone' => :'phone',
-        :'address_line1' => :'address_line1',
-        :'address_line2' => :'address_line2',
-        :'city' => :'city',
-        :'state' => :'state',
-        :'country' => :'country',
-        :'postal_code' => :'postal_code'
+        :'account_holder_name' => :'account_holder_name',
+        :'account_holder_type' => :'account_holder_type',
+        :'account_type' => :'account_type',
+        :'bank_name' => :'bank_name',
+        :'currency' => :'currency',
+        :'encrypted_account_number' => :'encrypted_account_number',
+        :'routing_number' => :'routing_number'
       }
     end
 
@@ -59,23 +50,19 @@ module SubfiPay
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'first_name' => :'String',
-        :'last_name' => :'String',
-        :'email' => :'String',
-        :'phone' => :'String',
-        :'address_line1' => :'String',
-        :'address_line2' => :'String',
-        :'city' => :'String',
-        :'state' => :'String',
-        :'country' => :'String',
-        :'postal_code' => :'String'
+        :'account_holder_name' => :'String',
+        :'account_holder_type' => :'String',
+        :'account_type' => :'String',
+        :'bank_name' => :'String',
+        :'currency' => :'String',
+        :'encrypted_account_number' => :'String',
+        :'routing_number' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'address_line2',
       ])
     end
 
@@ -83,55 +70,43 @@ module SubfiPay
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `SubfiPay::BillingAddress` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `SubfiPay::BankAccountProfileAttributes` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `SubfiPay::BillingAddress`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `SubfiPay::BankAccountProfileAttributes`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'first_name')
-        self.first_name = attributes[:'first_name']
+      if attributes.key?(:'account_holder_name')
+        self.account_holder_name = attributes[:'account_holder_name']
       end
 
-      if attributes.key?(:'last_name')
-        self.last_name = attributes[:'last_name']
+      if attributes.key?(:'account_holder_type')
+        self.account_holder_type = attributes[:'account_holder_type']
       end
 
-      if attributes.key?(:'email')
-        self.email = attributes[:'email']
+      if attributes.key?(:'account_type')
+        self.account_type = attributes[:'account_type']
       end
 
-      if attributes.key?(:'phone')
-        self.phone = attributes[:'phone']
+      if attributes.key?(:'bank_name')
+        self.bank_name = attributes[:'bank_name']
       end
 
-      if attributes.key?(:'address_line1')
-        self.address_line1 = attributes[:'address_line1']
+      if attributes.key?(:'currency')
+        self.currency = attributes[:'currency']
       end
 
-      if attributes.key?(:'address_line2')
-        self.address_line2 = attributes[:'address_line2']
+      if attributes.key?(:'encrypted_account_number')
+        self.encrypted_account_number = attributes[:'encrypted_account_number']
       end
 
-      if attributes.key?(:'city')
-        self.city = attributes[:'city']
-      end
-
-      if attributes.key?(:'state')
-        self.state = attributes[:'state']
-      end
-
-      if attributes.key?(:'country')
-        self.country = attributes[:'country']
-      end
-
-      if attributes.key?(:'postal_code')
-        self.postal_code = attributes[:'postal_code']
+      if attributes.key?(:'routing_number')
+        self.routing_number = attributes[:'routing_number']
       end
     end
 
@@ -155,16 +130,13 @@ module SubfiPay
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          first_name == o.first_name &&
-          last_name == o.last_name &&
-          email == o.email &&
-          phone == o.phone &&
-          address_line1 == o.address_line1 &&
-          address_line2 == o.address_line2 &&
-          city == o.city &&
-          state == o.state &&
-          country == o.country &&
-          postal_code == o.postal_code
+          account_holder_name == o.account_holder_name &&
+          account_holder_type == o.account_holder_type &&
+          account_type == o.account_type &&
+          bank_name == o.bank_name &&
+          currency == o.currency &&
+          encrypted_account_number == o.encrypted_account_number &&
+          routing_number == o.routing_number
     end
 
     # @see the `==` method
@@ -176,7 +148,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [first_name, last_name, email, phone, address_line1, address_line2, city, state, country, postal_code].hash
+      [account_holder_name, account_holder_type, account_type, bank_name, currency, encrypted_account_number, routing_number].hash
     end
 
     # Builds the object from hash

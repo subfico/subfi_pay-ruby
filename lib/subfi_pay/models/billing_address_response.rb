@@ -14,49 +14,43 @@ require 'date'
 require 'time'
 
 module SubfiPay
-  class CardProfile
-    attr_accessor :avs_check
+  class BillingAddressResponse
+    attr_accessor :address_line1
 
-    attr_accessor :avs_check_message
+    attr_accessor :address_line2
 
-    attr_accessor :brand
+    attr_accessor :city
 
-    attr_accessor :cvc_check
+    attr_accessor :country
 
-    attr_accessor :cvc_check_message
+    attr_accessor :email
 
-    attr_accessor :exp_month
+    attr_accessor :name
 
-    attr_accessor :exp_year
+    attr_accessor :phone
 
-    attr_accessor :funding
-
-    attr_accessor :first6
-
-    attr_accessor :last4
-
-    attr_accessor :three_d_secure_supported
-
-    attr_accessor :token
+    attr_accessor :postal_code
 
     attr_accessor :state
+
+    attr_accessor :created_at
+
+    attr_accessor :updated_at
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'avs_check' => :'avs_check',
-        :'avs_check_message' => :'avs_check_message',
-        :'brand' => :'brand',
-        :'cvc_check' => :'cvc_check',
-        :'cvc_check_message' => :'cvc_check_message',
-        :'exp_month' => :'exp_month',
-        :'exp_year' => :'exp_year',
-        :'funding' => :'funding',
-        :'first6' => :'first6',
-        :'last4' => :'last4',
-        :'three_d_secure_supported' => :'three_d_secure_supported',
-        :'token' => :'token',
-        :'state' => :'state'
+        :'address_line1' => :'address_line1',
+        :'address_line2' => :'address_line2',
+        :'city' => :'city',
+        :'country' => :'country',
+        :'email' => :'email',
+        :'name' => :'name',
+        :'phone' => :'phone',
+        :'postal_code' => :'postal_code',
+        :'state' => :'state',
+        :'created_at' => :'created_at',
+        :'updated_at' => :'updated_at'
       }
     end
 
@@ -68,29 +62,24 @@ module SubfiPay
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'avs_check' => :'String',
-        :'avs_check_message' => :'String',
-        :'brand' => :'String',
-        :'cvc_check' => :'String',
-        :'cvc_check_message' => :'String',
-        :'exp_month' => :'Integer',
-        :'exp_year' => :'Integer',
-        :'funding' => :'String',
-        :'first6' => :'String',
-        :'last4' => :'String',
-        :'three_d_secure_supported' => :'Boolean',
-        :'token' => :'String',
-        :'state' => :'String'
+        :'address_line1' => :'String',
+        :'address_line2' => :'String',
+        :'city' => :'String',
+        :'country' => :'String',
+        :'email' => :'String',
+        :'name' => :'String',
+        :'phone' => :'String',
+        :'postal_code' => :'String',
+        :'state' => :'String',
+        :'created_at' => :'Time',
+        :'updated_at' => :'Time'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'avs_check_message',
-        :'cvc_check_message',
-        :'funding',
-        :'three_d_secure_supported',
+        :'address_line2',
       ])
     end
 
@@ -98,67 +87,59 @@ module SubfiPay
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `SubfiPay::CardProfile` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `SubfiPay::BillingAddressResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `SubfiPay::CardProfile`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `SubfiPay::BillingAddressResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'avs_check')
-        self.avs_check = attributes[:'avs_check']
+      if attributes.key?(:'address_line1')
+        self.address_line1 = attributes[:'address_line1']
       end
 
-      if attributes.key?(:'avs_check_message')
-        self.avs_check_message = attributes[:'avs_check_message']
+      if attributes.key?(:'address_line2')
+        self.address_line2 = attributes[:'address_line2']
       end
 
-      if attributes.key?(:'brand')
-        self.brand = attributes[:'brand']
+      if attributes.key?(:'city')
+        self.city = attributes[:'city']
       end
 
-      if attributes.key?(:'cvc_check')
-        self.cvc_check = attributes[:'cvc_check']
+      if attributes.key?(:'country')
+        self.country = attributes[:'country']
       end
 
-      if attributes.key?(:'cvc_check_message')
-        self.cvc_check_message = attributes[:'cvc_check_message']
+      if attributes.key?(:'email')
+        self.email = attributes[:'email']
       end
 
-      if attributes.key?(:'exp_month')
-        self.exp_month = attributes[:'exp_month']
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       end
 
-      if attributes.key?(:'exp_year')
-        self.exp_year = attributes[:'exp_year']
+      if attributes.key?(:'phone')
+        self.phone = attributes[:'phone']
       end
 
-      if attributes.key?(:'funding')
-        self.funding = attributes[:'funding']
-      end
-
-      if attributes.key?(:'first6')
-        self.first6 = attributes[:'first6']
-      end
-
-      if attributes.key?(:'last4')
-        self.last4 = attributes[:'last4']
-      end
-
-      if attributes.key?(:'three_d_secure_supported')
-        self.three_d_secure_supported = attributes[:'three_d_secure_supported']
-      end
-
-      if attributes.key?(:'token')
-        self.token = attributes[:'token']
+      if attributes.key?(:'postal_code')
+        self.postal_code = attributes[:'postal_code']
       end
 
       if attributes.key?(:'state')
         self.state = attributes[:'state']
+      end
+
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
+      end
+
+      if attributes.key?(:'updated_at')
+        self.updated_at = attributes[:'updated_at']
       end
     end
 
@@ -182,19 +163,17 @@ module SubfiPay
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          avs_check == o.avs_check &&
-          avs_check_message == o.avs_check_message &&
-          brand == o.brand &&
-          cvc_check == o.cvc_check &&
-          cvc_check_message == o.cvc_check_message &&
-          exp_month == o.exp_month &&
-          exp_year == o.exp_year &&
-          funding == o.funding &&
-          first6 == o.first6 &&
-          last4 == o.last4 &&
-          three_d_secure_supported == o.three_d_secure_supported &&
-          token == o.token &&
-          state == o.state
+          address_line1 == o.address_line1 &&
+          address_line2 == o.address_line2 &&
+          city == o.city &&
+          country == o.country &&
+          email == o.email &&
+          name == o.name &&
+          phone == o.phone &&
+          postal_code == o.postal_code &&
+          state == o.state &&
+          created_at == o.created_at &&
+          updated_at == o.updated_at
     end
 
     # @see the `==` method
@@ -206,7 +185,7 @@ module SubfiPay
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [avs_check, avs_check_message, brand, cvc_check, cvc_check_message, exp_month, exp_year, funding, first6, last4, three_d_secure_supported, token, state].hash
+      [address_line1, address_line2, city, country, email, name, phone, postal_code, state, created_at, updated_at].hash
     end
 
     # Builds the object from hash
